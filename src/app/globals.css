@@ -11,19 +11,15 @@
   --text-tertiary: 136, 136, 136;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background-primary: 18, 18, 18;
-    --background-secondary: 34, 34, 34;
-    --background-tertiary: 50, 50, 50;
-    --text-primary: 255, 255, 255;
-    --text-secondary: 204, 204, 204;
-    --text-tertiary: 153, 153, 153;
-  }
+.dark {
+  --background-primary: 18, 18, 18;
+  --background-secondary: 34, 34, 34;
+  --background-tertiary: 50, 50, 50;
+  --text-primary: 255, 255, 255;
+  --text-secondary: 204, 204, 204;
+  --text-tertiary: 153, 153, 153;
 }
 
-body {
-  font-family: var(--noto-sans-KR-normal);
-  color: var(rgb(--text-primary));
-  background-color: var(rgb(--background-primary));
+html {
+  background-color: rgb(var(--background-primary));
 }
