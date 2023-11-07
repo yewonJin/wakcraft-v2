@@ -14,14 +14,14 @@ const config: Config = {
     },
     colors: {
       backround: {
-        primary: "var(--background-primary)",
-        secondary: "var(--background-secondary)",
-        tertiary: "var(--background-tertiary)",
+        primary: "rgb(var(--background-primary))",
+        secondary: "rgb(var(--background-secondary))",
+        tertiary: "rgb(var(--background-tertiary))",
       },
       text: {
-        primary: "var(--text-primary)",
-        secondary: "var(--text-secondary)",
-        tertiary: "var(--text-tertiary)",
+        primary: "rgb(var(--text-primary))",
+        secondary: "rgb(var(--text-secondary))",
+        tertiary: "rgb(var(--text-tertiary))",
       },
     },
   },
