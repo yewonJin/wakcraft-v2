@@ -8,6 +8,20 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    extend: {
+      backgroundImage: {
+        main: "url('/main-bg.webp')",
+      },
+      keyframes: {
+        fadeIn: {
+          from: { opacity: "0", transform: "translateY(20px)" },
+          to: { opacity: "1" },
+        },
+      },
+      animation: {
+        fadeIn: "fadeIn 0.5s",
+      },
+    },
     colors: {
       backround: {
         primary: "rgb(var(--background-primary))",
