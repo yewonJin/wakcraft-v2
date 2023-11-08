@@ -1,30 +1,37 @@
 "use client";
 
-import LightMode from "../../public/light_mode.svg";
-import DarkMode from "../../public/dark_mode.svg";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+import LightMode from "../../public/icons/light_mode.svg";
+import DarkMode from "../../public/icons/dark_mode.svg";
 import useTheme from "@/hooks/useTheme";
 
 export default function TopNav() {
   const { scrollY, isScrolled, handleModeClick } = useTheme();
+  const pathname = usePathname();
 
   return (
     <nav
-      className={`fixed h-20 w-full ${
+      className={`fixed z-10 h-20 w-full ${
         !isScrolled && scrollY >= 100 ? "invisible" : "visible"
-      } ${scrollY <= 100 ? "bg-none" : "bg-backround-primary"}`}
+      } ${scrollY <= 100 ? "bg-none" : "bg-background-primary"} px-4 xl:px-0`}
     >
       <div className="mx-auto flex h-full w-[1200px] items-center justify-between">
         <h1
           className={`text-2xl font-semibold ${
-            scrollY <= 100 ? "text-[white]" : "text-text-primary"
+            scrollY <= 100 && pathname === "/"
+              ? "text-[white]"
+              : "text-text-primary"
           }`}
         >
-          WAKCRAFT
+          <Link href={"/"}>WAKCRAFT</Link>
         </h1>
+
         <div className="flex items-center">
           <span
             className={`flex ${
-              scrollY <= 100
+              scrollY <= 100 && pathname === "/"
                 ? "fill-[#ccc] hover:fill-[white]"
                 : "fill-text-primary hover:fill-text-primary"
             } hover:cursor-pointer [&>*:first-child]:dark:hidden [&>*:last-child]:hidden [&>*:last-child]:dark:block`}
