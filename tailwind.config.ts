@@ -10,7 +10,15 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        main: "url('/main-bg.webp')",
+        main: "url('/images/main-bg.webp')",
+        noob: "url('/images/tier/noob.webp')",
+        noob2: "url('/images/tier/noob2.webp')",
+        gyeruik: "url('/images/tier/gyeruik.webp')",
+        pro: "url('/images/tier/pro.webp')",
+        gukbap: "url('/images/tier/gukbap.webp')",
+        gukbap2: "url('/images/tier/gukbap2.webp')",
+        hacker: "url('/images/tier/hacker.webp')",
+        hacker2: "url('/images/tier/hacker2.webp')",
       },
       keyframes: {
         fadeIn: {
@@ -23,7 +31,7 @@ const config: Config = {
       },
     },
     colors: {
-      backround: {
+      background: {
         primary: "rgb(var(--background-primary))",
         secondary: "rgb(var(--background-secondary))",
         tertiary: "rgb(var(--background-tertiary))",

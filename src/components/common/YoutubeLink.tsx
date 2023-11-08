@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "../../../public/link.svg";
+import Link from "../../../public/icons/link.svg";
 
 type Props = {
   youtubeUrl?: string;
