@@ -9,6 +9,7 @@ import ArchitectList from "./ArchitectList";
 import useTierCategory from "@/hooks/useTierCategory";
 import useSortArchitect from "@/hooks/useSortArchitect";
 import useSearch from "@/hooks/useSearch";
+import ScrollToTop from "../common/ScrollToTop";
 
 export default function Main() {
   const { curCategory, handleCategoryClick, filterByCategory } =
@@ -34,6 +35,7 @@ export default function Main() {
         handleCategoryClick={handleCategoryClick}
       />
       <ArchitectList architects={highlightedArchitects} />
+      <ScrollToTop />
     </Fragment>
   );
 }
