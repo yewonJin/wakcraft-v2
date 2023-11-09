@@ -17,7 +17,7 @@ const useSortArchitect = () => {
     setSortBy(value);
   };
 
-  const sortedArr = useMemo(() => {
+  const sortedArchitects = useMemo(() => {
     if (sortBy === "tier") {
       const result = arr.sort((a, b) => {
         if (a.tier === b.tier) {
@@ -43,7 +43,7 @@ const useSortArchitect = () => {
     return result;
   }, [sortBy, isDescending]);
 
-  return { sortBy, isDescending, handleSortClick, sortedArr };
+  return { sortBy, isDescending, handleSortClick, sortedArchitects };
 };
 
 export default useSortArchitect;
@@ -85,6 +85,15 @@ const arr = [
     win: 2,
     hackerWin: 0,
     proWin: 2,
+  },
+  {
+    minecraft_id: "fomo",
+    wakzoo_id: "포모",
+    tier: "그냥 눕",
+    participation: 4,
+    win: 0,
+    hackerWin: 0,
+    proWin: 0,
   },
 ];
 

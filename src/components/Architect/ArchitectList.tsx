@@ -1,22 +1,16 @@
 import TierBox from "../common/TierBox";
 
 type Props = {
-  sortedArr: any[];
-  curCategory: string;
+  architects: ExtendedArchitect[];
 };
 
 export default function ArchitectList(props: Props) {
-  const { sortedArr, curCategory } = props;
+  const { architects } = props;
 
   return (
     <div className="mt-4 flex select-none flex-col gap-4">
-      {sortedArr
-        .filter((architect) => {
-          if (curCategory === "") return true;
-
-          return architect.tier === curCategory;
-        })
-        .map((architect) => (
+      {architects.map((architect) => {
+        return (
           <div
             key={architect.minecraft_id}
             className="flex w-full items-center justify-between gap-8 rounded-lg bg-background-secondary px-4 py-4 hover:cursor-pointer hover:bg-background-tertiary"
@@ -25,10 +19,34 @@ export default function ArchitectList(props: Props) {
               <TierBox tier={architect.tier} />
               <div className="flex flex-col gap-3 md:gap-1">
                 <p className="text-text-primary md:text-xl">
-                  {architect.minecraft_id}
+                  {architect.minecraft_id
+                    .split("")
+                    .map((char: string, index: number) => {
+                      if (architect.minecraftIdIndexArr.includes(index)) {
+                        return (
+                          <span key={char + index} className="text-[#d97706]">
+                            {char}
+                          </span>
+                        );
+                      }
+
+                      return <span key={char + index}>{char}</span>;
+                    })}
                 </p>
                 <p className="text-sm text-text-secondary md:text-base">
-                  {architect.wakzoo_id}
+                  {architect.wakzoo_id
+                    .split("")
+                    .map((char: string, index: number) => {
+                      if (architect.wakzooIdIndexArr.includes(index)) {
+                        return (
+                          <span key={char + index} className="text-[#d97706]">
+                            {char}
+                          </span>
+                        );
+                      }
+
+                      return <span key={char + index}>{char}</span>;
+                    })}
                 </p>
               </div>
             </div>
@@ -59,7 +77,24 @@ export default function ArchitectList(props: Props) {
               </div>
             </div>
           </div>
-        ))}
+        );
+      })}
     </div>
   );
+}
+
+// Temp Type
+type Architect = {
+  minecraft_id: string;
+  tier: string;
+  wakzoo_id: string;
+  participation: number;
+  win: number;
+  hackerWin: number;
+  proWin: number;
+};
+
+export interface ExtendedArchitect extends Architect {
+  minecraftIdIndexArr: number[];
+  wakzooIdIndexArr: number[];
 }

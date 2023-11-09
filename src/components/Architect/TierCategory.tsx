@@ -55,7 +55,7 @@ const backgroundColorVariants: BackgroundColorVariants = {
   계추: "hover:bg-[#f59e0b]",
   계륵: "hover:bg-[#94a3b8]",
   "착한 눕": "hover:bg-[#94a3b8]",
-  "나쁜 눕": "hover:bg-[#94a3b8]",
+  "안 나쁜 눕": "hover:bg-[#94a3b8]",
   눕: "hover:bg-[#a16207]",
   언랭: "hover:bg-[#a16207]",
 };
