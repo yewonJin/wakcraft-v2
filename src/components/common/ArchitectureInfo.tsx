@@ -12,7 +12,7 @@ export default function ArchitectureInfo(props: Props) {
 
   return (
     <div
-      className={`mt-3 flex ${
+      className={`mt-4 flex ${
         !tier && !ranking ? "justify-center" : "justify-between"
       }`}
     >
