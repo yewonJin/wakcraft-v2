@@ -30,8 +30,8 @@ export default function Portfolio(props: Props) {
       {[...portfolio]
         .sort((a, b) => {
           return (
-            new Date(b.props["data-date"]["$date"]).getTime() -
-            new Date(a.props["data-date"]["$date"]).getTime()
+            new Date(b.props["data-date"]).getTime() -
+            new Date(a.props["data-date"]).getTime()
           );
         })
         .filter((portfolio) => {
