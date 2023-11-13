@@ -22,10 +22,12 @@ export default function Card(props: Props) {
           <Image
             fill
             alt="이미지"
+            sizes="400px"
+            priority
             src={
-              youtubeUrl === "null"
-                ? "https://wakcraft.s3.ap-northeast-2.amazonaws.com/noobProHacker/episode%2041/Zombieman-hacker.webp"
-                : `https://i.ytimg.com/vi/${youtubeUrl}/hq720.jpg`
+              youtubeUrl !== "null"
+                ? `https://i.ytimg.com/vi/${youtubeUrl}/hq720.jpg`
+                : ""
             }
           />
         </div>

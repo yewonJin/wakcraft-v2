@@ -20,7 +20,7 @@ export default function ImageBox(props: Props) {
       style={{ boxShadow: "1px 1px 3px" }}
       onClick={() => window.open(imageUrl)}
     >
-      <Image alt="작품 이미지" fill src={imageUrl} />
+      <Image alt="작품 이미지" fill src={imageUrl} sizes="400px" />
       <YoutubeLink youtubeUrl={youtubeUrl} />
       <div className="invisible absolute bottom-2 right-2 bg-[#121212] px-[10px] py-1 text-sm text-[white] group-hover/image:visible peer-hover:invisible">
         클릭하여 원본 이미지 보기
