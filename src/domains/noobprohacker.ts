@@ -38,6 +38,12 @@ export const renameToWebp = (imageUrl: string) => {
   return `${splitName.slice(0, splitName.length - 1).join(".")}.webp`;
 };
 
+export const renameTo1080Webp = (imageUrl: string) => {
+  const splitName = imageUrl.split(".");
+
+  return `${splitName.slice(0, splitName.length - 1).join(".")}.1080p.webp`;
+};
+
 export const getLineWinner = (lines: NoobProHacker["lineInfo"]) => {
   return lines.findIndex((line) => line.line_ranking === 1);
 };
