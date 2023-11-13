@@ -1,15 +1,11 @@
 import { Architect } from "./domains/architect";
+import { NoobProHacker } from "./domains/noobprohacker";
 
-export const tempNoobProHackerObject = {
-  _id: {
-    $oid: "65354837c72d158f7b3271cd",
-  },
+export const tempNoobProHackerObject: NoobProHacker = {
   contentInfo: {
     episode: 41,
     main_subject: "자유",
-    date: {
-      $date: "2023-10-22T00:00:00.000Z",
-    },
+    date: "2023-10-22T00:00:00.000Z",
     youtube_url: "null",
   },
   lineInfo: [
@@ -40,9 +36,6 @@ export const tempNoobProHackerObject = {
           ranking: 5,
         },
       },
-      _id: {
-        $oid: "65354837c72d158f7b3271ce",
-      },
     },
     {
       subject: "짐 캐리",
@@ -70,9 +63,6 @@ export const tempNoobProHackerObject = {
           youtube_url: "null",
           ranking: 2,
         },
-      },
-      _id: {
-        $oid: "65354837c72d158f7b3271cf",
       },
     },
     {
@@ -102,9 +92,6 @@ export const tempNoobProHackerObject = {
           ranking: 1,
         },
       },
-      _id: {
-        $oid: "65354837c72d158f7b3271d0",
-      },
     },
     {
       subject: "좀비맨",
@@ -132,9 +119,6 @@ export const tempNoobProHackerObject = {
           youtube_url: "null",
           ranking: 4,
         },
-      },
-      _id: {
-        $oid: "65354837c72d158f7b3271d1",
       },
     },
     {
@@ -164,12 +148,8 @@ export const tempNoobProHackerObject = {
           ranking: 3,
         },
       },
-      _id: {
-        $oid: "65354837c72d158f7b3271d2",
-      },
     },
   ],
-  __v: 0,
 };
 
 export const tempArchitectObject: Architect = {
