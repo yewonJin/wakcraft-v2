@@ -1,5 +1,7 @@
 "use client";
 
+import { Fragment } from "react";
+
 import Portfolio from "@/components/Architect/DetailPage/Portfolio";
 import Category from "@/components/Architect/DetailPage/Category";
 import Statistics from "@/components/Architect/Statistics";
@@ -11,7 +13,7 @@ export default function Page() {
   const { curCategory, handleCategoryClick } = usePortfolioCategory();
 
   return (
-    <div>
+    <Fragment>
       <div
         key={tempArchitectObject.minecraft_id}
         className="flex w-full flex-wrap items-center justify-between gap-8 rounded-lg xl:flex-nowrap"
@@ -39,6 +41,6 @@ export default function Page() {
         handleCategoryClick={handleCategoryClick}
       />
       <Portfolio curCategory={curCategory} architect={tempArchitectObject} />
-    </div>
+    </Fragment>
   );
 }
