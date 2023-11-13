@@ -13,7 +13,7 @@ export default function YoutubeLink(props: Props) {
 
   return (
     <div
-      className="group/youtube peer absolute right-2 top-2 z-10 w-8 rounded-lg bg-[#121212] fill-[#fff] p-[3px] text-left opacity-90 hover:cursor-pointer hover:rounded-l-none hover:opacity-100 [&>svg]:rotate-[135deg]"
+      className="group/youtube peer absolute right-2 top-2 z-10 w-8 rounded-lg bg-[#121212] fill-[#fff] p-[3px] text-left opacity-90 hover:cursor-pointer hover:rounded-l-none hover:opacity-100"
       onClick={(e) => {
         e.stopPropagation();
         window.open(youtubeUrl);
