@@ -18,16 +18,37 @@ export default function TopNav() {
       } ${scrollY <= 100 ? "bg-none" : "bg-background-primary"} px-4 xl:px-0`}
     >
       <div className="mx-auto flex h-full w-[1200px] items-center justify-between">
-        <h1
-          className={`text-2xl font-semibold ${
-            scrollY <= 100 && pathname === "/"
-              ? "text-[white]"
-              : "text-text-primary"
-          }`}
-        >
-          <Link href={"/"}>WAKCRAFT</Link>
-        </h1>
-
+        <div className="flex gap-24">
+          <h1
+            className={`text-2xl font-semibold ${
+              scrollY <= 100 && pathname === "/"
+                ? "text-[white]"
+                : "text-text-primary"
+            }`}
+          >
+            <Link href={"/"}>WAKCRAFT</Link>
+          </h1>
+          <div className="flex items-center gap-16">
+            <h2
+              className={`${
+                scrollY <= 100 && pathname === "/"
+                  ? "text-[white]"
+                  : "text-text-primary"
+              }`}
+            >
+              <Link href={"/architect"}>건축가</Link>
+            </h2>
+            <h2
+              className={`${
+                scrollY <= 100 && pathname === "/"
+                  ? "text-[white]"
+                  : "text-text-primary"
+              }`}
+            >
+              <Link href={"/noobprohacker"}>눕프로해커</Link>
+            </h2>
+          </div>
+        </div>
         <div className="flex items-center">
           <span
             className={`flex ${
