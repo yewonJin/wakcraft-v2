@@ -1,4 +1,4 @@
-type Line = "noob" | "pro" | "hacker";
+export type Line = "noob" | "pro" | "hacker";
 
 export type Tier =
   | "마카게"
@@ -84,6 +84,19 @@ export const tierArray = [
   "진짜 눕",
   "언랭",
 ];
+
+export const translateLine = (line: Line) => {
+  switch (line) {
+    case "noob":
+      return "눕";
+
+    case "pro":
+      return "프로";
+
+    case "hacker":
+      return "해커";
+  }
+};
 
 export const convertLineTierToTier = (tier: string) => {
   switch (tier) {
