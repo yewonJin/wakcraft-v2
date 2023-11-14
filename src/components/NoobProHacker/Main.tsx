@@ -1,9 +1,10 @@
-import Card from "./Card";
+import Card from "../common/Card";
 
 export default function Main() {
   return (
     <div className="mt-8 grid grid-cols-3 gap-8">
       <Card
+        contentType="눕프로해커"
         episode={41}
         subject="자유"
         linesSubject={[
@@ -17,6 +18,7 @@ export default function Main() {
         date={new Date()}
       />
       <Card
+        contentType="눕프로해커"
         episode={40}
         subject="자유"
         linesSubject={[

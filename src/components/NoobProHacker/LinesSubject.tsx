@@ -5,10 +5,11 @@ import { useRouter } from "next/navigation";
 type Props = {
   episode: number;
   linesSubject: string[];
+  link: string;
 };
 
 export default function LinesSubject(props: Props) {
-  const { episode, linesSubject } = props;
+  const { episode, linesSubject, link } = props;
   const router = useRouter();
 
   return (
@@ -19,7 +20,7 @@ export default function LinesSubject(props: Props) {
           className="rounded-md bg-background-primary px-2 py-1 duration-300 hover:bg-background-tertiary"
           onClick={(e) => {
             e.preventDefault();
-            router.push(`/noobprohacker/${episode}#${lineSubject}`);
+            router.push(`${link}#${lineSubject}`);
           }}
         >
           {`#${lineSubject}`}
