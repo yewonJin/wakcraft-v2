@@ -1,4 +1,5 @@
 import { Architect } from "./domains/architect";
+import { EventNoobProHacker } from "./domains/eventNoobProHacker";
 import { NoobProHacker } from "./domains/noobprohacker";
 
 export const tempNoobProHackerObject: NoobProHacker = {
@@ -541,4 +542,473 @@ export const tempArchitectObject: Architect = {
     proWin: 0,
   },
   curTier: "마카게",
+};
+
+export const tempEventNoobProHackerObject: EventNoobProHacker = {
+  contentInfo: {
+    contentName: "눕계프국해",
+    episode: 2,
+    date: "2023-04-03T00:00:00.000Z",
+    youtube_url: "https://youtu.be/B441wqCys7g",
+    isInFiniteTime: false,
+  },
+  lineInfo: [
+    {
+      subject: "할로우 나이트",
+      youtube_url: "https://youtu.be/B441wqCys7g?t=26",
+      line_ranking: 1,
+      line_details: [
+        {
+          line: "눕",
+          minecraft_id: ["Tanzanite_12"],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 2/HollowNight-noob.png",
+          youtube_url: "https://youtu.be/B441wqCys7g?t=26",
+          ranking: 0,
+        },
+        {
+          line: "계륵",
+          minecraft_id: ["FortyNine_49"],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 2/HollowNight-gyeruik.png",
+          youtube_url: "https://youtu.be/B441wqCys7g?t=44",
+          ranking: 0,
+        },
+        {
+          line: "프로",
+          minecraft_id: ["3forway"],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 2/HollowNight-pro.png",
+          youtube_url: "https://youtu.be/B441wqCys7g?t=76",
+          ranking: 2,
+        },
+        {
+          line: "국밥",
+          minecraft_id: ["Yoongse11"],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 2/HollowNight-gukbap.png",
+          youtube_url: "https://youtu.be/B441wqCys7g?t=100",
+          ranking: 3,
+        },
+        {
+          line: "해커",
+          minecraft_id: ["kkio_126"],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 2/HollowNight-hacker.png",
+          youtube_url: "https://youtu.be/B441wqCys7g?t=139",
+          ranking: 4,
+        },
+      ],
+    },
+    {
+      subject: "커비",
+      youtube_url: "https://youtu.be/B441wqCys7g?t=177",
+      line_ranking: 3,
+      line_details: [
+        {
+          line: "눕",
+          minecraft_id: ["kyukyukyukukuku"],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 2/Kirby-noob.png",
+          youtube_url: "https://youtu.be/B441wqCys7g?t=177",
+          ranking: 0,
+        },
+        {
+          line: "계륵",
+          minecraft_id: ["kbcas1112"],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 2/Kirby-gyeruik.png",
+          youtube_url: "https://youtu.be/B441wqCys7g?t=207",
+          ranking: 0,
+        },
+        {
+          line: "프로",
+          minecraft_id: ["rebottt"],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 2/Kirby-pro.png",
+          youtube_url: "https://youtu.be/B441wqCys7g?t=230",
+          ranking: 3,
+        },
+        {
+          line: "국밥",
+          minecraft_id: ["SungYuC"],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 2/Kirby-gukbap.png",
+          youtube_url: "https://youtu.be/B441wqCys7g?t=269",
+          ranking: 4,
+        },
+        {
+          line: "해커",
+          minecraft_id: ["number198"],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 2/Kirby-hacker.png",
+          youtube_url: "https://youtu.be/B441wqCys7g?t=299",
+          ranking: 2,
+        },
+      ],
+    },
+    {
+      subject: "맷 데이먼",
+      youtube_url: "https://youtu.be/B441wqCys7g?t=339",
+      line_ranking: 5,
+      line_details: [
+        {
+          line: "눕",
+          minecraft_id: ["dipsouce"],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 2/MattDamon-noob.png",
+          youtube_url: "https://youtu.be/B441wqCys7g?t=339",
+          ranking: 0,
+        },
+        {
+          line: "계륵",
+          minecraft_id: ["mahingmello"],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 2/MattDamon-gyeruik.png",
+          youtube_url: "https://youtu.be/B441wqCys7g?t=373",
+          ranking: 0,
+        },
+        {
+          line: "프로",
+          minecraft_id: ["aeloek2"],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 2/MattDamon-pro.png",
+          youtube_url: "https://youtu.be/B441wqCys7g?t=412",
+          ranking: 5,
+        },
+        {
+          line: "국밥",
+          minecraft_id: ["salmimu"],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 2/MattDamon-gukbap.png",
+          youtube_url: "https://youtu.be/B441wqCys7g?t=446",
+          ranking: 1,
+        },
+        {
+          line: "해커",
+          minecraft_id: ["hunminsusu"],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 2/MattDamon-hacker.png",
+          youtube_url: "https://youtu.be/B441wqCys7g?t=510",
+          ranking: 5,
+        },
+      ],
+    },
+    {
+      subject: "아이언 클래드",
+      youtube_url: "https://youtu.be/B441wqCys7g?t=583",
+      line_ranking: 4,
+      line_details: [
+        {
+          line: "눕",
+          minecraft_id: ["taedo219"],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 2/TheIronclad-noob.png",
+          youtube_url: "https://youtu.be/B441wqCys7g?t=583",
+          ranking: 0,
+        },
+        {
+          line: "계륵",
+          minecraft_id: ["Fritz______"],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 2/TheIronclad-gyeruik.png",
+          youtube_url: "https://youtu.be/B441wqCys7g?t=612",
+          ranking: 0,
+        },
+        {
+          line: "프로",
+          minecraft_id: ["RoboticDeo"],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 2/TheIronclad-pro.png",
+          youtube_url: "https://youtu.be/B441wqCys7g?t=637",
+          ranking: 1,
+        },
+        {
+          line: "국밥",
+          minecraft_id: ["Minmulguui"],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 2/TheIronclad-gukbap.png",
+          youtube_url: "https://youtu.be/B441wqCys7g?t=676",
+          ranking: 5,
+        },
+        {
+          line: "해커",
+          minecraft_id: ["maeduck82"],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 2/TheIronclad-hacker.png",
+          youtube_url: "https://youtu.be/B441wqCys7g?t=739",
+          ranking: 3,
+        },
+      ],
+    },
+    {
+      subject: "류",
+      youtube_url: "https://youtu.be/B441wqCys7g?t=822",
+      line_ranking: 2,
+      line_details: [
+        {
+          line: "눕",
+          minecraft_id: ["dudtus"],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 2/Ryu-noob.png",
+          youtube_url: "https://youtu.be/B441wqCys7g?t=822",
+          ranking: 0,
+        },
+        {
+          line: "계륵",
+          minecraft_id: ["ongmungcha3542"],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 2/Ryu-gyeruik.png",
+          youtube_url: "https://youtu.be/B441wqCys7g?t=855",
+          ranking: 0,
+        },
+        {
+          line: "프로",
+          minecraft_id: ["ice_pizza"],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 2/Ryu-pro.png",
+          youtube_url: "https://youtu.be/B441wqCys7g?t=884",
+          ranking: 4,
+        },
+        {
+          line: "국밥",
+          minecraft_id: ["SaeDamYo"],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 2/Ryu-gukbap.png",
+          youtube_url: "https://youtu.be/B441wqCys7g?t=926",
+          ranking: 2,
+        },
+        {
+          line: "해커",
+          minecraft_id: ["canindaeyo"],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 2/Ryu-hacker.png",
+          youtube_url: "https://youtu.be/B441wqCys7g?t=957",
+          ranking: 1,
+        },
+      ],
+    },
+  ],
+};
+
+export const tempEventNoobProHackerObject2: EventNoobProHacker = {
+  contentInfo: {
+    contentName: "눕x10 프로x2 해커",
+    episode: 3,
+    date: "2023-05-23T00:00:00.000Z",
+    youtube_url: "https://youtu.be/an2ZUKN4giQ",
+    isInFiniteTime: false,
+  },
+  lineInfo: [
+    {
+      subject: "크라켄",
+      youtube_url: "https://youtu.be/an2ZUKN4giQ?t=34",
+      line_ranking: 0,
+      line_details: [
+        {
+          line: "눕",
+          minecraft_id: [
+            "ongmungcha3542",
+            "Edithen",
+            "chezstick0108",
+            "kbcas1112",
+            "RoMa_111",
+            "yangsimi02",
+            "Iam_nemo",
+            "AK_1207",
+            "doyoung_c",
+            "202___",
+          ],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 3/Kraken-noob.png",
+          youtube_url: "https://youtu.be/an2ZUKN4giQ?t=137",
+          ranking: 3,
+        },
+        {
+          line: "프로",
+          minecraft_id: ["iLdam", "saeschi"],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 3/Kraken-pro.png",
+          youtube_url: "https://youtu.be/an2ZUKN4giQ?t=97",
+          ranking: 12,
+        },
+        {
+          line: "해커",
+          minecraft_id: ["ungdoo"],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 3/Kraken-hacker.png",
+          youtube_url: "https://youtu.be/an2ZUKN4giQ?t=34",
+          ranking: 8,
+        },
+      ],
+    },
+    {
+      subject: "고토 히토리",
+      youtube_url: "https://youtu.be/an2ZUKN4giQ?t=179",
+      line_ranking: 0,
+      line_details: [
+        {
+          line: "눕",
+          minecraft_id: [
+            "ATK_Speedpanchi",
+            "ETN0703",
+            "Tanzanite_12",
+            "FortyNine_49",
+            "dotebox12",
+            "WhyCarNo",
+            "kyukyukyukukuku",
+            "erumosoh",
+            "Milkteagood_",
+            "Fritz______",
+          ],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 3/HitoriGotoh-noob.png",
+          youtube_url: "https://youtu.be/an2ZUKN4giQ?t=280",
+          ranking: 10,
+        },
+        {
+          line: "프로",
+          minecraft_id: ["SungYuC", "rebottt"],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 3/HitoriGotoh-pro.png",
+          youtube_url: "https://youtu.be/an2ZUKN4giQ?t=224",
+          ranking: 7,
+        },
+        {
+          line: "해커",
+          minecraft_id: ["salmimu"],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 3/HitoriGotoh-hacker.png",
+          youtube_url: "https://youtu.be/an2ZUKN4giQ?t=179",
+          ranking: 5,
+        },
+      ],
+    },
+    {
+      subject: "호시노 아이",
+      youtube_url: "https://youtu.be/an2ZUKN4giQ?t=319",
+      line_ranking: 0,
+      line_details: [
+        {
+          line: "눕",
+          minecraft_id: [
+            "mahingmello",
+            "Dark_kentra",
+            "oilchicken",
+            "Buterbread",
+            "VirusIsCat",
+            "SevenOre7",
+            "Fice_DAG",
+            "Da_VI_DOFF",
+            "Jonberpanchi",
+            "Maeble_",
+          ],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 3/AiHoshino-noob.png",
+          youtube_url: "https://youtu.be/an2ZUKN4giQ?t=403",
+          ranking: 15,
+        },
+        {
+          line: "프로",
+          minecraft_id: ["Heyd3vel", "DECALPOOL"],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 3/AiHoshino-pro.png",
+          youtube_url: "https://youtu.be/an2ZUKN4giQ?t=355",
+          ranking: 13,
+        },
+        {
+          line: "해커",
+          minecraft_id: ["kkio_126"],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 3/AiHoshino-hacker.png",
+          youtube_url: "https://youtu.be/an2ZUKN4giQ?t=319",
+          ranking: 6,
+        },
+      ],
+    },
+    {
+      subject: "리치 왕",
+      youtube_url: "https://youtu.be/an2ZUKN4giQ?t=446",
+      line_ranking: 0,
+      line_details: [
+        {
+          line: "눕",
+          minecraft_id: [
+            "moaksan",
+            "taedo219",
+            "rasneter",
+            "ohzi2603",
+            "dipsouce",
+            "qkrwnl00068",
+            "gae_dosirak",
+            "Shirty_Kim",
+            "Roadmin",
+            "California_Moon",
+          ],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 3/TheLichKing-noob.png",
+          youtube_url: "https://youtu.be/an2ZUKN4giQ?t=523",
+          ranking: 9,
+        },
+        {
+          line: "프로",
+          minecraft_id: ["SchwartzTiger", "ice_pizza"],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 3/TheLichKing-pro.png",
+          youtube_url: "https://youtu.be/an2ZUKN4giQ?t=474",
+          ranking: 14,
+        },
+        {
+          line: "해커",
+          minecraft_id: ["hunminsusu"],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 3/TheLichKing-hacker.png",
+          youtube_url: "https://youtu.be/an2ZUKN4giQ?t=446",
+          ranking: 2,
+        },
+      ],
+    },
+    {
+      subject: "코바야카와 세나",
+      youtube_url: "https://youtu.be/an2ZUKN4giQ?t=562",
+      line_ranking: 0,
+      line_details: [
+        {
+          line: "눕",
+          minecraft_id: [
+            "Guta_GGuljam",
+            "jongdae_",
+            "chonojam",
+            "DotSae5",
+            "wantnunu",
+            "JU_GOOD",
+            "jineoneoneon421",
+            "Zino_D",
+            "RBGrandma",
+            "RalB_6101",
+          ],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 3/KobayakawaSena-noob.png",
+          youtube_url: "https://youtu.be/an2ZUKN4giQ?t=637",
+          ranking: 11,
+        },
+        {
+          line: "프로",
+          minecraft_id: ["NOhLucK", "SStingstar"],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 3/KobayakawaSena-pro.png",
+          youtube_url: "https://youtu.be/an2ZUKN4giQ?t=599",
+          ranking: 4,
+        },
+        {
+          line: "해커",
+          minecraft_id: ["canindaeyo"],
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/eventNoobProHacker/episode 3/KobayakawaSena-hacker.png",
+          youtube_url: "https://youtu.be/an2ZUKN4giQ?t=562",
+          ranking: 1,
+        },
+      ],
+    },
+  ],
 };

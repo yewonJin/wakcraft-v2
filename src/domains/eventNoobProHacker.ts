@@ -1,5 +1,27 @@
 import { Architect } from "./architect";
 
+export type EventNoobProHacker = {
+  contentInfo: {
+    contentName: string;
+    episode: number;
+    date: string;
+    youtube_url: string;
+    isInFiniteTime: boolean;
+  };
+  lineInfo: {
+    subject: string;
+    youtube_url: string;
+    line_ranking: number;
+    line_details: {
+      line: string;
+      minecraft_id: string[];
+      image_url: string;
+      youtube_url: string;
+      ranking: number;
+    }[];
+  }[];
+};
+
 export const isInfiniteTimeContent = (episode: number) => {
   const arr = [1, 4, 6];
 
