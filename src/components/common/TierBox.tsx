@@ -3,10 +3,12 @@ import { tierArray } from "@/domains/architect";
 
 type Props = {
   tier: string;
+  width?: string;
+  height?: string;
 };
 
 export default function TierBox(props: Props) {
-  const { tier } = props;
+  const { tier, width, height } = props;
 
   return (
     <span
@@ -15,7 +17,11 @@ export default function TierBox(props: Props) {
       )} flex h-[94px] w-[85px] items-center justify-center bg-cover text-lg ${
         medium.className
       } text-center text-[white] hover:cursor-pointer`}
-      style={{ textShadow: "1px 1px 1px black" }}
+      style={{
+        textShadow: "1px 1px 1px black",
+        width: width ? width : "",
+        height: height ? height : "",
+      }}
     >
       {tier}
     </span>
