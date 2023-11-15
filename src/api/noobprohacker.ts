@@ -9,3 +9,12 @@ export const getAllNoobProHacker = async () => {
 
   return result;
 };
+
+export const getNoobProHacker = async (episode: number) => {
+  "use server";
+  connectMongo();
+
+  const result = await NoobProHacker.findByEpisode(episode);
+
+  return result;
+};

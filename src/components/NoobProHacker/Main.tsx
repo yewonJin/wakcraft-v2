@@ -9,7 +9,7 @@ export default function Main(props: Props) {
   const { noobprohackers } = props;
 
   return (
-    <div className="mt-8 grid grid-cols-3 gap-8">
+    <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
       {noobprohackers
         .sort((a, b) => b.contentInfo.episode - a.contentInfo.episode)
         .map((noobprohacker) => (

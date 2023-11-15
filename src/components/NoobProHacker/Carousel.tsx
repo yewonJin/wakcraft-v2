@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import Image from "next/image";
 import { produce } from "immer";
@@ -6,14 +8,16 @@ import { Line, translateLine } from "@/domains/architect";
 import { NoobProHacker, renameTo1080Webp } from "@/domains/noobprohacker";
 
 type Props = {
-  content: NoobProHacker;
+  noobprohacker: NoobProHacker;
 };
 
 export default function Carousel(props: Props) {
-  const { content } = props;
-  const [page, setPage] = useState(new Array(content.lineInfo.length).fill(0));
+  const { noobprohacker } = props;
+  const [page, setPage] = useState(
+    new Array(noobprohacker.lineInfo.length).fill(0),
+  );
 
-  const { lineInfo } = content;
+  const { lineInfo } = noobprohacker;
 
   return (
     <main className="mb-24 flex flex-col gap-12 md:gap-24 xl:gap-36">
@@ -60,8 +64,9 @@ export default function Carousel(props: Props) {
                     }}
                   >
                     <Image
-                      sizes="1200px"
+                      sizes="900px"
                       alt="라인 이미지"
+                      priority
                       fill
                       src={renameTo1080Webp(
                         item.line_details[line as Line].image_url,
@@ -89,8 +94,8 @@ export default function Carousel(props: Props) {
                         {item.line_details[line as Line].minecraft_id}
                       </p>
                     </div>
-                    {item.line_details[line as Line].youtube_url !== "null" ?? (
-                      <div className=" invisible absolute bottom-6 right-6 flex items-center justify-center rounded-md bg-[rgba(0,0,0,0.8)] p-2 px-4 text-[white] group-hover:visible">
+                    {item.line_details[line as Line].youtube_url !== "null" && (
+                      <div className="invisible absolute bottom-6 right-6 flex items-center justify-center rounded-md bg-[rgba(0,0,0,0.8)] p-2 px-4 text-[white] group-hover:visible">
                         클릭하여 유튜브 링크 열기
                       </div>
                     )}

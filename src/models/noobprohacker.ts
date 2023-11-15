@@ -3,6 +3,7 @@ import { Schema, Model, model, models } from "mongoose";
 
 interface NoobProHackerModel extends Model<NoobProHacker> {
   findAll: () => Promise<NoobProHacker[]>;
+  findByEpisode: (episode: number) => Promise<NoobProHacker>;
 }
 
 const noobprohackerSchema = new Schema({
@@ -47,6 +48,10 @@ noobprohackerSchema.statics.create = function (payload) {
 
 noobprohackerSchema.statics.findAll = function () {
   return this.find({});
+};
+
+noobprohackerSchema.statics.findByEpisode = function (episode: number) {
+  return this.findOne({ "contentInfo.episode": episode });
 };
 
 const NoobProHacker =
