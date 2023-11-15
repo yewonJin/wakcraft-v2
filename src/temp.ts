@@ -1,4 +1,5 @@
 import { Architect } from "./domains/architect";
+import { ArchitectureContest } from "./domains/architectureContest";
 import { EventNoobProHacker } from "./domains/eventNoobProHacker";
 import { MatchYourTier } from "./domains/matchYourTier";
 import { NoobProHacker } from "./domains/noobprohacker";
@@ -1609,6 +1610,500 @@ export const tempMathYourTierObject: MatchYourTier = {
         "https://wakcraft.s3.ap-northeast-2.amazonaws.com/matchYourTier/episode 1/taedo219.png",
       youtube_url: "https://youtu.be/P59C-l_aaX8?t=144",
       ranking: 0,
+    },
+  ],
+};
+
+export const tempArchitectureContestObject: ArchitectureContest = {
+  contentInfo: {
+    subject: "기술편",
+    episode: 1,
+    date: "2023-04-23T00:00:00.000Z",
+    youtube_url: "https://youtu.be/hllVV1lYK48",
+  },
+  lineInfo: [
+    {
+      line: "아이언",
+      youtube_url: "null",
+      line_details: [
+        {
+          topText: "고멤무스메",
+          bottomText: "태양권",
+          minecraft_id: "Guta_GGuljam",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/SolarFlare.png",
+          youtube_url: "null",
+          ranking: 0,
+        },
+        {
+          topText: "사스케",
+          bottomText: "스사노오",
+          minecraft_id: "Dark_kentra",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/Susanoo.png",
+          youtube_url: "null",
+          ranking: 0,
+        },
+        {
+          topText: "하이어로팬트 그린",
+          bottomText: "에메랄드 스플래쉬",
+          minecraft_id: "kyukyukyukukuku",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/EmeraldSplash.png",
+          youtube_url: "null",
+          ranking: 0,
+        },
+        {
+          topText: "리퍼",
+          bottomText: "죽음의 꽃",
+          minecraft_id: "AK_1207",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/DeathBlossom.png",
+          youtube_url: "null",
+          ranking: 0,
+        },
+        {
+          topText: "오로치마루",
+          bottomText: "만사라의 진",
+          minecraft_id: "Milkteagood_",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/OrochimaruSkill.png",
+          youtube_url: "null",
+          ranking: 0,
+        },
+        {
+          topText: "람머스",
+          bottomText: "지진 폭격",
+          minecraft_id: "gae_dosirak",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/SoaringSlam.png",
+          youtube_url: "null",
+          ranking: 0,
+        },
+        {
+          topText: "고엔지 슈야",
+          bottomText: "파이어 토네이도",
+          minecraft_id: "backanswer",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/FireTornado.png",
+          youtube_url: "null",
+          ranking: 0,
+        },
+      ],
+    },
+    {
+      line: "브론즈",
+      youtube_url: "null",
+      line_details: [
+        {
+          topText: "할로우나이트",
+          bottomText: "울부짖는 원혼들",
+          minecraft_id: "rasneter",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/Howling Wraiths.png",
+          youtube_url: "null",
+          ranking: 0,
+        },
+        {
+          topText: "누누",
+          bottomText: "절대영도",
+          minecraft_id: "dudtus",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/AbsoluteZero.png",
+          youtube_url: "null",
+          ranking: 0,
+        },
+        {
+          topText: "이치고",
+          bottomText: "최후의 월아천충",
+          minecraft_id: "dotebox12",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/GetsugaTenshou.png",
+          youtube_url: "null",
+          ranking: 0,
+        },
+        {
+          topText: "메탈시드라몬",
+          bottomText: "용의 콧물",
+          minecraft_id: "steellobster",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/CocytusBreath.png",
+          youtube_url: "null",
+          ranking: 0,
+        },
+        {
+          topText: "메이플스토리",
+          bottomText: "달팽이 세마리",
+          minecraft_id: "WhyCarNo",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/ThreeSnails.png",
+          youtube_url: "null",
+          ranking: 0,
+        },
+        {
+          topText: "피닉스",
+          bottomText: "커브볼",
+          minecraft_id: "chezstick0108",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/Curveball.png",
+          youtube_url: "null",
+          ranking: 0,
+        },
+        {
+          topText: "히샬리송",
+          bottomText: "바이시클 킥",
+          minecraft_id: "doyoung_c",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/BicycleKick.png",
+          youtube_url: "null",
+          ranking: 0,
+        },
+      ],
+    },
+    {
+      line: "실버",
+      youtube_url: "null",
+      line_details: [
+        {
+          topText: "용비",
+          bottomText: "흑산포",
+          minecraft_id: "kbcas1112",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/Heuksanpo.png",
+          youtube_url: "null",
+          ranking: 0,
+        },
+        {
+          topText: "뱌쿠야",
+          bottomText: "천본앵",
+          minecraft_id: "See_bird",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/senbonzakura.png",
+          youtube_url: "null",
+          ranking: 0,
+        },
+        {
+          topText: "위도우메이커",
+          bottomText: "저격",
+          minecraft_id: "ETN0703",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/WidowmakerSkill.png",
+          youtube_url: "null",
+          ranking: 0,
+        },
+        {
+          topText: "루피",
+          bottomText: "고무고무 총난타",
+          minecraft_id: "aeloek2",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/GatlingGun.png",
+          youtube_url: "null",
+          ranking: 0,
+        },
+        {
+          topText: "요네",
+          bottomText: "운명봉인",
+          minecraft_id: "Villain21000",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/FateSealed.png",
+          youtube_url: "null",
+          ranking: 13,
+        },
+        {
+          topText: "볼드모트",
+          bottomText: "아바다 케다브라",
+          minecraft_id: "Fritz______",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/AbhaddaKedhabhra.png",
+          youtube_url: "null",
+          ranking: 0,
+        },
+        {
+          topText: "라이덴 쇼군",
+          bottomText: "오의 · 몽상진설",
+          minecraft_id: "RBGrandma",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/RaidenSkill.png",
+          youtube_url: "null",
+          ranking: 0,
+        },
+      ],
+    },
+    {
+      line: "골드",
+      youtube_url: "null",
+      line_details: [
+        {
+          topText: "젠야타",
+          bottomText: "초월",
+          minecraft_id: "Edithen",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/Transcendence.png",
+          youtube_url: "null",
+          ranking: 0,
+        },
+        {
+          topText: "정크랫",
+          bottomText: "죽이는 타이어",
+          minecraft_id: "Sihwa__",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/RIPTire.png",
+          youtube_url: "null",
+          ranking: 0,
+        },
+        {
+          topText: "유나 스프링필드",
+          bottomText: "프로미넌스",
+          minecraft_id: "DECALPOOL",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/Prominence.png",
+          youtube_url: "null",
+          ranking: 0,
+        },
+        {
+          topText: "리퍼",
+          bottomText: "죽음의 꽃",
+          minecraft_id: "saeschi",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/DeathBlossom2.png",
+          youtube_url: "null",
+          ranking: 0,
+        },
+        {
+          topText: "드래곤",
+          bottomText: "드래곤 브레스",
+          minecraft_id: "rebottt",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/Dragonblaster.png",
+          youtube_url: "null",
+          ranking: 0,
+        },
+        {
+          topText: "강수호",
+          bottomText: "마신 더 핸드",
+          minecraft_id: "ice_pizza",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/MajinTheHand.png",
+          youtube_url: "null",
+          ranking: 0,
+        },
+        {
+          topText: "말레이나",
+          bottomText: "물새난격",
+          minecraft_id: "NOhLucK",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/MaleniaSkill.png",
+          youtube_url: "null",
+          ranking: 10,
+        },
+      ],
+    },
+    {
+      line: "플래티넘",
+      youtube_url: "null",
+      line_details: [
+        {
+          topText: "오버로드",
+          bottomText: "아인즈 울 고운",
+          minecraft_id: "3forway",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/AinzOoalGownSkill.png",
+          youtube_url: "null",
+          ranking: 0,
+        },
+        {
+          topText: "아카자",
+          bottomText: "술식 전개",
+          minecraft_id: "JJoner_",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/TechniqueDevelopment.png",
+          youtube_url: "null",
+          ranking: 0,
+        },
+        {
+          topText: "아이언맨",
+          bottomText: "핑거스냅",
+          minecraft_id: "Heyd3vel",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/IamIronman.png",
+          youtube_url: "null",
+          ranking: 17,
+        },
+        {
+          topText: "아펠리오스",
+          bottomText: "월광포화",
+          minecraft_id: "SungYuC",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/MoonlightVigil.png",
+          youtube_url: "null",
+          ranking: 19,
+        },
+        {
+          topText: "위자드",
+          bottomText: "라이더 킥",
+          minecraft_id: "salmimu",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/Riderkick.png",
+          youtube_url: "null",
+          ranking: 7,
+        },
+        {
+          topText: "네테로",
+          bottomText: "백식관음",
+          minecraft_id: "SStingstar",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/NeteroSkill.png",
+          youtube_url: "null",
+          ranking: 18,
+        },
+        {
+          topText: "루갈",
+          bottomText: "제노사이드 커터",
+          minecraft_id: "ATK_Speedpanchi",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/GenocideCutter.png",
+          youtube_url: "null",
+          ranking: 16,
+        },
+      ],
+    },
+    {
+      line: "다이아",
+      youtube_url: "null",
+      line_details: [
+        {
+          topText: "탈론",
+          bottomText: "그림자 공격",
+          minecraft_id: "SaeDamYo",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/TalonSkill.png",
+          youtube_url: "null",
+          ranking: 8,
+        },
+        {
+          topText: "징조이",
+          bottomText: "봉쇄",
+          minecraft_id: "SchwarzTiger",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/Lockdown.png",
+          youtube_url: "null",
+          ranking: 0,
+        },
+        {
+          topText: "캐서디",
+          bottomText: "황야의 무법자",
+          minecraft_id: "Entarotalis",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/Deadeye.png",
+          youtube_url: "null",
+          ranking: 14,
+        },
+        {
+          topText: "아처",
+          bottomText: "무한의 검제",
+          minecraft_id: "pedog1014",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/UnlimitedBladesWorks.png",
+          youtube_url: "null",
+          ranking: 0,
+        },
+        {
+          topText: "이치고",
+          bottomText: "만해",
+          minecraft_id: "GREEEN_0819",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/Bankai.png",
+          youtube_url: "null",
+          ranking: 15,
+        },
+        {
+          topText: "왁이작",
+          bottomText: "오영테크",
+          minecraft_id: "MINEWORK0015",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/TheStubbornOfWakgood.png",
+          youtube_url: "null",
+          ranking: 4,
+        },
+        {
+          topText: "버질",
+          bottomText: "저지먼트 컷",
+          minecraft_id: "Yakddo",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/Judgementcut.png",
+          youtube_url: "null",
+          ranking: 12,
+        },
+      ],
+    },
+    {
+      line: "마스터",
+      youtube_url: "null",
+      line_details: [
+        {
+          topText: "둘리",
+          bottomText: "호잇",
+          minecraft_id: "ungdoo",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/Hoit.png",
+          youtube_url: "null",
+          ranking: 9,
+        },
+        {
+          topText: "사이버펑크",
+          bottomText: "산데비스탄",
+          minecraft_id: "ppambuleuppam",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/Sandevistan.png",
+          youtube_url: "null",
+          ranking: 11,
+        },
+        {
+          topText: "크로커다일",
+          bottomText: "모래폭풍",
+          minecraft_id: "dackbal",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/SandStorm.png",
+          youtube_url: "null",
+          ranking: 1,
+        },
+        {
+          topText: "다간",
+          bottomText: "블레스트 어스 버스터",
+          minecraft_id: "number198",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/BreastEarthBuster.png",
+          youtube_url: "null",
+          ranking: 5,
+        },
+        {
+          topText: "에이스",
+          bottomText: "염제",
+          minecraft_id: "kkio_126",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/FlameEmperor.png",
+          youtube_url: "null",
+          ranking: 6,
+        },
+        {
+          topText: "한조",
+          bottomText: "용의 일격",
+          minecraft_id: "canindaeyo",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/Dragonstrike.png",
+          youtube_url: "null",
+          ranking: 3,
+        },
+        {
+          topText: "판테온",
+          bottomText: "거대 유성",
+          minecraft_id: "hunminsusu",
+          image_url:
+            "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureContest/episode 1/GrandStarfall.png",
+          youtube_url: "null",
+          ranking: 2,
+        },
+      ],
     },
   ],
 };
