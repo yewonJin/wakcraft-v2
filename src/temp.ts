@@ -1,5 +1,6 @@
 import { Architect } from "./domains/architect";
 import { EventNoobProHacker } from "./domains/eventNoobProHacker";
+import { MatchYourTier } from "./domains/matchYourTier";
 import { NoobProHacker } from "./domains/noobprohacker";
 import { PlacementTest } from "./domains/placementTest";
 
@@ -1397,6 +1398,217 @@ export const tempPlacementTestObject: PlacementTest = {
       image_url:
         "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/ungdoo.png",
       placement_result: "해커",
+    },
+  ],
+};
+
+export const tempMathYourTierObject: MatchYourTier = {
+  contentInfo: {
+    contentName: "티어 맞추기",
+    episode: 7,
+    date: "2023-09-18T00:00:00.000Z",
+    youtube_url: "https://youtu.be/P59C-l_aaX8?si=Wk8Bb7AY0Br-hFlb",
+  },
+  participants: [
+    {
+      order: 8,
+      expectedTier: "식은 국밥",
+      currentTier: "식은 국밥",
+      minecraft_id: "DECALPOOL",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/matchYourTier/episode 1/DECALPOOL.png",
+      youtube_url: "https://youtu.be/P59C-l_aaX8?t=378",
+      ranking: 8,
+    },
+    {
+      order: 19,
+      expectedTier: "그냥 눕",
+      currentTier: "그냥 눕",
+      minecraft_id: "ETN0703",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/matchYourTier/episode 1/ETN0703.png",
+      youtube_url: "https://youtu.be/P59C-l_aaX8?t=838",
+      ranking: 0,
+    },
+    {
+      order: 5,
+      expectedTier: "국밥",
+      currentTier: "프로",
+      minecraft_id: "Iam_nemo",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/matchYourTier/episode 1/Iam_nemo.png",
+      youtube_url: "https://youtu.be/P59C-l_aaX8?t=221",
+      ranking: 10,
+    },
+    {
+      order: 2,
+      expectedTier: "프로",
+      currentTier: "착한 눕",
+      minecraft_id: "Milkteagood_",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/matchYourTier/episode 1/Milkteagood_.png",
+      youtube_url: "https://youtu.be/P59C-l_aaX8?t=109",
+      ranking: 0,
+    },
+    {
+      order: 4,
+      expectedTier: "미지근한 국밥",
+      currentTier: "계륵",
+      minecraft_id: "Minhong_",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/matchYourTier/episode 1/Minhong_.png",
+      youtube_url: "https://youtu.be/P59C-l_aaX8?t=173",
+      ranking: 0,
+    },
+    {
+      order: 1,
+      expectedTier: "계추",
+      currentTier: "프로",
+      minecraft_id: "Podoba",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/matchYourTier/episode 1/Podoba.png",
+      youtube_url: "https://youtu.be/P59C-l_aaX8?t=55",
+      ranking: 0,
+    },
+    {
+      order: 10,
+      expectedTier: "오마카세",
+      currentTier: "미지근한 국밥",
+      minecraft_id: "RBGrandma",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/matchYourTier/episode 1/RBGrandma.png",
+      youtube_url: "https://youtu.be/P59C-l_aaX8?t=458",
+      ranking: 2,
+    },
+    {
+      order: 20,
+      expectedTier: "국밥",
+      currentTier: "국밥",
+      minecraft_id: "RalB_6101",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/matchYourTier/episode 1/RalB_6101.png",
+      youtube_url: "https://youtu.be/P59C-l_aaX8?t=809",
+      ranking: 9,
+    },
+    {
+      order: 6,
+      expectedTier: "해커",
+      currentTier: "해장국",
+      minecraft_id: "SStingstar",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/matchYourTier/episode 1/SStingstar.png",
+      youtube_url: "https://youtu.be/P59C-l_aaX8?t=292",
+      ranking: 6,
+    },
+    {
+      order: 11,
+      expectedTier: "프로",
+      currentTier: "식은 국밥",
+      minecraft_id: "SchwartzTiger",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/matchYourTier/episode 1/SchwartzTiger.png",
+      youtube_url: "https://youtu.be/P59C-l_aaX8?t=505",
+      ranking: 0,
+    },
+    {
+      order: 15,
+      expectedTier: "해커",
+      currentTier: "해커",
+      minecraft_id: "SungYuC",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/matchYourTier/episode 1/SungYuC.png",
+      youtube_url: "https://youtu.be/P59C-l_aaX8?t=676",
+      ranking: 4,
+    },
+    {
+      order: 17,
+      expectedTier: "미지근한 국밥",
+      currentTier: "미지근한 국밥",
+      minecraft_id: "_Boonk",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/matchYourTier/episode 1/_Boonk.png",
+      youtube_url: "https://youtu.be/P59C-l_aaX8?t=745",
+      ranking: 0,
+    },
+    {
+      order: 12,
+      expectedTier: "마카게",
+      currentTier: "마카게",
+      minecraft_id: "canindaeyo",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/matchYourTier/episode 1/canindaeyo.png",
+      youtube_url: "https://youtu.be/P59C-l_aaX8?t=547",
+      ranking: 3,
+    },
+    {
+      order: 13,
+      expectedTier: "해커",
+      currentTier: "해커",
+      minecraft_id: "cherry1154",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/matchYourTier/episode 1/cherry1154.png",
+      youtube_url: "https://youtu.be/P59C-l_aaX8?t=590",
+      ranking: 1,
+    },
+    {
+      order: 16,
+      expectedTier: "오마카세",
+      currentTier: "오마카세",
+      minecraft_id: "dackbal",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/matchYourTier/episode 1/dackbal.png",
+      youtube_url: "https://youtu.be/P59C-l_aaX8?t=709",
+      ranking: 5,
+    },
+    {
+      order: 7,
+      expectedTier: "국밥",
+      currentTier: "계추",
+      minecraft_id: "erumosoh",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/matchYourTier/episode 1/erumosoh.png",
+      youtube_url: "https://youtu.be/P59C-l_aaX8?t=327",
+      ranking: 0,
+    },
+    {
+      order: 9,
+      expectedTier: "국밥",
+      currentTier: "국밥",
+      minecraft_id: "rebottt",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/matchYourTier/episode 1/rebottt.png",
+      youtube_url: "https://youtu.be/P59C-l_aaX8?t=414",
+      ranking: 7,
+    },
+    {
+      order: 18,
+      expectedTier: "그냥 눕",
+      currentTier: "프로",
+      minecraft_id: "saeschi",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/matchYourTier/episode 1/saeschi.png",
+      youtube_url: "https://youtu.be/P59C-l_aaX8?t=769",
+      ranking: 0,
+    },
+    {
+      order: 14,
+      expectedTier: "계륵",
+      currentTier: "프로",
+      minecraft_id: "sunpoong",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/matchYourTier/episode 1/sunpoong.png",
+      youtube_url: "https://youtu.be/P59C-l_aaX8?t=648",
+      ranking: 0,
+    },
+    {
+      order: 3,
+      expectedTier: "계륵",
+      currentTier: "안 나쁜 눕",
+      minecraft_id: "taedo219",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/matchYourTier/episode 1/taedo219.png",
+      youtube_url: "https://youtu.be/P59C-l_aaX8?t=144",
+      ranking: 0,
     },
   ],
 };
