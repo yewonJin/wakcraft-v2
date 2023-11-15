@@ -60,7 +60,7 @@ export default function Carousel(props: Props) {
                     }}
                   >
                     <Image
-                      sizes="900px"
+                      sizes="1200px"
                       alt="라인 이미지"
                       fill
                       src={renameTo1080Webp(

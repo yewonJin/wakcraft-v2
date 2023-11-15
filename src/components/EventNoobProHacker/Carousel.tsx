@@ -60,7 +60,7 @@ export default function Carousel(props: Props) {
                   }}
                 >
                   <Image
-                    sizes="900px"
+                    sizes="1200px"
                     alt="라인 이미지"
                     fill
                     src={renameTo1080Webp(line.image_url)}
@@ -75,7 +75,7 @@ export default function Carousel(props: Props) {
                       </p>
                       {line.minecraft_id.length > 1 && (
                         <span
-                          className="ml-2 rounded-md bg-[rgba(0,0,0,0.8)] hover:cursor-pointer lg:ml-3 [&>svg]:h-6 [&>svg]:w-6 [&>svg]:fill-[white] hover:[&>svg]:fill-[#ddd] xl:[&>svg]:h-7 xl:[&>svg]:w-7"
+                          className="ml-2 rounded-md bg-[rgba(64,64,64,0.4)] duration-300 hover:cursor-pointer lg:ml-3 [&>svg]:h-6 [&>svg]:w-6 [&>svg]:fill-[white] hover:[&>svg]:fill-[#ddd] xl:[&>svg]:h-7 xl:[&>svg]:w-7"
                           onClick={(e) => {
                             e.stopPropagation();
                             setIsOpenPopOver(
