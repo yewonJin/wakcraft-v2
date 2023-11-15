@@ -69,7 +69,7 @@ export default function Carousel(props: Props) {
                     <div className="flex items-end pl-3">
                       <p
                         className="text-xl text-[white] lg:text-2xl"
-                        style={{ textShadow: "1px 1px 5px #222" }}
+                        style={{ textShadow: "1px 1px 1px #222" }}
                       >
                         {line.line}
                       </p>
@@ -98,14 +98,14 @@ export default function Carousel(props: Props) {
                       )}
                       <p
                         className="ml-3 text-base text-[white] lg:ml-6 xl:text-lg"
-                        style={{ textShadow: "1px 1px 5px #222" }}
+                        style={{ textShadow: "1px 1px 1px #222" }}
                       >
                         {line.ranking}위
                       </p>
                     </div>
                     <div
                       className="text-[#ccc]"
-                      style={{ textShadow: "1px 1px 5px #222" }}
+                      style={{ textShadow: "1px 1px 1px #222" }}
                     >
                       {line.minecraft_id.length < 2 ? (
                         <span className="ml-3 hover:cursor-pointer hover:text-[white]">
@@ -123,7 +123,7 @@ export default function Carousel(props: Props) {
                           {line.minecraft_id.map((item) => (
                             <span
                               className="text-[#ccc] hover:cursor-pointer hover:text-[white]"
-                              style={{ textShadow: "1px 1px 5px #222" }}
+                              style={{ textShadow: "1px 1px 1px #222" }}
                               key={item}
                             >
                               {item}
