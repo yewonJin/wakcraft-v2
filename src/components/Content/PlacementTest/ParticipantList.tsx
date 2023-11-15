@@ -1,6 +1,6 @@
 import { PlacementTest } from "@/domains/placementTest";
-import ImageBox from "../common/ImageBox";
 import ArchitectureInfo from "./ArchitectureInfo";
+import ImageBox from "@/components/common/ImageBox";
 
 type Props = {
   participants: PlacementTest["participants"];

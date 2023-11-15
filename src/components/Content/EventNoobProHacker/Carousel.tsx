@@ -2,7 +2,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { produce } from "immer";
 
-import ArrowDown from "../../../public/icons/arrow_down.svg";
+import ArrowDown from "../../../../public/icons/arrow_down.svg";
 import { EventNoobProHacker } from "@/domains/eventNoobProHacker";
 import { renameTo1080Webp } from "@/domains/noobprohacker";
 

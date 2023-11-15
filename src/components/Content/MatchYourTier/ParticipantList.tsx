@@ -1,4 +1,4 @@
-import ImageBox from "../common/ImageBox";
+import ImageBox from "@/components/common/ImageBox";
 import ArchitectureInfo from "./ArchitectureInfo";
 import { MatchYourTier } from "@/domains/matchYourTier";
 

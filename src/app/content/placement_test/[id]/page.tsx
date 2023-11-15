@@ -1,6 +1,6 @@
 import { medium } from "@/app/layout";
 import { tempPlacementTestObject } from "@/temp";
-import ParticipantList from "@/components/PlacementTest/ParticipantList";
+import ParticipantList from "@/components/Content/PlacementTest/ParticipantList";
 
 export default function Page() {
   return (

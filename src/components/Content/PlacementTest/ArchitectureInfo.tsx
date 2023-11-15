@@ -1,6 +1,7 @@
-import { Tier } from "@/domains/architect";
-import TierBox from "../common/TierBox";
 import { Fragment } from "react";
+
+import TierBox from "@/components/common/TierBox";
+import { Tier } from "@/domains/architect";
 
 type Props = {
   placementResult: Tier;

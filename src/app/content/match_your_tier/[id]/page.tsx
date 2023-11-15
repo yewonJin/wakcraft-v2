@@ -1,5 +1,5 @@
 import { medium } from "@/app/layout";
-import ParticipantList from "@/components/MatchYourTier/ParticipantList";
+import ParticipantList from "@/components/Content/MatchYourTier/ParticipantList";
 import { tempMathYourTierObject } from "@/temp";
 
 export default function Page() {

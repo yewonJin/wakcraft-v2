@@ -4,7 +4,7 @@ import { Fragment } from "react";
 
 import { medium } from "@/app/layout";
 import { tempArchitectureContestObject } from "@/temp";
-import Carousel from "@/components/ArchitectureContest/Carousel";
+import Carousel from "@/components/Content/ArchitectureContest/Carousel";
 
 export default function Page() {
   return (
