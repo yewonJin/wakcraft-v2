@@ -1,5 +1,3 @@
-"use client";
-
 import { medium } from "../layout";
 
 import Card from "@/components/common/Card";

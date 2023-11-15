@@ -18,7 +18,7 @@ export default function TopNav() {
       } ${scrollY <= 100 ? "bg-none" : "bg-background-primary"} px-4 xl:px-0`}
     >
       <div className="mx-auto flex h-full w-[1200px] items-center justify-between">
-        <div className="flex gap-24">
+        <div className="flex gap-32">
           <h1
             className={`text-2xl font-semibold ${
               scrollY <= 100 && pathname === "/"
@@ -28,7 +28,7 @@ export default function TopNav() {
           >
             <Link href={"/"}>WAKCRAFT</Link>
           </h1>
-          <div className="flex items-center gap-16">
+          <div className="flex items-center gap-20">
             <h2
               className={`${
                 scrollY <= 100 && pathname === "/"

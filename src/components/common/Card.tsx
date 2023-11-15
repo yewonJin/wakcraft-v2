@@ -83,7 +83,7 @@ const getLinkUrl = (type: ContentType, episode: number) => {
 const getTitle = (type: ContentType, subject: string, episode: number) => {
   switch (type) {
     case "눕프로해커":
-      return `눕프로해커 ${episode}회 : ${subject}편`;
+      return `눕프로해커 ${episode}회 : ${subject}`;
 
     case "배치고사":
       return `제 ${episode}회 배치고사`;
