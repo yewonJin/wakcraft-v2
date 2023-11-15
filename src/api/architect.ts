@@ -9,3 +9,12 @@ export const getAllArchitects = async () => {
 
   return result;
 };
+
+export const getArchitect = async (id: string) => {
+  "use server";
+  connectMongo();
+
+  const result = await Architect.findByMinecraftId(id);
+
+  return result;
+};

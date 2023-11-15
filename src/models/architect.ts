@@ -66,6 +66,7 @@ const architectSchema = new Schema<Architect>({
 
 interface ArchitectModel extends Model<Architect> {
   findAll: () => Promise<Architect[]>;
+  findByMinecraftId: (minecraft_id: string) => Promise<Architect>;
 }
 
 architectSchema.statics.create = function (
@@ -77,6 +78,10 @@ architectSchema.statics.create = function (
 
 architectSchema.statics.findAll = function () {
   return this.find({});
+};
+
+architectSchema.statics.findByMinecraftId = function (minecraft_id: string) {
+  return this.findOne({ minecraft_id });
 };
 
 const Architect =

@@ -1,46 +1,31 @@
-"use client";
-
 import { Fragment } from "react";
 
-import Portfolio from "@/components/Architect/DetailPage/Portfolio";
-import Category from "@/components/Architect/DetailPage/Category";
-import Statistics from "@/components/Architect/Statistics";
 import TierBox from "@/components/common/TierBox";
-import { tempArchitectObject } from "@/temp";
-import usePortfolioCategory from "@/hooks/usePortfolioCategory";
+import Statistics from "@/components/Architect/Statistics";
+import Main from "@/components/Architect/DetailPage/Main";
+import { getArchitect } from "@/api/architect";
 
-export default function Page() {
-  const { curCategory, handleCategoryClick } = usePortfolioCategory();
+export default async function Page({ params }: { params: { id: string } }) {
+  const architect = await getArchitect(params.id);
 
   return (
     <Fragment>
       <div
-        key={tempArchitectObject.minecraft_id}
+        key={architect.minecraft_id}
         className="flex w-full flex-wrap items-center justify-between gap-8 rounded-lg xl:flex-nowrap"
       >
         <div className="flex items-center gap-8 md:[&>span:first-child]:flex">
-          <TierBox tier={tempArchitectObject.curTier} />
+          <TierBox tier={architect.curTier} />
           <div className="flex flex-col gap-3 md:gap-1">
             <p className="text-xl text-text-primary">
-              {tempArchitectObject.minecraft_id}
+              {architect.minecraft_id}
             </p>
-            <p className="text-text-secondary">
-              {tempArchitectObject.wakzoo_id}
-            </p>
+            <p className="text-text-secondary">{architect.wakzoo_id}</p>
           </div>
         </div>
-        <Statistics
-          participation={tempArchitectObject.noobProHackerInfo.participation}
-          win={tempArchitectObject.noobProHackerInfo.win}
-          hackerWin={tempArchitectObject.noobProHackerInfo.hackerWin}
-          proWin={tempArchitectObject.noobProHackerInfo.proWin}
-        />
+        <Statistics noobProHackerInfo={architect.noobProHackerInfo} />
       </div>
-      <Category
-        curCategory={curCategory}
-        handleCategoryClick={handleCategoryClick}
-      />
-      <Portfolio curCategory={curCategory} architect={tempArchitectObject} />
+      <Main architect={JSON.parse(JSON.stringify(architect))} />
     </Fragment>
   );
 }
