@@ -10,12 +10,19 @@ import useTierCategory from "@/hooks/useTierCategory";
 import useSortArchitect from "@/hooks/useSortArchitect";
 import useSearch from "@/hooks/useSearch";
 import ScrollToTop from "../common/ScrollToTop";
+import { Architect } from "@/domains/architect";
 
-export default function Main() {
+type Props = {
+  architects: Architect[];
+};
+
+export default function Main(props: Props) {
+  const { architects } = props;
+
   const { curCategory, handleCategoryClick, filterByCategory } =
     useTierCategory();
   const { sortBy, isDescending, handleSortClick, sortedArchitects } =
-    useSortArchitect();
+    useSortArchitect(architects);
   const { input, handleInputChange, highlightedArchitects } = useSearch(
     filterByCategory(sortedArchitects),
   );
@@ -34,7 +41,7 @@ export default function Main() {
         curCategory={curCategory}
         handleCategoryClick={handleCategoryClick}
       />
-      <ArchitectList architects={highlightedArchitects} />
+      <ArchitectList input={input} architects={highlightedArchitects} />
       <ScrollToTop />
     </Fragment>
   );

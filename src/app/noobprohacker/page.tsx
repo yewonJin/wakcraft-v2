@@ -1,7 +1,10 @@
 import Main from "@/components/NoobProHacker/Main";
 import { medium } from "../layout";
+import { getAllNoobProHacker } from "@/api/noobprohacker";
 
-export default function Page() {
+export default async function Page() {
+  const noobprohackers = await getAllNoobProHacker();
+
   return (
     <div className="mx-auto max-w-[1200px]">
       <h1 className={`text-3xl text-text-primary ${medium.className}`}>
@@ -10,7 +13,7 @@ export default function Page() {
       <p className="mt-4 text-base text-text-secondary">
         마인크래프트 눕프로해커 컨텐츠를 볼 수 있다.
       </p>
-      <Main />
+      <Main noobprohackers={noobprohackers} />
     </div>
   );
 }
