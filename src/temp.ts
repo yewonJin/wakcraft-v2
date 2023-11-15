@@ -1,6 +1,7 @@
 import { Architect } from "./domains/architect";
 import { EventNoobProHacker } from "./domains/eventNoobProHacker";
 import { NoobProHacker } from "./domains/noobprohacker";
+import { PlacementTest } from "./domains/placementTest";
 
 export const tempNoobProHackerObject: NoobProHacker = {
   contentInfo: {
@@ -1009,6 +1010,393 @@ export const tempEventNoobProHackerObject2: EventNoobProHacker = {
           ranking: 1,
         },
       ],
+    },
+  ],
+};
+
+export const tempPlacementTestObject: PlacementTest = {
+  season: 4,
+  date: "2023-09-03",
+  youtube_url: "https://youtu.be/428DdSfV3M8?si=v8SukW6ZOHui1ekg",
+  participants: [
+    {
+      minecraft_id: "ATK_Speedpanchi",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/ATK_Speedpanchi.png",
+      placement_result: "계추",
+    },
+    {
+      minecraft_id: "Cu_le",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/Cu_le.png",
+      placement_result: "그냥 눕",
+    },
+    {
+      minecraft_id: "Cyborg_Dotdot",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/Cyborg_Dotdot.png",
+      placement_result: "계추",
+    },
+    {
+      minecraft_id: "DECALPOOL",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/DECALPOOL.png",
+      placement_result: "식은 국밥",
+    },
+    {
+      minecraft_id: "Dajung0914",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/Dajung0914.png",
+      placement_result: "그냥 눕",
+    },
+    {
+      minecraft_id: "Dark_kentra",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/Dark_kentra.png",
+      placement_result: "착한 눕",
+    },
+    {
+      minecraft_id: "Dyint_",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/Dyint_.png",
+      placement_result: "안 나쁜 눕",
+    },
+    {
+      minecraft_id: "ETN0703",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/ETN0703.png",
+      placement_result: "그냥 눕",
+    },
+    {
+      minecraft_id: "Edithen",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/Edithen.png",
+      placement_result: "계륵",
+    },
+    {
+      minecraft_id: "FortyNine_49",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/FortyNine_49.png",
+      placement_result: "계륵",
+    },
+    {
+      minecraft_id: "Fritz______",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/Fritz______.png",
+      placement_result: "식은 국밥",
+    },
+    {
+      minecraft_id: "GREEEN_0819",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/GREEEN_0819.png",
+      placement_result: "국밥",
+    },
+    {
+      minecraft_id: "Guta_GGuljam",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/Guta_GGuljam.png",
+      placement_result: "그냥 눕",
+    },
+    {
+      minecraft_id: "Heyd3vel",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/Heyd3vel.png",
+      placement_result: "식은 국밥",
+    },
+    {
+      minecraft_id: "HyunJamminS2",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/HyunJamminS2.png",
+      placement_result: "해커",
+    },
+    {
+      minecraft_id: "Iam_nemo",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/Iam_nemo.png",
+      placement_result: "프로",
+    },
+    {
+      minecraft_id: "Ivory_0912",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/Ivory_0912.png",
+      placement_result: "프로",
+    },
+    {
+      minecraft_id: "Jonberpanchi",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/Jonberpanchi.png",
+      placement_result: "진짜 눕",
+    },
+    {
+      minecraft_id: "MINEWORK0015",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/MINEWORK0015.png",
+      placement_result: "해커",
+    },
+    {
+      minecraft_id: "Milkteagood_",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/Milkteagood_.png",
+      placement_result: "착한 눕",
+    },
+    {
+      minecraft_id: "Minhong_",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/Minhong_.png",
+      placement_result: "계륵",
+    },
+    {
+      minecraft_id: "Minmulguui",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/Minmulguui.png",
+      placement_result: "미지근한 국밥",
+    },
+    {
+      minecraft_id: "NOhLucK",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/NOhLucK.png",
+      placement_result: "국밥",
+    },
+    {
+      minecraft_id: "Ouso__",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/Ouso__.png",
+      placement_result: "착한 눕",
+    },
+    {
+      minecraft_id: "Podoba",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/Podoba.png",
+      placement_result: "프로",
+    },
+    {
+      minecraft_id: "RBGrandma",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/RBGrandma.png",
+      placement_result: "미지근한 국밥",
+    },
+    {
+      minecraft_id: "RalB_6101",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/RalB_6101.png",
+      placement_result: "국밥",
+    },
+    {
+      minecraft_id: "RoboticDeo",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/RoboticDeo.png",
+      placement_result: "식은 국밥",
+    },
+    {
+      minecraft_id: "SStingstar",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/SStingstar.png",
+      placement_result: "해장국",
+    },
+    {
+      minecraft_id: "SaeDamYo",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/SaeDamYo.png",
+      placement_result: "오마카세",
+    },
+    {
+      minecraft_id: "SchwartzTiger",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/SchwartzTiger.png",
+      placement_result: "식은 국밥",
+    },
+    {
+      minecraft_id: "Squiredog124",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/Squiredog124.png",
+      placement_result: "계륵",
+    },
+    {
+      minecraft_id: "SungYuC",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/SungYuC.png",
+      placement_result: "해커",
+    },
+    {
+      minecraft_id: "WhyCarNo",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/WhyCarNo.png",
+      placement_result: "프로",
+    },
+    {
+      minecraft_id: "Yakddo",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/Yakddo.png",
+      placement_result: "해커",
+    },
+    {
+      minecraft_id: "Yoongse11",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/Yoongse11.png",
+      placement_result: "해장국",
+    },
+    {
+      minecraft_id: "_Boonk",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/_Boonk.png",
+      placement_result: "미지근한 국밥",
+    },
+    {
+      minecraft_id: "aeloek2",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/aeloek2.png",
+      placement_result: "프로",
+    },
+    {
+      minecraft_id: "canindaeyo",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/canindaeyo.png",
+      placement_result: "마카게",
+    },
+    {
+      minecraft_id: "cherry1154",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/cherry1154.jpg",
+      placement_result: "해커",
+    },
+    {
+      minecraft_id: "chezstick0108",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/chezstick0108.png",
+      placement_result: "그냥 눕",
+    },
+    {
+      minecraft_id: "dackbal",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/dackbal.png",
+      placement_result: "오마카세",
+    },
+    {
+      minecraft_id: "dogcat0926",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/dogcat0926.png",
+      placement_result: "그냥 눕",
+    },
+    {
+      minecraft_id: "dotebox12",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/dotebox12.png",
+      placement_result: "프로",
+    },
+    {
+      minecraft_id: "doyoung_c",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/doyoung_c.png",
+      placement_result: "그냥 눕",
+    },
+    {
+      minecraft_id: "erumosoh",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/erumosoh.png",
+      placement_result: "계추",
+    },
+    {
+      minecraft_id: "fan_bot",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/fan_bot.png",
+      placement_result: "프로",
+    },
+    {
+      minecraft_id: "iLdam",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/iLdam.png",
+      placement_result: "프로",
+    },
+    {
+      minecraft_id: "ice_pizza",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/ice_pizza.png",
+      placement_result: "계륵",
+    },
+    {
+      minecraft_id: "jangbeol",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/jangbeol.png",
+      placement_result: "국밥",
+    },
+    {
+      minecraft_id: "kbcas1112",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/kbcas1112.png",
+      placement_result: "프로",
+    },
+    {
+      minecraft_id: "kkio_126",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/kkio_126.png",
+      placement_result: "오마카세",
+    },
+    {
+      minecraft_id: "kyukyukyukukuku",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/kyukyukyukukuku.png",
+      placement_result: "그냥 눕",
+    },
+    {
+      minecraft_id: "mahingmello",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/mahingmello.png",
+      placement_result: "계추",
+    },
+    {
+      minecraft_id: "nokksakyee",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/nokksakyee.png",
+      placement_result: "계륵",
+    },
+    {
+      minecraft_id: "number198",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/number198.png",
+      placement_result: "마카게",
+    },
+    {
+      minecraft_id: "ongmungcha3542",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/ongmungcha3542.png",
+      placement_result: "계추",
+    },
+    {
+      minecraft_id: "ppambuleuppam",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/ppambuleuppam.png",
+      placement_result: "해커",
+    },
+    {
+      minecraft_id: "rebottt",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/rebottt.png",
+      placement_result: "국밥",
+    },
+    {
+      minecraft_id: "salmimu",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/salmimu.png",
+      placement_result: "오마카세",
+    },
+
+    {
+      minecraft_id: "sunpoong",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/sunpoong.png",
+      placement_result: "프로",
+    },
+    {
+      minecraft_id: "taedo219",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/taedo219.png",
+      placement_result: "안 나쁜 눕",
+    },
+    {
+      minecraft_id: "ungdoo",
+      image_url:
+        "https://wakcraft.s3.ap-northeast-2.amazonaws.com/placementTest/season 4/ungdoo.png",
+      placement_result: "해커",
     },
   ],
 };
