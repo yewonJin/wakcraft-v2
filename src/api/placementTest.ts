@@ -10,7 +10,7 @@ export const getAllPlacementTest = async () => {
   return result;
 };
 
-export const getArchitectureContest = async (id: number) => {
+export const getPlacementTest = async (id: number) => {
   "use server";
   connectMongo();
 

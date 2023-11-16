@@ -1,14 +1,16 @@
 import { medium } from "@/app/layout";
-import { tempPlacementTestObject } from "@/temp";
 import ParticipantList from "@/components/Content/PlacementTest/ParticipantList";
+import { getPlacementTest } from "@/api/placementTest";
 
-export default function Page() {
+export default async function Page({ params }: { params: { id: string } }) {
+  const placementTest = await getPlacementTest(parseInt(params.id));
+
   return (
     <div className="mx-auto max-w-[1200px]">
       <h1 className={`text-4xl text-text-primary ${medium.className}`}>
-        {`시즌 ${tempPlacementTestObject.season} 배치고사`}
+        {`시즌 ${placementTest.season} 배치고사`}
       </h1>
-      <ParticipantList participants={tempPlacementTestObject["participants"]} />
+      <ParticipantList participants={placementTest.participants} />
     </div>
   );
 }

@@ -1,14 +1,18 @@
 import { medium } from "@/app/layout";
+import { getMatchYourTier } from "@/api/matchYourTier";
 import ParticipantList from "@/components/Content/MatchYourTier/ParticipantList";
-import { tempMathYourTierObject } from "@/temp";
 
-export default function Page() {
+export default async function Page({ params }: { params: { id: string } }) {
+  const matchYourTier = await getMatchYourTier(parseInt(params.id));
+
   return (
     <div className="mx-auto max-w-[1200px]">
       <h1 className={`text-4xl text-text-primary ${medium.className}`}>
-        티어 맞추기
+        {matchYourTier.contentInfo.contentName}
       </h1>
-      <ParticipantList participants={tempMathYourTierObject["participants"]} />
+      <ParticipantList
+        participants={JSON.parse(JSON.stringify(matchYourTier.participants))}
+      />
     </div>
   );
 }

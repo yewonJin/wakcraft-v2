@@ -1,12 +1,12 @@
-"use client";
-
 import { Fragment } from "react";
 
 import { medium } from "@/app/layout";
-import { tempArchitectureContestObject } from "@/temp";
 import Carousel from "@/components/Content/ArchitectureContest/Carousel";
+import { getArchitectureContest } from "@/api/architectureContest";
 
-export default function Page() {
+export default async function Page({ params }: { params: { id: string } }) {
+  const architectureContest = await getArchitectureContest(parseInt(params.id));
+
   return (
     <Fragment>
       <div className="mx-auto max-w-[1200px]">
@@ -17,7 +17,7 @@ export default function Page() {
           라인당 7명이 주제에 맞는 작품을 건축한다.
         </p>
       </div>
-      <Carousel content={tempArchitectureContestObject} />
+      <Carousel content={JSON.parse(JSON.stringify(architectureContest))} />
     </Fragment>
   );
 }
