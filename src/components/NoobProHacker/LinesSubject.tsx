@@ -13,7 +13,7 @@ export default function LinesSubject(props: Props) {
   const router = useRouter();
 
   return (
-    <div className="mt-4 flex flex-wrap gap-3 text-sm text-text-secondary">
+    <div className="mt-4 flex flex-wrap gap-2 text-sm text-text-secondary">
       {linesSubject.map((lineSubject) => (
         <span
           key={lineSubject}

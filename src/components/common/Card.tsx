@@ -25,7 +25,7 @@ export default function Card(props: Props) {
     props;
 
   return (
-    <div className="group rounded-xl bg-background-secondary duration-300 hover:-translate-y-2">
+    <div className="group h-min rounded-xl bg-background-secondary duration-300 hover:-translate-y-2">
       <Link href={getLinkUrl(contentType, episode)}>
         <div className="relative aspect-video w-full overflow-hidden rounded-t-xl bg-background-secondary [&>img]:brightness-[60%] [&>img]:duration-300 group-hover:[&>img]:scale-105 group-hover:[&>img]:filter-none">
           <Image
@@ -40,7 +40,7 @@ export default function Card(props: Props) {
             }
           />
         </div>
-        <div className="px-4 pb-4 pt-6">
+        <div className="justify-between px-4 pb-4 pt-6">
           <div className="flex items-center gap-4 [&>svg]:h-6 [&>svg]:w-6 [&>svg]:rotate-[135deg] [&>svg]:fill-text-tertiary">
             <h2 className="text-xl text-text-primary">
               {getTitle(contentType, subject, episode)}
@@ -52,7 +52,7 @@ export default function Card(props: Props) {
             linesSubject={linesSubject}
             link={getLinkUrl(contentType, episode)}
           />
-          <p className="rounded-md text-end text-sm text-text-secondary">
+          <p className="mt-4 rounded-md text-end text-sm text-text-secondary">
             {date.toISOString().split("T")[0]}
           </p>
         </div>
@@ -87,6 +87,9 @@ const getTitle = (type: ContentType, subject: string, episode: number) => {
 
     case "배치고사":
       return `제 ${episode}회 배치고사`;
+
+    case "건축 콘테스트":
+      return `건축 콘테스트 : ${subject}`;
 
     default:
       return `${subject}`;

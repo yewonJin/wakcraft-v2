@@ -1,8 +1,14 @@
 import { medium } from "../layout";
-
 import Card from "@/components/common/Card";
 
-export default function Page() {
+import { getAllEventNoobProHacker } from "@/api/eventNoobProHacker";
+import { getAllMatchYourTier } from "@/api/matchYourTier";
+import { getAllArchitectureContest } from "@/api/architectureContest";
+import { getAllPlacementTest } from "@/api/placementTest";
+
+export default async function Page() {
+  const cards = await generateCards();
+
   return (
     <div className="mx-auto max-w-[1200px]">
       <h1 className={`text-3xl text-text-primary ${medium.className}`}>
@@ -12,21 +18,82 @@ export default function Page() {
         눕프로해커 이외의 마인크래프트 컨텐츠를 볼 수 있다.
       </p>
       <div className="mt-8 grid grid-cols-3 gap-8">
-        <Card
-          contentType="이벤트 눕프핵"
-          episode={2}
-          subject="눕x10 프로x2 해커"
-          date={new Date()}
-          youtubeUrl="an2ZUKN4giQ"
-          linesSubject={[
-            "크라켄",
-            "고토 히토리",
-            "호시노 아이",
-            "리치 왕",
-            "코바야카와 세나",
-          ]}
-        />
+        {cards.sort((a, b) => b.props.date - a.props.date).map((card) => card)}
       </div>
     </div>
   );
 }
+
+const generateCards = async () => {
+  const [
+    eventNoobProHackers,
+    matchYourTiers,
+    architectureContests,
+    placementTests,
+  ] = await Promise.all([
+    getAllEventNoobProHacker(),
+    getAllMatchYourTier(),
+    getAllArchitectureContest(),
+    getAllPlacementTest(),
+  ]);
+
+  const cards: JSX.Element[] = [];
+
+  eventNoobProHackers.forEach((eventNoobProHacker) =>
+    cards.push(
+      <Card
+        key={eventNoobProHacker.contentInfo.contentName}
+        contentType="이벤트 눕프핵"
+        episode={eventNoobProHacker.contentInfo.episode}
+        subject={eventNoobProHacker.contentInfo.contentName}
+        date={new Date(eventNoobProHacker.contentInfo.date)}
+        youtubeUrl={eventNoobProHacker.contentInfo.youtube_url.split("/")[3]}
+        linesSubject={eventNoobProHacker.lineInfo.map((item) => item.subject)}
+      />,
+    ),
+  );
+
+  matchYourTiers.forEach((matchYourTier) =>
+    cards.push(
+      <Card
+        key={matchYourTier.contentInfo.contentName}
+        contentType="티어 맞추기"
+        episode={matchYourTier.contentInfo.episode}
+        subject={"티어 맞추기"}
+        date={new Date(matchYourTier.contentInfo.date)}
+        youtubeUrl={matchYourTier.contentInfo.youtube_url.split("/")[3]}
+        linesSubject={[]}
+      />,
+    ),
+  );
+
+  architectureContests.forEach((architectureContest) =>
+    cards.push(
+      <Card
+        key={"건축 컨테스트 " + architectureContest.contentInfo.episode}
+        contentType="건축 콘테스트"
+        episode={architectureContest.contentInfo.episode}
+        subject={architectureContest.contentInfo.subject}
+        date={new Date(architectureContest.contentInfo.date)}
+        youtubeUrl={architectureContest.contentInfo.youtube_url.split("/")[3]}
+        linesSubject={[]}
+      />,
+    ),
+  );
+
+  placementTests.forEach((placementTest) =>
+    cards.push(
+      <Card
+        key={"배치고사 시즌 " + placementTest.season}
+        contentType="배치고사"
+        episode={placementTest.season}
+        subject="배치고사"
+        date={new Date(placementTest.date)}
+        youtubeUrl={placementTest.youtube_url.split("/")[3]}
+        linesSubject={[]}
+      />,
+    ),
+  );
+
+  return cards;
+};
