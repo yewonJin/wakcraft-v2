@@ -20,26 +20,26 @@
   --text-tertiary: 153, 153, 153;
 }
 
-.dark::-webkit-scrollbar-thumb {
+.dark *::-webkit-scrollbar-thumb {
   background: #555; /* 스크롤바 색상 */
   border-radius: 10px; /* 스크롤바 둥근 테두리 */
 }
 
-.dark::-webkit-scrollbar-track {
+.dark *::-webkit-scrollbar-track {
   background: #222; /*스크롤바 뒷 배경 색상*/
   padding: 10px;
 }
 
-html::-webkit-scrollbar {
+*::-webkit-scrollbar {
   width: 12px;
 }
 
-html::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
   background: #aaa; /* 스크롤바 색상 */
   border-radius: 10px; /* 스크롤바 둥근 테두리 */
 }
 
-html::-webkit-scrollbar-track {
+*::-webkit-scrollbar-track {
   background: #ddd; /*스크롤바 뒷 배경 색상*/
   padding: 10px;
 }
