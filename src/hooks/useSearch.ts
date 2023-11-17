@@ -81,7 +81,13 @@ const useSearch = (architects: Architect[]) => {
     [input, architects],
   );
 
-  return { input, handleInputChange, resetInput, highlightedArchitects };
+  return {
+    input,
+    setInput,
+    handleInputChange,
+    resetInput,
+    highlightedArchitects,
+  };
 };
 
 export default useSearch;
