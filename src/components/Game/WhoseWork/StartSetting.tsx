@@ -51,7 +51,7 @@ export default function StartSetting(props: Props) {
               </button>
               <div className="invisible absolute top-16 rounded-lg bg-text-secondary p-2 px-3 text-background-secondary peer-hover/low:visible [&>svg]:absolute [&>svg]:-top-6 [&>svg]:left-[6px] [&>svg]:h-11 [&>svg]:w-11 [&>svg]:fill-text-secondary">
                 <ArrowDropUp />
-                <p className="w-max">눕프핵 해커 작품</p>
+                <p className="w-max">마카게 ~ 식은 국밥</p>
               </div>
             </div>
             <div className="relative">
@@ -67,7 +67,7 @@ export default function StartSetting(props: Props) {
               </button>
               <div className="invisible absolute top-16 rounded-lg bg-text-secondary p-2 px-3 text-background-secondary peer-hover/medium:visible [&>svg]:absolute [&>svg]:-top-6 [&>svg]:left-[6px] [&>svg]:h-11 [&>svg]:w-11 [&>svg]:fill-text-secondary">
                 <ArrowDropUp />
-                <p className="w-max">모든 해커 작품</p>
+                <p className="w-max">해장국 ~ 계륵</p>
               </div>
             </div>
             <div className="relative">
