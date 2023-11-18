@@ -56,6 +56,15 @@ export default function TopNav() {
             >
               <Link href={"/content"}>컨텐츠</Link>
             </h2>
+            <h2
+              className={`${
+                scrollY <= 100 && pathname === "/"
+                  ? "text-[white]"
+                  : "text-text-primary"
+              }`}
+            >
+              <Link href={"/game/whose_work"}>게임</Link>
+            </h2>
           </div>
         </div>
         <div className="flex items-center">
