@@ -24,8 +24,10 @@ export default function InGame(props: Props) {
     showAnswer,
     correctCount,
     handleInputChange,
+    nextButtonRef,
     inputRef,
     handleKeyDown,
+    moveToNextAnswer,
     onSubmit,
   } = useInGame(architects, architectureArr);
 
@@ -57,8 +59,8 @@ export default function InGame(props: Props) {
           )}
         </div>
       )}
-      {showAnswer && (
-        <div className="mx-auto flex w-[300px] items-end justify-center gap-2 pt-5 text-lg text-text-secondary">
+      {showAnswer ? (
+        <div className="mx-auto flex h-[70px] w-[400px] items-center justify-center gap-2 pt-8 text-lg text-text-secondary">
           <p className="text-base">정답 :</p>
           <p className="text-text-primary">
             {
@@ -78,9 +80,20 @@ export default function InGame(props: Props) {
               )[0].minecraft_id
             }
           </p>
+          <button
+            ref={nextButtonRef}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                moveToNextAnswer();
+              }
+            }}
+            onClick={() => moveToNextAnswer()}
+            className={`ml-5 h-full rounded-md border-2 border-background-secondary px-3 outline-none hover:bg-background-secondary`}
+          >
+            다음
+          </button>
         </div>
-      )}
-      {index < architectureArr.length && (
+      ) : (
         <div className="mx-auto mt-8 flex max-w-[900px] justify-center gap-4">
           <div className="relative">
             <input

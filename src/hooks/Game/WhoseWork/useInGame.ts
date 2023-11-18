@@ -1,6 +1,7 @@
+import { KeyboardEvent, useEffect, useRef, useState } from "react";
+
 import { Architect } from "@/domains/architect";
 import useSearch from "@/hooks/useSearch";
-import { KeyboardEvent, useEffect, useRef, useState } from "react";
 import { Question } from "./useSetting";
 
 const useInGame = (architects: Architect[], architectureArr: Question[]) => {
@@ -11,9 +12,12 @@ const useInGame = (architects: Architect[], architectureArr: Question[]) => {
   const [correctCount, setCorrectCount] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const nextButtonRef = useRef<HTMLButtonElement>(null);
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Tab") {
+      if (!input || !highlightedArchitects[0]) return;
+
       setInput(highlightedArchitects[0].wakzoo_id);
     }
 
@@ -28,11 +32,6 @@ const useInGame = (architects: Architect[], architectureArr: Question[]) => {
     if (input === "?") {
       setShowAnswer(true);
       setInput("");
-
-      setTimeout(() => {
-        setIndex((prev) => prev + 1);
-        setShowAnswer(false);
-      }, 1000);
       return;
     }
 
@@ -54,10 +53,6 @@ const useInGame = (architects: Architect[], architectureArr: Question[]) => {
       setShowAnswer(true);
       setInput("");
 
-      setTimeout(() => {
-        setIndex((prev) => prev + 1);
-        setShowAnswer(false);
-      }, 1000);
       return;
     }
 
@@ -65,11 +60,11 @@ const useInGame = (architects: Architect[], architectureArr: Question[]) => {
     setCorrectCount((prev) => prev + 1);
 
     setShowAnswer(true);
+  };
 
-    setTimeout(() => {
-      setIndex((prev) => prev + 1);
-      setShowAnswer(false);
-    }, 1000);
+  const moveToNextAnswer = () => {
+    setShowAnswer(false);
+    setIndex((prev) => prev + 1);
   };
 
   useEffect(() => {
@@ -77,17 +72,27 @@ const useInGame = (architects: Architect[], architectureArr: Question[]) => {
     inputRef.current.focus();
   }, [index]);
 
+  useEffect(() => {
+    if (!showAnswer) return;
+
+    setTimeout(() => {
+      nextButtonRef.current?.focus();
+    }, 100);
+  }, [showAnswer]);
+
   return {
     index,
     input,
     highlightedArchitects,
     setInput,
     showAnswer,
+    nextButtonRef,
     handleInputChange,
     correctCount,
     inputRef,
     handleKeyDown,
     onSubmit,
+    moveToNextAnswer,
   };
 };
 
