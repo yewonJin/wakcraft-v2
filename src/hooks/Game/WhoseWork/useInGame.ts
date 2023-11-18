@@ -4,12 +4,17 @@ import { Architect } from "@/domains/architect";
 import useSearch from "@/hooks/useSearch";
 import { Question } from "./useSetting";
 
-const useInGame = (architects: Architect[], architectureArr: Question[]) => {
+const useInGame = (
+  architects: Architect[],
+  architectureArr: Question[],
+  increaseCorrectCount: () => void,
+  index: number,
+  increaseIndex: () => void,
+  endGame: () => void,
+) => {
   const { input, setInput, handleInputChange, highlightedArchitects } =
     useSearch(architects);
 
-  const [index, setIndex] = useState(0);
-  const [correctCount, setCorrectCount] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const nextButtonRef = useRef<HTMLButtonElement>(null);
@@ -35,6 +40,8 @@ const useInGame = (architects: Architect[], architectureArr: Question[]) => {
       return;
     }
 
+    if (highlightedArchitects.length < 1) return;
+
     // 입력이 완료되지 않으면 제출 못함
     if (
       input.toLowerCase() !==
@@ -57,14 +64,18 @@ const useInGame = (architects: Architect[], architectureArr: Question[]) => {
     }
 
     setInput("");
-    setCorrectCount((prev) => prev + 1);
+    increaseCorrectCount();
 
     setShowAnswer(true);
   };
 
   const moveToNextAnswer = () => {
     setShowAnswer(false);
-    setIndex((prev) => prev + 1);
+    increaseIndex();
+
+    if (index >= architectureArr.length - 1) {
+      endGame();
+    }
   };
 
   useEffect(() => {
@@ -74,6 +85,8 @@ const useInGame = (architects: Architect[], architectureArr: Question[]) => {
 
   useEffect(() => {
     if (!showAnswer) return;
+
+    if (!nextButtonRef) return;
 
     setTimeout(() => {
       nextButtonRef.current?.focus();
@@ -88,7 +101,6 @@ const useInGame = (architects: Architect[], architectureArr: Question[]) => {
     showAnswer,
     nextButtonRef,
     handleInputChange,
-    correctCount,
     inputRef,
     handleKeyDown,
     onSubmit,

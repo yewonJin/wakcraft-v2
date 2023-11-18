@@ -16,10 +16,15 @@ export default function WhoseWork(props: Props) {
   const {
     page,
     difficulty,
+    index,
+    increaseIndex,
     numberOfArchitecture,
+    correctCount,
+    increaseCorrectCount,
     setDifficulty,
     setNumberOfArchitecture,
     startGame,
+    endGame,
     architectureArr,
   } = useSetting();
 
@@ -38,11 +43,18 @@ export default function WhoseWork(props: Props) {
 
       case 1:
         return (
-          <InGame architects={architects} architectureArr={architectureArr} />
+          <InGame
+            architects={architects}
+            architectureArr={architectureArr}
+            index={index}
+            increaseIndex={increaseIndex}
+            increaseCorrectCount={increaseCorrectCount}
+            endGame={endGame}
+          />
         );
 
       case 2:
-        return <Score />;
+        return <Score correctCount={correctCount} />;
     }
   };
 

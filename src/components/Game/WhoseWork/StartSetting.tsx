@@ -83,7 +83,7 @@ export default function StartSetting(props: Props) {
               </button>
               <div className="invisible absolute top-16 rounded-lg bg-text-secondary p-2 px-3 text-background-secondary peer-hover/high:visible [&>svg]:absolute [&>svg]:-top-6 [&>svg]:left-[6px] [&>svg]:h-11 [&>svg]:w-11 [&>svg]:fill-text-secondary">
                 <ArrowDropUp />
-                <p className="w-max">모든 해커 + 프로 작품</p>
+                <p className="w-max">모든 티어</p>
               </div>
             </div>
           </div>
@@ -130,6 +130,22 @@ export default function StartSetting(props: Props) {
           시작하기
         </button>
       </div>
+      <ul className="mt-12 list-disc text-text-secondary">
+        <h3 className="text-xl text-text-primary">읽어주세요</h3>
+        <li className="ml-5 mt-4">
+          <span className="mr-1 rounded-md bg-background-tertiary px-2 py-[2px]">
+            Tab
+          </span>
+          키를 누르면 가장 일치도가 높은 건축가로 입력 창이 자동 완성됩니다.
+        </li>
+        <li className="ml-5 mt-4">
+          정답을 모르면
+          <span className="ml-1 mr-1 rounded-md bg-background-tertiary px-2 py-[2px]">
+            ?
+          </span>
+          혹은 아무 건축가 이름을 입력해 주세요.
+        </li>
+      </ul>
     </div>
   );
 }

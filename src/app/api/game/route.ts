@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 import Architect from "@/models/architect";
 import connectMongo from "@/utils/connectMongo";
+import WhoseWork from "@/models/whoseWork";
 
 export async function GET(req: NextRequest, res: NextResponse) {
   try {
@@ -36,11 +37,40 @@ export async function GET(req: NextRequest, res: NextResponse) {
       return NextResponse.json(convertToGameObject(res), { status: 200 });
     }
 
-    return NextResponse.json("hi", { status: 200 });
+    const res = await Architect.findAll();
+    return NextResponse.json(convertToGameObject(res), { status: 200 });
   } catch (e) {
     return NextResponse.json(JSON.stringify({ message: "error" }), {
       status: 400,
     });
+  }
+}
+
+export async function PATCH(req: NextRequest, res: NextResponse) {
+  try {
+    const { searchParams } = new URL(req.url);
+
+    const difficulty = searchParams.get("difficulty");
+    const numberOfArchitecture = searchParams.get("numberOfArchitecture");
+    const correctCount = searchParams.get("correctCount");
+
+    if (!difficulty) return;
+
+    if (!numberOfArchitecture) return;
+
+    if (!correctCount) return;
+
+    connectMongo();
+
+    const res = await WhoseWork.increaseCorrectAnswerCount(
+      difficulty,
+      parseInt(numberOfArchitecture),
+      parseInt(correctCount),
+    );
+
+    return NextResponse.json(res, { status: 200 });
+  } catch (e) {
+    return NextResponse.json("error", { status: 400 });
   }
 }
 

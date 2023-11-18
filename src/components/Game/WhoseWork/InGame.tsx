@@ -11,39 +11,50 @@ import useInGame from "@/hooks/Game/WhoseWork/useInGame";
 type Props = {
   architects: Architect[];
   architectureArr: Question[];
+  index: number;
+  increaseIndex: () => void;
+  increaseCorrectCount: () => void;
+  endGame: () => void;
 };
 
 export default function InGame(props: Props) {
-  const { architects, architectureArr } = props;
+  const {
+    architects,
+    architectureArr,
+    index,
+    increaseIndex,
+    increaseCorrectCount,
+    endGame,
+  } = props;
 
   const {
-    index,
     input,
     setInput,
     highlightedArchitects,
     showAnswer,
-    correctCount,
     handleInputChange,
     nextButtonRef,
     inputRef,
     handleKeyDown,
     moveToNextAnswer,
     onSubmit,
-  } = useInGame(architects, architectureArr);
+  } = useInGame(
+    architects,
+    architectureArr,
+    increaseCorrectCount,
+    index,
+    increaseIndex,
+    endGame,
+  );
 
   return (
     <div className="mt-8">
-      {index >= architectureArr.length && (
-        <p className="text-lg text-text-primary">
-          {"정답 개수 : " + correctCount}
-        </p>
-      )}
       {index < architectureArr.length && (
-        <div className={`relative mx-auto aspect-video max-w-[900px]`}>
+        <div className={`relative mx-auto aspect-video max-w-[1200px]`}>
           <Image
             alt="작품 이미지"
             priority
-            sizes="900px"
+            sizes="1200px"
             fill
             src={renameTo1080Webp(architectureArr[index]?.image_url)}
           />
@@ -52,7 +63,7 @@ export default function InGame(props: Props) {
               style={{ display: "none" }}
               alt="작품 이미지"
               priority
-              sizes="900px"
+              sizes="1200px"
               fill
               src={renameTo1080Webp(architectureArr[index + 1]?.image_url)}
             />

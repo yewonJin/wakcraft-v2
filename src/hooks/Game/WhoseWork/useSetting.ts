@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { shuffle } from "@/utils/lib";
-import { Architect } from "@/domains/architect";
 
 export type Difficulty = null | "LOW" | "MEDIUM" | "HIGH";
 export type NumberOfArchitecture = null | 20 | 30 | 50;
@@ -17,6 +16,8 @@ const useSetting = () => {
   const [numberOfArchitecture, setNumberOfArchitecture] =
     useState<NumberOfArchitecture>(null);
   const [architectureArr, setArchitectureArr] = useState<Question[]>([]);
+  const [index, setIndex] = useState(0);
+  const [correctCount, setCorrectCount] = useState(0);
 
   const startGame = async () => {
     if (difficulty === null || numberOfArchitecture === null) return;
@@ -28,14 +29,42 @@ const useSetting = () => {
     setPage((prev) => prev + 1);
   };
 
+  const endGame = () => {
+    increaseCorrectAnswerCount();
+
+    setPage(2);
+  };
+
+  const increaseCorrectAnswerCount = async () => {
+    await fetch(
+      `/api/game?difficulty=${difficulty}&numberOfArchitecture=${numberOfArchitecture}&correctCount=${correctCount}`,
+      {
+        method: "PATCH",
+      },
+    );
+  };
+
+  const increaseCorrectCount = () => {
+    setCorrectCount((prev) => prev + 1);
+  };
+
+  const increaseIndex = () => {
+    setIndex((prev) => prev + 1);
+  };
+
   return {
     page,
     difficulty,
+    index,
+    increaseIndex,
     numberOfArchitecture,
+    correctCount,
+    increaseCorrectCount,
     setDifficulty,
     setNumberOfArchitecture,
     architectureArr,
     startGame,
+    endGame,
   };
 };
 
