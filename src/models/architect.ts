@@ -1,4 +1,4 @@
-import { Architect } from "@/domains/architect";
+import { Architect, convertLineTierToTier } from "@/domains/architect";
 import { Schema, Model, model, models } from "mongoose";
 
 // Define Schemes
@@ -67,6 +67,9 @@ const architectSchema = new Schema<Architect>({
 interface ArchitectModel extends Model<Architect> {
   findAll: () => Promise<Architect[]>;
   findByMinecraftId: (minecraft_id: string) => Promise<Architect>;
+  findByTier: (
+    tier: "hacker" | "gukbap" | "pro" | "gyeruik" | "noob",
+  ) => Promise<Architect[]>;
 }
 
 architectSchema.statics.create = function (
@@ -78,6 +81,12 @@ architectSchema.statics.create = function (
 
 architectSchema.statics.findAll = function () {
   return this.find({});
+};
+
+architectSchema.statics.findByTier = function (
+  tier: "hacker" | "gukbap" | "pro" | "gyeruik" | "noob",
+) {
+  return this.find({ curTier: { $in: convertLineTierToTier(tier) } });
 };
 
 architectSchema.statics.findByMinecraftId = function (minecraft_id: string) {
