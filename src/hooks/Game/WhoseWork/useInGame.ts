@@ -1,19 +1,21 @@
 import { KeyboardEvent, useEffect, useRef, useState } from "react";
+import { useRecoilState } from "recoil";
 
 import { Architect } from "@/domains/architect";
 import useSearch from "@/hooks/useSearch";
 import { Question } from "./useSetting";
+import { correctCountState, indexState } from "@/store/whoseWork";
 
 const useInGame = (
   architects: Architect[],
   architectureArr: Question[],
-  increaseCorrectCount: () => void,
-  index: number,
-  increaseIndex: () => void,
   endGame: () => void,
 ) => {
   const { input, setInput, handleInputChange, highlightedArchitects } =
     useSearch(architects);
+
+  const [index, setIndex] = useRecoilState(indexState);
+  const [correctCount, setCorrectCount] = useRecoilState(correctCountState);
 
   const [showAnswer, setShowAnswer] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -64,14 +66,14 @@ const useInGame = (
     }
 
     setInput("");
-    increaseCorrectCount();
+    setCorrectCount((prev) => prev + 1);
 
     setShowAnswer(true);
   };
 
   const moveToNextAnswer = () => {
     setShowAnswer(false);
-    increaseIndex();
+    setIndex((prev) => prev + 1);
 
     if (index >= architectureArr.length - 1) {
       endGame();

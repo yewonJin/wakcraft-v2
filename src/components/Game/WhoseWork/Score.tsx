@@ -1,20 +1,17 @@
-import { WhoseWork } from "@/domains/whoseWork";
+import { useRecoilValue } from "recoil";
 
+import { WhoseWork, getTopPercentage } from "@/domains/whoseWork";
+import { correctCountState } from "@/store/whoseWork";
 import Chart from "./Chart";
 
 type Props = {
-  correctCount: number;
   whoseWork: WhoseWork;
-  resetGame: () => void;
 };
 
 export default function Score(props: Props) {
-  const { correctCount, whoseWork, resetGame } = props;
+  const { whoseWork } = props;
 
-  const sample_size = whoseWork.correctAnswerCountDistribution.reduce(
-    (acc, cur) => acc + cur,
-    0,
-  );
+  const correctCount = useRecoilValue(correctCountState);
 
   return (
     <div className="relative">
@@ -24,18 +21,7 @@ export default function Score(props: Props) {
             {"맞힌 문제 : " + correctCount + "개"}
           </p>
           <p className="text-2xl text-text-primary">
-            {"상위 " +
-              (
-                (whoseWork.correctAnswerCountDistribution
-                  .slice(
-                    correctCount,
-                    whoseWork.correctAnswerCountDistribution.length - 1,
-                  )
-                  .reduce((acc, cur) => acc + cur, 0) /
-                  sample_size) *
-                100
-              ).toFixed(0)}
-            %
+            {"상위 " + getTopPercentage(whoseWork, correctCount) + "%"}
           </p>
         </div>
       </div>
@@ -43,7 +29,7 @@ export default function Score(props: Props) {
       <div className="flex justify-center">
         <button
           className="mt-20 bg-background-secondary px-12 py-6 text-text-secondary"
-          onClick={() => resetGame()}
+          onClick={() => location.reload()}
         >
           다시하기
         </button>

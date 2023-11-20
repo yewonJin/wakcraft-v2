@@ -1,30 +1,22 @@
 "use client";
 
-import { Dispatch, SetStateAction } from "react";
+import { useRecoilState } from "recoil";
 
 import { medium } from "@/app/layout";
 import ArrowDropUp from "../../../../public/icons/arrow_drop_up.svg";
-import {
-  Difficulty,
-  NumberOfArchitecture,
-} from "@/hooks/Game/WhoseWork/useSetting";
+import { difficultyState, numberOfArchitectureState } from "@/store/whoseWork";
 
 type Props = {
   startGame: () => void;
-  difficulty: Difficulty;
-  numberOfArchitecture: NumberOfArchitecture;
-  setDifficulty: Dispatch<SetStateAction<Difficulty>>;
-  setNumberOfArchitecture: Dispatch<SetStateAction<NumberOfArchitecture>>;
 };
 
 export default function StartSetting(props: Props) {
-  const {
-    startGame,
-    difficulty,
-    numberOfArchitecture,
-    setDifficulty,
-    setNumberOfArchitecture,
-  } = props;
+  const { startGame } = props;
+
+  const [difficulty, setDifficulty] = useRecoilState(difficultyState);
+  const [numberOfArchitecture, setNumberOfArchitecture] = useRecoilState(
+    numberOfArchitectureState,
+  );
 
   return (
     <div>

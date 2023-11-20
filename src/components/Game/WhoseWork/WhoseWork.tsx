@@ -14,56 +14,24 @@ type Props = {
 export default function WhoseWork(props: Props) {
   const { architects } = props;
 
-  const {
-    page,
-    difficulty,
-    index,
-    increaseIndex,
-    numberOfArchitecture,
-    correctCount,
-    increaseCorrectCount,
-    setDifficulty,
-    setNumberOfArchitecture,
-    startGame,
-    endGame,
-    resetGame,
-    architectureArr,
-    whoseWork,
-  } = useSetting();
+  const { page, startGame, questions, endGame, whoseWork } = useSetting();
 
   const gameProgression = () => {
     switch (page) {
       case 0:
-        return (
-          <StartSetting
-            startGame={startGame}
-            difficulty={difficulty}
-            numberOfArchitecture={numberOfArchitecture}
-            setDifficulty={setDifficulty}
-            setNumberOfArchitecture={setNumberOfArchitecture}
-          />
-        );
+        return <StartSetting startGame={startGame} />;
 
       case 1:
         return (
           <InGame
             architects={architects}
-            architectureArr={architectureArr}
-            index={index}
-            increaseIndex={increaseIndex}
-            increaseCorrectCount={increaseCorrectCount}
+            questions={questions}
             endGame={endGame}
           />
         );
 
       case 2:
-        return (
-          <Score
-            correctCount={correctCount}
-            whoseWork={whoseWork as WhoseWork}
-            resetGame={resetGame}
-          />
-        );
+        return <Score whoseWork={whoseWork as WhoseWork} />;
     }
   };
 

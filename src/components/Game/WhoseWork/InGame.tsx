@@ -10,26 +10,17 @@ import useInGame from "@/hooks/Game/WhoseWork/useInGame";
 
 type Props = {
   architects: Architect[];
-  architectureArr: Question[];
-  index: number;
-  increaseIndex: () => void;
-  increaseCorrectCount: () => void;
+  questions: Question[];
   endGame: () => void;
 };
 
 export default function InGame(props: Props) {
-  const {
-    architects,
-    architectureArr,
-    index,
-    increaseIndex,
-    increaseCorrectCount,
-    endGame,
-  } = props;
+  const { architects, questions, endGame } = props;
 
   const {
     input,
     setInput,
+    index,
     highlightedArchitects,
     showAnswer,
     handleInputChange,
@@ -38,34 +29,27 @@ export default function InGame(props: Props) {
     handleKeyDown,
     moveToNextAnswer,
     onSubmit,
-  } = useInGame(
-    architects,
-    architectureArr,
-    increaseCorrectCount,
-    index,
-    increaseIndex,
-    endGame,
-  );
+  } = useInGame(architects, questions, endGame);
 
   return (
     <div className="mt-8">
-      {index < architectureArr.length && (
+      {index < questions.length && (
         <div className={`relative mx-auto aspect-video max-w-[1200px]`}>
           <Image
             alt="작품 이미지"
             priority
             sizes="1200px"
             fill
-            src={renameTo1080Webp(architectureArr[index]?.image_url)}
+            src={renameTo1080Webp(questions[index]?.image_url)}
           />
-          {architectureArr[index + 1] && (
+          {questions[index + 1] && (
             <Image
               style={{ display: "none" }}
               alt="작품 이미지"
               priority
               sizes="1200px"
               fill
-              src={renameTo1080Webp(architectureArr[index + 1]?.image_url)}
+              src={renameTo1080Webp(questions[index + 1]?.image_url)}
             />
           )}
         </div>
@@ -77,8 +61,7 @@ export default function InGame(props: Props) {
             {
               architects.filter(
                 (architect) =>
-                  architect.minecraft_id ===
-                  architectureArr[index].minecraft_id,
+                  architect.minecraft_id === questions[index].minecraft_id,
               )[0].wakzoo_id
             }
           </p>
@@ -86,8 +69,7 @@ export default function InGame(props: Props) {
             {
               architects.filter(
                 (architect) =>
-                  architect.minecraft_id ===
-                  architectureArr[index].minecraft_id,
+                  architect.minecraft_id === questions[index].minecraft_id,
               )[0].minecraft_id
             }
           </p>
