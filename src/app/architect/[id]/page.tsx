@@ -3,7 +3,7 @@ import { Fragment } from "react";
 import TierBox from "@/components/common/TierBox";
 import Statistics from "@/components/Architect/Statistics";
 import Main from "@/components/Architect/DetailPage/Main";
-import { getArchitect } from "@/api/architect";
+import { getArchitect } from "@/api/server/architect";
 
 export default async function Page({ params }: { params: { id: string } }) {
   const architect = await getArchitect(params.id);

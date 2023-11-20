@@ -1,10 +1,10 @@
 import { medium } from "../layout";
 import Card from "@/components/common/Card";
 
-import { getAllEventNoobProHacker } from "@/api/eventNoobProHacker";
-import { getAllMatchYourTier } from "@/api/matchYourTier";
-import { getAllArchitectureContest } from "@/api/architectureContest";
-import { getAllPlacementTest } from "@/api/placementTest";
+import { getAllEventNoobProHacker } from "@/api/server/eventNoobProHacker";
+import { getAllMatchYourTier } from "@/api/server/matchYourTier";
+import { getAllArchitectureContest } from "@/api/server/architectureContest";
+import { getAllPlacementTest } from "@/api/server/placementTest";
 
 export default async function Page() {
   const cards = await generateCards();

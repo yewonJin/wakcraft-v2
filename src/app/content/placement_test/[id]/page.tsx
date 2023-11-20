@@ -1,6 +1,6 @@
 import { medium } from "@/app/layout";
 import ParticipantList from "@/components/Content/PlacementTest/ParticipantList";
-import { getPlacementTest } from "@/api/placementTest";
+import { getPlacementTest } from "@/api/server/placementTest";
 
 export default async function Page({ params }: { params: { id: string } }) {
   const placementTest = await getPlacementTest(parseInt(params.id));

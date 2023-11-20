@@ -2,7 +2,7 @@ import { Fragment } from "react";
 
 import { medium } from "@/app/layout";
 import Carousel from "@/components/Content/ArchitectureContest/Carousel";
-import { getArchitectureContest } from "@/api/architectureContest";
+import { getArchitectureContest } from "@/api/server/architectureContest";
 
 export default async function Page({ params }: { params: { id: string } }) {
   const architectureContest = await getArchitectureContest(parseInt(params.id));

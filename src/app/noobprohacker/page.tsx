@@ -1,6 +1,6 @@
 import Main from "@/components/NoobProHacker/Main";
 import { medium } from "../layout";
-import { getAllNoobProHacker } from "@/api/noobprohacker";
+import { getAllNoobProHacker } from "@/api/server/noobprohacker";
 
 export default async function Page() {
   const noobprohackers = await getAllNoobProHacker();

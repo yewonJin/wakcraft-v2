@@ -2,7 +2,7 @@ import { Fragment } from "react";
 
 import { medium } from "@/app/layout";
 import Carousel from "@/components/Content/EventNoobProHacker/Carousel";
-import { getEventNoobProHacker } from "@/api/eventNoobProHacker";
+import { getEventNoobProHacker } from "@/api/server/eventNoobProHacker";
 
 export default async function Page({ params }: { params: { id: string } }) {
   const eventNoobProHacker = await getEventNoobProHacker(parseInt(params.id));

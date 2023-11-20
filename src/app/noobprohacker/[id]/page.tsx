@@ -2,7 +2,7 @@ import { Fragment } from "react";
 
 import { medium } from "@/app/layout";
 import Carousel from "@/components/NoobProHacker/Carousel";
-import { getNoobProHacker } from "@/api/noobprohacker";
+import { getNoobProHacker } from "@/api/server/noobprohacker";
 
 export default async function Page({ params }: { params: { id: string } }) {
   const noobprohacker = await getNoobProHacker(parseInt(params.id));

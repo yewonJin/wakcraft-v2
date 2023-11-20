@@ -1,5 +1,5 @@
 import { medium } from "@/app/layout";
-import { getMatchYourTier } from "@/api/matchYourTier";
+import { getMatchYourTier } from "@/api/server/matchYourTier";
 import ParticipantList from "@/components/Content/MatchYourTier/ParticipantList";
 
 export default async function Page({ params }: { params: { id: string } }) {

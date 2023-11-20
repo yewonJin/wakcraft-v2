@@ -1,4 +1,4 @@
-import { getAllArchitects } from "@/api/architect";
+import { getAllArchitects } from "@/api/server/architect";
 
 import WhoseWork from "@/components/Game/WhoseWork/WhoseWork";
 

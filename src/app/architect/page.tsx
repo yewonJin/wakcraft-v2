@@ -2,7 +2,7 @@ import { Fragment } from "react";
 
 import { medium } from "../layout";
 import Main from "@/components/Architect/Main";
-import { getAllArchitects } from "@/api/architect";
+import { getAllArchitects } from "@/api/server/architect";
 
 export default async function Page() {
   const architects = await getAllArchitects();
