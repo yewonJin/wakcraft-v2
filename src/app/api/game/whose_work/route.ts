@@ -3,22 +3,30 @@ import { NextRequest, NextResponse } from "next/server";
 import Architect from "@/models/architect";
 import connectMongo from "@/utils/connectMongo";
 import WhoseWork from "@/models/whoseWork";
+import {
+  Difficulty,
+  NumberOfArchitecture,
+} from "@/hooks/Game/WhoseWork/useSetting";
 
 export async function GET(req: NextRequest, res: NextResponse) {
   try {
     const { searchParams } = new URL(req.url);
 
-    const params = searchParams.get("difficulty");
-
-    if (!params) {
-      return NextResponse.json(JSON.stringify({ message: "error" }), {
-        status: 400,
-      });
-    }
+    const difficulty = searchParams.get("difficulty");
+    const numberOfArchitecture = searchParams.get("numberOfArchitecture");
 
     connectMongo();
 
-    if (params === "LOW") {
+    if (difficulty && numberOfArchitecture) {
+      const whoseWork = await WhoseWork.findByDifficultyAndNumberOfArchitecture(
+        difficulty as Difficulty,
+        parseInt(numberOfArchitecture) as NumberOfArchitecture,
+      );
+
+      return NextResponse.json(whoseWork, { status: 200 });
+    }
+
+    if (difficulty === "LOW") {
       const res = [
         ...(await Architect.findByTier("hacker")),
         ...(await Architect.findByTier("gukbap")),
@@ -27,7 +35,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
       return NextResponse.json(convertToGameObject(res), { status: 200 });
     }
 
-    if (params === "MEDIUM") {
+    if (difficulty === "MEDIUM") {
       const res = [
         ...(await Architect.findByTier("gukbap")),
         ...(await Architect.findByTier("pro")),
@@ -37,8 +45,17 @@ export async function GET(req: NextRequest, res: NextResponse) {
       return NextResponse.json(convertToGameObject(res), { status: 200 });
     }
 
-    const res = await Architect.findAll();
-    return NextResponse.json(convertToGameObject(res), { status: 200 });
+    if (difficulty === "MEDIUM") {
+      const res = await Architect.findAll();
+      return NextResponse.json(convertToGameObject(res), { status: 200 });
+    }
+
+    return NextResponse.json(
+      JSON.stringify({ message: "query를 입력해주세요" }),
+      {
+        status: 400,
+      },
+    );
   } catch (e) {
     return NextResponse.json(JSON.stringify({ message: "error" }), {
       status: 400,

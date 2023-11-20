@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { shuffle } from "@/utils/lib";
+import { WhoseWork } from "@/domains/whoseWork";
 
 export type Difficulty = null | "LOW" | "MEDIUM" | "HIGH";
 export type NumberOfArchitecture = null | 20 | 30 | 50;
@@ -18,6 +19,7 @@ const useSetting = () => {
   const [architectureArr, setArchitectureArr] = useState<Question[]>([]);
   const [index, setIndex] = useState(0);
   const [correctCount, setCorrectCount] = useState(0);
+  const [whoseWork, setWhoseWork] = useState<WhoseWork>();
 
   const startGame = async () => {
     if (difficulty === null || numberOfArchitecture === null) return;
@@ -29,19 +31,32 @@ const useSetting = () => {
     setPage((prev) => prev + 1);
   };
 
-  const endGame = () => {
-    increaseCorrectAnswerCount();
+  const endGame = async () => {
+    await increaseCorrectAnswerCount().then((res) => setWhoseWork(res));
 
     setPage(2);
   };
 
+  const resetGame = () => {
+    setDifficulty(null);
+    setNumberOfArchitecture(null);
+    setArchitectureArr([]);
+    setIndex(0);
+    setCorrectCount(0);
+    setPage(0);
+  };
+
   const increaseCorrectAnswerCount = async () => {
-    await fetch(
-      `/api/game?difficulty=${difficulty}&numberOfArchitecture=${numberOfArchitecture}&correctCount=${correctCount}`,
-      {
-        method: "PATCH",
-      },
-    );
+    const res = await (
+      await fetch(
+        `/api/game/whose_work?difficulty=${difficulty}&numberOfArchitecture=${numberOfArchitecture}&correctCount=${correctCount}`,
+        {
+          method: "PATCH",
+        },
+      )
+    ).json();
+
+    return res;
   };
 
   const increaseCorrectCount = () => {
@@ -65,6 +80,8 @@ const useSetting = () => {
     architectureArr,
     startGame,
     endGame,
+    resetGame,
+    whoseWork,
   };
 };
 
@@ -72,7 +89,7 @@ export default useSetting;
 
 const getArchitectures = async (difficulty: Difficulty) => {
   const result = await (
-    await fetch(`/api/game?difficulty=${difficulty}`)
+    await fetch(`/api/game/whose_work?difficulty=${difficulty}`)
   ).json();
 
   return result;

@@ -5,6 +5,7 @@ import StartSetting from "./StartSetting";
 import InGame from "./InGame";
 import Score from "./Score";
 import useSetting from "@/hooks/Game/WhoseWork/useSetting";
+import { WhoseWork } from "@/domains/whoseWork";
 
 type Props = {
   architects: Architect[];
@@ -25,7 +26,9 @@ export default function WhoseWork(props: Props) {
     setNumberOfArchitecture,
     startGame,
     endGame,
+    resetGame,
     architectureArr,
+    whoseWork,
   } = useSetting();
 
   const gameProgression = () => {
@@ -54,7 +57,13 @@ export default function WhoseWork(props: Props) {
         );
 
       case 2:
-        return <Score correctCount={correctCount} />;
+        return (
+          <Score
+            correctCount={correctCount}
+            whoseWork={whoseWork as WhoseWork}
+            resetGame={resetGame}
+          />
+        );
     }
   };
 

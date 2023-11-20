@@ -41,7 +41,7 @@ whoseWorkSchema.statics.increaseCorrectAnswerCount = function (
   numberOfArchitecture: Number,
   correctCount: number,
 ) {
-  return this.updateOne(
+  return this.findOneAndUpdate(
     {
       $and: [
         { difficulty: difficulty },
@@ -51,6 +51,8 @@ whoseWorkSchema.statics.increaseCorrectAnswerCount = function (
     {
       $inc: { [`correctAnswerCountDistribution.${correctCount}`]: 1 },
     },
+
+    { returnOriginal: false },
   );
 };
 
