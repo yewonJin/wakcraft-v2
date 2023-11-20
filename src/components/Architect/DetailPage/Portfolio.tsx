@@ -116,12 +116,19 @@ const generateEventNoobProHackerArr = (architect: Architect) => {
             isUnlimited={isInfiniteTimeContent(eventNoobProHacker.episode)}
             architectNumber={getNumberOfPeople(eventNoobProHacker)}
           />
-          <ArchitectureInfo
-            contentName={eventNoobProHacker.contentName}
-            subject={eventNoobProHacker.subject}
-            tier={eventNoobProHacker.line}
-            ranking={eventNoobProHacker.ranking}
-          />
+          {eventNoobProHacker.line || eventNoobProHacker.ranking ? (
+            <ArchitectureInfo
+              contentName={eventNoobProHacker.contentName}
+              subject={eventNoobProHacker.subject}
+              tier={eventNoobProHacker.line}
+              ranking={eventNoobProHacker.ranking}
+            />
+          ) : (
+            <ArchitectureInfo
+              contentName={eventNoobProHacker.contentName}
+              subject={eventNoobProHacker.subject}
+            />
+          )}
         </div>
       );
     },
