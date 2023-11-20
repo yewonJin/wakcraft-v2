@@ -9,7 +9,7 @@ type Props = {
 export default function YoutubeLink(props: Props) {
   const { youtubeUrl } = props;
 
-  if (!youtubeUrl) return;
+  if (!youtubeUrl || youtubeUrl === "null") return;
 
   return (
     <div

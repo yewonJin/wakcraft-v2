@@ -50,7 +50,11 @@ const generateCards = async () => {
         episode={eventNoobProHacker.contentInfo.episode}
         subject={eventNoobProHacker.contentInfo.contentName}
         date={new Date(eventNoobProHacker.contentInfo.date)}
-        youtubeUrl={eventNoobProHacker.contentInfo.youtube_url.split("/")[3]}
+        youtubeUrl={
+          eventNoobProHacker.contentInfo.youtube_url !== "null"
+            ? eventNoobProHacker.contentInfo.youtube_url.split("/")[3]
+            : "null"
+        }
         linesSubject={eventNoobProHacker.lineInfo.map((item) => item.subject)}
       />,
     ),
@@ -64,7 +68,11 @@ const generateCards = async () => {
         episode={matchYourTier.contentInfo.episode}
         subject={"티어 맞추기"}
         date={new Date(matchYourTier.contentInfo.date)}
-        youtubeUrl={matchYourTier.contentInfo.youtube_url.split("/")[3]}
+        youtubeUrl={
+          matchYourTier.contentInfo.youtube_url !== "null"
+            ? matchYourTier.contentInfo.youtube_url.split("/")[3]
+            : "null"
+        }
         linesSubject={[]}
       />,
     ),
@@ -78,7 +86,11 @@ const generateCards = async () => {
         episode={architectureContest.contentInfo.episode}
         subject={architectureContest.contentInfo.subject}
         date={new Date(architectureContest.contentInfo.date)}
-        youtubeUrl={architectureContest.contentInfo.youtube_url.split("/")[3]}
+        youtubeUrl={
+          architectureContest.contentInfo.youtube_url !== "null"
+            ? architectureContest.contentInfo.youtube_url.split("/")[3]
+            : "null"
+        }
         linesSubject={[]}
       />,
     ),
@@ -92,7 +104,29 @@ const generateCards = async () => {
         episode={placementTest.season}
         subject="배치고사"
         date={new Date(placementTest.date)}
-        youtubeUrl={placementTest.youtube_url.split("/")[3]}
+        youtubeUrl={
+          placementTest.youtube_url !== "null"
+            ? placementTest.youtube_url.split("/")[3]
+            : "null"
+        }
+        linesSubject={[]}
+      />,
+    ),
+  );
+
+  guessTimes.forEach((guessTime) =>
+    cards.push(
+      <Card
+        key={"시간 맞추기"}
+        contentType="시간 맞추기"
+        episode={guessTime.contentInfo.episode}
+        subject="시간 맞추기"
+        date={new Date(guessTime.contentInfo.date)}
+        youtubeUrl={
+          guessTime.contentInfo.youtube_url !== "null"
+            ? guessTime.contentInfo.youtube_url.split("/")[3]
+            : "null"
+        }
         linesSubject={[]}
       />,
     ),
