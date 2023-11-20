@@ -18,6 +18,7 @@ export type ContentType =
   | "이벤트 눕프핵"
   | "배치고사"
   | "티어 맞추기"
+  | "시간 맞추기"
   | "건축 콘테스트";
 
 export default function Card(props: Props) {
@@ -27,18 +28,18 @@ export default function Card(props: Props) {
   return (
     <div className="group h-min rounded-xl bg-background-secondary duration-300 hover:-translate-y-2">
       <Link href={getLinkUrl(contentType, episode)}>
-        <div className="relative aspect-video w-full overflow-hidden rounded-t-xl bg-background-secondary [&>img]:brightness-[60%] [&>img]:duration-300 group-hover:[&>img]:scale-105 group-hover:[&>img]:filter-none">
-          <Image
-            fill
-            alt="이미지"
-            sizes="400px"
-            priority
-            src={
-              youtubeUrl !== "null"
-                ? `https://i.ytimg.com/vi/${youtubeUrl}/hq720.jpg`
-                : ""
-            }
-          />
+        <div className="relative aspect-video w-full overflow-hidden rounded-t-xl bg-background-tertiary [&>img]:brightness-[60%] [&>img]:duration-300 group-hover:[&>img]:scale-105 group-hover:[&>img]:filter-none">
+          {youtubeUrl !== "null" ? (
+            <Image
+              fill
+              alt="이미지"
+              sizes="400px"
+              priority
+              src={`https://i.ytimg.com/vi/${youtubeUrl}/hq720.jpg`}
+            />
+          ) : (
+            <div className=" bg-background-tertiary"></div>
+          )}
         </div>
         <div className="justify-between px-4 pb-4 pt-6">
           <div className="flex items-center gap-4 [&>svg]:h-6 [&>svg]:w-6 [&>svg]:rotate-[135deg] [&>svg]:fill-text-tertiary">
@@ -77,6 +78,9 @@ const getLinkUrl = (type: ContentType, episode: number) => {
 
     case "건축 콘테스트":
       return `/content/architecture_contest/${episode}`;
+
+    case "시간 맞추기":
+      return `/content/guess_time/${episode}`;
   }
 };
 

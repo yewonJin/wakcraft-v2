@@ -5,6 +5,7 @@ import { getAllEventNoobProHacker } from "@/api/server/eventNoobProHacker";
 import { getAllMatchYourTier } from "@/api/server/matchYourTier";
 import { getAllArchitectureContest } from "@/api/server/architectureContest";
 import { getAllPlacementTest } from "@/api/server/placementTest";
+import { getAllGuessTimes } from "@/api/server/guessTime";
 
 export default async function Page() {
   const cards = await generateCards();
@@ -30,11 +31,13 @@ const generateCards = async () => {
     matchYourTiers,
     architectureContests,
     placementTests,
+    guessTimes,
   ] = await Promise.all([
     getAllEventNoobProHacker(),
     getAllMatchYourTier(),
     getAllArchitectureContest(),
     getAllPlacementTest(),
+    getAllGuessTimes(),
   ]);
 
   const cards: JSX.Element[] = [];
