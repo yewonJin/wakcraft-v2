@@ -29,9 +29,9 @@ export default function InGame(props: Props) {
   if (curRoundQuestions.length === 0) return;
 
   return (
-    <div className="relative mx-auto flex h-[100vh] flex-col justify-center sm:px-4 md:max-w-[1200px] 2xl:max-w-[1500px]">
-      <div className="flex items-end gap-4 ">
-        <h2 className="px-2 text-3xl text-text-primary sm:px-0">
+    <div className="relative mx-auto flex h-[100vh] flex-col justify-center md:max-w-[1200px] 2xl:max-w-[1500px]">
+      <div className="flex items-end gap-4 px-2 sm:px-0">
+        <h2 className="text-3xl text-text-primary sm:px-0">
           {curRoundQuestions.length + "강"}
         </h2>
         <p className="text-2xl text-text-secondary">
@@ -179,7 +179,7 @@ export default function InGame(props: Props) {
           </p>
         </div>
       </div>
-      <div className="absolute bottom-32 hidden w-full grid-cols-2 gap-4 md:grid">
+      <div className="absolute bottom-[30vh] w-full grid-cols-2 gap-4 md:grid">
         <div>
           {isMounted && (
             <div
