@@ -1,204 +1,215 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import ReactPlayer from "react-player";
 
+import useInGame from "@/hooks/Game/WorldCup/useInGame";
 import PlayArrow from "../../../../public/icons/play_arrow.svg";
 import Pause from "../../../../public/icons/pause.svg";
 import ArrowDropUp from "../../../../public/icons/arrow_drop_up.svg";
-import { getWorldCups } from "@/api/client/worldCup";
-import { Worldcup } from "@/domains/worldCup";
 import { renameTo1080Webp } from "@/domains/noobprohacker";
+import { RoundOfNumber } from "@/hooks/Game/WorldCup/useSetting";
 
-export default function InGame() {
-  const [isWindow, setIsWindow] = useState<boolean>(false);
-  const [playLeftPlayer, setPlayLeftPlayer] = useState(false);
-  const [playRightPlayer, setPlayRightPlayer] = useState(false);
+type Props = {
+  roundOfNumber: RoundOfNumber;
+  endGame: () => void;
+};
 
-  const [index, setIndex] = useState(0);
-  const [arr, setArr] = useState<Worldcup[]>();
+export default function InGame(props: Props) {
+  const { roundOfNumber, endGame } = props;
 
-  const [isShow, setIsShow] = useState("");
-  const [isClickable, setIsClickable] = useState(true);
+  const {
+    isMounted,
+    index,
+    selectedPos,
+    onQustionClick,
+    curRoundQuestions,
+    player,
+    togglePlayer,
+  } = useInGame(roundOfNumber, endGame);
 
-  useEffect(() => {
-    setIsWindow(true);
-
-    getWorldCups().then((res) => setArr(res));
-  }, []);
-
-  if (!arr) return;
+  if (curRoundQuestions.length === 0) return;
 
   return (
-    <div className="relative mx-auto w-[1500px]">
-      <div className="flex items-end gap-4">
-        <h2 className="text-3xl text-text-primary">128강</h2>
-        <p className="text-2xl text-text-secondary">(1/3)</p>
+    <div className="relative mx-auto flex h-[100vh] flex-col justify-center sm:px-4 md:max-w-[1200px] 2xl:max-w-[1500px]">
+      <div className="flex items-end gap-4 ">
+        <h2 className="px-2 text-3xl text-text-primary sm:px-0">
+          {curRoundQuestions.length + "강"}
+        </h2>
+        <p className="text-2xl text-text-secondary">
+          {`(${index / 2 + 1}/${curRoundQuestions.length / 2})`}
+        </p>
       </div>
-      <div className="relative mt-4 flex gap-4 ">
+      <div
+        className={`relative mt-4 flex ${
+          selectedPos !== "" ? "gap-0" : "gap-2 md:gap-4"
+        }`}
+      >
         <div
           className={`relative flex-1 overflow-hidden hover:cursor-pointer [&>img]:duration-300 ${
-            isShow === "right" ? "flex-none" : "flex-1"
-          } ${isShow !== "" ? "duration-500" : "[&>img]:hover:scale-105"}
+            selectedPos !== "left"
+              ? "aspect-[1/1.3] md:aspect-square"
+              : "aspect-video"
+          } ${selectedPos === "right" ? "flex-none" : "flex-1"} ${
+            selectedPos !== "" ? "duration-500" : "[&>img]:hover:scale-105"
+          }
             }`}
-          style={{
-            aspectRatio: isShow !== "left" ? "1/1" : "16/9",
-          }}
-          onClick={() => {
-            if (!isClickable) return;
-
-            setIsShow("left");
-            setIsClickable(false);
-            setPlayLeftPlayer(false);
-            setPlayRightPlayer(false);
-
-            setTimeout(() => {
-              setIsShow("");
-              setIndex((prev) => prev + 2);
-            }, 1800);
-
-            setTimeout(() => {
-              setIsClickable(true);
-            }, 2000);
-          }}
+          onClick={() => onQustionClick("left", curRoundQuestions[index])}
         >
           <Image
             alt="왼쪽 월드컵 이미지"
             objectFit="cover"
             priority
             fill
-            src={renameTo1080Webp(arr[index].workInfo.image_url)}
+            sizes="1400px"
+            src={renameTo1080Webp(curRoundQuestions[index].workInfo.image_url)}
           />
 
-          {arr[index + 2] && (
+          {curRoundQuestions[index + 2] && (
             <Image
               fill
               style={{ display: "none" }}
               alt="preload 이미지"
               priority
-              src={renameTo1080Webp(arr[index + 2].workInfo.image_url)}
+              sizes="1400px"
+              src={renameTo1080Webp(
+                curRoundQuestions[index + 2].workInfo.image_url,
+              )}
             />
           )}
           <div
-            className="absolute bottom-4 left-[50%] flex w-max translate-x-[-50%] items-center gap-4 rounded-lg bg-[rgba(0,0,0,0.8)] px-4 py-2 text-[white] hover:cursor-auto"
+            className="absolute bottom-4 left-[50%] hidden w-max translate-x-[-50%] items-center gap-4 rounded-lg bg-[rgba(0,0,0,0.8)] px-4 py-2 text-[white] hover:cursor-auto md:flex"
             onClick={(e) => e.stopPropagation()}
           >
             <span
               className="peer hover:scale-105 hover:cursor-pointer [&>svg]:h-7 [&>svg]:w-7 [&>svg]:fill-[#ccc] hover:[&>svg]:fill-[white]"
-              onClick={() => {
-                setPlayLeftPlayer(!playLeftPlayer);
-              }}
+              onClick={() => togglePlayer("left")}
             >
-              {playLeftPlayer ? <Pause /> : <PlayArrow />}
+              {player.left ? <Pause /> : <PlayArrow />}
             </span>
             <div className=" invisible absolute -top-12 left-1 w-max rounded-md bg-[rgba(0,0,0,0.9)] px-2 py-2 text-sm peer-hover:visible [&>svg]:absolute [&>svg]:left-[3px] [&>svg]:top-4 [&>svg]:h-11 [&>svg]:w-11 [&>svg]:rotate-180 [&>svg]:fill-[rgba(0,0,0,0.9)]">
               <ArrowDropUp />
-              {playLeftPlayer ? "영상 숨기기" : "영상 재생하기"}
+              {player.left ? "영상 숨기기" : "영상 재생하기"}
             </div>
-            <p className="text-lg text-[#ccc]">{`제 ${arr[index].workInfo.episode}회 눕프핵`}</p>
+            <p className="text-lg text-[#ccc]">{`${
+              curRoundQuestions[index + 1].workInfo.episode
+            }회 : ${curRoundQuestions[index].workInfo.subject}`}</p>
             <p className="pb-[2px] text-lg">
-              {arr[index].workInfo.minecraft_id}
+              {curRoundQuestions[index].workInfo.minecraft_id}
             </p>
           </div>
         </div>
         <div
-          className={`relative ${isShow === "left" ? "flex-none" : "flex-1"} ${
-            isShow !== "" ? "duration-500" : "[&>img]:hover:scale-105"
-          }
+          className={`relative ${
+            selectedPos === "left" ? "flex-none" : "flex-1"
+          } ${selectedPos !== "" ? "duration-500" : "[&>img]:hover:scale-105"}
              overflow-hidden hover:cursor-pointer [&>img]:duration-500 [&>img]:hover:scale-105`}
           style={{
-            aspectRatio: isShow !== "right" ? "1/1" : "16/9",
+            aspectRatio: selectedPos !== "right" ? "1/1" : "16/9",
           }}
-          onClick={() => {
-            if (!isClickable) return;
-
-            setIsShow("right");
-            setIsClickable(false);
-            setPlayLeftPlayer(false);
-            setPlayRightPlayer(false);
-
-            setTimeout(() => {
-              setIsShow("");
-              setIndex((prev) => prev + 2);
-            }, 1800);
-
-            setTimeout(() => {
-              setIsClickable(true);
-            }, 2000);
-          }}
+          onClick={() => onQustionClick("right", curRoundQuestions[index + 1])}
         >
           <Image
             alt="오른쪽 월드컵 이미지"
             objectFit="cover"
             priority
+            sizes="1400px"
             fill
-            src={renameTo1080Webp(arr[index + 1].workInfo.image_url)}
+            src={renameTo1080Webp(
+              curRoundQuestions[index + 1].workInfo.image_url,
+            )}
           />
 
-          {arr[index + 3] && (
+          {curRoundQuestions[index + 3] && (
             <Image
               fill
               alt="preload 이미지"
               priority
+              sizes="1400px"
               style={{ display: "none" }}
-              src={renameTo1080Webp(arr[index + 3].workInfo.image_url)}
+              src={renameTo1080Webp(
+                curRoundQuestions[index + 3].workInfo.image_url,
+              )}
             />
           )}
           <div
-            className="absolute bottom-4 left-[50%] flex w-max translate-x-[-50%] items-center gap-4 rounded-lg bg-[rgba(0,0,0,0.8)] px-4 py-2 text-[white] hover:cursor-auto"
+            className="absolute bottom-4 left-[50%] hidden w-max translate-x-[-50%] items-center gap-4 rounded-lg bg-[rgba(0,0,0,0.8)] px-4 py-2 text-[white] hover:cursor-auto md:flex"
             onClick={(e) => e.stopPropagation()}
           >
             <span
               className="peer hover:scale-105 hover:cursor-pointer [&>svg]:h-7 [&>svg]:w-7 [&>svg]:fill-[#ccc] hover:[&>svg]:fill-[white]"
-              onClick={() => setPlayRightPlayer(!playRightPlayer)}
+              onClick={() => togglePlayer("right")}
             >
-              {playRightPlayer ? <Pause /> : <PlayArrow />}
+              {player.right ? <Pause /> : <PlayArrow />}
             </span>
             <div className=" invisible absolute -top-12 left-1 w-max rounded-md bg-[rgba(0,0,0,0.9)] px-2 py-2 text-sm peer-hover:visible [&>svg]:absolute [&>svg]:left-[3px] [&>svg]:top-4 [&>svg]:h-11 [&>svg]:w-11 [&>svg]:rotate-180 [&>svg]:fill-[rgba(0,0,0,0.9)]">
               <ArrowDropUp />
-              {playRightPlayer ? "영상 숨기기" : "영상 재생하기"}
+              {player.right ? "영상 숨기기" : "영상 재생하기"}
             </div>
-            <p className="text-lg text-[#ccc]">{`제 ${
-              arr[index + 1].workInfo.episode
-            }회 눕프핵`}</p>
+            <p className="text-lg text-[#ccc]">{`${
+              curRoundQuestions[index + 1].workInfo.episode
+            }회 : ${curRoundQuestions[index + 1].workInfo.subject}`}</p>
             <p className="pb-[2px] text-lg">
-              {arr[index + 1].workInfo.minecraft_id}
+              {curRoundQuestions[index + 1].workInfo.minecraft_id}
             </p>
           </div>
         </div>
       </div>
-      <div className="absolute bottom-32 grid w-full grid-cols-2 gap-4">
+      <div className="mt-4 grid grid-cols-2 gap-2 md:hidden">
+        <div
+          className={`bg-rgba(0,0,0,0.6) flex flex-col items-center justify-center text-text-primary ${
+            selectedPos === "right" ? "hidden" : ""
+          } ${selectedPos === "left" ? "col-span-2" : ""}`}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <p className="text-sm text-[#ccc]">{`${curRoundQuestions[index].workInfo.episode}회 : ${curRoundQuestions[index].workInfo.subject}`}</p>
+          <p className="pb-[2px] text-base">
+            {curRoundQuestions[index].workInfo.minecraft_id}
+          </p>
+        </div>
+        <div
+          className={`bg-rgba(0,0,0,0.6) flex flex-col  items-center justify-center text-text-primary  ${
+            selectedPos === "left" ? "hidden" : ""
+          } ${selectedPos === "right" ? "col-span-2" : ""}`}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <p className="text-sm text-[#ccc]">{`${
+            curRoundQuestions[index + 1].workInfo.episode
+          }회 : ${curRoundQuestions[index + 1].workInfo.subject}`}</p>
+          <p className="pb-[2px] text-base">
+            {curRoundQuestions[index + 1].workInfo.minecraft_id}
+          </p>
+        </div>
+      </div>
+      <div className="absolute bottom-32 hidden w-full grid-cols-2 gap-4 md:grid">
         <div>
-          {isWindow && (
+          {isMounted && (
             <div
               className={`${
-                playLeftPlayer ? "block" : "hidden"
+                player.left ? "block" : "hidden"
               } aspect-video w-full`}
             >
               <ReactPlayer
-                playing={playLeftPlayer}
+                playing={player.left}
                 width="100%"
                 height="100%"
                 controls
-                url={arr[index].workInfo.youtube_url}
+                url={curRoundQuestions[index].workInfo.youtube_url}
               />
             </div>
           )}
         </div>
         <div>
-          {isWindow && (
+          {isMounted && (
             <div
               className={`${
-                playRightPlayer ? "block" : "hidden"
+                player.right ? "block" : "hidden"
               } aspect-video w-full`}
             >
               <ReactPlayer
-                playing={playRightPlayer}
+                playing={player.right}
                 width="100%"
                 height="100%"
                 controls
-                url={arr[index + 1].workInfo.youtube_url}
+                url={curRoundQuestions[index + 1].workInfo.youtube_url}
               />
             </div>
           )}
