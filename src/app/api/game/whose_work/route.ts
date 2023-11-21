@@ -3,10 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import Architect from "@/models/architect";
 import connectMongo from "@/utils/connectMongo";
 import WhoseWork from "@/models/whoseWork";
-import {
-  Difficulty,
-  NumberOfArchitecture,
-} from "@/hooks/Game/WhoseWork/useSetting";
+import { Difficulty, NumberOfArchitecture } from "@/store/whoseWork";
 
 export async function GET(req: NextRequest, res: NextResponse) {
   try {
