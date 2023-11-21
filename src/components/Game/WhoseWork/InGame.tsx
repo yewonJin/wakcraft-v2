@@ -32,12 +32,15 @@ export default function InGame(props: Props) {
   } = useInGame(architects, questions, endGame);
 
   return (
-    <div className="mt-8">
+    <div className="mt-0 sm:mt-8">
       {index < questions.length && (
-        <div className={`relative mx-auto aspect-video max-w-[1200px]`}>
+        <div
+          className={`relative mx-auto aspect-square max-w-[1200px] md:aspect-video`}
+        >
           <Image
             alt="작품 이미지"
             priority
+            style={{ objectFit: "cover" }}
             sizes="1200px"
             fill
             src={renameTo1080Webp(questions[index]?.image_url)}
@@ -55,7 +58,7 @@ export default function InGame(props: Props) {
         </div>
       )}
       {showAnswer ? (
-        <div className="mx-auto flex h-[70px] w-[400px] items-center justify-center gap-2 pt-8 text-lg text-text-secondary">
+        <div className="mx-auto flex h-[70px] w-full items-center justify-center gap-2 pt-8 text-lg text-text-secondary sm:w-[400px]">
           <p className="text-base">정답 :</p>
           <p className="text-text-primary">
             {
@@ -94,7 +97,7 @@ export default function InGame(props: Props) {
               onKeyDown={handleKeyDown}
               onChange={handleInputChange}
               value={input}
-              className="h-[48px] w-[300px] border-2 border-background-tertiary bg-background-secondary pl-3 text-text-secondary outline-none"
+              className="h-[48px] w-[280px] border-2 border-background-tertiary bg-background-secondary pl-3 text-text-secondary outline-none sm:w-[300px]"
             />
             <SearchResult
               input={input}

@@ -19,14 +19,14 @@ export default function StartSetting(props: Props) {
   );
 
   return (
-    <div>
+    <div className="mx-auto flex flex-col xl:max-w-[1200px]">
       <h1 className={`text-3xl text-text-primary ${medium.className}`}>
         건축가 맞추기
       </h1>
       <p className="mt-4 text-base text-text-secondary">
         작품 이미지를 보고 누가 건축했는지 맞추는 게임
       </p>
-      <div className="mt-12 flex gap-16">
+      <div className="mt-12 flex flex-wrap gap-6  sm:gap-16">
         <div className="flex flex-col gap-4">
           <h2 className="text-xl text-text-primary">난이도</h2>
           <div className="relative flex gap-6">
@@ -115,13 +115,13 @@ export default function StartSetting(props: Props) {
             </button>
           </div>
         </div>
-        <button
-          className="mt-4 rounded-lg bg-background-secondary px-8 text-text-primary"
-          onClick={() => startGame()}
-        >
-          시작하기
-        </button>
       </div>
+      <button
+        className="mt-8 w-full rounded-lg bg-background-secondary px-8 py-4 text-text-primary sm:w-[300px]"
+        onClick={() => startGame()}
+      >
+        시작하기
+      </button>
       <ul className="mt-12 list-disc text-text-secondary">
         <h3 className="text-xl text-text-primary">읽어주세요</h3>
         <li className="ml-5 mt-4">
