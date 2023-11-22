@@ -94,6 +94,21 @@ export default function InGame(props: Props) {
               {curRoundQuestions[index].workInfo.minecraft_id}
             </p>
           </div>
+          {isMounted && (
+            <div
+              className={`${
+                player.left ? "block" : "hidden"
+              } absolute bottom-32 aspect-video w-full`}
+            >
+              <ReactPlayer
+                playing={player.left}
+                width="100%"
+                height="100%"
+                controls
+                url={curRoundQuestions[index].workInfo.youtube_url}
+              />
+            </div>
+          )}
         </div>
         <div
           className={`relative ${
@@ -149,6 +164,21 @@ export default function InGame(props: Props) {
               {curRoundQuestions[index + 1].workInfo.minecraft_id}
             </p>
           </div>
+          {isMounted && (
+            <div
+              className={`${
+                player.right ? "block" : "hidden"
+              } absolute bottom-32 aspect-video w-full`}
+            >
+              <ReactPlayer
+                playing={player.right}
+                width="100%"
+                height="100%"
+                controls
+                url={curRoundQuestions[index + 1].workInfo.youtube_url}
+              />
+            </div>
+          )}
         </div>
       </div>
       <div className="mt-4 grid grid-cols-2 gap-2 md:hidden">
@@ -175,42 +205,6 @@ export default function InGame(props: Props) {
           <p className="pb-[2px] text-base">
             {curRoundQuestions[index + 1].workInfo.minecraft_id}
           </p>
-        </div>
-      </div>
-      <div className="absolute bottom-[30vh] w-full grid-cols-2 gap-4 md:grid">
-        <div>
-          {isMounted && (
-            <div
-              className={`${
-                player.left ? "block" : "hidden"
-              } aspect-video w-full`}
-            >
-              <ReactPlayer
-                playing={player.left}
-                width="100%"
-                height="100%"
-                controls
-                url={curRoundQuestions[index].workInfo.youtube_url}
-              />
-            </div>
-          )}
-        </div>
-        <div>
-          {isMounted && (
-            <div
-              className={`${
-                player.right ? "block" : "hidden"
-              } aspect-video w-full`}
-            >
-              <ReactPlayer
-                playing={player.right}
-                width="100%"
-                height="100%"
-                controls
-                url={curRoundQuestions[index + 1].workInfo.youtube_url}
-              />
-            </div>
-          )}
         </div>
       </div>
     </div>
