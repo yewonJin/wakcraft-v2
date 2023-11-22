@@ -42,7 +42,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
       return NextResponse.json(convertToGameObject(res), { status: 200 });
     }
 
-    if (difficulty === "MEDIUM") {
+    if (difficulty === "HIGH") {
       const res = await Architect.findAll();
       return NextResponse.json(convertToGameObject(res), { status: 200 });
     }
