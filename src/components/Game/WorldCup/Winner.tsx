@@ -26,14 +26,16 @@ export default function Winner() {
       </div>
       <div className="mt-6 flex justify-center gap-4">
         <button
-          className="rounded-md bg-background-secondary px-3 py-2 text-text-secondary"
+          className="rounded-md bg-background-secondary px-3 py-2 text-text-secondary hover:bg-background-tertiary"
           onClick={() => location.reload()}
         >
           다시하기
         </button>
-        <button className="rounded-md bg-background-secondary px-3 py-2 text-text-secondary">
-          랭킹보기
-        </button>
+        <Link href={"/game/world_cup/ranking"}>
+          <button className="rounded-md bg-background-secondary px-3 py-2 text-text-secondary hover:bg-background-tertiary">
+            랭킹보기
+          </button>
+        </Link>
       </div>
       <div className="relative mx-auto mt-4 aspect-video xl:max-w-[1000px] 2xl:max-w-[1200px]">
         <Image

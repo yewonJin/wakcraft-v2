@@ -63,7 +63,7 @@ export default function TopNav() {
                   : "text-text-primary"
               }`}
             >
-              <Link href={"/game/whose_work"}>게임</Link>
+              <Link href={"/game"}>게임</Link>
             </h2>
           </div>
         </div>

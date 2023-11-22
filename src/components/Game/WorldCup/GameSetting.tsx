@@ -1,5 +1,6 @@
 import { medium } from "@/app/layout";
 import { RoundOfNumber } from "@/hooks/Game/WorldCup/useSetting";
+import Link from "next/link";
 import { Dispatch, SetStateAction } from "react";
 
 type Props = {
@@ -37,14 +38,16 @@ export default function GameSetting(props: Props) {
         </option>
       </select>
       <button
-        className=" ml-5 rounded-md bg-background-secondary px-3 py-2 text-text-primary"
+        className=" ml-5 rounded-md bg-background-secondary px-3 py-2 text-text-primary hover:bg-background-tertiary"
         onClick={() => startGame()}
       >
         시작
       </button>
-      <button className=" ml-5 rounded-md bg-background-secondary px-3 py-2 text-text-primary">
-        랭킹보기
-      </button>
+      <Link href={"/game/world_cup/ranking"}>
+        <button className="ml-5 rounded-md bg-background-secondary px-3 py-2 text-text-primary hover:bg-background-tertiary">
+          랭킹보기
+        </button>
+      </Link>
       <ul className="mt-12 list-disc text-text-secondary">
         <h3 className="text-xl text-text-primary">유의사항</h3>
         <li className="ml-5 mt-4">최근 눕프핵 작품을 우선적으로 진행합니다.</li>
