@@ -48,28 +48,33 @@ export default function ArchitectureList() {
         {worldCups.slice((page - 1) * 10, page * 10).map((worldCup, index) => (
           <div
             key={worldCup.workInfo.subject}
-            className="flex h-[90px] items-center gap-10 border-b-[1px] border-background-secondary px-6 text-text-secondary"
+            className="flex h-[90px] items-center gap-4 border-b-[1px] border-background-secondary px-3 text-text-secondary sm:gap-10 sm:px-6"
           >
             <p className="w-[30px] text-center text-text-primary">
               {index + 1 + (page - 1) * 10}
             </p>
-            <div className="relative h-full w-[150px]">
+            <div className="relative h-full w-[90px] sm:w-[150px]">
               <Image
                 alt="랭킹 이미지"
+                style={{ objectFit: "cover" }}
                 src={renameToWebp(worldCup.workInfo.image_url)}
                 fill
               />
             </div>
             <div className="flex flex-[2] flex-col gap-[6px]">
-              <p className="text-lg text-text-primary">
+              <p className="text-base text-text-primary sm:text-lg">
                 {worldCup.workInfo.subject}
               </p>
               <Link href={`/architect/${worldCup.workInfo.minecraft_id}`}>
-                <p>{worldCup.workInfo.minecraft_id}</p>
+                <p className="text-sm sm:text-base">
+                  {worldCup.workInfo.minecraft_id}
+                </p>
               </Link>
             </div>
-            <p className="flex-[2]">{getWinRatio(worldCup)}</p>
-            <div className="flex flex-1">
+            <p className="flex-1 text-sm sm:text-base md:flex-[2]">
+              {getWinRatio(worldCup)}
+            </p>
+            <div className="hidden flex-1 md:flex">
               <span
                 className="[&>svg]:h-6 [&>svg]:w-6 [&>svg]:fill-text-tertiary [&>svg]:hover:cursor-pointer [&>svg]:hover:fill-text-primary"
                 onClick={() => window.open(worldCup.workInfo.youtube_url)}
@@ -80,7 +85,7 @@ export default function ArchitectureList() {
           </div>
         ))}
       </div>
-      <ul className="relative mx-auto mt-12 flex w-[370px] justify-center gap-4">
+      <ul className="relative mx-auto mt-8 flex w-[370px] justify-center gap-4 sm:mt-12">
         <span
           className={`${
             page === 1 ? "hidden" : ""
