@@ -4,12 +4,8 @@ import { Game, Worldcup } from "@/domains/worldCup";
 
 interface WorldcupModel extends Model<Worldcup> {
   findAllByGameName: (game: Game) => Promise<Worldcup[]>;
-  updateYoutubeUrl: (subject: string, youtube_url: string) => Promise<void>;
-  updateArchitectId: (beforeId: string, afterId: string) => Promise<void>;
   increaseNumberOfWin: (subject: string) => Promise<void>;
-  increaseNumberOfParticipation: (subject: string) => Promise<void>;
-  resetNumberOfWin: () => Promise<void>;
-  resetNumberOfParticipation: () => Promise<void>;
+  increaseNumberOfParticipation: () => Promise<void>;
 }
 
 const worldcupSchema = new Schema<Worldcup, WorldcupModel>({
@@ -43,15 +39,33 @@ worldcupSchema.statics.increaseNumberOfWin = function (subject: string) {
   );
 };
 
-worldcupSchema.statics.increaseNumberOfParticipation = function (
-  subject: string,
-) {
-  return this.updateOne(
-    { "workInfo.subject": subject },
+worldcupSchema.statics.increaseNumberOfParticipation = function () {
+  return this.aggregate([
     {
-      $inc: { numberOfParticipation: 1 },
+      $sort: {
+        "workInfo.episode": -1,
+      },
     },
-  );
+    {
+      $limit: 128,
+    },
+  ])
+    .exec()
+    .then((results) => {
+      const updatePromises = results.map((doc) => {
+        // 각 문서에 대한 업데이트 수행
+        return this.updateOne(
+          { _id: doc._id }, // 유일한 필드를 사용하여 문서 식별
+          {
+            $inc: {
+              numberOfParticipation: 1,
+            },
+          },
+        );
+      });
+
+      return Promise.all(updatePromises);
+    });
 };
 
 const Worldcup =

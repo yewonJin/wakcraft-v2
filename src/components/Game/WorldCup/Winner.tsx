@@ -1,13 +1,30 @@
-import Image from "next/image";
+import { useEffect } from "react";
 import { useRecoilValue } from "recoil";
+import Image from "next/image";
+import Link from "next/link";
 
 import { winnerState } from "@/store/worldCup";
 import { medium } from "@/app/layout";
-import Link from "next/link";
 import { renameTo1080Webp } from "@/domains/noobprohacker";
+import { setWinner } from "@/api/client/worldCup";
+import { RoundOfNumber } from "@/hooks/Game/WorldCup/useSetting";
 
-export default function Winner() {
+type Props = {
+  roundOfNumber: RoundOfNumber;
+};
+
+export default function Winner(props: Props) {
+  const { roundOfNumber } = props;
   const winner = useRecoilValue(winnerState);
+
+  // TODO: React Query로 바꾸기
+  useEffect(() => {
+    if (!winner) return;
+
+    if (roundOfNumber !== 128) return;
+
+    setWinner(winner.workInfo.subject);
+  }, []);
 
   if (!winner) return;
 

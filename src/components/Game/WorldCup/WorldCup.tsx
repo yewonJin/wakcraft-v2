@@ -20,6 +20,6 @@ export default function WorldCup() {
   } else if (page === 1) {
     return <InGame roundOfNumber={roundOfNumber} endGame={endGame} />;
   } else if (page === 2) {
-    return <Winner />;
+    return <Winner roundOfNumber={roundOfNumber} />;
   }
 }

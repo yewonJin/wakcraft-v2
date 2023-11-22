@@ -89,9 +89,7 @@ export default function InGame(props: Props) {
               <ArrowDropUp />
               {player.left ? "영상 숨기기" : "영상 재생하기"}
             </div>
-            <p className="text-lg text-[#ccc]">{`${
-              curRoundQuestions[index + 1].workInfo.episode
-            }회 : ${curRoundQuestions[index].workInfo.subject}`}</p>
+            <p className="text-lg text-[#ccc]">{`${curRoundQuestions[index].workInfo.episode}회 : ${curRoundQuestions[index].workInfo.subject}`}</p>
             <p className="pb-[2px] text-lg">
               {curRoundQuestions[index].workInfo.minecraft_id}
             </p>
