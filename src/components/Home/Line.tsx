@@ -22,30 +22,40 @@ export default function Line(props: Props) {
 
   return (
     <Fragment>
-      <ul className="mt-8 flex gap-8">
-        <div className="h-full w-[3px] bg-[#888] "></div>
-        {lines.map((line, index) => (
-          <Fragment key={line.subject}>
-            <li
-              onClick={() => handleLineClick(index)}
-              className={`text-lg hover:cursor-pointer hover:text-[white] ${
-                curLine === index ? "text-[white]" : "text-[#999]"
-              }`}
-            >
-              {line.subject}
-            </li>
-            <div className="h-full w-[3px] bg-[#888]"></div>
-          </Fragment>
-        ))}
-      </ul>
+      <div
+        className={
+          "mt-8 overflow-y-hidden overflow-x-scroll pb-4 md:overflow-auto " +
+          "category-scrollbar"
+        }
+      >
+        <ul className="flex w-max flex-wrap gap-4 md:gap-8">
+          <div className="hidden h-[28px] w-[3px] bg-[#888] md:block"></div>
+          {lines.map((line, index) => (
+            <Fragment key={line.subject}>
+              <li
+                onClick={() => handleLineClick(index)}
+                className={`w-max rounded-md bg-[rgba(0,0,0,0.8)] p-2 px-3 text-base hover:cursor-pointer hover:text-[white] md:w-auto md:rounded-none md:bg-[rgba(0,0,0,0)] md:p-0 md:text-lg ${
+                  curLine === index ? "text-[white]" : "text-[#999]"
+                }`}
+              >
+                {line.subject}
+              </li>
+              <div className="hidden h-[28px] w-[3px] bg-[#888] md:block"></div>
+            </Fragment>
+          ))}
+        </ul>
+      </div>
       <div className="overflow-hidden">
         <div
-          className={`mt-16 flex gap-8 duration-500 `}
+          className={`mt-4 flex gap-8 duration-500 md:mt-10 `}
           style={{ transform: `translateX(calc(${-curLine} * (100% + 32px)))` }}
         >
           {lines.map((line, index) => {
             return (
-              <div key={line.subject} className="flex w-full gap-8">
+              <div
+                key={line.subject}
+                className="flex w-full flex-col justify-center gap-6 md:flex-row md:gap-8"
+              >
                 {lineTiers.map((lineTier) => {
                   return (
                     <div
@@ -56,7 +66,7 @@ export default function Line(props: Props) {
                         startInterval();
                       }}
                       key={line.line_details[lineTier].minecraft_id}
-                      className="group relative h-[45vh] max-h-[480px] w-[30vw] overflow-hidden hover:cursor-pointer [&>img]:duration-[500ms] [&>img]:hover:scale-105"
+                      className="group relative h-[60vw] max-h-[480px] w-[calc(100vw-32px)] overflow-hidden hover:cursor-pointer md:h-[45vh] md:w-[30vw] [&>img]:duration-[500ms] [&>img]:hover:scale-105"
                     >
                       <Image
                         alt="작품 이미지"

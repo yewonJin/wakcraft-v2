@@ -25,6 +25,8 @@ const useLineScroll = (lines: NoobProHacker["lineInfo"]) => {
   };
 
   useEffect(() => {
+    if (screen.width < 800) return;
+
     startInterval();
   }, []);
 

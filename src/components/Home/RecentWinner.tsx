@@ -19,8 +19,8 @@ export default function RecentWinner(props: Props) {
   const { noobprohackers } = props;
 
   return (
-    <div className="mx-auto max-w-[1200px] px-4 xl:px-0">
-      <h3 className={`${medium.className} mt-32 text-3xl text-text-primary`}>
+    <div className="mx-auto my-32 max-w-[1200px] px-4 xl:px-0 ">
+      <h3 className={`${medium.className} text-3xl text-text-primary`}>
         최근 우승 작품
       </h3>
       <div
@@ -60,7 +60,7 @@ export default function RecentWinner(props: Props) {
                 }}
               >
                 <span
-                  className="pt-[2px] hover:cursor-pointer [&>svg]:h-6 [&>svg]:w-6 [&>svg]:fill-[#aaa] [&>svg]:hover:fill-[white]"
+                  className="hidden pt-[2px] hover:cursor-pointer sm:block [&>svg]:h-6 [&>svg]:w-6 [&>svg]:fill-[#aaa] [&>svg]:hover:fill-[white]"
                   onClick={() =>
                     window.open(
                       getHackerWinnerLine(noobprohacker).line_details.hacker
@@ -70,11 +70,11 @@ export default function RecentWinner(props: Props) {
                 >
                   <LinkIcon />
                 </span>
-                <p className="text-lg">
+                <p className="text-base sm:text-lg">
                   <span className="text-[#ddd]">{`${noobprohacker.contentInfo.episode}회 : `}</span>
                   {getHackerWinnerLine(noobprohacker).subject}
                 </p>
-                <p className="text-[#ddd]">
+                <p className="text-sm text-[#ddd] sm:text-base">
                   {
                     getHackerWinnerLine(noobprohacker).line_details.hacker
                       .minecraft_id
@@ -110,7 +110,7 @@ export default function RecentWinner(props: Props) {
                 }}
               >
                 <span
-                  className="pt-[2px] hover:cursor-pointer [&>svg]:h-6 [&>svg]:w-6 [&>svg]:fill-[#aaa] [&>svg]:hover:fill-[white]"
+                  className="hidden pt-[2px] hover:cursor-pointer sm:block [&>svg]:h-6 [&>svg]:w-6 [&>svg]:fill-[#aaa] [&>svg]:hover:fill-[white]"
                   onClick={() =>
                     window.open(
                       getProWinnerLine(noobprohacker).line_details.pro
@@ -120,11 +120,11 @@ export default function RecentWinner(props: Props) {
                 >
                   <LinkIcon />
                 </span>
-                <p className="text-lg">
+                <p className="text-base sm:text-lg">
                   <span className="text-[#ddd]">{`${noobprohacker.contentInfo.episode}회 : `}</span>
                   {getProWinnerLine(noobprohacker).subject}
                 </p>
-                <p className="text-[#ddd]">
+                <p className="text-sm text-[#ddd] sm:text-base">
                   {
                     getProWinnerLine(noobprohacker).line_details.pro
                       .minecraft_id
