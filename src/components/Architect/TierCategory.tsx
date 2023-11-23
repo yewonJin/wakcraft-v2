@@ -10,7 +10,12 @@ export default function TierCategory(props: Props) {
 
   return (
     <div className="relative select-none">
-      <div className="mt-4 flex w-full overflow-hidden overflow-x-scroll rounded-lg bg-background-secondary md:overflow-x-auto">
+      <div
+        className={
+          "mt-4 flex w-full overflow-hidden overflow-x-scroll rounded-lg bg-background-secondary md:overflow-x-auto " +
+          "category-scrollbar"
+        }
+      >
         <ul className="flex items-center gap-3 px-2 py-3 text-sm text-text-primary md:flex-wrap md:gap-4 md:overflow-x-hidden  md:text-base">
           {Object.keys(backgroundColorVariants).map((tier) => (
             <li

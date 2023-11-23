@@ -40,7 +40,12 @@ export default function Carousel(props: Props) {
               </h2>
             </div>
           </div>
-          <div className="mt-8 flex aspect-video overflow-x-scroll  xl:aspect-auto xl:h-[50vh] xl:overflow-x-hidden">
+          <div
+            className={
+              "mt-8 flex aspect-video overflow-x-scroll xl:aspect-auto xl:h-[50vh] xl:overflow-x-hidden " +
+              "category-scrollbar"
+            }
+          >
             <div
               className="relative mx-auto flex max-w-[1200px] gap-14 duration-1000 ease-in-out"
               style={{
