@@ -12,7 +12,7 @@ export default function MainInfo(props: Props) {
   const { numberOfArchitectsByTier } = props;
 
   return (
-    <div className="mx-auto max-w-[1200px] pt-32">
+    <div className="mx-auto max-w-[1200px] px-4 pt-32 xl:px-0">
       <h2 className={`text-4xl text-text-primary ${medium.className}`}>
         눕프로해커
       </h2>
