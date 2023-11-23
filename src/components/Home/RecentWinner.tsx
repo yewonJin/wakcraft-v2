@@ -47,6 +47,7 @@ export default function RecentWinner(props: Props) {
             >
               <Image
                 alt="해커 우승 작품"
+                sizes="800px"
                 fill
                 src={renameTo1080Webp(
                   getHackerWinnerLine(noobprohacker).line_details.hacker
@@ -97,6 +98,7 @@ export default function RecentWinner(props: Props) {
             >
               <Image
                 alt="프로 우승 작품"
+                sizes="500px"
                 fill
                 style={{ objectFit: "cover" }}
                 src={renameTo1080Webp(

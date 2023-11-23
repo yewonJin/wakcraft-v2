@@ -71,6 +71,7 @@ export default function Line(props: Props) {
                       <Image
                         alt="작품 이미지"
                         priority
+                        sizes="800px"
                         style={{ objectFit: "cover" }}
                         fill
                         src={renameToWebp(
