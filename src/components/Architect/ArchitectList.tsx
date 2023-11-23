@@ -21,8 +21,11 @@ export default function ArchitectList(props: Props) {
             href={`/architect/${architect.minecraft_id}`}
           >
             <div className="flex w-full items-center justify-between gap-8 rounded-lg bg-background-secondary px-4 py-4 hover:cursor-pointer hover:bg-background-tertiary">
-              <div className="flex items-center gap-8  [&>span:first-child]:hidden sm:[&>span:first-child]:flex">
+              <div className="flex items-center gap-2 sm:gap-8 [&>span:first-child]:hidden sm:[&>span:first-child]:flex">
                 <TierBox tier={architect.curTier} />
+                <span className="mr-4 max-w-[70px] text-text-primary sm:hidden">
+                  {architect.curTier}
+                </span>
                 <div className="flex flex-col gap-3 md:gap-1">
                   <p className="text-text-primary md:text-xl">
                     {!input || architect.minecraftIdIndexArr.includes(-1)
