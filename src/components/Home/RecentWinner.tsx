@@ -32,6 +32,9 @@ export default function RecentWinner(props: Props) {
             key={noobprohacker.contentInfo.episode}
           >
             <div
+              style={{
+                boxShadow: "1px 1px 5px #222",
+              }}
               className={`relative aspect-video w-full rounded-3xl hover:cursor-pointer md:w-3/5 [&>img]:rounded-3xl`}
               onClick={() =>
                 window.open(
