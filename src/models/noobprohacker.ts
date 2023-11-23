@@ -4,6 +4,7 @@ import { Schema, Model, model, models } from "mongoose";
 interface NoobProHackerModel extends Model<NoobProHacker> {
   findAll: () => Promise<NoobProHacker[]>;
   findByEpisode: (episode: number) => Promise<NoobProHacker>;
+  findAllWithSweepLine: () => Promise<NoobProHacker[]>;
 }
 
 const noobprohackerSchema = new Schema({
@@ -52,6 +53,30 @@ noobprohackerSchema.statics.findAll = function () {
 
 noobprohackerSchema.statics.findByEpisode = function (episode: number) {
   return this.findOne({ "contentInfo.episode": episode });
+};
+
+noobprohackerSchema.statics.findAllWithSweepLine = function () {
+  return this.aggregate([
+    {
+      $match: {
+        lineInfo: {
+          $elemMatch: {
+            $and: [
+              {
+                "line_details.pro.ranking": 1,
+              },
+              {
+                "line_details.hacker.ranking": 1,
+              },
+              {
+                line_ranking: 1,
+              },
+            ],
+          },
+        },
+      },
+    },
+  ]);
 };
 
 const NoobProHacker =

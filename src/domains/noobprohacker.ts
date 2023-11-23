@@ -72,3 +72,32 @@ export const translateLineTiersToKorean = (
       return "해커";
   }
 };
+
+export type SweepLine = {
+  episode: number;
+  line_details: NoobProHacker["lineInfo"][0]["line_details"];
+  line_ranking: number;
+  subject: string;
+  youtube_url: string;
+};
+
+/** 눕프핵 정보를 싹슬이 라인 정보로 변환하는 함수 */
+export const convertToSweepLine = (arr: NoobProHacker[]): SweepLine[] => {
+  const sweepLineArr: SweepLine[] = [];
+
+  arr.forEach((item) => {
+    const winnerLine = item.lineInfo.filter(
+      (line) => line.line_ranking === 1,
+    )[0];
+
+    sweepLineArr.push({
+      episode: item.contentInfo.episode,
+      line_details: winnerLine.line_details,
+      line_ranking: winnerLine.line_ranking,
+      subject: winnerLine.subject,
+      youtube_url: winnerLine.youtube_url,
+    });
+  });
+
+  return sweepLineArr;
+};

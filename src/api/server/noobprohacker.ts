@@ -10,6 +10,15 @@ export const getAllNoobProHacker = async () => {
   return result;
 };
 
+export const getAllNoobprohackersWithSweepLine = async () => {
+  "use server";
+  connectMongo();
+
+  const result = await NoobProHacker.findAllWithSweepLine();
+
+  return result;
+};
+
 export const getNoobProHacker = async (episode: number) => {
   "use server";
   connectMongo();
