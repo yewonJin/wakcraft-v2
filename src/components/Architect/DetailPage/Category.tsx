@@ -13,7 +13,11 @@ export default function Category(props: Props) {
   const { curCategory, handleCategoryClick } = props;
 
   return (
-    <div className="mt-8 overflow-x-scroll md:overflow-x-auto">
+    <div
+      className={
+        "mt-8 overflow-x-scroll md:overflow-x-auto " + "category-scrollbar"
+      }
+    >
       <ul className="flex w-max items-center gap-3 pb-4 text-sm text-text-primary md:flex-wrap md:gap-4 md:overflow-x-hidden md:text-base">
         <li
           className={`w-max rounded-lg p-2 px-4 duration-300 hover:cursor-pointer ${
