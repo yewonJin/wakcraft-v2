@@ -44,6 +44,18 @@ export const renameTo1080Webp = (imageUrl: string) => {
   return `${splitName.slice(0, splitName.length - 1).join(".")}.1080p.webp`;
 };
 
+export const getHackerWinnerLine = (noobprohacker: NoobProHacker) => {
+  return noobprohacker.lineInfo.filter(
+    (line) => line.line_details.hacker.ranking === 1,
+  )[0];
+};
+
+export const getProWinnerLine = (noobprohacker: NoobProHacker) => {
+  return noobprohacker.lineInfo.filter(
+    (line) => line.line_details.pro.ranking === 1,
+  )[0];
+};
+
 export const getLineWinner = (lines: NoobProHacker["lineInfo"]) => {
   return lines.findIndex((line) => line.line_ranking === 1);
 };
