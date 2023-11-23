@@ -1,9 +1,9 @@
 import Main from "@/components/NoobProHacker/Main";
 import { medium } from "../layout";
-import { getAllNoobProHacker } from "@/api/server/noobprohacker";
+import { getAllNoobProHackers } from "@/api/server/noobprohacker";
 
 export default async function Page() {
-  const noobprohackers = await getAllNoobProHacker();
+  const noobprohackers = await getAllNoobProHackers();
 
   return (
     <div className="mx-auto max-w-[1200px]">

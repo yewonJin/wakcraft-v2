@@ -30,7 +30,7 @@ export default function DescriptionTier(props: Props) {
           {convertLineTierToTier("hacker").map((tier) => (
             <div
               key={tier}
-              className="group relative hidden sm:block [&>span]:h-[78px] [&>span]:w-[70px] [&>span]:select-none [&>span]:duration-100 [&>span]:hover:scale-105"
+              className="group relative hidden sm:block [&>span]:h-[78px] [&>span]:w-[70px]  [&>span]:select-none [&>span]:duration-100 [&>span]:hover:scale-105 md:[&>span]:h-[94px] md:[&>span]:w-[85px]"
             >
               <TierBox tier={tier} />
               <div className="-bottom-18 absolute z-10 hidden w-[300px] animate-fadeIn rounded-lg bg-background-secondary px-4 py-3 text-text-secondary duration-300 md:group-hover:block">
@@ -51,7 +51,7 @@ export default function DescriptionTier(props: Props) {
           {convertLineTierToTier("gukbap").map((tier) => (
             <div
               key={tier}
-              className="group relative hidden sm:block [&>span]:h-[78px] [&>span]:w-[70px] [&>span]:select-none [&>span]:duration-100 [&>span]:hover:scale-105"
+              className="group relative hidden sm:block [&>span]:h-[78px] [&>span]:w-[70px]  [&>span]:select-none [&>span]:duration-100 [&>span]:hover:scale-105 md:[&>span]:h-[94px] md:[&>span]:w-[85px]"
             >
               <TierBox tier={tier} />
               <div className="-bottom-18 absolute z-10 hidden w-[300px] animate-fadeIn rounded-lg bg-background-secondary px-4 py-3 text-text-secondary duration-300 md:group-hover:block">
@@ -72,10 +72,10 @@ export default function DescriptionTier(props: Props) {
           {convertLineTierToTier("pro").map((tier) => (
             <div
               key={tier}
-              className="group relative hidden sm:block [&>span]:h-[78px] [&>span]:w-[70px] [&>span]:select-none [&>span]:duration-100 [&>span]:hover:scale-105"
+              className="group relative hidden sm:block [&>span]:h-[78px] [&>span]:w-[70px]  [&>span]:select-none [&>span]:duration-100 [&>span]:hover:scale-105 md:[&>span]:h-[94px] md:[&>span]:w-[85px]"
             >
               <TierBox tier={tier} />
-              <div className="-bottom-18 absolute z-10 hidden w-[300px] animate-fadeIn rounded-lg bg-background-secondary px-4 py-3 text-text-secondary duration-300 md:group-hover:block">
+              <div className="-bottom-18 absolute z-10 hidden w-max animate-fadeIn rounded-lg bg-background-secondary px-4 py-3 text-text-secondary duration-300 md:group-hover:block">
                 {descriptionTier[tier as Tier]}
               </div>
             </div>
@@ -93,7 +93,7 @@ export default function DescriptionTier(props: Props) {
           {convertLineTierToTier("gyeruik").map((tier) => (
             <div
               key={tier}
-              className="group relative hidden sm:block [&>span]:h-[78px] [&>span]:w-[70px] [&>span]:select-none [&>span]:duration-100 [&>span]:hover:scale-105"
+              className="group relative hidden sm:block [&>span]:h-[78px] [&>span]:w-[70px]  [&>span]:select-none [&>span]:duration-100 [&>span]:hover:scale-105 md:[&>span]:h-[94px] md:[&>span]:w-[85px]"
             >
               <TierBox tier={tier} />
               <div className="-bottom-18 absolute z-10 hidden w-[300px] animate-fadeIn rounded-lg bg-background-secondary px-4 py-3 text-text-secondary duration-300 md:group-hover:block">
@@ -114,10 +114,10 @@ export default function DescriptionTier(props: Props) {
           {convertLineTierToTier("noob").map((tier) => (
             <div
               key={tier}
-              className="group relative hidden sm:block [&>span]:h-[78px] [&>span]:w-[70px] [&>span]:select-none [&>span]:duration-100 [&>span]:hover:scale-105"
+              className="group relative hidden sm:block [&>span]:h-[78px] [&>span]:w-[70px]  [&>span]:select-none [&>span]:duration-100 [&>span]:hover:scale-105 md:[&>span]:h-[94px] md:[&>span]:w-[85px]"
             >
               <TierBox tier={tier} />
-              <div className="-bottom-18 absolute z-10 hidden w-[300px] animate-fadeIn rounded-lg bg-background-secondary px-4 py-3 text-text-secondary duration-300 md:group-hover:block">
+              <div className="-bottom-18 absolute z-10 hidden w-max animate-fadeIn rounded-lg bg-background-secondary px-4 py-3 text-text-secondary duration-300 md:group-hover:block">
                 {descriptionTier[tier as Tier]}
               </div>
             </div>
@@ -132,7 +132,7 @@ export default function DescriptionTier(props: Props) {
               {numberOfArchitectsByTier.unranked}명
             </span>
           </div>
-          <div className="group relative hidden sm:block [&>span]:h-[78px] [&>span]:w-[70px] [&>span]:select-none [&>span]:duration-100 [&>span]:hover:scale-105">
+          <div className="group relative hidden sm:block [&>span]:h-[78px] [&>span]:w-[70px]  [&>span]:select-none [&>span]:duration-100 [&>span]:hover:scale-105 md:[&>span]:h-[94px] md:[&>span]:w-[85px]">
             <TierBox tier="언랭" />
             <div className="-bottom-18 absolute z-10 hidden w-max  animate-fadeIn rounded-lg bg-background-secondary px-4 py-3 text-text-secondary duration-300 md:group-hover:block">
               {descriptionTier["언랭"]}

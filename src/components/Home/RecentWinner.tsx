@@ -9,6 +9,7 @@ import {
   getHackerWinnerLine,
   getProWinnerLine,
   renameTo1080Webp,
+  renameToWebp,
 } from "@/domains/noobprohacker";
 
 type Props = {
@@ -49,7 +50,7 @@ export default function RecentWinner(props: Props) {
                 alt="해커 우승 작품"
                 sizes="800px"
                 fill
-                src={renameTo1080Webp(
+                src={renameToWebp(
                   getHackerWinnerLine(noobprohacker).line_details.hacker
                     .image_url,
                 )}
@@ -101,7 +102,7 @@ export default function RecentWinner(props: Props) {
                 sizes="500px"
                 fill
                 style={{ objectFit: "cover" }}
-                src={renameTo1080Webp(
+                src={renameToWebp(
                   getProWinnerLine(noobprohacker).line_details.pro.image_url,
                 )}
               />

@@ -1,7 +1,7 @@
 import NoobProHacker from "@/models/noobprohacker";
 import connectMongo from "@/utils/connectMongo";
 
-export const getAllNoobProHacker = async () => {
+export const getAllNoobProHackers = async () => {
   "use server";
   connectMongo();
 
