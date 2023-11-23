@@ -9,6 +9,7 @@ import {
   translateLineTiersToKorean,
 } from "@/domains/noobprohacker";
 import useLineScroll from "@/hooks/useLineScroll";
+import Link from "next/link";
 
 type Props = {
   lines: NoobProHacker["lineInfo"];
@@ -68,9 +69,13 @@ export default function Line(props: Props) {
                       />
                       <div className="invisible absolute bottom-2 z-10 flex w-full justify-center text-lg text-[white] hover:cursor-default group-hover:visible">
                         <div className="flex w-fit gap-4 rounded-2xl bg-[#121212] px-6 py-2 group-hover:animate-fadeIn">
-                          <p className="text-[#aaa] hover:cursor-pointer hover:text-[white]">
-                            {line.line_details[lineTier].minecraft_id}
-                          </p>
+                          <Link
+                            href={`/architect/${line.line_details[lineTier].minecraft_id}`}
+                          >
+                            <p className="text-[#aaa] hover:cursor-pointer hover:text-[white]">
+                              {line.line_details[lineTier].minecraft_id}
+                            </p>
+                          </Link>
                           <p>{translateLineTiersToKorean(lineTier)}</p>
                         </div>
                       </div>

@@ -6,7 +6,15 @@ import {
 import TierBox from "../common/TierBox";
 import { medium } from "@/app/layout";
 
-export default function DescriptionTier() {
+type Props = {
+  numberOfArchitectsByTier: {
+    [key: string]: number;
+  };
+};
+
+export default function DescriptionTier(props: Props) {
+  const { numberOfArchitectsByTier } = props;
+
   return (
     <div className="mt-24">
       <div className="mt-24 flex flex-wrap gap-16 gap-y-20">
@@ -16,7 +24,7 @@ export default function DescriptionTier() {
           >
             해커
             <span className="rounded-md bg-background-secondary p-1 px-2 text-lg">
-              14명
+              {numberOfArchitectsByTier.hacker}명
             </span>
           </div>
           {convertLineTierToTier("hacker").map((tier) => (
@@ -37,7 +45,7 @@ export default function DescriptionTier() {
           >
             국밥
             <span className="rounded-md bg-background-secondary p-1 px-2 text-lg">
-              18명
+              {numberOfArchitectsByTier.gukbap}명
             </span>
           </div>
           {convertLineTierToTier("gukbap").map((tier) => (
@@ -58,7 +66,7 @@ export default function DescriptionTier() {
           >
             프로
             <span className="rounded-md bg-background-secondary p-1 px-2 text-lg">
-              11명
+              {numberOfArchitectsByTier.pro}명
             </span>
           </div>
           {convertLineTierToTier("pro").map((tier) => (
@@ -79,7 +87,7 @@ export default function DescriptionTier() {
           >
             계륵
             <span className="rounded-md bg-background-secondary p-1 px-2 text-lg">
-              13명
+              {numberOfArchitectsByTier.gyeruik}명
             </span>
           </div>
           {convertLineTierToTier("gyeruik").map((tier) => (
@@ -100,7 +108,7 @@ export default function DescriptionTier() {
           >
             눕
             <span className="rounded-md bg-background-secondary p-1 px-2 text-lg">
-              14명
+              {numberOfArchitectsByTier.noob}명
             </span>
           </div>
           {convertLineTierToTier("noob").map((tier) => (
@@ -121,7 +129,7 @@ export default function DescriptionTier() {
           >
             언랭
             <span className="rounded-md bg-background-secondary p-1 px-2 text-lg">
-              185명
+              {numberOfArchitectsByTier.unranked}명
             </span>
           </div>
           <div className="group relative [&>span]:select-none [&>span]:duration-100 [&>span]:hover:scale-105 ">

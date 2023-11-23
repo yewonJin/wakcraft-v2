@@ -115,6 +115,35 @@ export const convertLineTierToTier = (tier: string) => {
   }
 };
 
+export const getNumberOfArchitectsByTier = (architects: Architect[]) => {
+  return {
+    hacker: architects.filter((item) => tierArray.indexOf(item.curTier) <= 2)
+      .length,
+    gukbap: architects.filter(
+      (item) =>
+        tierArray.indexOf(item.curTier) > 2 &&
+        tierArray.indexOf(item.curTier) <= 6,
+    ).length,
+    pro: architects.filter(
+      (item) =>
+        tierArray.indexOf(item.curTier) > 6 &&
+        tierArray.indexOf(item.curTier) <= 7,
+    ).length,
+    gyeruik: architects.filter(
+      (item) =>
+        tierArray.indexOf(item.curTier) > 7 &&
+        tierArray.indexOf(item.curTier) <= 9,
+    ).length,
+    noob: architects.filter(
+      (item) =>
+        tierArray.indexOf(item.curTier) > 9 &&
+        tierArray.indexOf(item.curTier) <= 13,
+    ).length,
+    unranked: architects.filter((item) => tierArray.indexOf(item.curTier) > 13)
+      .length,
+  };
+};
+
 type DescriptionTier = {
   [key in Tier]: string;
 };
