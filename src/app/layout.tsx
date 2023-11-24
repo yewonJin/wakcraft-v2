@@ -3,6 +3,7 @@ import { Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
 import TopNav from "@/components/TopNav";
 import RecoilProvider from "@/provider/RecoilProvider";
+import QueryProvider from "@/provider/QueryProvider";
 
 export const normal = Noto_Sans_KR({
   weight: "400",
@@ -35,8 +36,10 @@ export default function RootLayout({
       </head>
       <body className={normal.className}>
         <RecoilProvider>
-          <TopNav />
-          {children}
+          <QueryProvider>
+            <TopNav />
+            {children}
+          </QueryProvider>
         </RecoilProvider>
       </body>
     </html>
