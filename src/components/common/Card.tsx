@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import LinkIcon from "../../../public/icons/link.svg";
 import LinesSubject from "../NoobProHacker/LinesSubject";
+import CardYoutubeLink from "./CardYoutubeLink";
 
 type Props = {
   contentType: ContentType;
@@ -42,11 +42,11 @@ export default function Card(props: Props) {
           )}
         </div>
         <div className="justify-between px-4 pb-4 pt-6">
-          <div className="flex items-center gap-4 [&>svg]:h-6 [&>svg]:w-6 [&>svg]:rotate-[135deg] [&>svg]:fill-text-tertiary">
+          <div className="flex items-center gap-4  ">
             <h2 className="text-xl text-text-primary">
               {getTitle(contentType, subject, episode)}
             </h2>
-            <LinkIcon />
+            <CardYoutubeLink youtubeUrl={youtubeUrl} />
           </div>
           <LinesSubject
             episode={episode}
