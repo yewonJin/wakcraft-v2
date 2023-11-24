@@ -23,7 +23,7 @@ export default function DescriptionTier(props: Props) {
             className={`-top-12 left-0 flex w-max items-center gap-3 text-xl text-text-primary sm:absolute md:text-2xl ${medium.className}`}
           >
             해커
-            <span className="rounded-md bg-background-secondary p-1 px-2 text-base md:text-lg">
+            <span className="rounded-md bg-background-secondary p-1 px-2 text-base text-text-secondary md:text-lg">
               {numberOfArchitectsByTier.hacker}명
             </span>
           </div>
@@ -44,7 +44,7 @@ export default function DescriptionTier(props: Props) {
             className={`-top-12 left-0 flex w-max items-center gap-3 text-xl text-text-primary sm:absolute md:text-2xl ${medium.className}`}
           >
             국밥
-            <span className="rounded-md bg-background-secondary p-1 px-2 text-base md:text-lg">
+            <span className="rounded-md bg-background-secondary p-1 px-2 text-base text-text-secondary md:text-lg">
               {numberOfArchitectsByTier.gukbap}명
             </span>
           </div>
@@ -65,7 +65,7 @@ export default function DescriptionTier(props: Props) {
             className={`-top-12 left-0 flex w-max items-center gap-3 text-xl text-text-primary sm:absolute md:text-2xl ${medium.className}`}
           >
             프로
-            <span className="rounded-md bg-background-secondary p-1 px-2 text-base md:text-lg">
+            <span className="rounded-md bg-background-secondary p-1 px-2 text-base text-text-secondary md:text-lg">
               {numberOfArchitectsByTier.pro}명
             </span>
           </div>
@@ -86,7 +86,7 @@ export default function DescriptionTier(props: Props) {
             className={`-top-12 left-0 flex w-max items-center gap-3 text-xl text-text-primary sm:absolute md:text-2xl ${medium.className}`}
           >
             계륵
-            <span className="rounded-md bg-background-secondary p-1 px-2 text-base md:text-lg">
+            <span className="rounded-md bg-background-secondary p-1 px-2 text-base text-text-secondary md:text-lg">
               {numberOfArchitectsByTier.gyeruik}명
             </span>
           </div>
@@ -107,7 +107,7 @@ export default function DescriptionTier(props: Props) {
             className={`-top-12 left-0 flex w-max items-center gap-3 text-xl text-text-primary sm:absolute md:text-2xl ${medium.className}`}
           >
             눕
-            <span className="rounded-md bg-background-secondary p-1 px-2 text-base md:text-lg">
+            <span className="rounded-md bg-background-secondary p-1 px-2 text-base text-text-secondary md:text-lg">
               {numberOfArchitectsByTier.noob}명
             </span>
           </div>
@@ -128,7 +128,7 @@ export default function DescriptionTier(props: Props) {
             className={`-top-12 left-0 flex w-max items-center gap-3 text-xl text-text-primary sm:absolute md:text-2xl ${medium.className}`}
           >
             언랭
-            <span className="rounded-md bg-background-secondary p-1 px-2 text-base md:text-lg">
+            <span className="rounded-md bg-background-secondary p-1 px-2 text-base text-text-secondary md:text-lg">
               {numberOfArchitectsByTier.unranked}명
             </span>
           </div>

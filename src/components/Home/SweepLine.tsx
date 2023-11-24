@@ -18,7 +18,7 @@ export default function SweepLine(props: Props) {
   const [page, setPage] = useState(0);
 
   return (
-    <div className="mx-auto mb-32 mt-64 max-w-[1200px] px-4 xl:px-0 ">
+    <div className="mx-auto mt-20 max-w-[1200px] px-4 pb-10 xl:mt-48 xl:px-0 ">
       <div className="flex items-end gap-4">
         <h3
           className={`${medium.className} text-2xl text-text-primary sm:text-3xl`}
@@ -50,7 +50,7 @@ export default function SweepLine(props: Props) {
             {sweepLines[page].subject}
           </span>
         </div>
-        <div className="overflow-hidden">
+        <div className="overflow-hidden pb-5">
           <div
             className="mt-1 flex gap-8 duration-300"
             style={{ transform: `translateX(calc(${-page} * (100% + 32px)))` }}
@@ -60,7 +60,12 @@ export default function SweepLine(props: Props) {
                 key={sweepLine.subject}
                 className="mt-8 flex w-full flex-col gap-8 md:flex-row"
               >
-                <div className="group relative h-[60vw]  max-h-[480px] w-[calc(100vw-32px)] overflow-hidden rounded-2xl md:h-[40vh] md:w-[30vw] [&>img]:rounded-2xl [&>img]:duration-300 hover:[&>img]:scale-105">
+                <div
+                  className="group relative h-[60vw]  max-h-[480px] w-[calc(100vw-32px)] overflow-hidden rounded-2xl md:h-[40vh] md:w-[30vw] [&>img]:rounded-2xl [&>img]:duration-300 hover:[&>img]:scale-105"
+                  style={{
+                    boxShadow: "1px 1px 5px #222",
+                  }}
+                >
                   <Image
                     alt="싹쓸이 라인 이미지"
                     sizes="900px"
@@ -81,7 +86,12 @@ export default function SweepLine(props: Props) {
                     </div>
                   </div>
                 </div>
-                <div className="group relative h-[60vw]  max-h-[480px] w-[calc(100vw-32px)] overflow-hidden rounded-2xl md:h-[40vh] md:w-[30vw] [&>img]:rounded-2xl [&>img]:duration-300 hover:[&>img]:scale-105">
+                <div
+                  className="group relative h-[60vw]  max-h-[480px] w-[calc(100vw-32px)] overflow-hidden rounded-2xl md:h-[40vh] md:w-[30vw] [&>img]:rounded-2xl [&>img]:duration-300 hover:[&>img]:scale-105"
+                  style={{
+                    boxShadow: "1px 1px 5px #222",
+                  }}
+                >
                   <Image
                     alt="싹쓸이 라인 이미지"
                     sizes="900px"
@@ -102,7 +112,12 @@ export default function SweepLine(props: Props) {
                     </div>
                   </div>
                 </div>
-                <div className="group relative h-[60vw]  max-h-[480px] w-[calc(100vw-32px)] overflow-hidden rounded-2xl md:h-[40vh] md:w-[30vw] [&>img]:rounded-2xl [&>img]:duration-300 hover:[&>img]:scale-105">
+                <div
+                  className="group relative h-[60vw]  max-h-[480px] w-[calc(100vw-32px)] overflow-hidden rounded-2xl md:h-[40vh] md:w-[30vw] [&>img]:rounded-2xl [&>img]:duration-300 hover:[&>img]:scale-105"
+                  style={{
+                    boxShadow: "1px 1px 5px #222",
+                  }}
+                >
                   <Image
                     alt="싹쓸이 라인 이미지"
                     sizes="900px"
@@ -119,7 +134,7 @@ export default function SweepLine(props: Props) {
                           {sweepLine.line_details.hacker.minecraft_id}
                         </p>
                       </Link>
-                      <p>프로</p>
+                      <p>해커</p>
                     </div>
                   </div>
                 </div>
