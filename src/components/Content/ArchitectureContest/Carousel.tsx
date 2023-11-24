@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { produce } from "immer";
 
 import { renameTo1080Webp } from "@/domains/noobprohacker";
@@ -52,7 +53,7 @@ export default function Carousel(props: Props) {
                 return (
                   <div
                     key={line.minecraft_id}
-                    className="group relative aspect-video hover:cursor-pointer [&>img]:rounded-xl"
+                    className="group relative aspect-video [&>img]:rounded-xl"
                   >
                     <Image
                       sizes="1200px"
@@ -81,12 +82,14 @@ export default function Carousel(props: Props) {
                           {line.ranking}위
                         </p>
                       </div>
-                      <p
-                        className="text-sm text-[#ccc] hover:cursor-pointer hover:text-[white] md:text-base"
-                        style={{ textShadow: "1px 1px 1px #222" }}
-                      >
-                        {line.minecraft_id}
-                      </p>
+                      <Link href={`/architect/${line.minecraft_id}`}>
+                        <p
+                          className="text-sm text-[#ccc] hover:cursor-pointer hover:text-[white] md:text-base"
+                          style={{ textShadow: "1px 1px 1px #222" }}
+                        >
+                          {line.minecraft_id}
+                        </p>
+                      </Link>
                     </div>
                   </div>
                 );

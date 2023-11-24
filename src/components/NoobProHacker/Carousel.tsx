@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { produce } from "immer";
+import Link from "next/link";
 
 import { Line, translateLine } from "@/domains/architect";
 import { NoobProHacker, renameTo1080Webp } from "@/domains/noobprohacker";
@@ -92,12 +93,19 @@ export default function Carousel(props: Props) {
                           {item.line_details[line as Line].ranking}위
                         </p>
                       </div>
-                      <p
-                        className="ml-3 text-[#ccc] hover:cursor-pointer hover:text-[white]"
-                        style={{ textShadow: "1px 1px 1px #222" }}
+                      <Link
+                        href={`/architect/${
+                          item.line_details[line as Line].minecraft_id
+                        }`}
                       >
-                        {item.line_details[line as Line].minecraft_id}
-                      </p>
+                        <p
+                          className="ml-3 text-[#ccc] hover:cursor-pointer hover:text-[white]"
+                          style={{ textShadow: "1px 1px 1px #222" }}
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          {item.line_details[line as Line].minecraft_id}
+                        </p>
+                      </Link>
                     </div>
                     {item.line_details[line as Line].youtube_url !== "null" && (
                       <div className="invisible absolute bottom-6 right-6 flex items-center justify-center rounded-md bg-[rgba(0,0,0,0.8)] p-2 px-4 text-[white] group-hover:visible">

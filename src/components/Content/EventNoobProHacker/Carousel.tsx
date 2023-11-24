@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { produce } from "immer";
+import Link from "next/link";
 
 import ArrowDown from "../../../../public/icons/arrow_down.svg";
 import { EventNoobProHacker } from "@/domains/eventNoobProHacker";
@@ -115,9 +116,14 @@ export default function Carousel(props: Props) {
                       style={{ textShadow: "1px 1px 1px #222" }}
                     >
                       {line.minecraft_id.length < 2 ? (
-                        <span className="ml-3 hover:cursor-pointer hover:text-[white]">
-                          {line.minecraft_id}
-                        </span>
+                        <Link href={`/architect/${line.minecraft_id}`}>
+                          <span
+                            className="ml-3 hover:cursor-pointer hover:text-[white]"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            {line.minecraft_id}
+                          </span>
+                        </Link>
                       ) : (
                         <div
                           className="grid w-[100%] grid-cols-3 gap-3 gap-x-6 rounded-lg bg-[rgba(0,0,0,0.5)] p-2 py-4 text-center text-sm lg:p-4 lg:text-base"
@@ -128,20 +134,22 @@ export default function Carousel(props: Props) {
                           }}
                         >
                           {line.minecraft_id.map((item) => (
-                            <span
-                              className="text-[#ccc] hover:cursor-pointer hover:text-[white]"
-                              style={{ textShadow: "1px 1px 1px #222" }}
-                              key={item}
-                            >
-                              {item}
-                            </span>
+                            <Link key={item} href={`/architect/${item}`}>
+                              <span
+                                onClick={(e) => e.stopPropagation()}
+                                className="text-[#ccc] hover:cursor-pointer hover:text-[white]"
+                                style={{ textShadow: "1px 1px 1px #222" }}
+                              >
+                                {item}
+                              </span>
+                            </Link>
                           ))}
                         </div>
                       )}
                     </div>
                   </div>
                   {line.youtube_url !== "null" && (
-                    <div className="invisible absolute bottom-2 right-2 flex items-center justify-center rounded-md bg-[rgba(0,0,0,0.8)] p-1 px-2 text-sm text-[white] group-hover:visible peer-hover:invisible lg:bottom-6 lg:right-6 lg:p-2 lg:px-4 lg:text-lg">
+                    <div className="invisible absolute bottom-2 right-2 flex items-center justify-center rounded-md bg-[rgba(0,0,0,0.8)] p-1 px-2 text-sm text-[white] group-hover:visible peer-hover:invisible lg:bottom-6 lg:right-6 lg:p-2 lg:px-4 lg:text-base">
                       클릭하여 유튜브 링크 열기
                     </div>
                   )}

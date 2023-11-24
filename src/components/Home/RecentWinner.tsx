@@ -11,6 +11,7 @@ import {
   renameTo1080Webp,
   renameToWebp,
 } from "@/domains/noobprohacker";
+import Link from "next/link";
 
 type Props = {
   noobprohackers: NoobProHacker[];
@@ -20,8 +21,10 @@ export default function RecentWinner(props: Props) {
   const { noobprohackers } = props;
 
   return (
-    <div className="mx-auto my-32 max-w-[1200px] px-4 xl:px-0 ">
-      <h3 className={`${medium.className} text-3xl text-text-primary`}>
+    <div className="mx-auto mt-20 max-w-[1200px] px-4 xl:mt-48 xl:px-0 ">
+      <h3
+        className={`${medium.className} text-2xl text-text-primary sm:text-3xl`}
+      >
         최근 우승 작품
       </h3>
       <div
@@ -76,12 +79,19 @@ export default function RecentWinner(props: Props) {
                   <span className="text-[#ddd]">{`${noobprohacker.contentInfo.episode}회 : `}</span>
                   {getHackerWinnerLine(noobprohacker).subject}
                 </p>
-                <p className="text-sm text-[#ddd] sm:text-base">
-                  {
+                <Link
+                  href={`/architect/${
                     getHackerWinnerLine(noobprohacker).line_details.hacker
                       .minecraft_id
-                  }
-                </p>
+                  }`}
+                >
+                  <p className="text-sm text-[#aaa] hover:text-[white] sm:text-base">
+                    {
+                      getHackerWinnerLine(noobprohacker).line_details.hacker
+                        .minecraft_id
+                    }
+                  </p>
+                </Link>
               </div>
             </div>
             <div
@@ -127,12 +137,19 @@ export default function RecentWinner(props: Props) {
                   <span className="text-[#ddd]">{`${noobprohacker.contentInfo.episode}회 : `}</span>
                   {getProWinnerLine(noobprohacker).subject}
                 </p>
-                <p className="text-sm text-[#ddd] sm:text-base">
-                  {
+                <Link
+                  href={`/architect/${
                     getProWinnerLine(noobprohacker).line_details.pro
                       .minecraft_id
-                  }
-                </p>
+                  }`}
+                >
+                  <p className="text-sm text-[#aaa] hover:text-[white] sm:text-base">
+                    {
+                      getProWinnerLine(noobprohacker).line_details.pro
+                        .minecraft_id
+                    }
+                  </p>
+                </Link>
               </div>
             </div>
           </div>
