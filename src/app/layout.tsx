@@ -4,6 +4,7 @@ import "./globals.css";
 import TopNav from "@/components/TopNav";
 import RecoilProvider from "@/provider/RecoilProvider";
 import QueryProvider from "@/provider/QueryProvider";
+import { Toaster } from "react-hot-toast";
 
 export const normal = Noto_Sans_KR({
   weight: "400",
@@ -37,6 +38,7 @@ export default function RootLayout({
       <body className={normal.className}>
         <RecoilProvider>
           <QueryProvider>
+            <Toaster />
             <TopNav />
             {children}
           </QueryProvider>

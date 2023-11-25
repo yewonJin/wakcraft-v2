@@ -4,7 +4,7 @@ import useLogin from "@/hooks/useLogin";
 import { medium } from "../layout";
 
 export default function Page() {
-  const { status, input, mutation, handleInputChange } = useLogin();
+  const { input, mutation, handleInputChange } = useLogin();
 
   return (
     <div className="mx-auto flex max-w-[1200px] justify-center pt-40">
@@ -20,6 +20,7 @@ export default function Page() {
           }}
         >
           <input
+            autoComplete="on"
             value={input.id}
             id="id"
             name="id"
@@ -28,6 +29,7 @@ export default function Page() {
             placeholder="아이디"
           ></input>
           <input
+            autoComplete="on"
             value={input.password}
             id="password"
             name="password"

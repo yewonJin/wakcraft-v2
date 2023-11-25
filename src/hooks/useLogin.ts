@@ -4,9 +4,9 @@ import { useState, ChangeEvent } from "react";
 import { useMutation } from "react-query";
 
 import { login } from "@/api/client/login";
+import toast from "react-hot-toast";
 
 const useLogin = () => {
-  const [status, setStatus] = useState("");
   const router = useRouter();
 
   const [input, setInput] = useState({
@@ -19,20 +19,9 @@ const useLogin = () => {
     () => login(input.id, input.password),
     {
       onSuccess() {
-        setStatus("로그인 성공");
-
-        setTimeout(() => {
-          setStatus("");
-        }, 1500);
+        toast.success("로그인 성공");
 
         router.push("/admin");
-      },
-      onError(err: string) {
-        setStatus(err);
-
-        setTimeout(() => {
-          setStatus("");
-        }, 2500);
       },
     },
   );
@@ -49,7 +38,7 @@ const useLogin = () => {
     );
   };
 
-  return { status, input, mutation, handleInputChange };
+  return { input, mutation, handleInputChange };
 };
 
 export default useLogin;

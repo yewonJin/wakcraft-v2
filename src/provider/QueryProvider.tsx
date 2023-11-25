@@ -1,8 +1,19 @@
 "use client";
 
-import { QueryClientProvider, QueryClient } from "react-query";
+import { QueryClientProvider, QueryClient, QueryCache } from "react-query";
 
-const queryClient = new QueryClient();
+import { handleError } from "@/hooks/useApiError";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    mutations: {
+      onError: handleError,
+    },
+  },
+  queryCache: new QueryCache({
+    onError: handleError,
+  }),
+});
 
 export default function QueryProvider({
   children,

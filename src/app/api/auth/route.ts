@@ -1,25 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
 
-export async function POST(req: NextRequest, res: NextResponse) {
+export async function POST(req: NextRequest) {
   try {
     const { id, password } = await req.json();
 
     if (!id || !password) {
-      return NextResponse.json(
-        { message: "아이디 혹은 비밀번호를 입력해주세요" },
-        { status: 400 },
-      );
+      return NextResponse.json({ serviceCode: 1001 }, { status: 400 });
     }
 
     if (
       id !== process.env.ADMIN_ID ||
       password !== process.env.ADMIN_PASSWORD
     ) {
-      return NextResponse.json(
-        { message: "아이디 혹은 비밀번호가 일치하지 않습니다." },
-        { status: 400 },
-      );
+      return NextResponse.json({ serviceCode: 1002 }, { status: 400 });
     }
 
     const token = jwt.sign({ user: id }, process.env.JWT_SECRET as string, {
