@@ -16,7 +16,7 @@ type Input = {
   tier: Tier;
 };
 
-export const useArchitect = () => {
+export const useEditArchitect = () => {
   const { data: architects } = useQuery<Architect[]>(
     ["getAllArchitects"],
     getAllArchitects,
