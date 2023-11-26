@@ -5,6 +5,11 @@ import { PlacementTest } from "@/domains/placementTest";
 interface PlacementTestModel extends Model<PlacementTest> {
   findAll: () => Promise<PlacementTest[]>;
   findBySeason: (season: number) => Promise<PlacementTest>;
+  updateArchitectId: (
+    season: number,
+    beforeId: string,
+    afterId: string,
+  ) => Promise<void>;
 }
 
 const placementTestSchema = new Schema({
@@ -32,6 +37,28 @@ placementTestSchema.statics.findAll = function () {
 
 placementTestSchema.statics.findBySeason = function (season: number) {
   return this.findOne({ season: season });
+};
+
+placementTestSchema.statics.updateArchitectId = function (
+  season: number,
+  beforeId: string,
+  afterId: string,
+) {
+  return this.updateOne(
+    {
+      season: season,
+      participants: {
+        $elemMatch: {
+          minecraft_id: beforeId,
+        },
+      },
+    },
+    {
+      $set: {
+        "participants.$.minecraft_id": afterId,
+      },
+    },
+  );
 };
 
 const PlacementTest =

@@ -5,6 +5,12 @@ interface NoobProHackerModel extends Model<NoobProHacker> {
   findAll: () => Promise<NoobProHacker[]>;
   findByEpisode: (episode: number) => Promise<NoobProHacker>;
   findAllWithSweepLine: () => Promise<NoobProHacker[]>;
+  updateArchitectId: (
+    episode: number,
+    subject: string,
+    line: "noob" | "pro" | "hacker",
+    minecraft_id: string,
+  ) => Promise<void>;
 }
 
 const noobprohackerSchema = new Schema({
@@ -77,6 +83,31 @@ noobprohackerSchema.statics.findAllWithSweepLine = function () {
       },
     },
   ]);
+};
+
+noobprohackerSchema.statics.updateArchitectId = function (
+  episode: number,
+  subject: string,
+  tier: "noob" | "pro" | "hacker",
+  minecraft_id: string,
+) {
+  return this.updateOne(
+    {
+      "contentInfo.episode": episode,
+    },
+    {
+      $set: {
+        [`lineInfo.$[line].line_details.${tier}.minecraft_id`]: minecraft_id,
+      },
+    },
+    {
+      arrayFilters: [
+        {
+          "line.subject": subject,
+        },
+      ],
+    },
+  );
 };
 
 const NoobProHacker =

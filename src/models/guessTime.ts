@@ -5,6 +5,11 @@ import { GuessTime } from "@/domains/guessTime";
 interface GuessTimeModel extends Model<GuessTime> {
   findAll: () => Promise<GuessTime[]>;
   findByEpisode: (episode: number) => Promise<GuessTime>;
+  updateArchitectId: (
+    episode: number,
+    beforeId: string,
+    afterId: string,
+  ) => Promise<void>;
 }
 
 const guessTimeSchema = new Schema({
@@ -37,6 +42,28 @@ guessTimeSchema.statics.findAll = function () {
 
 guessTimeSchema.statics.findByEpisode = function (episode: number) {
   return this.findOne({ "contentInfo.episode": episode });
+};
+
+guessTimeSchema.statics.updateArchitectId = function (
+  episode: number,
+  beforeId: string,
+  afterId: string,
+) {
+  return this.updateOne(
+    {
+      "contentInfo.episode": episode,
+      participants: {
+        $elemMatch: {
+          minecraft_id: beforeId,
+        },
+      },
+    },
+    {
+      $set: {
+        "participants.$.minecraft_id": afterId,
+      },
+    },
+  );
 };
 
 const GuessTime =

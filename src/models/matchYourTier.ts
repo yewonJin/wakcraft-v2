@@ -4,6 +4,11 @@ import { Schema, Model, model, models } from "mongoose";
 interface MatchYourTierModel extends Model<MatchYourTier> {
   findAll: () => Promise<MatchYourTier[]>;
   findByEpisode: (episode: number) => Promise<MatchYourTier>;
+  updateArchitectId: (
+    episode: number,
+    beforeId: string,
+    afterId: string,
+  ) => Promise<void>;
 }
 
 const matchYourTierSchema = new Schema({
@@ -37,6 +42,28 @@ matchYourTierSchema.statics.findAll = function () {
 
 matchYourTierSchema.statics.findByEpisode = function (episode: number) {
   return this.findOne({ "contentInfo.episode": episode });
+};
+
+matchYourTierSchema.statics.updateArchitectId = function (
+  episode: number,
+  beforeId: string,
+  afterId: string,
+) {
+  return this.updateOne(
+    {
+      "contentInfo.episode": episode,
+      participants: {
+        $elemMatch: {
+          minecraft_id: beforeId,
+        },
+      },
+    },
+    {
+      $set: {
+        "participants.$.minecraft_id": afterId,
+      },
+    },
+  );
 };
 
 const MatchYourTier =

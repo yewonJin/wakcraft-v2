@@ -5,6 +5,18 @@ import { EventNoobProHacker } from "@/domains/eventNoobProHacker";
 interface EventNoobProHackerModel extends Model<EventNoobProHacker> {
   findAll: () => Promise<EventNoobProHacker[]>;
   findByEpisode: (episode: number) => Promise<EventNoobProHacker>;
+  pullArchitectId: (
+    episode: number,
+    subject: string,
+    line: string,
+    beforeId: string,
+  ) => Promise<void>;
+  pushArchitectId: (
+    episode: number,
+    subject: string,
+    line: string,
+    afterId: string,
+  ) => Promise<void>;
 }
 
 const eventNoobProHackerSchema = new Schema({
@@ -44,6 +56,62 @@ eventNoobProHackerSchema.statics.findAll = function () {
 
 eventNoobProHackerSchema.statics.findByEpisode = function (episode: number) {
   return this.findOne({ "contentInfo.episode": episode });
+};
+
+eventNoobProHackerSchema.statics.pullArchitectId = function (
+  episode: number,
+  subject: string,
+  line: string,
+  beforeId: string,
+) {
+  return this.updateOne(
+    {
+      "contentInfo.episode": episode,
+    },
+    {
+      $pull: {
+        "lineInfo.$[element].line_details.$[detail].minecraft_id": beforeId,
+      },
+    },
+    {
+      arrayFilters: [
+        {
+          "element.subject": subject,
+        },
+        {
+          "detail.line": line,
+        },
+      ],
+    },
+  );
+};
+
+eventNoobProHackerSchema.statics.pushArchitectId = function (
+  episode: number,
+  subject: string,
+  line: string,
+  afterId: string,
+) {
+  return this.updateOne(
+    {
+      "contentInfo.episode": episode,
+    },
+    {
+      $push: {
+        "lineInfo.$[element].line_details.$[detail].minecraft_id": afterId,
+      },
+    },
+    {
+      arrayFilters: [
+        {
+          "element.subject": subject,
+        },
+        {
+          "detail.line": line,
+        },
+      ],
+    },
+  );
 };
 
 const EventNoobProHacker =

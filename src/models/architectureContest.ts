@@ -4,6 +4,12 @@ import { Schema, Model, model, models } from "mongoose";
 interface ArchitectureContestModel extends Model<ArchitectureContest> {
   findAll: () => Promise<ArchitectureContest[]>;
   findByEpisode: (episode: number) => Promise<ArchitectureContest>;
+  updateArchitectId: (
+    episode: number,
+    line: string,
+    beforeId: string,
+    afterId: string,
+  ) => Promise<void>;
 }
 
 const architectureContestSchema = new Schema({
@@ -43,6 +49,31 @@ architectureContestSchema.statics.findAll = function () {
 
 architectureContestSchema.statics.findByEpisode = function (episode: number) {
   return this.findOne({ "contentInfo.episode": episode });
+};
+
+architectureContestSchema.statics.updateArchitectId = function (
+  episode: number,
+  line: string,
+  beforeId: string,
+  afterId: string,
+) {
+  return this.updateOne(
+    { "contentInfo.episode": episode },
+
+    {
+      $set: {
+        "lineInfo.$[element].line_details.$[detail].minecraft_id": afterId,
+      },
+    },
+    {
+      arrayFilters: [
+        {
+          "element.line": line,
+        },
+        { "detail.minecraft_id": beforeId },
+      ],
+    },
+  );
 };
 
 const ArchitectureContest =
