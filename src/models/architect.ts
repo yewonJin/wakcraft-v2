@@ -1,5 +1,6 @@
-import { Architect, convertLineTierToTier } from "@/domains/architect";
 import { Schema, Model, model, models } from "mongoose";
+
+import { Architect, Tier, convertLineTierToTier } from "@/domains/architect";
 
 // Define Schemes
 const architectSchema = new Schema<Architect>({
@@ -70,6 +71,12 @@ interface ArchitectModel extends Model<Architect> {
   findByTier: (
     tier: "hacker" | "gukbap" | "pro" | "gyeruik" | "noob",
   ) => Promise<Architect[]>;
+  updateMinecraftId: (beforeId: string, afterId: string) => Promise<Architect>;
+  updateWakzooId: (
+    minecraft_id: string,
+    wakzoo_id: string,
+  ) => Promise<Architect>;
+  updateCurTier: (minecraft_id: string, curTier: Tier) => Promise<Architect>;
 }
 
 architectSchema.statics.create = function (
@@ -91,6 +98,54 @@ architectSchema.statics.findByTier = function (
 
 architectSchema.statics.findByMinecraftId = function (minecraft_id: string) {
   return this.findOne({ minecraft_id });
+};
+
+architectSchema.statics.updateMinecraftId = function (
+  beforeId: string,
+  afterId: string,
+) {
+  return this.findOneAndUpdate(
+    {
+      minecraft_id: beforeId,
+    },
+    {
+      $set: {
+        minecraft_id: afterId,
+      },
+    },
+  );
+};
+
+architectSchema.statics.updateWakzooId = function (
+  minecraft_id: string,
+  wakzoo_id: string,
+) {
+  return this.findOneAndUpdate(
+    {
+      minecraft_id,
+    },
+    {
+      $set: {
+        wakzoo_id: wakzoo_id,
+      },
+    },
+  );
+};
+
+architectSchema.statics.updateCurTier = function (
+  minecraft_id: string,
+  curTier: Tier,
+) {
+  return this.findOneAndUpdate(
+    {
+      minecraft_id,
+    },
+    {
+      $set: {
+        curTier: curTier,
+      },
+    },
+  );
 };
 
 const Architect =
