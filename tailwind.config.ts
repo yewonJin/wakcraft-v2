@@ -10,7 +10,6 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        main: "url('/images/main-bg.webp')",
         noob: "url('/images/tier/noob.webp')",
         noob2: "url('/images/tier/noob2.webp')",
         gyeruik: "url('/images/tier/gyeruik.webp')",

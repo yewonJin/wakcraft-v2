@@ -11,7 +11,11 @@ import {
 import { getAllArchitects } from "@/api/server/architect";
 import { getNumberOfArchitectsByTier } from "@/domains/architect";
 import SweepLine from "./SweepLine";
-import { convertToSweepLine } from "@/domains/noobprohacker";
+import {
+  convertToSweepLine,
+  getHackerWinnerLine,
+  renameTo1080Webp,
+} from "@/domains/noobprohacker";
 
 export default async function Home() {
   const noobprohackers = await getAllNoobProHackers();
@@ -20,7 +24,12 @@ export default async function Home() {
 
   return (
     <Fragment>
-      <BackgroundImage />
+      <BackgroundImage
+        url={renameTo1080Webp(
+          getHackerWinnerLine(noobprohackers[noobprohackers.length - 1])
+            .line_details.hacker.image_url,
+        )}
+      />
       <RecentNoobProHacker
         noobprohacker={JSON.parse(JSON.stringify(noobprohackers.reverse()[0]))}
       />
