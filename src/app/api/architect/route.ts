@@ -33,6 +33,29 @@ export async function GET(req: NextRequest, res: NextResponse) {
   }
 }
 
+export async function POST(req: NextRequest) {
+  try {
+    const { minecraft_id, wakzoo_id } = await req.json();
+
+    connectMongo();
+
+    const currentSeason = (await PlacementTest.findAll()).length;
+
+    const architect = await Architect.create({
+      minecraft_id,
+      wakzoo_id,
+      curTier: "언랭",
+      tier: new Array(currentSeason).fill("언랭"),
+    });
+
+    return NextResponse.json(architect, { status: 200 });
+  } catch (e) {
+    return NextResponse.json(JSON.stringify({ message: "error" }), {
+      status: 400,
+    });
+  }
+}
+
 export async function PATCH(req: NextRequest) {
   try {
     const { beforeId, afterId, wakzoo_id, curTier } = await req.json();
