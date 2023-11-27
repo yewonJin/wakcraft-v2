@@ -101,3 +101,29 @@ export const convertToSweepLine = (arr: NoobProHacker[]): SweepLine[] => {
 
   return sweepLineArr;
 };
+
+export const lineInfoObject: NoobProHacker["lineInfo"][0] = {
+  subject: "",
+  youtube_url: "null",
+  line_ranking: 0,
+  line_details: {
+    noob: {
+      minecraft_id: "",
+      image_url: "",
+      youtube_url: "null",
+      ranking: 0,
+    },
+    pro: {
+      minecraft_id: "",
+      image_url: "",
+      youtube_url: "null",
+      ranking: 0,
+    },
+    hacker: {
+      minecraft_id: "",
+      image_url: "",
+      youtube_url: "null",
+      ranking: 0,
+    },
+  },
+};
