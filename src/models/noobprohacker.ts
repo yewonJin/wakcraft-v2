@@ -5,6 +5,7 @@ interface NoobProHackerModel extends Model<NoobProHacker> {
   findAll: () => Promise<NoobProHacker[]>;
   findByEpisode: (episode: number) => Promise<NoobProHacker>;
   findAllWithSweepLine: () => Promise<NoobProHacker[]>;
+  findLastestOne: () => Promise<NoobProHacker>;
   updateArchitectId: (
     episode: number,
     subject: string,
@@ -83,6 +84,10 @@ noobprohackerSchema.statics.findAllWithSweepLine = function () {
       },
     },
   ]);
+};
+
+noobprohackerSchema.statics.findLastestOne = function () {
+  return this.find({}).sort({ "contentInfo.episode": -1 }).limit(1);
 };
 
 noobprohackerSchema.statics.updateArchitectId = function (
