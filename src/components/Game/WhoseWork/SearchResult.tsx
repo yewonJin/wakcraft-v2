@@ -14,7 +14,7 @@ export default function SearchResult(props: Props) {
   return (
     <Fragment>
       {input && highlightedArchitects[0]?.wakzoo_id !== input && (
-        <div className="border-b-none absolute mx-auto flex max-h-[20vh] w-full flex-col overflow-y-scroll border-l-2 border-background-tertiary bg-background-secondary sm:max-h-[300px]">
+        <div className="border-b-none absolute z-10 mx-auto flex max-h-[20vh] w-full flex-col overflow-y-scroll border-l-2 border-background-tertiary bg-background-secondary sm:max-h-[300px]">
           {highlightedArchitects.map((architect) => (
             <div
               key={architect.minecraft_id}
