@@ -6,6 +6,11 @@ import { handleError } from "@/hooks/useApiError";
 
 const queryClient = new QueryClient({
   defaultOptions: {
+    queries: {
+      refetchOnMount: false,
+      refetchOnReconnect: false,
+      refetchOnWindowFocus: false,
+    },
     mutations: {
       onError: handleError,
     },
