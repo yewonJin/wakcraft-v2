@@ -12,7 +12,9 @@ export default function Page() {
         <li>
           <Link href={"/admin/architect"}> 건축가 추가 및 수정</Link>
         </li>
-        <li>눕프핵</li>
+        <li>
+          <Link href={"/admin/noobprohacker"}>눕프로해커 추가</Link>
+        </li>
       </ul>
     </div>
   );
