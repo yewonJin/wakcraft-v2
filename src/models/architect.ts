@@ -174,7 +174,7 @@ architectSchema.statics.pushNoobProHackerToPortfolio = function (
     return this.findOneAndUpdate(
       { minecraft_id },
       {
-        $push: { "portfolio.noobProHacker": payload },
+        $push: { "portfolio.noobprohacker": payload },
         $inc: {
           "noobprohackerInfo.win": 1,
           "noobprohackerInfo.proWin": 1,
