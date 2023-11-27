@@ -23,7 +23,7 @@ export default async function Page({ params }: { params: { id: string } }) {
             <p className="text-text-secondary">{architect.wakzoo_id}</p>
           </div>
         </div>
-        <Statistics noobProHackerInfo={architect.noobProHackerInfo} />
+        <Statistics noobProHackerInfo={architect.noobprohackerInfo} />
       </div>
       <Main architect={JSON.parse(JSON.stringify(architect))} />
     </Fragment>

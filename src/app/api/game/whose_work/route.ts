@@ -93,7 +93,7 @@ const convertToGameObject = (arr: Architect[]) => {
   return arr
     .map((architect) =>
       [
-        ...architect.portfolio.noobProHacker.map((item) => ({
+        ...architect.portfolio.noobprohacker.map((item) => ({
           image_url: item.image_url,
           minecraft_id: architect.minecraft_id,
         })),

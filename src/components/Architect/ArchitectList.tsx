@@ -69,7 +69,7 @@ export default function ArchitectList(props: Props) {
                   </p>
                 </div>
               </div>
-              <Statistics noobProHackerInfo={architect.noobProHackerInfo} />
+              <Statistics noobProHackerInfo={architect.noobprohackerInfo} />
             </div>
           </Link>
         );

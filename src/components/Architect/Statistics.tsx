@@ -1,7 +1,7 @@
 import { Architect } from "@/domains/architect";
 
 type Props = {
-  noobProHackerInfo: Architect["noobProHackerInfo"];
+  noobProHackerInfo: Architect["noobprohackerInfo"];
 };
 
 export default function Statistics(props: Props) {

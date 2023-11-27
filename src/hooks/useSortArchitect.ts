@@ -33,13 +33,13 @@ const useSortArchitect = (architects: Architect[]) => {
     }
 
     const result = architects.sort((a, b) => {
-      if (a.noobProHackerInfo[sortBy] === b.noobProHackerInfo[sortBy]) {
+      if (a.noobprohackerInfo[sortBy] === b.noobprohackerInfo[sortBy]) {
         return a["minecraft_id"].localeCompare(b["minecraft_id"]);
       }
 
       return isDescending
-        ? b.noobProHackerInfo[sortBy] - a.noobProHackerInfo[sortBy]
-        : a.noobProHackerInfo[sortBy] - b.noobProHackerInfo[sortBy];
+        ? b.noobprohackerInfo[sortBy] - a.noobprohackerInfo[sortBy]
+        : a.noobprohackerInfo[sortBy] - b.noobprohackerInfo[sortBy];
     });
 
     return result;

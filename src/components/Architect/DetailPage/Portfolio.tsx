@@ -44,7 +44,7 @@ export default function Portfolio(props: Props) {
 }
 
 const generateNoobProHackerArr = (architect: Architect) => {
-  return architect.portfolio.noobProHacker.map((noobprohacker) => (
+  return architect.portfolio.noobprohacker.map((noobprohacker) => (
     <div
       key={noobprohacker.episode + noobprohacker.subject}
       data-date={noobprohacker.date}

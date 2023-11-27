@@ -69,7 +69,7 @@ export async function PATCH(req: NextRequest) {
       const architct = await Architect.findByMinecraftId(beforeId);
 
       // 눕프로해커에서 마인크래프트 아이디 업데이트하기
-      architct.portfolio.noobProHacker.forEach(async (item) => {
+      architct.portfolio.noobprohacker.forEach(async (item) => {
         await NoobProHacker.updateArchitectId(
           item.episode,
           item.subject,

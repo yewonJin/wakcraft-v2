@@ -12,14 +12,14 @@ const architectSchema = new Schema<Architect>({
   wakzoo_id: { type: String, unique: true },
   tier: { type: [String] },
   curTier: { type: String },
-  noobProHackerInfo: {
+  noobprohackerInfo: {
     win: { type: Number, default: 0 },
     hackerWin: { type: Number, default: 0 },
     proWin: { type: Number, default: 0 },
     participation: { type: Number, default: 0 },
   },
   portfolio: {
-    noobProHacker: [
+    noobprohacker: [
       {
         episode: { type: Number, required: true },
         subject: { type: String, required: true },
@@ -79,7 +79,7 @@ interface ArchitectModel extends Model<Architect> {
   updateCurTier: (minecraft_id: string, curTier: Tier) => Promise<Architect>;
   pushNoobProHackerToPortfolio: (
     minecraft_id: string,
-    payload: Architect["portfolio"]["noobProHacker"][0],
+    payload: Architect["portfolio"]["noobprohacker"][0],
   ) => Promise<Architect>;
 }
 
@@ -154,17 +154,17 @@ architectSchema.statics.updateCurTier = function (
 
 architectSchema.statics.pushNoobProHackerToPortfolio = function (
   minecraft_id: string,
-  payload: Architect["portfolio"]["noobProHacker"][0],
+  payload: Architect["portfolio"]["noobprohacker"][0],
 ) {
   if (payload.ranking == 1 && payload.line === "hacker") {
     return this.findOneAndUpdate(
       { minecraft_id },
       {
-        $push: { "portfolio.noobProHacker": payload },
+        $push: { "portfolio.noobprohacker": payload },
         $inc: {
-          "noobProHackerInfo.win": 1,
-          "noobProHackerInfo.hackerWin": 1,
-          "noobProHackerInfo.participation": 1,
+          "noobprohackerInfo.win": 1,
+          "noobprohackerInfo.hackerWin": 1,
+          "noobprohackerInfo.participation": 1,
         },
       },
     );
@@ -176,9 +176,9 @@ architectSchema.statics.pushNoobProHackerToPortfolio = function (
       {
         $push: { "portfolio.noobProHacker": payload },
         $inc: {
-          "noobProHackerInfo.win": 1,
-          "noobProHackerInfo.proWin": 1,
-          "noobProHackerInfo.participation": 1,
+          "noobprohackerInfo.win": 1,
+          "noobprohackerInfo.proWin": 1,
+          "noobprohackerInfo.participation": 1,
         },
       },
     );
@@ -187,8 +187,8 @@ architectSchema.statics.pushNoobProHackerToPortfolio = function (
   return this.findOneAndUpdate(
     { minecraft_id },
     {
-      $push: { "portfolio.noobProHacker": payload },
-      $inc: { "noobProHackerInfo.participation": 1 },
+      $push: { "portfolio.noobprohacker": payload },
+      $inc: { "noobprohackerInfo.participation": 1 },
     },
   );
 };
