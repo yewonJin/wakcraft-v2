@@ -1,12 +1,26 @@
 import { Fragment } from "react";
 import { useRecoilValue } from "recoil";
+import { useMutation } from "react-query";
+import toast from "react-hot-toast";
 
-import { lineInfoState } from "@/store/noobprohacker";
+import { contentInfoState, lineInfoState } from "@/store/noobprohacker";
 import Line from "./Line";
 import LineDetail from "./LineDetail";
+import { addNoobProHacker } from "@/api/client/noobprohacker";
 
 export default function LineSetting() {
   const lineInfo = useRecoilValue(lineInfoState);
+  const contentInfo = useRecoilValue(contentInfoState);
+
+  const mutation = useMutation(
+    ["addNoobProHacker"],
+    () => addNoobProHacker({ contentInfo, lineInfo }),
+    {
+      onSuccess() {
+        toast.success("추가 성공");
+      },
+    },
+  );
 
   return (
     <Fragment>
@@ -22,6 +36,7 @@ export default function LineSetting() {
           </div>
         ))}
       </div>
+      <button onClick={() => mutation.mutate()}>추가</button>
     </Fragment>
   );
 }
