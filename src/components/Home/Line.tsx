@@ -5,6 +5,7 @@ import Image from "next/image";
 
 import {
   NoobProHacker,
+  renameTo1080Webp,
   renameToWebp,
   translateLineTiersToKorean,
 } from "@/domains/noobprohacker";
@@ -65,6 +66,13 @@ export default function Line(props: Props) {
                       onMouseOut={() => {
                         startInterval();
                       }}
+                      onClick={() =>
+                        window.open(
+                          renameTo1080Webp(
+                            line.line_details[lineTier].image_url,
+                          ),
+                        )
+                      }
                       key={line.line_details[lineTier].minecraft_id}
                       className="group relative h-[60vw] max-h-[480px] w-[calc(100vw-32px)] overflow-hidden hover:cursor-pointer md:h-[45vh] md:w-[30vw] [&>img]:duration-[500ms] [&>img]:hover:scale-105"
                     >
@@ -78,7 +86,10 @@ export default function Line(props: Props) {
                           line.line_details[lineTier].image_url,
                         )}
                       />
-                      <div className="invisible absolute bottom-2 z-10 flex w-full justify-center text-lg text-[white] hover:cursor-default group-hover:visible">
+                      <div
+                        onClick={(e) => e.stopPropagation()}
+                        className="invisible absolute bottom-2 z-10 flex w-full justify-center text-lg text-[white] hover:cursor-default group-hover:visible"
+                      >
                         <div className="flex w-fit gap-4 rounded-2xl bg-[#121212] px-6 py-2 group-hover:animate-fadeIn">
                           <Link
                             href={`/architect/${line.line_details[lineTier].minecraft_id}`}
