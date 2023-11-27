@@ -6,13 +6,13 @@ import { fuzzySearch, fuzzySearchRegExp } from "@/utils/lib";
 const useSearch = (architects: Architect[]) => {
   const [input, setInput] = useState("");
 
-  const handleInputChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
-  }, []);
+  };
 
-  const resetInput = useCallback(() => {
+  const resetInput = () => {
     setInput("");
-  }, []);
+  };
 
   const generateIndexOfMatches = useCallback(
     (id: string) => {

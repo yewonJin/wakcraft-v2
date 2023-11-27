@@ -5,7 +5,7 @@ import { Fragment } from "react";
 import { medium } from "@/app/layout";
 import SearchResult from "@/components/Game/WhoseWork/SearchResult";
 import { tierArray } from "@/domains/architect";
-import { useEditArchitect } from "@/hooks/Admin/useEditArchitect";
+import { useEditArchitect } from "@/hooks/Admin/Architect/useEditArchitect";
 
 export default function EditArchitect() {
   const {

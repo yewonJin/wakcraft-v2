@@ -1,13 +1,9 @@
-import { Fragment, useMemo, useState } from "react";
+import { Fragment } from "react";
 import Image from "next/image";
-import { produce } from "immer";
-import { useQuery } from "react-query";
-import { useRecoilState, useRecoilValue } from "recoil";
 
 import { medium } from "@/app/layout";
-import { contentInfoState, lineInfoState } from "@/store/noobprohacker";
-import { getImagesName } from "@/api/client/aws";
 import { renameToWebp } from "@/domains/noobprohacker";
+import { useImageSetting } from "@/hooks/Admin/NoobProHacker/useImageSetting";
 
 type Props = {
   moveToNextPage: () => void;
@@ -15,26 +11,7 @@ type Props = {
 
 export default function ImageSetting(props: Props) {
   const { moveToNextPage } = props;
-
-  const [images, setImages] = useState(new Array(5).fill(""));
-  const contentInfo = useRecoilValue(contentInfoState);
-  const [lineInfo, setLineInfo] = useRecoilState(lineInfoState);
-
-  const { data } = useQuery(["getImagesName"], () =>
-    getImagesName("noobProHacker", contentInfo.episode),
-  );
-
-  const subjects: string[] = useMemo(
-    () =>
-      Array.from(
-        new Set(data?.map((item: any) => item.split("/")[2].split("-")[0])),
-      ),
-    [data],
-  );
-
-  if (!data) return <div>loading...</div>;
-
-  const BaseURL = `https://wakcraft.s3.ap-northeast-2.amazonaws.com/noobProHacker/episode ${contentInfo.episode}/`;
+  const { lineInfo, subjects, handleSelectClick } = useImageSetting();
 
   return (
     <Fragment>
@@ -57,35 +34,7 @@ export default function ImageSetting(props: Props) {
             </h3>
             <div className="mt-4 flex gap-2 [&>input]:h-[40px] [&>input]:w-full">
               <select
-                value={images[index]}
-                onChange={(e) => {
-                  setImages(
-                    produce((draft) => {
-                      draft[index] = e.target.value;
-                    }),
-                  );
-
-                  setLineInfo(
-                    produce((draft) => {
-                      draft[index].line_details.noob.image_url =
-                        BaseURL + e.target.value + "-noob.png";
-                    }),
-                  );
-
-                  setLineInfo(
-                    produce((draft) => {
-                      draft[index].line_details.pro.image_url =
-                        BaseURL + e.target.value + "-pro.png";
-                    }),
-                  );
-
-                  setLineInfo(
-                    produce((draft) => {
-                      draft[index].line_details.hacker.image_url =
-                        BaseURL + e.target.value + "-hacker.png";
-                    }),
-                  );
-                }}
+                onChange={(e) => handleSelectClick(e, index)}
                 className="h-[40px] w-[200px] rounded-md border-2 border-background-tertiary bg-background-primary px-2 text-text-secondary outline-none"
               >
                 <option value="" selected disabled hidden>
@@ -105,10 +54,9 @@ export default function ImageSetting(props: Props) {
                   <Image
                     alt="눕 이미지"
                     fill
-                    src={
-                      lineInfo[index].line_details.noob.image_url &&
-                      renameToWebp(lineInfo[index].line_details.noob.image_url)
-                    }
+                    src={renameToWebp(
+                      lineInfo[index].line_details.noob.image_url,
+                    )}
                   />
                 )}
               </div>
@@ -120,10 +68,9 @@ export default function ImageSetting(props: Props) {
                   <Image
                     alt="프로 이미지"
                     fill
-                    src={
-                      lineInfo[index].line_details.pro.image_url &&
-                      renameToWebp(lineInfo[index].line_details.pro.image_url)
-                    }
+                    src={renameToWebp(
+                      lineInfo[index].line_details.pro.image_url,
+                    )}
                   />
                 )}
               </div>

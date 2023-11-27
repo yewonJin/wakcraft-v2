@@ -1,13 +1,7 @@
-import { ChangeEvent, Fragment, useEffect } from "react";
-import { useRecoilState } from "recoil";
-import { produce } from "immer";
-import { useQuery } from "react-query";
+import { Fragment } from "react";
 
-import { contentInfoState } from "@/store/noobprohacker";
+import { useContentSetting } from "@/hooks/Admin/NoobProHacker/useContentSetting";
 import Input from "@/components/common/Input";
-import { medium } from "@/app/layout";
-import { getLastestNoobProHacker } from "@/api/client/noobprohacker";
-import { NoobProHacker } from "@/domains/noobprohacker";
 
 type Props = {
   moveToNextPage: () => void;
@@ -15,49 +9,13 @@ type Props = {
 
 export default function ContentSetting(props: Props) {
   const { moveToNextPage } = props;
-  const [contentInfo, setContentInfo] = useRecoilState(contentInfoState);
-
-  const { data } = useQuery<NoobProHacker[]>(
-    ["getLastestNoobProHacker"],
-    getLastestNoobProHacker,
-  );
-
-  useEffect(() => {
-    if (!data) return;
-
-    setContentInfo((prev) => ({
-      ...prev,
-      episode: data[0].contentInfo.episode + 1,
-    }));
-  }, [data]);
+  const { contentInfo, data, handleInputChange } = useContentSetting();
 
   if (!data) return <div className="mt-16 text-text-primary">loading...</div>;
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.name === "episode") {
-      setContentInfo(
-        produce((draft) => {
-          draft["episode"] = parseInt(e.target.value);
-        }),
-      );
-
-      return;
-    }
-
-    setContentInfo(
-      produce((draft) => {
-        draft[e.target.name as "main_subject" | "date" | "youtube_url"] = e
-          .target.value as string;
-      }),
-    );
-  };
-
   return (
     <Fragment>
-      <h2 className={`${medium.className} mt-16 text-2xl text-text-primary`}>
-        컨텐츠 정보
-      </h2>
-      <div className="mt-8 flex gap-8 ">
+      <div className="mt-16 flex gap-8 ">
         <div className="flex flex-col gap-2 [&>input]:h-[40px] [&>input]:w-[48px]">
           <label className="text-lg text-text-secondary">회차</label>
           <Input

@@ -8,7 +8,7 @@ import {
   updateArchitect,
 } from "@/api/client/architect";
 import { Architect, Tier } from "@/domains/architect";
-import useSearch from "../useSearch";
+import useSearch from "../../useSearch";
 
 type Input = {
   minecraft_id: string;

@@ -2,11 +2,13 @@
 
 import { Fragment } from "react";
 import { useQuery } from "react-query";
+import { useRecoilState, useSetRecoilState } from "recoil";
 
 import { getAllArchitects } from "@/api/client/architect";
 import { medium } from "@/app/layout";
 import { Architect } from "@/domains/architect";
 import SearchArchitect from "./SearchArchitect";
+import { lineInfoState } from "@/store/noobprohacker";
 
 type Props = {
   moveToNextPage: () => void;
@@ -14,6 +16,7 @@ type Props = {
 
 export default function ArchitectSetting(props: Props) {
   const { moveToNextPage } = props;
+  const setLineInfo = useSetRecoilState(lineInfoState);
 
   const { data: architects } = useQuery<Architect[]>(
     ["getAllArchitects"],
@@ -24,10 +27,7 @@ export default function ArchitectSetting(props: Props) {
 
   return (
     <Fragment>
-      <h2 className={`${medium.className} mt-16 text-2xl text-text-primary`}>
-        건축가 입력
-      </h2>
-      <div className="mt-10 grid grid-cols-5 gap-8">
+      <div className="mt-16 grid grid-cols-5 gap-8">
         {new Array(5).fill(0).map((_, index) => (
           <div className="" key={index + 1 + "라인"}>
             <h3 className={`${medium.className} text-xl text-text-primary`}>
@@ -39,6 +39,7 @@ export default function ArchitectSetting(props: Props) {
                 index={index}
                 tier="noob"
                 architects={architects}
+                setLineInfo={setLineInfo}
               />
             </div>
             <div className="mt-8 flex flex-col gap-2 text-base text-text-secondary [&>input]:h-[40px] [&>input]:w-full">
@@ -47,6 +48,7 @@ export default function ArchitectSetting(props: Props) {
                 index={index}
                 tier="pro"
                 architects={architects}
+                setLineInfo={setLineInfo}
               />
             </div>
             <div className="mt-8 flex flex-col gap-2 text-base text-text-secondary [&>input]:h-[40px] [&>input]:w-full">
@@ -55,6 +57,7 @@ export default function ArchitectSetting(props: Props) {
                 index={index}
                 tier="hacker"
                 architects={architects}
+                setLineInfo={setLineInfo}
               />
             </div>
           </div>

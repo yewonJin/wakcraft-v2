@@ -3,7 +3,7 @@
 import { Fragment } from "react";
 
 import { medium } from "@/app/layout";
-import { useAddArchitect } from "@/hooks/Admin/useAddArchitect";
+import { useAddArchitect } from "@/hooks/Admin/Architect/useAddArchitect";
 
 export default function AddArchitect() {
   const { input, handleInputChange, handleButtonClick } = useAddArchitect();
