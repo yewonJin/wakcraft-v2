@@ -77,6 +77,10 @@ interface ArchitectModel extends Model<Architect> {
     wakzoo_id: string,
   ) => Promise<Architect>;
   updateCurTier: (minecraft_id: string, curTier: Tier) => Promise<Architect>;
+  pushNoobProHackerToPortfolio: (
+    minecraft_id: string,
+    payload: Architect["portfolio"]["noobProHacker"][0],
+  ) => Promise<Architect>;
 }
 
 architectSchema.statics.create = function (
@@ -144,6 +148,47 @@ architectSchema.statics.updateCurTier = function (
       $set: {
         curTier: curTier,
       },
+    },
+  );
+};
+
+architectSchema.statics.pushNoobProHackerToPortfolio = function (
+  minecraft_id: string,
+  payload: Architect["portfolio"]["noobProHacker"][0],
+) {
+  if (payload.ranking == 1 && payload.line === "hacker") {
+    return this.findOneAndUpdate(
+      { minecraft_id },
+      {
+        $push: { "portfolio.noobProHacker": payload },
+        $inc: {
+          "noobProHackerInfo.win": 1,
+          "noobProHackerInfo.hackerWin": 1,
+          "noobProHackerInfo.participation": 1,
+        },
+      },
+    );
+  }
+
+  if (payload.ranking == 1 && payload.line === "pro") {
+    return this.findOneAndUpdate(
+      { minecraft_id },
+      {
+        $push: { "portfolio.noobProHacker": payload },
+        $inc: {
+          "noobProHackerInfo.win": 1,
+          "noobProHackerInfo.proWin": 1,
+          "noobProHackerInfo.participation": 1,
+        },
+      },
+    );
+  }
+
+  return this.findOneAndUpdate(
+    { minecraft_id },
+    {
+      $push: { "portfolio.noobProHacker": payload },
+      $inc: { "noobProHackerInfo.participation": 1 },
     },
   );
 };

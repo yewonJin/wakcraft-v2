@@ -1,3 +1,5 @@
+import { NoobProHacker } from "./noobprohacker";
+
 export type Line = "noob" | "pro" | "hacker";
 
 export type Tier =
@@ -22,14 +24,14 @@ export type Architect = {
   wakzoo_id: string;
   tier: Tier[];
   curTier: Tier;
-  noobProHackerInfo: {
+  noobprohackerInfo: {
     win: number;
     hackerWin: number;
     proWin: number;
     participation: number;
   };
   portfolio: {
-    noobProHacker: {
+    noobprohacker: {
       episode: number;
       subject: string;
       line: Line;
@@ -164,4 +166,36 @@ export const descriptionTier: DescriptionTier = {
   "그냥 눕": `그냥 뉴비`,
   "진짜 눕": `진짜 마크를 처음 해 본 사람`,
   언랭: `현재 티어가 없는 사람`,
+};
+
+export const convertToPortfolio = (noobprohacker: NoobProHacker) => {
+  const { contentInfo, lineInfo } = noobprohacker;
+
+  const architectsInfo: ArchitectsInfo[] = [];
+
+  lineInfo.forEach((line) => {
+    for (const key in line.line_details) {
+      const portfolioInfo: Architect["portfolio"]["noobprohacker"][0] = {
+        episode: contentInfo.episode,
+        subject: line.subject,
+        line: key as Line,
+        image_url: line.line_details[key as Line].image_url,
+        youtube_url: line.line_details[key as Line].youtube_url,
+        ranking: line.line_details[key as Line].ranking,
+        date: new Date(contentInfo.date),
+      };
+
+      architectsInfo.push({
+        minecraft_id: line.line_details[key as Line].minecraft_id,
+        portfolio: portfolioInfo,
+      });
+    }
+  });
+
+  return architectsInfo;
+};
+
+type ArchitectsInfo = {
+  minecraft_id: string;
+  portfolio: Architect["portfolio"]["noobprohacker"][0];
 };
