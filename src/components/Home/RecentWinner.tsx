@@ -64,17 +64,20 @@ export default function RecentWinner(props: Props) {
                   e.stopPropagation();
                 }}
               >
-                <span
-                  className="hidden pt-[2px] hover:cursor-pointer sm:block [&>svg]:h-6 [&>svg]:w-6 [&>svg]:fill-[#aaa] [&>svg]:hover:fill-[white]"
-                  onClick={() =>
-                    window.open(
-                      getHackerWinnerLine(noobprohacker).line_details.hacker
-                        .youtube_url,
-                    )
-                  }
-                >
-                  <LinkIcon />
-                </span>
+                {getHackerWinnerLine(noobprohacker).line_details.hacker
+                  .youtube_url !== "null" && (
+                  <span
+                    className="hidden pt-[2px] hover:cursor-pointer sm:block [&>svg]:h-6 [&>svg]:w-6 [&>svg]:fill-[#aaa] [&>svg]:hover:fill-[white]"
+                    onClick={() =>
+                      window.open(
+                        getHackerWinnerLine(noobprohacker).line_details.hacker
+                          .youtube_url,
+                      )
+                    }
+                  >
+                    <LinkIcon />
+                  </span>
+                )}
                 <p className="text-base sm:text-lg">
                   <span className="text-[#ddd]">{`${noobprohacker.contentInfo.episode}회 : `}</span>
                   {getHackerWinnerLine(noobprohacker).subject}
@@ -122,17 +125,20 @@ export default function RecentWinner(props: Props) {
                   e.stopPropagation();
                 }}
               >
-                <span
-                  className="hidden pt-[2px] hover:cursor-pointer sm:block [&>svg]:h-6 [&>svg]:w-6 [&>svg]:fill-[#aaa] [&>svg]:hover:fill-[white]"
-                  onClick={() =>
-                    window.open(
-                      getProWinnerLine(noobprohacker).line_details.pro
-                        .youtube_url,
-                    )
-                  }
-                >
-                  <LinkIcon />
-                </span>
+                {getProWinnerLine(noobprohacker).line_details.pro
+                  .youtube_url !== "null" && (
+                  <span
+                    className="hidden pt-[2px] hover:cursor-pointer sm:block [&>svg]:h-6 [&>svg]:w-6 [&>svg]:fill-[#aaa] [&>svg]:hover:fill-[white]"
+                    onClick={() =>
+                      window.open(
+                        getProWinnerLine(noobprohacker).line_details.pro
+                          .youtube_url,
+                      )
+                    }
+                  >
+                    <LinkIcon />
+                  </span>
+                )}
                 <p className="text-base sm:text-lg">
                   <span className="text-[#ddd]">{`${noobprohacker.contentInfo.episode}회 : `}</span>
                   {getProWinnerLine(noobprohacker).subject}

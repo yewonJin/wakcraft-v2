@@ -19,7 +19,11 @@ export default function Main(props: Props) {
             episode={noobprohacker.contentInfo.episode}
             subject={noobprohacker.contentInfo.main_subject}
             linesSubject={noobprohacker.lineInfo.map((item) => item.subject)}
-            youtubeUrl={noobprohacker.contentInfo.youtube_url.split("/")[3]}
+            youtubeUrl={
+              noobprohacker.contentInfo.youtube_url !== "null"
+                ? noobprohacker.contentInfo.youtube_url.split("/")[3]
+                : "null"
+            }
             date={new Date(noobprohacker.contentInfo.date)}
           />
         ))}

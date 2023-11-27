@@ -75,12 +75,14 @@ export default function ArchitectureList() {
               {getWinRatio(worldCup)}
             </p>
             <div className="hidden flex-1 md:flex">
-              <span
-                className="[&>svg]:h-6 [&>svg]:w-6 [&>svg]:fill-text-tertiary [&>svg]:hover:cursor-pointer [&>svg]:hover:fill-text-primary"
-                onClick={() => window.open(worldCup.workInfo.youtube_url)}
-              >
-                <LinkIcon />
-              </span>
+              {worldCup.workInfo.youtube_url !== "null" && (
+                <span
+                  className="[&>svg]:h-6 [&>svg]:w-6 [&>svg]:fill-text-tertiary [&>svg]:hover:cursor-pointer [&>svg]:hover:fill-text-primary"
+                  onClick={() => window.open(worldCup.workInfo.youtube_url)}
+                >
+                  <LinkIcon />
+                </span>
+              )}
             </div>
           </div>
         ))}
