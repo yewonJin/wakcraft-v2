@@ -36,7 +36,10 @@ export const useArchitectSetting = (props: Props) => {
     if (input === "") return;
 
     if (e.key === "Tab") {
+      if (!highlightedArchitects[0]) return;
+
       setInput(highlightedArchitects[0].wakzoo_id);
+
       setLineInfo(
         produce((draft) => {
           draft[index].line_details[tier].minecraft_id =
@@ -48,6 +51,8 @@ export const useArchitectSetting = (props: Props) => {
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
+
+    if (!highlightedArchitects[0]) return;
 
     if (
       input === highlightedArchitects[0].minecraft_id ||
