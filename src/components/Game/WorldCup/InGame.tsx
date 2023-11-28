@@ -79,12 +79,14 @@ export default function InGame(props: Props) {
             className="absolute bottom-4 left-[50%] hidden w-max translate-x-[-50%] items-center gap-4 rounded-lg bg-[rgba(0,0,0,0.8)] px-4 py-2 text-[white] hover:cursor-auto md:flex"
             onClick={(e) => e.stopPropagation()}
           >
-            <span
-              className="peer hover:scale-105 hover:cursor-pointer [&>svg]:h-7 [&>svg]:w-7 [&>svg]:fill-[#ccc] hover:[&>svg]:fill-[white]"
-              onClick={() => togglePlayer("left")}
-            >
-              {player.left ? <Pause /> : <PlayArrow />}
-            </span>
+            {curRoundQuestions[index].workInfo.youtube_url !== "null" && (
+              <span
+                className="peer hover:scale-105 hover:cursor-pointer [&>svg]:h-7 [&>svg]:w-7 [&>svg]:fill-[#ccc] hover:[&>svg]:fill-[white]"
+                onClick={() => togglePlayer("left")}
+              >
+                {player.left ? <Pause /> : <PlayArrow />}
+              </span>
+            )}
             <div className=" invisible absolute -top-12 left-1 w-max rounded-md bg-[rgba(0,0,0,0.9)] px-2 py-2 text-sm peer-hover:visible [&>svg]:absolute [&>svg]:left-[3px] [&>svg]:top-4 [&>svg]:h-11 [&>svg]:w-11 [&>svg]:rotate-180 [&>svg]:fill-[rgba(0,0,0,0.9)]">
               <ArrowDropUp />
               {player.left ? "영상 숨기기" : "영상 재생하기"}
@@ -147,12 +149,14 @@ export default function InGame(props: Props) {
             className="absolute bottom-4 left-[50%] hidden w-max translate-x-[-50%] items-center gap-4 rounded-lg bg-[rgba(0,0,0,0.8)] px-4 py-2 text-[white] hover:cursor-auto md:flex"
             onClick={(e) => e.stopPropagation()}
           >
-            <span
-              className="peer hover:scale-105 hover:cursor-pointer [&>svg]:h-7 [&>svg]:w-7 [&>svg]:fill-[#ccc] hover:[&>svg]:fill-[white]"
-              onClick={() => togglePlayer("right")}
-            >
-              {player.right ? <Pause /> : <PlayArrow />}
-            </span>
+            {curRoundQuestions[index + 1].workInfo.youtube_url !== "null" && (
+              <span
+                className="peer hover:scale-105 hover:cursor-pointer [&>svg]:h-7 [&>svg]:w-7 [&>svg]:fill-[#ccc] hover:[&>svg]:fill-[white]"
+                onClick={() => togglePlayer("right")}
+              >
+                {player.right ? <Pause /> : <PlayArrow />}
+              </span>
+            )}
             <div className=" invisible absolute -top-12 left-1 w-max rounded-md bg-[rgba(0,0,0,0.9)] px-2 py-2 text-sm peer-hover:visible [&>svg]:absolute [&>svg]:left-[3px] [&>svg]:top-4 [&>svg]:h-11 [&>svg]:w-11 [&>svg]:rotate-180 [&>svg]:fill-[rgba(0,0,0,0.9)]">
               <ArrowDropUp />
               {player.right ? "영상 숨기기" : "영상 재생하기"}
