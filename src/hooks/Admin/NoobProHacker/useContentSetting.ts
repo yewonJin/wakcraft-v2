@@ -1,27 +1,28 @@
-import { getLastestNoobProHacker } from "@/api/client/noobprohacker";
-import { NoobProHacker } from "@/domains/noobprohacker";
-import { contentInfoState } from "@/store/noobprohacker";
-import { produce } from "immer";
 import { ChangeEvent, useEffect } from "react";
 import { useQuery } from "react-query";
 import { useRecoilState } from "recoil";
+import { produce } from "immer";
+
+import { getLastestNoobProHacker } from "@/api/client/noobprohacker";
+import { NoobProHacker } from "@/domains/noobprohacker";
+import { contentInfoState } from "@/store/noobprohacker";
 
 export const useContentSetting = () => {
   const [contentInfo, setContentInfo] = useRecoilState(contentInfoState);
 
-  const { data } = useQuery<NoobProHacker[]>(
+  const { data: lastestEpisode } = useQuery<NoobProHacker[]>(
     ["getLastestNoobProHacker"],
     getLastestNoobProHacker,
   );
 
   useEffect(() => {
-    if (!data) return;
+    if (!lastestEpisode) return;
 
     setContentInfo((prev) => ({
       ...prev,
-      episode: data[0].contentInfo.episode + 1,
+      episode: lastestEpisode[0].contentInfo.episode + 1,
     }));
-  }, [data]);
+  }, [lastestEpisode]);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.name === "episode") {
@@ -42,5 +43,5 @@ export const useContentSetting = () => {
     );
   };
 
-  return { contentInfo, data, handleInputChange };
+  return { contentInfo, handleInputChange };
 };

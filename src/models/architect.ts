@@ -81,6 +81,11 @@ interface ArchitectModel extends Model<Architect> {
     minecraft_id: string,
     payload: Architect["portfolio"]["noobprohacker"][0],
   ) => Promise<Architect>;
+  updateNoobProHackerYoutubeURL: (
+    minecraft_id: string,
+    episode: number,
+    youtube_url: string,
+  ) => Promise<Architect>;
 }
 
 architectSchema.statics.create = function (
@@ -189,6 +194,26 @@ architectSchema.statics.pushNoobProHackerToPortfolio = function (
     {
       $push: { "portfolio.noobprohacker": payload },
       $inc: { "noobprohackerInfo.participation": 1 },
+    },
+  );
+};
+
+architectSchema.statics.updateNoobProHackerYoutubeURL = function (
+  minecraft_id: string,
+  episode: number,
+  youtube_url: string,
+) {
+  return this.findOneAndUpdate(
+    { minecraft_id },
+    {
+      $set: { "portfolio.noobprohacker.$[elem].youtube_url": youtube_url },
+    },
+    {
+      arrayFilters: [
+        {
+          "elem.episode": episode,
+        },
+      ],
     },
   );
 };

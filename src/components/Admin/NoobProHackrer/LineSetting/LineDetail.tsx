@@ -52,9 +52,11 @@ export default function LineDetail(props: Props) {
             type="text"
             value={lineInfo[index].line_details[tier].youtube_url}
             handleInputChange={(e) =>
-              produce((draft) => {
-                draft[index].line_details[tier].youtube_url = e.target.value;
-              })
+              setLineInfo(
+                produce((draft) => {
+                  draft[index].line_details[tier].youtube_url = e.target.value;
+                }),
+              )
             }
           />
         </div>

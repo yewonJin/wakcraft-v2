@@ -1,20 +1,38 @@
-import { addNoobProHacker } from "@/api/client/noobprohacker";
+import { useRecoilValue } from "recoil";
+import { useMutation } from "react-query";
+import toast from "react-hot-toast";
+
+import {
+  addNoobProHacker,
+  editNoobProHacker,
+} from "@/api/client/noobprohacker";
 import { NoobProHacker } from "@/domains/noobprohacker";
 import { contentInfoState, lineInfoState } from "@/store/noobprohacker";
-import toast from "react-hot-toast";
-import { useMutation } from "react-query";
-import { useRecoilValue } from "recoil";
 
-export const useLineSetting = () => {
+type Props = {
+  isEdit?: boolean;
+};
+
+export const useLineSetting = (props: Props) => {
   const lineInfo = useRecoilValue(lineInfoState);
   const contentInfo = useRecoilValue(contentInfoState);
 
-  const mutation = useMutation(
+  const addMutation = useMutation(
     ["addNoobProHacker"],
     () => addNoobProHacker({ contentInfo, lineInfo }),
     {
       onSuccess() {
         toast.success("추가 성공");
+      },
+    },
+  );
+
+  const editMutation = useMutation(
+    ["editNoobProHacker"],
+    () => editNoobProHacker({ contentInfo, lineInfo }),
+    {
+      onSuccess() {
+        toast.success("수정 성공");
       },
     },
   );
@@ -34,7 +52,7 @@ export const useLineSetting = () => {
       return;
     }
 
-    mutation.mutate();
+    props.isEdit ? editMutation.mutate() : addMutation.mutate();
   };
 
   return { lineInfo, handleSubmit };

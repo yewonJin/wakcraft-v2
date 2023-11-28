@@ -9,13 +9,11 @@ type Props = {
 
 export default function ContentSetting(props: Props) {
   const { moveToNextPage } = props;
-  const { contentInfo, data, handleInputChange } = useContentSetting();
-
-  if (!data) return <div className="mt-16 text-text-primary">loading...</div>;
+  const { contentInfo, handleInputChange } = useContentSetting();
 
   return (
     <Fragment>
-      <div className="mt-16 flex gap-8 ">
+      <div className="mt-12 flex gap-8 ">
         <div className="flex flex-col gap-2 [&>input]:h-[40px] [&>input]:w-[48px]">
           <label className="text-lg text-text-secondary">회차</label>
           <Input

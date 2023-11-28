@@ -6,6 +6,8 @@ interface NoobProHackerModel extends Model<NoobProHacker> {
   findByEpisode: (episode: number) => Promise<NoobProHacker>;
   findAllWithSweepLine: () => Promise<NoobProHacker[]>;
   findLastestOne: () => Promise<NoobProHacker>;
+  findOneThatHasNotURL: () => Promise<NoobProHacker[]>;
+  updateNoobProHacker: (payload: NoobProHacker) => Promise<NoobProHacker>;
   updateArchitectId: (
     episode: number,
     subject: string,
@@ -88,6 +90,32 @@ noobprohackerSchema.statics.findAllWithSweepLine = function () {
 
 noobprohackerSchema.statics.findLastestOne = function () {
   return this.find({}).sort({ "contentInfo.episode": -1 }).limit(1);
+};
+
+noobprohackerSchema.statics.findOneThatHasNotURL = function () {
+  return this.aggregate([
+    {
+      $match: {
+        "contentInfo.youtube_url": "null",
+      },
+    },
+  ]);
+};
+
+noobprohackerSchema.statics.updateNoobProHacker = function (
+  payload: NoobProHacker,
+) {
+  return this.updateOne(
+    {
+      "contentInfo.episode": payload.contentInfo.episode,
+    },
+    {
+      $set: {
+        contentInfo: payload.contentInfo,
+        lineInfo: payload.lineInfo,
+      },
+    },
+  );
 };
 
 noobprohackerSchema.statics.updateArchitectId = function (
