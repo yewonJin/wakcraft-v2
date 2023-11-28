@@ -7,6 +7,7 @@ export type PlacementTest = {
   participants: {
     minecraft_id: string;
     image_url: string;
+    order: number;
     placement_result: Tier;
   }[];
 };
