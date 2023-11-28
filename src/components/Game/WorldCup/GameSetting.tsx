@@ -23,7 +23,7 @@ export default function GameSetting(props: Props) {
         onChange={(e) =>
           setRoundOfNumber(parseInt(e.target.value) as RoundOfNumber)
         }
-        className="mt-8 rounded-md border-none px-2 py-1 outline-none"
+        className="mt-8 rounded-md border-none bg-background-secondary px-2 py-1 text-text-secondary outline-none"
       >
         <option key={128} value={128}>
           128강
