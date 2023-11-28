@@ -1,9 +1,9 @@
+import { Dispatch, Fragment, SetStateAction } from "react";
 import { useQuery } from "react-query";
+import { useRecoilState, useSetRecoilState } from "recoil";
 
 import { getNoobProHackersWithoutURL } from "@/api/client/noobprohacker";
 import { NoobProHacker } from "@/domains/noobprohacker";
-import { Dispatch, Fragment, SetStateAction } from "react";
-import { useRecoilState, useSetRecoilState } from "recoil";
 import { contentInfoState, lineInfoState } from "@/store/noobprohacker";
 import LineSetting from "./LineSetting/LineSetting";
 import Input from "@/components/common/Input";

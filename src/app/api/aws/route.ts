@@ -1,3 +1,6 @@
+import { NextRequest, NextResponse } from "next/server";
+import { ListObjectsCommand } from "@aws-sdk/client-s3";
+
 import {
   Content,
   hideFolder,
@@ -5,8 +8,6 @@ import {
   listObjectsBucketParams,
   s3,
 } from "@/utils/aws";
-import { ListObjectsCommand } from "@aws-sdk/client-s3";
-import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);

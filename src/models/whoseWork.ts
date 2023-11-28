@@ -1,10 +1,7 @@
 import { Schema, Model, model, models } from "mongoose";
 
 import { WhoseWork } from "@/domains/whoseWork";
-import {
-  Difficulty,
-  NumberOfArchitecture,
-} from "@/hooks/Game/WhoseWork/useSetting";
+import { Difficulty, NumberOfArchitecture } from "@/store/whoseWork";
 
 const whoseWorkSchema = new Schema<WhoseWork>({
   difficulty: String,

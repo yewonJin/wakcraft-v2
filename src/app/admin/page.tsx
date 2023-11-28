@@ -17,6 +17,9 @@ export default function Page() {
         <li>
           <Link href={"/admin/noobprohacker"}>눕프로해커</Link>
         </li>
+        <li>
+          <Link href={"/admin/placement_test"}>배치고사</Link>
+        </li>
       </ul>
     </div>
   );
