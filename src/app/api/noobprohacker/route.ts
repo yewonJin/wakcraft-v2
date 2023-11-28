@@ -4,6 +4,7 @@ import NoobProHacker from "@/models/noobprohacker";
 import connectMongo from "@/utils/connectMongo";
 import { convertToNoobProHackerPortfolio } from "@/domains/architect";
 import Architect from "@/models/architect";
+import Worldcup from "@/models/worldCup";
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
@@ -74,6 +75,19 @@ export async function PUT(req: NextRequest) {
   }
 
   try {
+    const hackers = body.lineInfo.map((item) => ({
+      subject: item.subject,
+      youtube_url: item.line_details.hacker.youtube_url,
+    }));
+
+    hackers.forEach(async (hacker) => {
+      await Worldcup.updateYoutubeURL(hacker.subject, hacker.youtube_url);
+    });
+  } catch (e) {
+    return NextResponse.json("월드컵 유튜브 링크 수정 실패", { status: 400 });
+  }
+
+  try {
     const architects = convertToNoobProHackerPortfolio(body);
 
     architects.forEach(async (architect) => {
@@ -86,6 +100,6 @@ export async function PUT(req: NextRequest) {
 
     return NextResponse.json("성공", { status: 200 });
   } catch (e) {
-    return NextResponse.json("유튜브 링크 수정 실패", { status: 400 });
+    return NextResponse.json("건축가 유튜브 링크 수정 실패", { status: 400 });
   }
 }

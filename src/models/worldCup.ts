@@ -6,6 +6,7 @@ interface WorldcupModel extends Model<Worldcup> {
   findAllByGameName: (game: Game) => Promise<Worldcup[]>;
   increaseNumberOfWin: (subject: string) => Promise<void>;
   increaseNumberOfParticipation: () => Promise<void>;
+  updateYoutubeURL: (subject: string, youtube_url: string) => Promise<void>;
 }
 
 const worldcupSchema = new Schema<Worldcup, WorldcupModel>({
@@ -66,6 +67,18 @@ worldcupSchema.statics.increaseNumberOfParticipation = function () {
 
       return Promise.all(updatePromises);
     });
+};
+
+worldcupSchema.statics.updateYoutubeURL = function (
+  subject: string,
+  youtube_url: string,
+) {
+  return this.updateOne(
+    { "workInfo.subject": subject },
+    {
+      $set: { "workInfo.youtube_url": youtube_url },
+    },
+  );
 };
 
 const Worldcup =
