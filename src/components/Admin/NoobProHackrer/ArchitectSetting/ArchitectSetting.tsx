@@ -1,27 +1,17 @@
 "use client";
 
 import { Fragment } from "react";
-import { useQuery } from "react-query";
-import { useRecoilState, useSetRecoilState } from "recoil";
 
-import { getAllArchitects } from "@/api/client/architect";
 import { medium } from "@/app/layout";
-import { Architect } from "@/domains/architect";
 import SearchArchitect from "./SearchArchitect";
-import { lineInfoState } from "@/store/noobprohacker";
+import { useArchitectSetting } from "@/hooks/Admin/NoobProHacker/useArchitectSetting";
 
 type Props = {
   moveToNextPage: () => void;
 };
 
 export default function ArchitectSetting(props: Props) {
-  const { moveToNextPage } = props;
-  const setLineInfo = useSetRecoilState(lineInfoState);
-
-  const { data: architects } = useQuery<Architect[]>(
-    ["getAllArchitects"],
-    getAllArchitects,
-  );
+  const { architects, setLineInfo, handleSubmit } = useArchitectSetting(props);
 
   if (!architects) return;
 
@@ -65,7 +55,7 @@ export default function ArchitectSetting(props: Props) {
       </div>
       <button
         className="mt-8 border-2 border-background-tertiary px-4 py-2 text-text-secondary"
-        onClick={() => moveToNextPage()}
+        onClick={handleSubmit}
       >
         제출
       </button>

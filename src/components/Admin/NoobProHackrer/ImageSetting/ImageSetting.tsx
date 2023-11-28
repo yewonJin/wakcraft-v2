@@ -10,8 +10,8 @@ type Props = {
 };
 
 export default function ImageSetting(props: Props) {
-  const { moveToNextPage } = props;
-  const { lineInfo, subjects, handleSelectClick } = useImageSetting();
+  const { lineInfo, subjects, handleSelectClick, handleSubmit } =
+    useImageSetting(props);
 
   return (
     <Fragment>
@@ -21,7 +21,7 @@ export default function ImageSetting(props: Props) {
         </h2>
         <button
           className="border-2 border-background-tertiary px-3 py-2 text-text-secondary"
-          onClick={() => moveToNextPage()}
+          onClick={handleSubmit}
         >
           제출
         </button>

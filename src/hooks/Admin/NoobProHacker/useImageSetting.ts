@@ -5,8 +5,14 @@ import { produce } from "immer";
 
 import { getImagesName } from "@/api/client/aws";
 import { contentInfoState, lineInfoState } from "@/store/noobprohacker";
+import toast from "react-hot-toast";
+import { NoobProHacker } from "@/domains/noobprohacker";
 
-export const useImageSetting = () => {
+type Props = {
+  moveToNextPage: () => void;
+};
+
+export const useImageSetting = (props: Props) => {
   const contentInfo = useRecoilValue(contentInfoState);
   const [lineInfo, setLineInfo] = useRecoilState(lineInfoState);
 
@@ -25,6 +31,15 @@ export const useImageSetting = () => {
   );
 
   const BaseURL = `https://wakcraft.s3.ap-northeast-2.amazonaws.com/noobProHacker/episode ${contentInfo.episode}/`;
+
+  const handleSubmit = () => {
+    if (!validateImage(lineInfo)) {
+      toast.error("이미지를 모두 채워주세요");
+      return;
+    }
+
+    props.moveToNextPage();
+  };
 
   const handleSelectClick = (
     e: ChangeEvent<HTMLSelectElement>,
@@ -52,5 +67,17 @@ export const useImageSetting = () => {
     );
   };
 
-  return { lineInfo, subjects, handleSelectClick };
+  return { lineInfo, subjects, handleSelectClick, handleSubmit };
+};
+
+const validateImage = (lineInfo: NoobProHacker["lineInfo"]) => {
+  return lineInfo
+    .map((line) =>
+      Object.keys(line.line_details).map(
+        (tier) =>
+          line.line_details[tier as "noob" | "pro" | "hacker"].image_url !== "",
+      ),
+    )
+    .flat()
+    .every((item) => item);
 };

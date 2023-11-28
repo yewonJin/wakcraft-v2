@@ -5,7 +5,7 @@ import SearchResult from "@/components/Game/WhoseWork/SearchResult";
 import Input from "@/components/common/Input";
 import { Architect } from "@/domains/architect";
 import { NoobProHacker } from "@/domains/noobprohacker";
-import { useArchitectSetting } from "@/hooks/Admin/NoobProHacker/useArchitectSetting";
+import { useSearchArchitect } from "@/hooks/Admin/NoobProHacker/useSearchArchitect";
 
 type Props = {
   index: number;
@@ -21,7 +21,7 @@ function SearchArchitect(props: Props) {
     highlightedArchitects,
     handleInputChange,
     handleKeyDown,
-  } = useArchitectSetting(props);
+  } = useSearchArchitect(props);
 
   return (
     <div

@@ -1,78 +1,68 @@
-import { ChangeEvent, KeyboardEvent, useEffect } from "react";
-import { SetterOrUpdater } from "recoil";
-import { produce } from "immer";
+import { useRecoilState } from "recoil";
+import toast from "react-hot-toast";
+import { useQuery } from "react-query";
 
+import { getAllArchitects } from "@/api/client/architect";
 import { Architect } from "@/domains/architect";
 import { NoobProHacker } from "@/domains/noobprohacker";
-import useSearch from "@/hooks/useSearch";
+import { lineInfoState } from "@/store/noobprohacker";
 
 type Props = {
-  architects: Architect[];
-  setLineInfo: SetterOrUpdater<NoobProHacker["lineInfo"]>;
-  index: number;
-  tier: "noob" | "pro" | "hacker";
+  moveToNextPage: () => void;
 };
 
 export const useArchitectSetting = (props: Props) => {
-  const { architects, setLineInfo, index, tier } = props;
+  const [lineInfo, setLineInfo] = useRecoilState(lineInfoState);
 
-  const { input, setInput, highlightedArchitects } = useSearch(architects);
+  const { data: architects } = useQuery<Architect[]>(
+    ["getAllArchitects"],
+    getAllArchitects,
+  );
 
-  useEffect(() => {
-    if (
-      input === highlightedArchitects[0]?.minecraft_id ||
-      input === highlightedArchitects[0]?.wakzoo_id
-    ) {
-      setLineInfo(
-        produce((draft) => {
-          draft[index].line_details[tier].minecraft_id =
-            highlightedArchitects[0]?.minecraft_id;
-        }),
-      );
-    }
-  }, [input]);
-
-  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (input === "") return;
-
-    if (e.key === "Tab") {
-      if (!highlightedArchitects[0]) return;
-
-      setInput(highlightedArchitects[0].wakzoo_id);
-
-      setLineInfo(
-        produce((draft) => {
-          draft[index].line_details[tier].minecraft_id =
-            highlightedArchitects[0].minecraft_id;
-        }),
-      );
-    }
-  };
-
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setInput(e.target.value);
-
-    if (!highlightedArchitects[0]) return;
-
-    if (
-      input === highlightedArchitects[0].minecraft_id ||
-      input === highlightedArchitects[0].wakzoo_id
-    ) {
-      setLineInfo(
-        produce((draft) => {
-          draft[index].line_details[tier].minecraft_id =
-            highlightedArchitects[0].minecraft_id;
-        }),
-      );
+  const handleSubmit = () => {
+    if (!validateInput(lineInfo)) {
+      toast.error("비어있는 입력창이 있습니다.");
       return;
     }
+
+    if (!validateDuplicate(lineInfo)) {
+      toast.error("아이디가 중복되어 있습니다.");
+      return;
+    }
+
+    props.moveToNextPage();
   };
 
-  return {
-    input,
-    setInput,
-    highlightedArchitects,
-    handleInputChange,
-    handleKeyDown,
-  };
+  return { architects, setLineInfo, handleSubmit };
+};
+
+const validateInput = (lineInfo: NoobProHacker["lineInfo"]) => {
+  return lineInfo
+    .map((line) =>
+      Object.keys(line.line_details).map(
+        (tier) =>
+          line.line_details[tier as "noob" | "pro" | "hacker"].minecraft_id !==
+          "",
+      ),
+    )
+    .flat()
+    .every((item) => item);
+};
+
+const validateDuplicate = (lineInfo: NoobProHacker["lineInfo"]) => {
+  return (
+    Array.from(
+      new Set(
+        lineInfo
+          .map((line) =>
+            Object.keys(line.line_details).map(
+              (tier) =>
+                line.line_details[tier as "noob" | "pro" | "hacker"]
+                  .minecraft_id,
+            ),
+          )
+          .flat(),
+      ),
+    ).length === 15
+  );
 };
