@@ -4,7 +4,7 @@ import { Fragment, useEffect, useState } from "react";
 import Image from "next/image";
 
 import { Worldcup, getWinRatio } from "@/domains/worldCup";
-import { renameToWebp } from "@/domains/noobprohacker";
+import { renameTo1080Webp, renameToWebp } from "@/domains/noobprohacker";
 import { getWorldCups } from "@/api/client/worldCup";
 import LinkIcon from "../../../../../public/icons/link.svg";
 import ArrowBack from "../../../../../public/icons/arrow_back.svg";
@@ -53,7 +53,12 @@ export default function ArchitectureList() {
             <p className="w-[30px] text-center text-text-primary">
               {index + 1 + (page - 1) * 10}
             </p>
-            <div className="relative h-full w-[90px] sm:w-[150px]">
+            <div
+              className="relative h-full w-[90px] hover:cursor-pointer sm:w-[150px]"
+              onClick={() =>
+                window.open(renameTo1080Webp(worldCup.workInfo.image_url))
+              }
+            >
               <Image
                 alt="랭킹 이미지"
                 style={{ objectFit: "cover" }}
