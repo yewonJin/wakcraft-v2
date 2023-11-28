@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 import NoobProHacker from "@/models/noobprohacker";
 import connectMongo from "@/utils/connectMongo";
-import { convertToPortfolio } from "@/domains/architect";
+import { convertToNoobProHackerPortfolio } from "@/domains/architect";
 import Architect from "@/models/architect";
 
 export async function GET(req: NextRequest) {
@@ -47,7 +47,7 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const architects = convertToPortfolio(body);
+    const architects = convertToNoobProHackerPortfolio(body);
 
     architects.forEach(async (architect) => {
       await Architect.pushNoobProHackerToPortfolio(
@@ -74,7 +74,7 @@ export async function PUT(req: NextRequest) {
   }
 
   try {
-    const architects = convertToPortfolio(body);
+    const architects = convertToNoobProHackerPortfolio(body);
 
     architects.forEach(async (architect) => {
       await Architect.updateNoobProHackerYoutubeURL(

@@ -12,7 +12,7 @@ export default function Page() {
   const { data: curSeason } = useQuery(["getCurSeason"], getCurSeason);
   const { data: imagesName } = useQuery(
     ["getAllImages"],
-    () => getImagesName("placementTest", curSeason),
+    () => getImagesName("placementTest", curSeason + 1),
     {
       enabled: !!curSeason,
     },
@@ -28,7 +28,13 @@ export default function Page() {
         배치고사
       </h2>
       <Content curSeason={curSeason} />
-      <Participants imagesName={imagesName} />
+      {typeof imagesName !== "string" ? (
+        <Participants imagesName={imagesName} />
+      ) : (
+        <div className="mt-8 text-lg text-text-primary">
+          시즌 이미지를 모두 업로드해주세요
+        </div>
+      )}
     </div>
   );
 }

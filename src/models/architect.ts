@@ -81,11 +81,21 @@ interface ArchitectModel extends Model<Architect> {
     minecraft_id: string,
     payload: Architect["portfolio"]["noobprohacker"][0],
   ) => Promise<Architect>;
+  pushPlacementTestToPortfolio: (
+    minecraft_id: string,
+    payload: Architect["portfolio"]["placementTest"][0],
+  ) => Promise<void>;
   updateNoobProHackerYoutubeURL: (
     minecraft_id: string,
     episode: number,
     youtube_url: string,
   ) => Promise<Architect>;
+  updateAllToUnranked: () => Promise<void>;
+  updateSeasonTier: (
+    minecraft_id: string,
+    curSeason: number,
+    tier: Tier,
+  ) => Promise<void>;
 }
 
 architectSchema.statics.create = function (
@@ -198,6 +208,21 @@ architectSchema.statics.pushNoobProHackerToPortfolio = function (
   );
 };
 
+architectSchema.statics.pushPlacementTestToPortfolio = function (
+  minecraft_id: string,
+  payload: Architect["portfolio"]["placementTest"][0],
+) {
+  return this.findOneAndUpdate(
+    { minecraft_id },
+    {
+      $push: { "portfolio.placementTest": payload },
+      $inc: {
+        "noobprohackerInfo.participation": 1,
+      },
+    },
+  );
+};
+
 architectSchema.statics.updateNoobProHackerYoutubeURL = function (
   minecraft_id: string,
   episode: number,
@@ -214,6 +239,29 @@ architectSchema.statics.updateNoobProHackerYoutubeURL = function (
           "elem.episode": episode,
         },
       ],
+    },
+  );
+};
+
+architectSchema.statics.updateAllToUnranked = function () {
+  return this.updateMany(
+    {},
+    {
+      $push: { tier: "언랭" },
+      $set: { curTier: "언랭" },
+    },
+  );
+};
+
+architectSchema.statics.updateSeasonTier = function (
+  minecraft_id: string,
+  curSeason: number,
+  tier: Tier,
+) {
+  return this.updateOne(
+    { minecraft_id },
+    {
+      $set: { [`tier.${curSeason - 1}`]: tier },
     },
   );
 };

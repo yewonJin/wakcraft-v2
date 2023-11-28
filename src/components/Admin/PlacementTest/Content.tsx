@@ -8,10 +8,12 @@ type Props = {
 };
 
 export default function Content(props: Props) {
-  const { placementTest, handleInputChange } = useContent(props.curSeason);
+  const { placementTest, handleInputChange, handleSubmit } = useContent(
+    props.curSeason,
+  );
 
   return (
-    <div className="flex gap-8">
+    <div className="flex items-end gap-8">
       <div className="mt-8 flex flex-col gap-2">
         <p className="text-lg text-text-secondary">시즌</p>
         <span className="rounded-md bg-background-secondary p-1 text-center text-xl text-text-primary">
@@ -40,6 +42,12 @@ export default function Content(props: Props) {
           />
         </div>
       </div>
+      <button
+        onClick={handleSubmit}
+        className="border-2 border-background-secondary px-3 py-2 text-lg text-text-secondary"
+      >
+        추가
+      </button>
     </div>
   );
 }

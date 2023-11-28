@@ -1,4 +1,5 @@
 import { NoobProHacker } from "./noobprohacker";
+import { PlacementTest } from "./placementTest";
 
 export type Line = "noob" | "pro" | "hacker";
 
@@ -168,8 +169,15 @@ export const descriptionTier: DescriptionTier = {
   언랭: `현재 티어가 없는 사람`,
 };
 
-export const convertToPortfolio = (noobprohacker: NoobProHacker) => {
+export const convertToNoobProHackerPortfolio = (
+  noobprohacker: NoobProHacker,
+) => {
   const { contentInfo, lineInfo } = noobprohacker;
+
+  type ArchitectsInfo = {
+    minecraft_id: string;
+    portfolio: Architect["portfolio"]["noobprohacker"][0];
+  };
 
   const architectsInfo: ArchitectsInfo[] = [];
 
@@ -195,7 +203,27 @@ export const convertToPortfolio = (noobprohacker: NoobProHacker) => {
   return architectsInfo;
 };
 
-type ArchitectsInfo = {
-  minecraft_id: string;
-  portfolio: Architect["portfolio"]["noobprohacker"][0];
+export const convertToPlacementTestPortfolio = (
+  placementTest: PlacementTest,
+) => {
+  type ArchitectsInfo = {
+    minecraft_id: string;
+    portfolio: Architect["portfolio"]["placementTest"][0];
+  };
+
+  const architectsInfo: ArchitectsInfo[] = [];
+
+  placementTest.participants.forEach((participant) => {
+    architectsInfo.push({
+      minecraft_id: participant.minecraft_id,
+      portfolio: {
+        season: placementTest.season,
+        image_url: participant.image_url,
+        placement_result: participant.placement_result,
+        date: new Date(placementTest.date),
+      },
+    });
+  });
+
+  return architectsInfo;
 };
