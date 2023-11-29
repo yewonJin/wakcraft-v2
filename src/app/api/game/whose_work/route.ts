@@ -60,7 +60,6 @@ export async function GET(req: NextRequest, res: NextResponse) {
   }
 }
 
-// TODO: 외부에서 접근 불가능하게 해야함
 export async function PATCH(req: NextRequest, res: NextResponse) {
   try {
     const { searchParams } = new URL(req.url);

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import jwt from "jsonwebtoken";
 
 import connectMongo from "@/utils/connectMongo";
 import Architect from "@/models/architect";
@@ -34,6 +35,18 @@ export async function GET(req: NextRequest, res: NextResponse) {
 }
 
 export async function POST(req: NextRequest) {
+  const token = req.cookies.get("jwt")?.value;
+
+  if (!token) {
+    return NextResponse.json("토큰이 없습니다", { status: 400 });
+  }
+
+  const isValidatedToken = jwt.verify(token, process.env.JWT_SECRET as string);
+
+  if (!isValidatedToken) {
+    return NextResponse.json("토큰이 유효하지 않습니다.", { status: 400 });
+  }
+
   try {
     const { minecraft_id, wakzoo_id } = await req.json();
 
@@ -57,6 +70,18 @@ export async function POST(req: NextRequest) {
 }
 
 export async function PATCH(req: NextRequest) {
+  const token = req.cookies.get("jwt")?.value;
+
+  if (!token) {
+    return NextResponse.json("토큰이 없습니다", { status: 400 });
+  }
+
+  const isValidatedToken = jwt.verify(token, process.env.JWT_SECRET as string);
+
+  if (!isValidatedToken) {
+    return NextResponse.json("토큰이 유효하지 않습니다.", { status: 400 });
+  }
+
   try {
     const { beforeId, afterId, wakzoo_id, curTier } = await req.json();
 

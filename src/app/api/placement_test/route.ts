@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import jwt from "jsonwebtoken";
 
 import PlacementTest from "@/models/placementTest";
 import connectMongo from "@/utils/connectMongo";
@@ -24,6 +25,18 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
+  const token = req.cookies.get("jwt")?.value;
+
+  if (!token) {
+    return NextResponse.json("토큰이 없습니다", { status: 400 });
+  }
+
+  const isValidatedToken = jwt.verify(token, process.env.JWT_SECRET as string);
+
+  if (!isValidatedToken) {
+    return NextResponse.json("토큰이 유효하지 않습니다.", { status: 400 });
+  }
+
   const body: PlacementTest = await req.json();
 
   try {
