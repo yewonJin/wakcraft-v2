@@ -92,7 +92,7 @@ export default function ArchitectureList() {
           </div>
         ))}
       </div>
-      <ul className="relative mx-auto mt-8 flex w-[370px] justify-center gap-4 sm:mt-12">
+      <ul className="relative mx-auto mt-8 flex w-[350px] justify-center gap-4 sm:mt-12 md:w-[370px]">
         <span
           className={`${
             page === 1 ? "hidden" : ""

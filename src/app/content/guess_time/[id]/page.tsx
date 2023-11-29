@@ -11,7 +11,9 @@ export default async function Page({ params }: { params: { id: string } }) {
   return (
     <div className="mx-auto max-w-[1200px]">
       <div className="mt-4 flex items-end gap-6">
-        <h1 className={`text-4xl text-text-primary ${medium.className}`}>
+        <h1
+          className={`text-3xl text-text-primary xl:text-4xl ${medium.className}`}
+        >
           {guessTime.contentInfo.contentName}
         </h1>
         {guessTime.contentInfo.youtube_url !== "null" && (

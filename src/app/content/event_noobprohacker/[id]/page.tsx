@@ -13,7 +13,9 @@ export default async function Page({ params }: { params: { id: string } }) {
     <Fragment>
       <div className="mx-auto max-w-[1200px]">
         <div className="mt-4 flex items-end gap-6">
-          <h1 className={`text-4xl text-text-primary ${medium.className}`}>
+          <h1
+            className={`text-3xl text-text-primary md:text-4xl ${medium.className}`}
+          >
             {eventNoobProHacker.contentInfo.contentName}
           </h1>
           {eventNoobProHacker.contentInfo.youtube_url !== "null" && (

@@ -18,7 +18,7 @@ export default async function Page() {
       <p className="mt-4 text-base text-text-secondary">
         눕프로해커 이외의 마인크래프트 컨텐츠를 볼 수 있다.
       </p>
-      <div className="mt-8 grid grid-cols-3 gap-8">
+      <div className="grid-col-1 mt-8 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
         {cards.sort((a, b) => b.props.date - a.props.date).map((card) => card)}
       </div>
     </div>

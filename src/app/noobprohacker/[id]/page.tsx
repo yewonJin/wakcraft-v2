@@ -12,11 +12,13 @@ export default async function Page({ params }: { params: { id: string } }) {
   return (
     <Fragment>
       <div className="mx-auto max-w-[1200px]">
-        <h2 className="text-2xl text-text-secondary">
+        <h2 className="text-xl text-text-secondary md:text-2xl">
           제 {noobprohacker.contentInfo.episode}회
         </h2>
         <div className="mt-4 flex items-end gap-6">
-          <h1 className={`text-4xl text-text-primary ${medium.className}`}>
+          <h1
+            className={`text-2xl text-text-primary md:text-4xl ${medium.className}`}
+          >
             {"눕프로해커 : " + noobprohacker.contentInfo.main_subject + "편"}
           </h1>
           {noobprohacker.contentInfo.youtube_url !== "null" && (

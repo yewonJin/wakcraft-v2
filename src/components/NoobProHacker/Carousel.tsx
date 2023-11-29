@@ -108,7 +108,7 @@ export default function Carousel(props: Props) {
                       </Link>
                     </div>
                     {item.line_details[line as Line].youtube_url !== "null" && (
-                      <div className="invisible absolute bottom-6 right-6 flex items-center justify-center rounded-md bg-[rgba(0,0,0,0.8)] p-2 px-4 text-[white] group-hover:visible">
+                      <div className="invisible absolute bottom-1 right-1 flex items-center justify-center rounded-md bg-[rgba(0,0,0,0.8)] p-2 px-4 text-sm text-[white] group-hover:visible md:bottom-6 md:right-6 md:text-base">
                         클릭하여 유튜브 링크 열기
                       </div>
                     )}

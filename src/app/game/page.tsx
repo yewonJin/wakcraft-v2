@@ -3,9 +3,9 @@ import { medium } from "../layout";
 
 export default function Page() {
   return (
-    <div className="mx-auto max-w-[1200px] px-2 pb-8 pt-24 sm:px-4 xl:px-0 xl:pt-32">
+    <div className="mx-auto max-w-[1200px] px-4 pb-8 pt-24 xl:px-0 xl:pt-32">
       <h1 className={`text-3xl text-text-primary ${medium.className}`}>게임</h1>
-      <div className="mt-8 grid grid-cols-3 gap-8">
+      <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
         <Link href={"/game/world_cup"}>
           <div
             className={`rounded-xl bg-background-secondary p-6 ${medium.className} hover:bg-background-tertiary`}
