@@ -99,7 +99,7 @@ export const convertToSweepLine = (arr: NoobProHacker[]): SweepLine[] => {
     });
   });
 
-  return sweepLineArr;
+  return sweepLineArr.sort((a, b) => a.episode - b.episode);
 };
 
 export const lineInfoObject: NoobProHacker["lineInfo"][0] = {
