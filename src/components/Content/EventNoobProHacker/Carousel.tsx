@@ -50,7 +50,7 @@ export default function Carousel(props: Props) {
             }
           >
             <div
-              className="relative mx-auto flex max-w-[1200px] gap-14 duration-1000 ease-in-out"
+              className="relative mx-auto flex w-full max-w-[1200px] gap-14 duration-1000 ease-in-out"
               style={{
                 transform: `translateX(calc(${
                   -page[index] * 50 * (16 / 9)
@@ -60,7 +60,7 @@ export default function Carousel(props: Props) {
               {item.line_details.map((line, detailIndex) => (
                 <div
                   key={line.minecraft_id[0]}
-                  className="group relative aspect-video hover:cursor-pointer [&>img]:rounded-xl"
+                  className="group relative aspect-video h-full hover:cursor-pointer [&>img]:rounded-xl"
                   onClick={() => {
                     if (line.youtube_url === "null") return;
 

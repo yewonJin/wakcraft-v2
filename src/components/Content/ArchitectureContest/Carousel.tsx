@@ -42,7 +42,7 @@ export default function Carousel(props: Props) {
             }
           >
             <div
-              className="relative mx-auto flex max-w-[1200px] gap-14 duration-1000 ease-in-out"
+              className="relative mx-auto flex w-full max-w-[1200px] gap-14 duration-1000 ease-in-out"
               style={{
                 transform: `translateX(calc(${
                   -page[index] * 50 * (16 / 9)
@@ -53,7 +53,7 @@ export default function Carousel(props: Props) {
                 return (
                   <div
                     key={line.minecraft_id}
-                    className="group relative aspect-video [&>img]:rounded-xl"
+                    className="group relative aspect-video h-full [&>img]:rounded-xl"
                   >
                     <Image
                       sizes="1200px"
