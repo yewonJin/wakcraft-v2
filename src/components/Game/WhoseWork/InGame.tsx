@@ -85,9 +85,9 @@ export default function InGame(props: Props) {
               }
             }}
             onClick={() => moveToNextAnswer()}
-            className={`ml-5 h-full rounded-md border-2 border-background-secondary px-3 outline-none hover:bg-background-secondary`}
+            className={`ml-5 h-[48px] rounded-md border-2 border-background-secondary bg-background-secondary px-3 text-text-primary outline-none hover:bg-background-secondary [&>svg]:rotate-180 [&>svg]:fill-text-secondary`}
           >
-            다음
+            <ArrowDropUp />
           </button>
         </div>
       ) : (
