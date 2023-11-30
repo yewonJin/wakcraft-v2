@@ -115,13 +115,14 @@ export default function StartSetting(props: Props) {
             </button>
           </div>
         </div>
+        <button
+          className="mt-4 w-full rounded-lg border-2 border-background-secondary bg-background-primary px-8 py-4 text-text-primary hover:bg-text-secondary hover:text-background-secondary sm:w-[230px] md:mt-0"
+          onClick={() => startGame()}
+        >
+          시작하기
+        </button>
       </div>
-      <button
-        className="mt-8 w-full rounded-lg bg-background-secondary px-8 py-4 text-text-primary sm:w-[300px]"
-        onClick={() => startGame()}
-      >
-        시작하기
-      </button>
+
       <ul className="mt-12 list-disc text-text-secondary">
         <h3 className="text-xl text-text-primary">읽어주세요</h3>
         <li className="ml-5 mt-4">

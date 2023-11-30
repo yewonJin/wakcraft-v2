@@ -28,7 +28,7 @@ export default function Score(props: Props) {
       <Chart whoseWork={whoseWork} />
       <div className="flex justify-center">
         <button
-          className="mt-20 bg-background-secondary px-12 py-6 text-text-secondary"
+          className="mt-8 bg-background-secondary px-4 py-2 text-text-secondary md:mt-12"
           onClick={() => location.reload()}
         >
           다시하기

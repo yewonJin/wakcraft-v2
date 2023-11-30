@@ -7,6 +7,7 @@ import { Architect } from "@/domains/architect";
 import { Question } from "@/hooks/Game/WhoseWork/useSetting";
 import { renameTo1080Webp } from "@/domains/noobprohacker";
 import useInGame from "@/hooks/Game/WhoseWork/useInGame";
+import ArrowDropUp from "../../../../public/icons/arrow_back.svg";
 
 type Props = {
   architects: Architect[];
@@ -35,7 +36,7 @@ export default function InGame(props: Props) {
     <div className="mt-0 sm:mt-8">
       {index < questions.length && (
         <div
-          className={`relative mx-auto aspect-square max-w-[1200px] md:aspect-video`}
+          className={`relative mx-auto aspect-square max-h-[60vh] max-w-[1200px] md:aspect-video`}
         >
           <Image
             alt="작품 이미지"
@@ -96,6 +97,7 @@ export default function InGame(props: Props) {
               ref={inputRef}
               onKeyDown={handleKeyDown}
               onChange={handleInputChange}
+              onClick={() => window.scrollTo(0, 100)}
               value={input}
               className="h-[48px] w-[280px] border-2 border-background-tertiary bg-background-secondary pl-3 text-text-secondary outline-none sm:w-[300px]"
             />
@@ -117,11 +119,11 @@ export default function InGame(props: Props) {
               input.toLowerCase() ===
                 highlightedArchitects[0]?.minecraft_id.toLowerCase() ||
               input === "?"
-                ? "bg-background-secondary text-text-primary"
-                : "text-background-tertiary  hover:cursor-default"
-            } outline-none`}
+                ? "bg-background-secondary text-text-primary [&>svg]:fill-text-secondary"
+                : "text-background-tertiary  hover:cursor-default [&>svg]:fill-background-secondary"
+            } outline-none [&>svg]:rotate-180 `}
           >
-            제출
+            <ArrowDropUp />
           </button>
         </div>
       )}
