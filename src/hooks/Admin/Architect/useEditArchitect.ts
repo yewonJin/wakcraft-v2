@@ -1,5 +1,5 @@
 import { ChangeEvent, useEffect, useState } from "react";
-import { useMutation, useQuery } from "react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import toast from "react-hot-toast";
 
 import {
@@ -50,6 +50,8 @@ export const useEditArchitect = () => {
     },
   );
 
+  const queryClient = useQueryClient();
+
   const mutation = useMutation(
     ["updateArchitect"],
     () =>
@@ -59,10 +61,15 @@ export const useEditArchitect = () => {
         wakzoo_id: input.wakzoo_id,
         curTier: input.tier,
       }),
-
     {
       onSuccess() {
         toast.success("변경 성공");
+        queryClient.invalidateQueries({
+          queryKey: ["getArchitect"],
+        });
+        queryClient.invalidateQueries({
+          queryKey: ["getAllArchitects"],
+        });
       },
     },
   );

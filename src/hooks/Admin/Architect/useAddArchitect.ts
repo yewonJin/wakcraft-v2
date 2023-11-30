@@ -1,5 +1,5 @@
 import { ChangeEvent, MouseEvent, useState } from "react";
-import { useMutation } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import toast from "react-hot-toast";
 
 import { addArchitect } from "@/api/client/architect";
@@ -15,9 +15,12 @@ export const useAddArchitect = () => {
     wakzoo_id: "",
   });
 
+  const queryClient = useQueryClient();
+
   const mutation = useMutation(["addArchitect"], () => addArchitect(input), {
     onSuccess() {
       toast.success("추가 성공");
+      queryClient.invalidateQueries(["getAllArchitects"]);
     },
   });
 
