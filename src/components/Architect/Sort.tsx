@@ -1,7 +1,7 @@
 import { MouseEvent } from "react";
 
 import ArrowDown from "../../../public/icons/arrow_down.svg";
-import { SortBy } from "@/hooks/useSortArchitect";
+import { SortBy } from "@/store/sort";
 
 type Props = {
   sortBy: SortBy;
