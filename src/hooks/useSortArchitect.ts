@@ -1,8 +1,11 @@
-import { Architect, tierArray } from "@/domains/architect";
 import { useState, MouseEvent, useMemo } from "react";
+import { useRecoilState } from "recoil";
+
+import { Architect, tierArray } from "@/domains/architect";
+import { SortBy, sortByState } from "@/store/sort";
 
 const useSortArchitect = (architects: Architect[]) => {
-  const [sortBy, setSortBy] = useState<SortBy>("tier");
+  const [sortBy, setSortBy] = useRecoilState(sortByState);
   const [isDescending, setIsDescending] = useState(true);
 
   const handleSortClick = (e: MouseEvent<HTMLLIElement>) => {
@@ -49,5 +52,3 @@ const useSortArchitect = (architects: Architect[]) => {
 };
 
 export default useSortArchitect;
-
-export type SortBy = "tier" | "participation" | "win" | "hackerWin" | "proWin";

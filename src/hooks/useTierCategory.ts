@@ -1,8 +1,10 @@
+import { useRecoilState } from "recoil";
+
 import { Architect } from "@/domains/architect";
-import { useState } from "react";
+import { curCategoryState } from "@/store/sort";
 
 const useTierCategory = () => {
-  const [curCategory, setCurCategory] = useState("");
+  const [curCategory, setCurCategory] = useRecoilState(curCategoryState);
 
   const handleCategoryClick = (tier: string) => {
     if (curCategory === tier) {
