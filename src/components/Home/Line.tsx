@@ -35,8 +35,10 @@ export default function Line(props: Props) {
             <Fragment key={line.subject}>
               <li
                 onClick={() => handleLineClick(index)}
-                className={`w-max rounded-md bg-[rgba(0,0,0,0.8)] p-2 px-3 text-base hover:cursor-pointer hover:text-[white] md:w-auto md:rounded-none md:bg-[rgba(0,0,0,0)] md:p-0 md:text-lg ${
-                  curLine === index ? "text-[white]" : "text-[#999]"
+                className={`w-max rounded-md bg-background-secondary p-2 px-3 text-base hover:cursor-pointer md:w-auto md:rounded-none md:bg-[rgba(0,0,0,0)] md:p-0 md:text-lg md:hover:text-[white] ${
+                  curLine === index
+                    ? "bg-text-secondary text-background-primary md:text-[white]"
+                    : "text-text-secondary md:text-[#999]"
                 }`}
               >
                 {line.subject}
