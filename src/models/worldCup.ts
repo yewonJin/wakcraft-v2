@@ -7,6 +7,7 @@ interface WorldcupModel extends Model<Worldcup> {
   increaseNumberOfWin: (subject: string) => Promise<void>;
   increaseNumberOfParticipation: () => Promise<void>;
   updateYoutubeURL: (subject: string, youtube_url: string) => Promise<void>;
+  updateMinecraftId: (beforeId: string, afterId: string) => Promise<void>;
 }
 
 const worldcupSchema = new Schema<Worldcup, WorldcupModel>({
@@ -77,6 +78,18 @@ worldcupSchema.statics.updateYoutubeURL = function (
     { "workInfo.subject": subject },
     {
       $set: { "workInfo.youtube_url": youtube_url },
+    },
+  );
+};
+
+worldcupSchema.statics.updateMinecraftId = function (
+  beforeId: string,
+  afterId: string,
+) {
+  return this.updateMany(
+    { "workInfo.minecraft_id": beforeId },
+    {
+      $set: { "workInfo.minecraft_id": afterId },
     },
   );
 };

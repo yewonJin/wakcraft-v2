@@ -9,6 +9,7 @@ import PlacementTest from "@/models/placementTest";
 import GuessTime from "@/models/guessTime";
 import MatchYourTier from "@/models/matchYourTier";
 import EventNoobProHacker from "@/models/eventNoobProHacker";
+import Worldcup from "@/models/worldCup";
 
 export async function GET(req: NextRequest, res: NextResponse) {
   try {
@@ -144,6 +145,8 @@ export async function PATCH(req: NextRequest) {
           );
         }
       });
+
+      await Worldcup.updateMinecraftId(beforeId, afterId);
 
       await Architect.updateMinecraftId(beforeId, afterId);
     }
