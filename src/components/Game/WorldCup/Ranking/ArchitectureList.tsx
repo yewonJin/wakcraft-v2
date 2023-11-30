@@ -1,34 +1,36 @@
 "use client";
 
 import { Fragment, useEffect, useState } from "react";
+import Link from "next/link";
 import Image from "next/image";
+import { useQuery } from "react-query";
 
 import { Worldcup, getWinRatio } from "@/domains/worldCup";
 import { renameTo1080Webp, renameToWebp } from "@/domains/noobprohacker";
 import { getWorldCups } from "@/api/client/worldCup";
 import LinkIcon from "../../../../../public/icons/link.svg";
 import ArrowBack from "../../../../../public/icons/arrow_back.svg";
-import Link from "next/link";
 
 export default function ArchitectureList() {
   const [worldCups, setWorldCups] = useState<Worldcup[]>();
   const [page, setPage] = useState(1);
 
-  // TODO: React Query로 immigration하기
+  const { data } = useQuery<Worldcup[]>(["getWorldCups"], getWorldCups);
+
   useEffect(() => {
-    getWorldCups().then((res: Worldcup[]) =>
-      setWorldCups(
-        res
-          .sort(
-            (a, b) =>
-              Math.floor((b.numberOfWin / b.numberOfParticipation) * 10000) -
-              Math.floor((a.numberOfWin / a.numberOfParticipation) * 10000),
-          )
-          .filter((item) => item.numberOfParticipation !== 0)
-          .concat(res.filter((item) => item.numberOfParticipation === 0)),
-      ),
+    if (!data) return;
+
+    setWorldCups(
+      data
+        .sort(
+          (a, b) =>
+            Math.floor((b.numberOfWin / b.numberOfParticipation) * 10000) -
+            Math.floor((a.numberOfWin / a.numberOfParticipation) * 10000),
+        )
+        .filter((item) => item.numberOfParticipation !== 0)
+        .concat(data.filter((item) => item.numberOfParticipation === 0)),
     );
-  }, []);
+  }, [data]);
 
   if (!worldCups)
     return (

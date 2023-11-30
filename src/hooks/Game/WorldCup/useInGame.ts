@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useQuery } from "react-query";
 
 import { Worldcup } from "@/domains/worldCup";
 import { getWorldCups } from "@/api/client/worldCup";
@@ -24,16 +25,16 @@ const useInGame = (roundOfNumber: RoundOfNumber, endGame: () => void) => {
     right: false,
   });
 
+  const { data } = useQuery(["getWorldCups"], getWorldCups);
+
   useEffect(() => {
-    setisMoundted(true);
+    if (!data) return;
 
-    getWorldCups().then((res) => {
-      const arr = shuffle(res).slice(0, roundOfNumber) as Worldcup[];
+    const arr = shuffle(data).slice(0, roundOfNumber) as Worldcup[];
 
-      setQuestions(arr);
-      setCurRoundQuestions(arr);
-    });
-  }, []);
+    setQuestions(arr);
+    setCurRoundQuestions(arr);
+  }, [data]);
 
   const onQustionClick = (
     selectedPos: "left" | "right",
