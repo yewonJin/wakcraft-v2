@@ -22,7 +22,7 @@ export default function Page(props: Props) {
   const maxIndex = Math.max(...whoseWork.correctAnswerCountDistribution);
 
   return (
-    <div className="mx-auto h-[600px] max-w-[1200px] pt-4">
+    <div className="mx-auto hidden h-[600px] max-w-[1200px] pt-4 md:block">
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           width={500}
