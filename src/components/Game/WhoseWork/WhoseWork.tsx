@@ -14,7 +14,8 @@ type Props = {
 export default function WhoseWork(props: Props) {
   const { architects } = props;
 
-  const { page, startGame, questions, endGame, whoseWork } = useSetting();
+  const { page, startGame, questions, endGame, restartGame, whoseWork } =
+    useSetting();
 
   const gameProgression = () => {
     switch (page) {
@@ -31,7 +32,9 @@ export default function WhoseWork(props: Props) {
         );
 
       case 2:
-        return <Score whoseWork={whoseWork as WhoseWork} />;
+        return (
+          <Score whoseWork={whoseWork as WhoseWork} restartGame={restartGame} />
+        );
     }
   };
 

@@ -6,10 +6,11 @@ import Chart from "./Chart";
 
 type Props = {
   whoseWork: WhoseWork;
+  restartGame: () => void;
 };
 
 export default function Score(props: Props) {
-  const { whoseWork } = props;
+  const { whoseWork, restartGame } = props;
 
   const correctCount = useRecoilValue(correctCountState);
 
@@ -29,7 +30,7 @@ export default function Score(props: Props) {
       <div className="flex justify-center">
         <button
           className="mt-8 bg-background-secondary px-4 py-2 text-text-secondary md:mt-12"
-          onClick={() => location.reload()}
+          onClick={restartGame}
         >
           다시하기
         </button>

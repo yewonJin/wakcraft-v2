@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { useQuery } from "react-query";
 import toast from "react-hot-toast";
 
@@ -9,6 +9,7 @@ import {
   difficultyState,
   numberOfArchitectureState,
   correctCountState,
+  indexState,
 } from "@/store/whoseWork";
 import {
   getArchitectures,
@@ -25,7 +26,8 @@ const useSetting = () => {
 
   const difficulty = useRecoilValue(difficultyState);
   const numberOfArchitecture = useRecoilValue(numberOfArchitectureState);
-  const correctCount = useRecoilValue(correctCountState);
+  const [correctCount, setCorrectCount] = useRecoilState(correctCountState);
+  const [index, setIndex] = useRecoilState(indexState);
 
   const [questions, setQuestions] = useState<Question[]>([]);
   const [whoseWork, setWhoseWork] = useState<WhoseWork>();
@@ -61,11 +63,20 @@ const useSetting = () => {
     setPage(2);
   };
 
+  const restartGame = async () => {
+    setIndex(0);
+    setCorrectCount(0);
+    setPage(0);
+
+    await startGame();
+  };
+
   return {
     page,
     questions,
     startGame,
     endGame,
+    restartGame,
     whoseWork,
   };
 };
