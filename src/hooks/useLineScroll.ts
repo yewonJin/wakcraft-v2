@@ -16,11 +16,15 @@ const useLineScroll = (lines: NoobProHacker["lineInfo"]) => {
   };
 
   const initInterval = () => {
+    if (window.innerWidth < 800) return;
+
     clearInterval(intervalRef.current);
     intervalRef.current = null;
   };
 
   const startInterval = () => {
+    if (window.innerWidth < 800) return;
+
     intervalRef.current = setInterval(autoScroll, 4000);
   };
 
