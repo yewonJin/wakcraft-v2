@@ -18,20 +18,29 @@ import {
 } from "@/domains/noobprohacker";
 
 export default async function Home() {
-  const noobprohackers = await getAllNoobProHackers();
-  const noobprohackersWithSweepLine = await getAllNoobprohackersWithSweepLine();
+  const noobprohackers = (await getAllNoobProHackers()).sort(
+    (a, b) => b.contentInfo.episode - a.contentInfo.episode,
+  );
+  const noobprohackersWithSweepLine = (
+    await getAllNoobprohackersWithSweepLine()
+  ).sort((a, b) => a.contentInfo.episode - b.contentInfo.episode);
   const architects = await getAllArchitects();
 
   return (
     <Fragment>
       <BackgroundImage
         url={renameTo1080Webp(
-          getHackerWinnerLine(noobprohackers[noobprohackers.length - 1])
-            .line_details.hacker.image_url,
+          getHackerWinnerLine(noobprohackers[0]).line_details.hacker.image_url,
         )}
       />
       <RecentNoobProHacker
-        noobprohacker={JSON.parse(JSON.stringify(noobprohackers.reverse()[0]))}
+        noobprohacker={JSON.parse(
+          JSON.stringify(
+            noobprohackers.sort(
+              (a, b) => b.contentInfo.episode - a.contentInfo.episode,
+            )[0],
+          ),
+        )}
       />
       <MainInfo
         numberOfArchitectsByTier={JSON.parse(
