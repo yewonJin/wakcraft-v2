@@ -28,6 +28,10 @@ const useInGame = (roundOfNumber: RoundOfNumber, endGame: () => void) => {
   const { data } = useQuery(["getWorldCups"], getWorldCups);
 
   useEffect(() => {
+    setisMoundted(true);
+  }, []);
+
+  useEffect(() => {
     if (!data) return;
 
     const arr = shuffle(data).slice(0, roundOfNumber) as Worldcup[];
