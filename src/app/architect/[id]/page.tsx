@@ -12,14 +12,12 @@ export default async function Page({ params }: { params: { id: string } }) {
     <Fragment>
       <div
         key={architect.minecraft_id}
-        className="flex w-full flex-wrap items-center justify-between gap-8 rounded-lg xl:flex-nowrap"
+        className="flex w-full flex-wrap items-center justify-between rounded-lg md:gap-8 xl:flex-nowrap"
       >
-        <div className="flex items-center gap-8 md:[&>span:first-child]:flex">
+        <div className="flex items-center gap-6 md:[&>span:first-child]:flex">
           <TierBox tier={architect.curTier} />
           <div className="flex flex-col gap-3 md:gap-1">
-            <p className="text-xl text-text-primary">
-              {architect.minecraft_id}
-            </p>
+            <p className="text-text-primary">{architect.minecraft_id}</p>
             <p className="text-text-secondary">{architect.wakzoo_id}</p>
           </div>
         </div>
