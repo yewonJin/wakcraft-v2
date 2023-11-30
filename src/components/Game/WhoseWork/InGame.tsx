@@ -36,7 +36,7 @@ export default function InGame(props: Props) {
     <div className="mt-0 sm:mt-8">
       {index < questions.length && (
         <div
-          className={`relative mx-auto aspect-square max-h-[60vh] max-w-[1200px] md:aspect-video`}
+          className={`relative mx-auto aspect-square h-full max-h-[60vh] max-w-[1200px] md:aspect-video xl:w-[60vw]`}
         >
           <Image
             alt="작품 이미지"
@@ -97,7 +97,6 @@ export default function InGame(props: Props) {
               ref={inputRef}
               onKeyDown={handleKeyDown}
               onChange={handleInputChange}
-              onClick={() => window.scrollTo(0, 100)}
               value={input}
               className="h-[48px] w-[280px] border-2 border-background-tertiary bg-background-secondary pl-3 text-text-secondary outline-none sm:w-[300px]"
             />

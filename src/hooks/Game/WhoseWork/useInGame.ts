@@ -82,6 +82,8 @@ const useInGame = (
 
   useEffect(() => {
     if (!inputRef.current) return;
+
+    window.scrollTo(0, 120);
     inputRef.current.focus();
   }, [index]);
 
