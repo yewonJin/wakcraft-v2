@@ -25,6 +25,7 @@ export default function TopNav() {
       <div className="mx-auto flex h-full w-full max-w-[1200px] items-center justify-between">
         <div className="flex gap-32">
           <h1
+            onClick={() => setShowMenu(false)}
             className={`text-2xl font-semibold ${
               scrollY <= 100 && pathname === "/"
                 ? "text-text-primary md:text-[white]"
@@ -72,6 +73,53 @@ export default function TopNav() {
             </h2>
           </div>
         </div>
+        {showMenu && (
+          <div
+            className="fixed right-0 top-[80px] h-[calc(100vh-80px)] w-full bg-[rgba(0,0,0,0.8)] md:hidden"
+            onClick={() => setShowMenu(false)}
+          >
+            <ul
+              className={`flex flex-col gap-2 rounded-b-3xl bg-background-primary pb-2 text-center text-xl text-text-primary [&>a]:w-full [&>a]:p-4 `}
+            >
+              <Link
+                href={"/architect"}
+                onClick={() => {
+                  setShowMenu(false);
+                  allowScroll();
+                }}
+              >
+                <li>건축가</li>
+              </Link>
+              <Link
+                href={"/noobprohacker"}
+                onClick={() => {
+                  setShowMenu(false);
+                  allowScroll();
+                }}
+              >
+                <li>눕프로해커</li>
+              </Link>
+              <Link
+                href={"/content"}
+                onClick={() => {
+                  setShowMenu(false);
+                  allowScroll();
+                }}
+              >
+                <li>컨텐츠</li>
+              </Link>
+              <Link
+                href={"/game"}
+                onClick={() => {
+                  setShowMenu(false);
+                  allowScroll();
+                }}
+              >
+                <li>게임</li>
+              </Link>
+            </ul>
+          </div>
+        )}
         <div className="flex items-center gap-4">
           <span
             className={`flex ${
@@ -100,50 +148,6 @@ export default function TopNav() {
           </span>
         </div>
       </div>
-      {showMenu && (
-        <div className="fixed bottom-0 right-0 h-[calc(100vh-80px)] w-full bg-[rgba(0,0,0,0.8)] md:hidden">
-          <ul
-            className={`flex flex-col gap-2 rounded-b-3xl bg-background-primary pb-2 text-center text-xl text-text-primary [&>a]:w-full [&>a]:p-4 `}
-          >
-            <Link
-              href={"/architect"}
-              onClick={() => {
-                setShowMenu(false);
-                allowScroll();
-              }}
-            >
-              <li>건축가</li>
-            </Link>
-            <Link
-              href={"/noobprohacker"}
-              onClick={() => {
-                setShowMenu(false);
-                allowScroll();
-              }}
-            >
-              <li>눕프로해커</li>
-            </Link>
-            <Link
-              href={"/content"}
-              onClick={() => {
-                setShowMenu(false);
-                allowScroll();
-              }}
-            >
-              <li>컨텐츠</li>
-            </Link>
-            <Link
-              href={"/game"}
-              onClick={() => {
-                setShowMenu(false);
-                allowScroll();
-              }}
-            >
-              <li>게임</li>
-            </Link>
-          </ul>
-        </div>
-      )}
     </nav>
   );
 }
