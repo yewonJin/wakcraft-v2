@@ -1,6 +1,8 @@
 import Link from "next/link";
 
 import { medium } from "../layout";
+import { revalidateArchitects } from "@/api/server/architect";
+import { revalidateNoobProHackers } from "@/api/server/noobprohacker";
 
 export default function Page() {
   return (
@@ -21,6 +23,21 @@ export default function Page() {
           <Link href={"/admin/placement_test"}>배치고사</Link>
         </li>
       </ul>
+      <h3 className={`mt-16 text-2xl ${medium.className} text-text-primary`}>
+        데이터 재검증
+      </h3>
+      <div className="mt-4 flex gap-8">
+        <form action={revalidateArchitects}>
+          <button className="rounded-md border-2 border-background-secondary px-3 py-2 text-text-secondary">
+            건축가 페이지
+          </button>
+        </form>
+        <form action={revalidateNoobProHackers}>
+          <button className="rounded-md border-2 border-background-secondary px-3 py-2 text-text-secondary">
+            눕프로해커 페이지
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

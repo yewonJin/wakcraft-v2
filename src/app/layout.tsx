@@ -1,10 +1,10 @@
 import { Noto_Sans_KR } from "next/font/google";
+import { Toaster } from "react-hot-toast";
 
 import "./globals.css";
 import TopNav from "@/components/TopNav";
 import RecoilProvider from "@/provider/RecoilProvider";
 import QueryProvider from "@/provider/QueryProvider";
-import { Toaster } from "react-hot-toast";
 
 export const normal = Noto_Sans_KR({
   weight: "400",

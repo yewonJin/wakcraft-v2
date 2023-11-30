@@ -1,5 +1,6 @@
 import NoobProHacker from "@/models/noobprohacker";
 import connectMongo from "@/utils/connectMongo";
+import { revalidatePath } from "next/cache";
 
 export const getAllNoobProHackers = async () => {
   "use server";
@@ -26,4 +27,10 @@ export const getNoobProHacker = async (episode: number) => {
   const result = await NoobProHacker.findByEpisode(episode);
 
   return result;
+};
+
+export const revalidateNoobProHackers = async () => {
+  "use server";
+
+  revalidatePath("/noobprohacker", "page");
 };
