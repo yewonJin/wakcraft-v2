@@ -1,5 +1,6 @@
 import { Noto_Sans_KR } from "next/font/google";
 import { Toaster } from "react-hot-toast";
+import Script from "next/script";
 
 import "./globals.css";
 import TopNav from "@/components/TopNav";
@@ -32,8 +33,29 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <head>
-        <meta title="wakcraft" name="description" content="Description" />
+        <meta
+          title="wakcraft"
+          name="description"
+          content="유튜버 우왁굳의 마인크래프트 컨텐츠 웹사이트"
+        />
         <script dangerouslySetInnerHTML={{ __html: setInitialThemeMode }} />
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GA_TRACKING_ID}`}
+        ></Script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: ` 
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '${process.env.GA_TRACKING_ID}' , {
+    page_path: window.location.pathname,
+  });
+`,
+          }}
+        />
       </head>
       <body className={normal.className}>
         <RecoilProvider>
