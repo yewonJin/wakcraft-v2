@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -8,7 +9,6 @@ import DarkMode from "../../public/icons/dark_mode.svg";
 import Menu from "../../public/icons/menu.svg";
 import Close from "../../public/icons/close.svg";
 import useTheme from "@/hooks/useTheme";
-import { useState } from "react";
 
 export default function TopNav() {
   const { scrollY, isScrolled, handleModeClick } = useTheme();
@@ -76,7 +76,10 @@ export default function TopNav() {
         {showMenu && (
           <div
             className="fixed right-0 top-[80px] h-[calc(100vh-80px)] w-full bg-[rgba(0,0,0,0.8)] md:hidden"
-            onClick={() => setShowMenu(false)}
+            onClick={() => {
+              setShowMenu(false);
+              allowScroll();
+            }}
           >
             <ul
               className={`flex flex-col gap-2 rounded-b-3xl bg-background-primary pb-2 text-center text-xl text-text-primary [&>a]:w-full [&>a]:p-4 `}
