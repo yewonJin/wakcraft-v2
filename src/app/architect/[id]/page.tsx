@@ -17,7 +17,9 @@ export default async function Page({ params }: { params: { id: string } }) {
         <div className="flex items-center gap-6 md:[&>span:first-child]:flex">
           <TierBox tier={architect.curTier} />
           <div className="flex flex-col gap-3 md:gap-1">
-            <p className="text-text-primary">{architect.minecraft_id}</p>
+            <p className="text-text-primary md:text-xl">
+              {architect.minecraft_id}
+            </p>
             <p className="text-text-secondary">{architect.wakzoo_id}</p>
           </div>
         </div>
