@@ -1,7 +1,5 @@
 "use client";
 
-import { Fragment } from "react";
-
 import { medium } from "@/app/layout";
 import SearchResult from "@/components/Game/WhoseWork/SearchResult";
 import { tierArray } from "@/domains/architect";
@@ -22,11 +20,11 @@ export default function EditArchitect() {
   if (!highlightedArchitects) return <div>loading...</div>;
 
   return (
-    <Fragment>
+    <div>
       <h2 className={`text-3xl ${medium.className} text-text-primary`}>
         건축가 수정
       </h2>
-      <div className="flex gap-8 pt-8">
+      <div className="flex flex-col gap-8 pt-8 md:flex-row">
         <div className="">
           <p className="mb-2 text-text-primary">아이디 검색</p>
           <input
@@ -106,6 +104,6 @@ export default function EditArchitect() {
           </div>
         )}
       </div>
-    </Fragment>
+    </div>
   );
 }

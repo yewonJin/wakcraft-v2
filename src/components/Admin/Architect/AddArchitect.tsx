@@ -1,7 +1,5 @@
 "use client";
 
-import { Fragment } from "react";
-
 import { medium } from "@/app/layout";
 import { useAddArchitect } from "@/hooks/Admin/Architect/useAddArchitect";
 
@@ -9,7 +7,7 @@ export default function AddArchitect() {
   const { input, handleInputChange, handleButtonClick } = useAddArchitect();
 
   return (
-    <Fragment>
+    <div className="">
       <h2 className={`text-3xl ${medium.className} text-text-primary`}>
         건축가 추가
       </h2>
@@ -39,6 +37,6 @@ export default function AddArchitect() {
           추가
         </button>
       </div>
-    </Fragment>
+    </div>
   );
 }
