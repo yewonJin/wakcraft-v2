@@ -41,6 +41,15 @@ export type Architect = {
       ranking: number;
       date: Date;
     }[];
+    architectureNoobProHacker: {
+      episode: number;
+      subject: string;
+      line: Line;
+      image_url: string;
+      youtube_url: string;
+      ranking: number;
+      date: Date;
+    }[];
     placementTest: {
       season: number;
       image_url: string;

@@ -30,6 +30,17 @@ const architectSchema = new Schema<Architect>({
         date: { type: Date },
       },
     ],
+    architectureNoobProHacker: [
+      {
+        episode: { type: Number, required: true },
+        subject: { type: String, required: true },
+        line: { type: String, required: true },
+        image_url: { type: String, required: true },
+        youtube_url: { type: String, required: true },
+        ranking: { type: Number, default: 0 },
+        date: { type: Date },
+      },
+    ],
     placementTest: [
       {
         season: { type: Number },
@@ -81,11 +92,20 @@ interface ArchitectModel extends Model<Architect> {
     minecraft_id: string,
     payload: Architect["portfolio"]["noobprohacker"][0],
   ) => Promise<Architect>;
+  pushArchitectureNoobProHackerToPortfolio: (
+    minecraft_id: string,
+    payload: Architect["portfolio"]["architectureNoobProHacker"][0],
+  ) => Promise<Architect>;
   pushPlacementTestToPortfolio: (
     minecraft_id: string,
     payload: Architect["portfolio"]["placementTest"][0],
   ) => Promise<void>;
   updateNoobProHackerYoutubeURL: (
+    minecraft_id: string,
+    episode: number,
+    youtube_url: string,
+  ) => Promise<Architect>;
+  updateArchitectureNoobProHackerYoutubeURL: (
     minecraft_id: string,
     episode: number,
     youtube_url: string,
@@ -208,6 +228,45 @@ architectSchema.statics.pushNoobProHackerToPortfolio = function (
   );
 };
 
+architectSchema.statics.pushArchitectureNoobProHackerToPortfolio = function (
+  minecraft_id: string,
+  payload: Architect["portfolio"]["architectureNoobProHacker"][0],
+) {
+  if (payload.ranking == 1 && payload.line === "hacker") {
+    return this.findOneAndUpdate(
+      { minecraft_id },
+      {
+        $push: { "portfolio.architectureNoobProHacker": payload },
+        $inc: {
+          "noobprohackerInfo.win": 1,
+          "noobprohackerInfo.participation": 1,
+        },
+      },
+    );
+  }
+
+  if (payload.ranking == 1 && payload.line === "pro") {
+    return this.findOneAndUpdate(
+      { minecraft_id },
+      {
+        $push: { "portfolio.architectureNoobProHacker": payload },
+        $inc: {
+          "noobprohackerInfo.win": 1,
+          "noobprohackerInfo.participation": 1,
+        },
+      },
+    );
+  }
+
+  return this.findOneAndUpdate(
+    { minecraft_id },
+    {
+      $push: { "portfolio.architectureNoobProHacker": payload },
+      $inc: { "noobprohackerInfo.participation": 1 },
+    },
+  );
+};
+
 architectSchema.statics.pushPlacementTestToPortfolio = function (
   minecraft_id: string,
   payload: Architect["portfolio"]["placementTest"][0],
@@ -232,6 +291,28 @@ architectSchema.statics.updateNoobProHackerYoutubeURL = function (
     { minecraft_id },
     {
       $set: { "portfolio.noobprohacker.$[elem].youtube_url": youtube_url },
+    },
+    {
+      arrayFilters: [
+        {
+          "elem.episode": episode,
+        },
+      ],
+    },
+  );
+};
+
+architectSchema.statics.updateArchitectureNoobProHackerYoutubeURL = function (
+  minecraft_id: string,
+  episode: number,
+  youtube_url: string,
+) {
+  return this.findOneAndUpdate(
+    { minecraft_id },
+    {
+      $set: {
+        "portfolio.architectureNoobProHacker.$[elem].youtube_url": youtube_url,
+      },
     },
     {
       arrayFilters: [
