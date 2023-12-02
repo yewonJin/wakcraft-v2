@@ -21,6 +21,7 @@ export default function Portfolio(props: Props) {
 
   const portfolio = [
     ...generateNoobProHackerArr(architect),
+    ...generateArchitectureNoobProHackerArr(architect),
     ...generatePlacementTestArr(architect),
     ...generateEventNoobProHackerArr(architect),
   ];
@@ -56,6 +57,27 @@ const generateNoobProHackerArr = (architect: Architect) => {
       />
       <ArchitectureInfo
         contentName={`제 ${noobprohacker.episode}회 눕프로해커`}
+        subject={noobprohacker.subject}
+        tier={translateLineTiersToKorean(noobprohacker.line)}
+        ranking={noobprohacker.ranking}
+      />
+    </div>
+  ));
+};
+
+const generateArchitectureNoobProHackerArr = (architect: Architect) => {
+  return architect.portfolio.architectureNoobProHacker.map((noobprohacker) => (
+    <div
+      key={noobprohacker.episode + noobprohacker.subject}
+      data-date={noobprohacker.date}
+      data-content={"이벤트 눕프핵"}
+    >
+      <ImageBox
+        imageUrl={renameToWebp(noobprohacker.image_url)}
+        youtubeUrl={noobprohacker.youtube_url}
+      />
+      <ArchitectureInfo
+        contentName={`제 ${noobprohacker.episode}회 건축 눕프핵`}
         subject={noobprohacker.subject}
         tier={translateLineTiersToKorean(noobprohacker.line)}
         ranking={noobprohacker.ranking}
