@@ -3,6 +3,7 @@ import Link from "next/link";
 import { medium } from "../layout";
 import { revalidateArchitects } from "@/api/server/architect";
 import { revalidateNoobProHackers } from "@/api/server/noobprohacker";
+import { revalidateArchitectureNoobProHackers } from "@/api/server/architectureNoobProHacker";
 
 export default function Page() {
   return (
@@ -16,6 +17,9 @@ export default function Page() {
         </li>
         <li>
           <Link href={"/admin/noobprohacker"}>눕프로해커</Link>
+        </li>
+        <li>
+          <Link href={"/admin/architecture_noobprohacker"}>건축 눕프핵</Link>
         </li>
         <li>
           <Link href={"/admin/placement_test"}>배치고사</Link>
@@ -33,6 +37,11 @@ export default function Page() {
         <form action={revalidateNoobProHackers}>
           <button className="rounded-md border-2 border-background-secondary px-3 py-2 text-text-secondary">
             눕프로해커 페이지
+          </button>
+        </form>
+        <form action={revalidateArchitectureNoobProHackers}>
+          <button className="rounded-md border-2 border-background-secondary px-3 py-2 text-text-secondary">
+            건축 눕프핵 페이지
           </button>
         </form>
       </div>
