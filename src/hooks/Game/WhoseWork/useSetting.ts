@@ -50,6 +50,8 @@ const useSetting = () => {
       toast.remove("whoseWork_loading");
     });
 
+    setCorrectCount(0);
+    setIndex(0);
     setPage((prev) => prev + 1);
   };
 
