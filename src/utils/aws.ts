@@ -7,6 +7,7 @@ const awsS3BucketRegion = process.env.MY_AWS_S3_BUCKET_REGION as string;
 
 export type Content =
   | "noobProHacker"
+  | "architectureNoobProHacker"
   | "placementTest"
   | "eventNoobProHacker"
   | "architectureContest"
