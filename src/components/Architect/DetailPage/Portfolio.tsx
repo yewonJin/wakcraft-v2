@@ -113,12 +113,15 @@ const generateEventNoobProHackerArr = (architect: Architect) => {
         <ImageBox
           imageUrl={renameToWebp(eventNoobProHacker.image_url)}
           youtubeUrl={eventNoobProHacker.youtube_url}
+          isUnlimited={eventNoobProHacker.episode === 2 ? true : false}
         />
         <ArchitectureInfo
           contentName={eventNoobProHacker.contentName}
           subject={eventNoobProHacker.subject}
           tier={eventNoobProHacker.line}
-          ranking={eventNoobProHacker.ranking}
+          ranking={
+            eventNoobProHacker.ranking ? eventNoobProHacker.ranking : undefined
+          }
         />
       </div>
     ),
