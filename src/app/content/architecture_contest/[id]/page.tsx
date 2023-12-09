@@ -16,7 +16,7 @@ export default async function Page({ params }: { params: { id: string } }) {
           <h1
             className={`text-3xl text-text-primary md:text-4xl ${medium.className}`}
           >
-            돌아온 치즐 건콘
+            건축 콘테스트
           </h1>
           {architectureContest.contentInfo.youtube_url !== "null" && (
             <Link href={architectureContest.contentInfo.youtube_url}>
@@ -26,9 +26,6 @@ export default async function Page({ params }: { params: { id: string } }) {
             </Link>
           )}
         </div>
-        <p className="mt-4 text-text-secondary">
-          라인당 7명이 컨텐츠 주제에 맞는 작품을 건축한다.
-        </p>
       </div>
       <Carousel content={JSON.parse(JSON.stringify(architectureContest))} />
     </Fragment>
