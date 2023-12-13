@@ -16,6 +16,7 @@ import {
   getHackerWinnerLine,
   renameTo1080Webp,
 } from "@/domains/noobprohacker";
+import Calendar from "./Calendar/Calendar";
 
 export default async function Home() {
   const noobprohackers = (await getAllNoobProHackers()).sort(
@@ -42,6 +43,7 @@ export default async function Home() {
           ),
         )}
       />
+      <Calendar />
       <MainInfo
         numberOfArchitectsByTier={JSON.parse(
           JSON.stringify(getNumberOfArchitectsByTier(architects)),
