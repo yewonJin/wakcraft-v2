@@ -11,6 +11,17 @@ export const useCalendar = () => {
   const [curMonth, setCurMonth] = useState(new Date().getMonth() + 1);
   const [curYear, setCurYear] = useState(new Date().getFullYear());
 
+  const arr = [];
+
+  const curMonthContent = arr
+    .filter((item) => parseInt(item.date.split("-")[0]) === curYear)
+    .filter((item) => parseInt(item.date.split("-")[1]) === curMonth);
+
+  const isToday = (index: number) =>
+    curMonth === new Date().getMonth() + 1 &&
+    curYear === new Date().getFullYear() &&
+    new Date().getDate() === index - getStartDate() + 1;
+
   const incMonth = () => {
     if (curMonth === 12) {
       incYear();
@@ -58,7 +69,16 @@ export const useCalendar = () => {
     return result;
   };
 
-  return { curMonth, curYear, incMonth, decMonth, getStartDate, getEndDate };
+  return {
+    curMonth,
+    curYear,
+    isToday,
+    incMonth,
+    decMonth,
+    getStartDate,
+    getEndDate,
+    curMonthContent,
+  };
 };
 
 const getYearAcc = (BASE_YEAR: number, curYear: number) => {
