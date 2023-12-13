@@ -1,6 +1,6 @@
 import { Schema, Model, model, models } from "mongoose";
 
-import { Schedule, Status } from "@/domains/schedule";
+import { Schedule } from "@/domains/schedule";
 
 const scheduleSchema = new Schema<Schedule>({
   status: String,
@@ -15,68 +15,13 @@ const scheduleSchema = new Schema<Schedule>({
 });
 
 interface ScheduleModel extends Model<Schedule> {
-  updateStatus: (_id: string, status: Status) => Promise<void>;
-  updateParticipants: (_id: string, participants: string[]) => Promise<void>;
-  updateDate: (_id: string, date: string) => Promise<void>;
-  updateAnnouncementLink: (_id: string, announcement: string) => Promise<void>;
+  findAllWithoutAfterContent: () => Promise<Schedule[]>;
 }
 
-scheduleSchema.statics.updateStatus = function (_id: string, status: Status) {
-  return this.updateOne(
-    {
-      _id,
-    },
-    {
-      $set: {
-        status: status,
-      },
-    },
-  );
-};
-
-scheduleSchema.statics.updateParticipants = function (
-  _id: string,
-  participants: string[],
-) {
-  return this.updateOne(
-    {
-      _id,
-    },
-    {
-      $set: {
-        participants,
-      },
-    },
-  );
-};
-
-scheduleSchema.statics.updateDate = function (_id: string, date: string) {
-  return this.updateOne(
-    {
-      _id,
-    },
-    {
-      $set: {
-        date,
-      },
-    },
-  );
-};
-
-scheduleSchema.statics.updateAnnouncementLink = function (
-  _id: string,
-  announcement: string,
-) {
-  return this.updateOne(
-    {
-      _id,
-    },
-    {
-      $set: {
-        "link.announcement": announcement,
-      },
-    },
-  );
+scheduleSchema.statics.findAllWithoutAfterContent = function () {
+  return this.find({
+    $or: [{ status: "before_announcement" }, { status: "after_announcement" }],
+  });
 };
 
 const Schedule =
