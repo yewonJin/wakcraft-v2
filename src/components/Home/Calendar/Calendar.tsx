@@ -8,20 +8,57 @@ import ArrowBack from "../../../../public/icons/arrow_back.svg";
 import InvisibleBlock from "./InvisibleBlock";
 import Block from "./Block";
 import ContentBlock from "./ContentBlock";
+import { Schedule } from "@/domains/schedule";
 
-export default function Calendar() {
+export default function Calendar({ schedules }: { schedules: Schedule[] }) {
   const {
     curMonth,
     curYear,
     isToday,
+    setToday,
     incMonth,
     decMonth,
+    setDateToStart,
     getStartDate,
     getEndDate,
     curMonthContent,
-  } = useCalendar();
+  } = useCalendar(schedules);
 
   const ref = useRef<HTMLDivElement>(null);
+
+  const renderCalendar = () => {
+    const arr = new Array(7 * 6).fill(0).map((_, index) => {
+      if (index < getStartDate() || index >= getEndDate()) {
+        return <InvisibleBlock key={index} />;
+      }
+
+      return (
+        <Block
+          key={index}
+          isToday={isToday(index)}
+          index={index}
+          startDate={getStartDate()}
+        />
+      );
+    });
+
+    curMonthContent.forEach((item) => {
+      arr[parseInt(item.date.split("-")[2]) + getStartDate() - 1] = (
+        <ContentBlock
+          key={item.date}
+          isToday={isToday(
+            parseInt(item.date.split("-")[2]) + getStartDate() - 1,
+          )}
+          curMonth={curMonth}
+          startDate={getStartDate()}
+          index={parseInt(item.date.split("-")[2]) + getStartDate() - 1}
+          item={item}
+        />
+      );
+    });
+
+    return arr;
+  };
 
   return (
     <div className="mx-auto max-w-[1200px] pt-40">
@@ -30,34 +67,52 @@ export default function Calendar() {
       >
         캘린더
       </h2>
-      <div className="flex items-center justify-center gap-6">
-        <span
-          className="select-none hover:cursor-pointer [&>svg]:fill-text-tertiary hover:[&>svg]:fill-text-primary"
-          onClick={decMonth}
-        >
-          <ArrowBack />
-        </span>
-        <div className="flex items-end gap-3">
-          <h2
-            className={`${medium.className} text-center text-2xl text-text-primary `}
+      <div className="relative mt-12 flex items-center justify-between">
+        <div className="relative flex items-center gap-4">
+          <span
+            className={`${
+              curMonth === 8 && curYear === 2020 ? "invisible" : ""
+            } select-none hover:cursor-pointer [&>svg]:h-[22px] [&>svg]:w-[22px] [&>svg]:fill-text-tertiary hover:[&>svg]:fill-text-primary`}
+            onClick={decMonth}
           >
-            {curMonth + "월"}
-          </h2>
-          <h3
-            className={`${medium.className} text-center text-xl text-text-tertiary `}
+            <ArrowBack />
+          </span>
+          <span
+            className="select-none hover:cursor-pointer [&>svg]:h-[22px] [&>svg]:w-[22px] [&>svg]:rotate-180 [&>svg]:fill-text-tertiary hover:[&>svg]:fill-text-primary"
+            onClick={incMonth}
           >
-            {curYear}
-          </h3>
+            <ArrowBack />
+          </span>
+          <div className="ml-2 flex items-end gap-2">
+            <h3
+              className={`${medium.className} text-center text-2xl text-text-primary `}
+            >
+              {curYear + "년"}
+            </h3>
+            <h2
+              className={`${medium.className} text-center text-2xl text-text-primary `}
+            >
+              {curMonth + "월"}
+            </h2>
+          </div>
         </div>
-        <span
-          className="select-none hover:cursor-pointer [&>svg]:rotate-180 [&>svg]:fill-text-tertiary hover:[&>svg]:fill-text-primary"
-          onClick={incMonth}
-        >
-          <ArrowBack />
-        </span>
+        <div className="flex gap-2">
+          <span
+            className=" rounded-xl bg-background-secondary p-2 px-3 text-sm text-text-secondary hover:cursor-pointer hover:bg-background-tertiary"
+            onClick={() => setToday()}
+          >
+            오늘
+          </span>
+          <span
+            className=" rounded-xl bg-background-secondary p-2 px-3 text-sm text-text-secondary hover:cursor-pointer hover:bg-background-tertiary"
+            onClick={() => setDateToStart()}
+          >
+            처음
+          </span>
+        </div>
       </div>
       <ul
-        className={`mt-6 grid grid-cols-7 gap-1 py-2 text-center text-lg text-text-primary ${medium.className} border-2 border-background-secondary`}
+        className={`mt-3 grid grid-cols-7 gap-1 py-3 text-center text-lg text-text-primary ${medium.className} border-2 border-background-secondary`}
       >
         <li className="text-[#b91c1c]">SUN</li>
         <li>MON</li>
@@ -68,49 +123,7 @@ export default function Calendar() {
         <li className="text-[#1d4ed8]">SAT</li>
       </ul>
       <div className="grid grid-cols-7 gap-1" ref={ref}>
-        {new Array(7 * 6).fill(0).map((_, index) => {
-          if (index < getStartDate() || index >= getEndDate()) {
-            return <InvisibleBlock key={curMonth + index} />;
-          }
-
-          if (!curMonthContent.length) {
-            return (
-              <Block
-                key={curMonth + index}
-                isToday={isToday(index)}
-                index={index}
-                startDate={getStartDate()}
-              />
-            );
-          }
-
-          return curMonthContent.map((item) => {
-            if (
-              parseInt(item.date.split("-")[2]) + getStartDate() - 1 ===
-              index
-            ) {
-              return (
-                <ContentBlock
-                  key={curMonth + index}
-                  isToday={isToday(index)}
-                  curMonth={curMonth}
-                  startDate={getStartDate()}
-                  index={index}
-                  item={item}
-                />
-              );
-            }
-
-            return (
-              <Block
-                key={curMonth + index}
-                isToday={isToday(index)}
-                index={index}
-                startDate={getStartDate()}
-              />
-            );
-          });
-        })}
+        {renderCalendar()}
       </div>
     </div>
   );

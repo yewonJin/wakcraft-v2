@@ -3,11 +3,14 @@
 import { medium } from "@/app/layout";
 import SearchResult from "@/components/Game/WhoseWork/SearchResult";
 import Input from "@/components/common/Input";
+import { content } from "@/domains/schedule";
 import { useSchedule } from "@/hooks/Admin/Schedule/useSchedule";
 
 export default function Page() {
   const {
-    schedule,
+    isEdit,
+    scheduleForm,
+    schedules,
     searchInput,
     highlightedArchitects,
     setSearchInput,
@@ -15,6 +18,7 @@ export default function Page() {
     handleSelectChange,
     handleKeyDown,
     removeParticipant,
+    handleEditClick,
     handleSubmit,
   } = useSchedule();
 
@@ -27,20 +31,20 @@ export default function Page() {
         <div className="">
           <div className="flex justify-between">
             <h3 className={`${medium.className} text-2xl text-text-primary`}>
-              스케쥴 추가
+              {`스케쥴 ${isEdit ? "수정" : "추가"}`}
             </h3>
             <button
               className=" bg-background-tertiary p-2 px-4 text-text-primary"
               onClick={handleSubmit}
             >
-              추가
+              {isEdit ? "수정" : "추가"}
             </button>
           </div>
           <div className="mt-8 flex gap-4 text-text-secondary">
             <div className="flex flex-col gap-2 [&>input]:h-[45px]">
               <p>상태</p>
               <select
-                value={schedule.status}
+                value={scheduleForm.status}
                 name="status"
                 className="h-[45px] w-[100px] rounded-md border-2 border-background-tertiary bg-background-primary pl-2 text-text-secondary outline-none"
                 onChange={handleSelectChange}
@@ -54,7 +58,7 @@ export default function Page() {
               <p>날짜</p>
               <Input
                 type="date"
-                value={schedule.date}
+                value={scheduleForm.date}
                 name="date"
                 handleInputChange={handleInputChange}
               />
@@ -62,26 +66,38 @@ export default function Page() {
             <div className="flex flex-col gap-2 ">
               <p>컨텐츠</p>
               <select
-                value={schedule.content}
+                value={scheduleForm.content}
                 name="content"
                 className="h-[45px] w-[160px] rounded-md border-2 border-background-tertiary bg-background-primary pl-2 text-text-secondary outline-none"
                 onChange={handleSelectChange}
               >
-                <option value="눕프로해커">눕프로해커</option>
-                <option value="배치고사">배치고사</option>
-                <option value="이벤트 눕프핵">이벤트 눕프핵</option>
-                <option value="조공 컨텐츠">조공 컨텐츠</option>
-                <option value="그외">그외</option>
+                {content.map((item) => (
+                  <option key={item} value={item}>
+                    {item}
+                  </option>
+                ))}
               </select>
             </div>
             <div className="flex flex-col gap-2 [&>input]:h-[45px] [&>input]:w-[50px]">
               <p>회차</p>
               <Input
                 name="episode"
-                value={schedule.episode}
+                value={scheduleForm.episode}
                 type="number"
                 handleInputChange={handleInputChange}
               />
+            </div>
+            <div className="flex flex-col gap-2 [&>input]:h-[45px] [&>input]:w-[50px]">
+              <p>조공 컨텐츠?</p>
+              <select
+                value={scheduleForm.isTributeContent.toString()}
+                name="isTributeContent"
+                className="h-[45px] w-[100px] rounded-md border-2 border-background-tertiary bg-background-primary pl-2 text-text-secondary outline-none"
+                onChange={handleSelectChange}
+              >
+                <option value={"true"}>예</option>
+                <option value={"false"}>아니오</option>
+              </select>
             </div>
           </div>
           <div className="mt-4 flex gap-4 text-text-secondary">
@@ -90,7 +106,7 @@ export default function Page() {
               <Input
                 type="text"
                 name="title"
-                value={schedule.title}
+                value={scheduleForm.title}
                 handleInputChange={handleInputChange}
               />
             </div>
@@ -99,7 +115,16 @@ export default function Page() {
               <Input
                 type="text"
                 name="announcement_link"
-                value={schedule.announcement_link}
+                value={scheduleForm.announcement_link}
+                handleInputChange={handleInputChange}
+              />
+            </div>
+            <div className="flex flex-col gap-2 [&>input]:h-[45px]">
+              <p>유튜브 링크</p>
+              <Input
+                type="text"
+                name="youtube_link"
+                value={scheduleForm.youtube_link}
                 handleInputChange={handleInputChange}
               />
             </div>
@@ -125,7 +150,7 @@ export default function Page() {
             <div className="flex flex-col gap-2 text-text-secondary">
               <p>참가자 명단</p>
               <div className="h-[300px] w-[200px] bg-background-secondary">
-                {schedule.participants.map((item, index) => (
+                {scheduleForm.participants.map((item, index) => (
                   <p
                     className="p-2 px-3 hover:cursor-pointer hover:bg-background-tertiary"
                     key={item}
@@ -142,14 +167,24 @@ export default function Page() {
           <h3 className={`${medium.className} text-2xl text-text-primary`}>
             스케쥴 리스트
           </h3>
-          <ul className="mt-4">
-            <li className="flex items-center gap-2 bg-background-secondary px-2 py-2 text-text-secondary">
-              <p>[공지전]</p>
-              <p>2023-12-14</p>
-              <p>눕프로해커</p>
-              <p>43회</p>
-              <button className=" bg-background-tertiary p-2">수정</button>
-            </li>
+          <ul className="mt-4 flex flex-col gap-2">
+            {schedules?.map((schedule, index) => (
+              <li
+                key={schedule.date}
+                className="flex items-center gap-2 bg-background-secondary px-2 py-2 text-text-secondary"
+              >
+                <p>{schedule.status}</p>
+                <p>{schedule.date}</p>
+                <p>{schedule.content}</p>
+                <p>{schedule.episode}</p>
+                <button
+                  className=" bg-background-tertiary p-2"
+                  onClick={() => handleEditClick(index)}
+                >
+                  수정
+                </button>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

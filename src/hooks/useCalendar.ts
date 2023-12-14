@@ -1,21 +1,26 @@
-import { useState } from "react";
+import { useRecoilState } from "recoil";
 
-// TODO: 기준년도, 기준월 이하로 못내려가게
+import { Schedule } from "@/domains/schedule";
+import { curMonthState, curYearState } from "@/store/calendar";
 
-const BASE_YEAR = 2021;
+const BASE_YEAR = 2020;
 const BASE_MONTH = 1;
-const BASE_START_DATE = 5;
+const BASE_START_DATE = 3;
 const DAYS_PER_MONTH = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
-export const useCalendar = () => {
-  const [curMonth, setCurMonth] = useState(new Date().getMonth() + 1);
-  const [curYear, setCurYear] = useState(new Date().getFullYear());
+export const useCalendar = (schedules: Schedule[]) => {
+  const [curMonth, setCurMonth] = useRecoilState(curMonthState);
+  const [curYear, setCurYear] = useRecoilState(curYearState);
 
-  const arr = [];
+  const curMonthContent =
+    schedules
+      .filter((item) => parseInt(item.date.split("-")[0]) === curYear)
+      .filter((item) => parseInt(item.date.split("-")[1]) === curMonth) || [];
 
-  const curMonthContent = arr
-    .filter((item) => parseInt(item.date.split("-")[0]) === curYear)
-    .filter((item) => parseInt(item.date.split("-")[1]) === curMonth);
+  const setDateToStart = () => {
+    setCurYear(2020);
+    setCurMonth(8);
+  };
 
   const isToday = (index: number) =>
     curMonth === new Date().getMonth() + 1 &&
@@ -50,6 +55,11 @@ export const useCalendar = () => {
     setCurYear((prev) => prev - 1);
   };
 
+  const setToday = () => {
+    setCurMonth(new Date().getMonth() + 1);
+    setCurYear(new Date().getFullYear());
+  };
+
   const getStartDate = () => {
     return (
       (BASE_START_DATE +
@@ -73,8 +83,12 @@ export const useCalendar = () => {
     curMonth,
     curYear,
     isToday,
+    setToday,
     incMonth,
     decMonth,
+    setDateToStart,
+    incYear,
+    decYear,
     getStartDate,
     getEndDate,
     curMonthContent,

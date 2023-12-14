@@ -1,16 +1,22 @@
 import { ChangeEvent, KeyboardEvent, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { produce } from "immer";
+import toast from "react-hot-toast";
 
 import { getAllArchitects } from "@/api/client/architect";
 import { Architect } from "@/domains/architect";
 import { Schedule, scheduleObject } from "@/domains/schedule";
 import useSearch from "@/hooks/useSearch";
-import { addSchedule } from "@/api/client/schedule";
-import toast from "react-hot-toast";
+import {
+  addSchedule,
+  editSchedule,
+  getAllSchedules,
+} from "@/api/client/schedule";
 
 export const useSchedule = () => {
-  const [schedule, setSchedule] = useState<Schedule>(scheduleObject);
+  const [scheduleForm, setScheduleForm] = useState<Schedule>(scheduleObject);
+
+  const [isEdit, setIsEdit] = useState(false);
 
   const { data: architects } = useQuery<Architect[]>(
     ["getAllArchitects"],
@@ -22,14 +28,31 @@ export const useSchedule = () => {
     },
   );
 
+  const { data: schedules } = useQuery<Schedule[]>(
+    ["getAllSchedules"],
+    getAllSchedules,
+  );
+
   const queryClient = useQueryClient();
 
   const addMutation = useMutation(
     ["addSchedule"],
-    () => addSchedule(schedule),
+    () => addSchedule(scheduleForm),
     {
       onSuccess() {
         toast.success("추가 성공");
+        queryClient.invalidateQueries(["getAllSchedules"]);
+      },
+    },
+  );
+
+  const editMutation = useMutation(
+    ["editSchedule"],
+    () => editSchedule(scheduleForm),
+    {
+      onSuccess() {
+        toast.success("수정 성공");
+        queryClient.invalidateQueries(["getAllSchedules"]);
       },
     },
   );
@@ -40,15 +63,44 @@ export const useSchedule = () => {
     highlightedArchitects,
   } = useSearch(architects || []);
 
+  const handleEditClick = (index: number) => {
+    if (!schedules) return;
+
+    setScheduleForm(schedules[index]);
+
+    setIsEdit(true);
+  };
+
+  const handleSubmit = () => {
+    if (isEdit) {
+      editMutation.mutate();
+      setIsEdit(false);
+      setScheduleForm(scheduleObject);
+      return;
+    }
+
+    addMutation.mutate();
+
+    setScheduleForm(scheduleObject);
+  };
+
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value =
       e.target.name === "epsidoe" ? parseInt(e.target.value) : e.target.value;
 
-    setSchedule((prev) => ({ ...prev, [e.target.name]: value }));
+    setScheduleForm((prev) => ({ ...prev, [e.target.name]: value }));
   };
 
   const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    setSchedule((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    if (e.target.name === "isTributeContent") {
+      setScheduleForm((prev) => ({
+        ...prev,
+        isTributeContent: e.target.value === "true" ? true : false,
+      }));
+      return;
+    }
+
+    setScheduleForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -61,7 +113,7 @@ export const useSchedule = () => {
   };
 
   const addParticipant = (participant: string) => {
-    setSchedule(
+    setScheduleForm(
       produce((draft) => {
         draft.participants.push(participant);
       }),
@@ -69,7 +121,7 @@ export const useSchedule = () => {
   };
 
   const removeParticipant = (index: number) => {
-    setSchedule(
+    setScheduleForm(
       produce((draft) => {
         draft.participants.splice(index, 1);
       }),
@@ -77,14 +129,17 @@ export const useSchedule = () => {
   };
 
   return {
-    schedule,
+    isEdit,
+    scheduleForm,
+    schedules,
     searchInput,
     highlightedArchitects,
     setSearchInput,
     handleInputChange,
     handleSelectChange,
     handleKeyDown,
+    handleEditClick,
+    handleSubmit,
     removeParticipant,
-    addMutation,
   };
 };

@@ -24,6 +24,9 @@ export default function Page() {
         <li>
           <Link href={"/admin/placement_test"}>배치고사</Link>
         </li>
+        <li>
+          <Link href={"/admin/schedule"}>스케쥴</Link>
+        </li>
       </ul>
       <h3 className={`mt-16 text-2xl ${medium.className} text-text-primary`}>
         데이터 재검증

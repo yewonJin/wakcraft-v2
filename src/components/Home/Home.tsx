@@ -17,6 +17,7 @@ import {
   renameTo1080Webp,
 } from "@/domains/noobprohacker";
 import Calendar from "./Calendar/Calendar";
+import { getAllSchedules } from "@/api/server/schedule";
 
 export default async function Home() {
   const noobprohackers = (await getAllNoobProHackers()).sort(
@@ -26,6 +27,7 @@ export default async function Home() {
     await getAllNoobprohackersWithSweepLine()
   ).sort((a, b) => a.contentInfo.episode - b.contentInfo.episode);
   const architects = await getAllArchitects();
+  const schedules = await getAllSchedules();
 
   return (
     <Fragment>
@@ -43,7 +45,7 @@ export default async function Home() {
           ),
         )}
       />
-      <Calendar />
+      <Calendar schedules={JSON.parse(JSON.stringify(schedules))} />
       <MainInfo
         numberOfArchitectsByTier={JSON.parse(
           JSON.stringify(getNumberOfArchitectsByTier(architects)),

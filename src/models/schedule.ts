@@ -5,11 +5,13 @@ import { Schedule } from "@/domains/schedule";
 const scheduleSchema = new Schema<Schedule>({
   status: String,
   date: String,
+  isTributeContent: Boolean,
   content: String,
   title: String,
   episode: Number,
   participants: [String],
   announcement_link: String,
+  youtube_link: String,
 });
 
 interface ScheduleModel extends Model<Schedule> {

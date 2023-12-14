@@ -31,17 +31,11 @@ export async function POST(req: NextRequest) {
 
 export async function PUT(req: NextRequest) {
   try {
-    const { searchParams } = new URL(req.url);
-    const afterDate = searchParams.get("afterDate");
-
     const body = await req.json();
 
     connectMongo();
 
-    await Schedule.findOneAndUpdate(
-      { date: body.date },
-      { $set: { ...body, date: afterDate } },
-    );
+    await Schedule.findOneAndUpdate({ date: body.date }, { $set: body });
 
     return NextResponse.json("스케쥴 수정 성공", { status: 200 });
   } catch (e) {

@@ -35,6 +35,13 @@ const config: Config = {
         secondary: "rgb(var(--background-secondary))",
         tertiary: "rgb(var(--background-tertiary))",
       },
+      color: {
+        rose: "rgb(var(--color-rose))",
+        green: "rgb(var(--color-green))",
+        blue: "rgb(var(--color-blue))",
+        yellow: "rgb(var(--color-yellow))",
+        neutral: "rgb(var(--color-neutral))",
+      },
       text: {
         primary: "rgb(var(--text-primary))",
         secondary: "rgb(var(--text-secondary))",
