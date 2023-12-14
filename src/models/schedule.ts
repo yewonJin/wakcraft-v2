@@ -9,9 +9,7 @@ const scheduleSchema = new Schema<Schedule>({
   title: String,
   episode: Number,
   participants: [String],
-  link: {
-    announcement: String,
-  },
+  announcement_link: String,
 });
 
 interface ScheduleModel extends Model<Schedule> {
