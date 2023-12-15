@@ -58,7 +58,7 @@ export default function Calendar({ schedules }: { schedules: Schedule[] }) {
   };
 
   return (
-    <div className="mx-auto max-w-[1200px] pt-40">
+    <div className="mx-auto hidden max-w-[1200px] pt-40 xl:block">
       <h2
         className={`text-3xl text-text-primary sm:text-4xl ${medium.className}`}
       >
