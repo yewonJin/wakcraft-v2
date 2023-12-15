@@ -25,10 +25,11 @@ export default function ContentBlock(props: Props) {
 
   return (
     <div
-      className={`${getBackgroundColor[item.content]} relative h-[130px]  ${
-        isToday ? "border-[1px] border-text-secondary" : ""
-      } flex flex-col p-3 text-[#eee] duration-300 [&>li:marker]:mr-0 `}
+      className={`${
+        getBackgroundColor[item.content]
+      } relative flex h-[130px] flex-col border-text-secondary p-3 text-[#eee] duration-300 [&>li:marker]:mr-0 `}
       key={curMonth + index}
+      style={{ border: isToday ? "1px solid" : "" }}
     >
       <p className="text-lg">{index + 1 - startDate}</p>
       {isPostedContent(item) && (

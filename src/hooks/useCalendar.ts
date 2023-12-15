@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 
 import { Schedule } from "@/domains/schedule";
@@ -12,11 +11,6 @@ const DAYS_PER_MONTH = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 export const useCalendar = (schedules: Schedule[]) => {
   const [curMonth, setCurMonth] = useRecoilState(curMonthState);
   const [curYear, setCurYear] = useRecoilState(curYearState);
-
-  useEffect(() => {
-    setCurMonth(new Date().getMonth() + 1);
-    setCurYear(new Date().getFullYear());
-  }, []);
 
   const curMonthContent =
     schedules
