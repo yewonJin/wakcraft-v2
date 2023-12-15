@@ -14,7 +14,6 @@ export default function Calendar({ schedules }: { schedules: Schedule[] }) {
   const {
     curMonth,
     curYear,
-    isToday,
     setToday,
     incMonth,
     decMonth,
@@ -35,7 +34,7 @@ export default function Calendar({ schedules }: { schedules: Schedule[] }) {
       return (
         <Block
           key={index}
-          isToday={isToday(index)}
+          isToday={false}
           index={index}
           startDate={getStartDate()}
         />
@@ -46,9 +45,7 @@ export default function Calendar({ schedules }: { schedules: Schedule[] }) {
       arr[parseInt(item.date.split("-")[2]) + getStartDate() - 1] = (
         <ContentBlock
           key={item.date}
-          isToday={isToday(
-            parseInt(item.date.split("-")[2]) + getStartDate() - 1,
-          )}
+          isToday={false}
           curMonth={curMonth}
           startDate={getStartDate()}
           index={parseInt(item.date.split("-")[2]) + getStartDate() - 1}

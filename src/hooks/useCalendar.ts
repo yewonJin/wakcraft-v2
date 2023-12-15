@@ -22,10 +22,16 @@ export const useCalendar = (schedules: Schedule[]) => {
     setCurMonth(8);
   };
 
-  const isToday = (index: number) =>
-    curMonth === new Date().getMonth() + 1 &&
-    curYear === new Date().getFullYear() &&
-    new Date().getDate() === index - getStartDate() + 1;
+  const getTodayIndex = () => {
+    if (
+      curMonth === new Date().getMonth() + 1 ||
+      curYear === new Date().getFullYear()
+    ) {
+      return null;
+    }
+
+    return new Date().getDate() + getStartDate() - 1;
+  };
 
   const incMonth = () => {
     if (curMonth === 12) {
@@ -82,7 +88,7 @@ export const useCalendar = (schedules: Schedule[]) => {
   return {
     curMonth,
     curYear,
-    isToday,
+    getTodayIndex,
     setToday,
     incMonth,
     decMonth,
