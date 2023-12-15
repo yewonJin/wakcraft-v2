@@ -38,7 +38,7 @@ export default function ArchitectureList() {
         {new Array(10).fill(0).map((item, index) => (
           <div
             key={index}
-            className="h-[90px] w-full  border-b-[1px] border-background-secondary"
+            className="h-[90px] w-full animate-pulse border-b-[1px] border-background-secondary bg-background-primary"
           ></div>
         ))}
       </div>

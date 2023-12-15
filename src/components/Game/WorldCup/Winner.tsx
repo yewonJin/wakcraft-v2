@@ -17,7 +17,6 @@ export default function Winner(props: Props) {
   const { roundOfNumber } = props;
   const winner = useRecoilValue(winnerState);
 
-  // TODO: React Query로 바꾸기
   useEffect(() => {
     if (!winner) return;
 
