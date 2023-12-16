@@ -9,10 +9,10 @@ export default function Block(props: Props) {
 
   return (
     <div
-      className={`h-[130px] border-text-secondary bg-background-secondary p-3 text-lg text-text-secondary`}
+      className={`h-[110px] border-text-secondary bg-background-secondary p-2 text-lg text-text-secondary xl:h-[130px] xl:p-3`}
       style={{ border: isToday ? "1px solid" : "" }}
     >
-      <p>{index + 1 - startDate}</p>
+      <p className="text-base xl:text-lg">{index + 1 - startDate}</p>
     </div>
   );
 }

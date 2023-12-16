@@ -27,11 +27,11 @@ export default function ContentBlock(props: Props) {
     <div
       className={`${
         getBackgroundColor[item.content]
-      } relative flex h-[130px] flex-col border-text-secondary p-3 text-[#eee] duration-300 [&>li:marker]:mr-0 `}
+      } relative flex h-[110px] flex-col border-text-secondary p-2 text-[#eee] duration-300 xl:h-[130px] xl:p-3 [&>li:marker]:mr-0 `}
       key={curMonth + index}
       style={{ border: isToday ? "1px solid" : "" }}
     >
-      <p className="text-lg">{index + 1 - startDate}</p>
+      <p className="text-base xl:text-lg">{index + 1 - startDate}</p>
       {isPostedContent(item) && (
         <Link href={getURL(item)}>
           <span className="absolute bottom-2 right-2 z-10 rounded-full bg-background-primary p-1 hover:cursor-pointer [&>svg]:rotate-90 [&>svg]:fill-text-tertiary hover:[&>svg]:fill-text-secondary">
@@ -47,19 +47,25 @@ export default function ContentBlock(props: Props) {
         </Link>
       )}
       {item.isTributeContent && (
-        <span className="absolute right-3 top-4 text-sm">조공 컨텐츠</span>
+        <span className="absolute right-3 top-4 hidden text-sm xl:inline-block">
+          조공 컨텐츠
+        </span>
       )}
       {isEventNoobProHacker(item) && (
-        <span className="absolute right-3 top-4 text-sm">예능 눕프핵</span>
+        <span className="absolute right-3 top-4 hidden text-sm xl:inline-block">
+          예능 눕프핵
+        </span>
       )}
-      <div key={curMonth + index} className="mt-1">
+      <div key={curMonth + index} className="mt-1 text-sm xl:text-base">
         <div
           className={`${
             item.title === "해커의 손길" ? "flex-col-reverse" : ""
-          } flex flex-wrap gap-1`}
+          } flex flex-wrap items-center gap-1`}
         >
           {getContentName(item) && <p className="">{getContentName(item)}</p>}
-          {getEpisode(item) && <p className="mb-[1px]">{getEpisode(item)}</p>}
+          {getEpisode(item) && (
+            <p className="mb-[1px] text-xs xl:text-base">{getEpisode(item)}</p>
+          )}
           {getContentTitle(item) && (
             <p className="w-full">{getContentTitle(item)}</p>
           )}
