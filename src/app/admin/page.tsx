@@ -3,7 +3,7 @@ import Link from "next/link";
 import { medium } from "../layout";
 import { revalidateArchitects } from "@/api/server/architect";
 import { revalidateNoobProHackers } from "@/api/server/noobprohacker";
-import { revalidateContentPage } from "@/api/server/action";
+import { revalidateContentPage, revalidateMainPage } from "@/api/server/action";
 
 export default function Page() {
   return (
@@ -40,6 +40,11 @@ export default function Page() {
         <form action={revalidateNoobProHackers}>
           <button className="rounded-md border-2 border-background-secondary px-3 py-2 text-text-secondary">
             눕프로해커 페이지
+          </button>
+        </form>
+        <form action={revalidateMainPage}>
+          <button className="rounded-md border-2 border-background-secondary px-3 py-2 text-text-secondary">
+            메인 페이지
           </button>
         </form>
         <form action={revalidateContentPage}>
