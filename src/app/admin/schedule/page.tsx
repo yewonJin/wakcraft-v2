@@ -90,7 +90,7 @@ export default function Page() {
             <div className="flex flex-col gap-2 [&>input]:h-[45px] [&>input]:w-[50px]">
               <p>조공 컨텐츠?</p>
               <select
-                value={scheduleForm.isTributeContent.toString()}
+                value={scheduleForm.isTributeContent ? "true" : "false"}
                 name="isTributeContent"
                 className="h-[45px] w-[100px] rounded-md border-2 border-background-tertiary bg-background-primary pl-2 text-text-secondary outline-none"
                 onChange={handleSelectChange}
