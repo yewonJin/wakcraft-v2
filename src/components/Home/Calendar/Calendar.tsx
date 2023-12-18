@@ -31,17 +31,51 @@ export default function Calendar({ schedules }: { schedules: Schedule[] }) {
         return <InvisibleBlock key={index} />;
       }
 
-      return (
-        <Block
-          key={index}
-          isToday={false}
-          index={index}
-          startDate={getStartDate()}
-        />
-      );
+      if (
+        curMonth === new Date().getMonth() + 1 &&
+        curYear === new Date().getFullYear() &&
+        index === new Date().getDate() + getStartDate() - 1
+      ) {
+        return (
+          <Block
+            key={index}
+            isToday={true}
+            index={index}
+            startDate={getStartDate()}
+          />
+        );
+      } else {
+        return (
+          <Block
+            key={index}
+            isToday={false}
+            index={index}
+            startDate={getStartDate()}
+          />
+        );
+      }
     });
 
     curMonthContent.forEach((item) => {
+      if (
+        curMonth === new Date().getMonth() + 1 &&
+        curYear === new Date().getFullYear() &&
+        parseInt(item.date.split("-")[2]) === new Date().getDate()
+      ) {
+        arr[parseInt(item.date.split("-")[2]) + getStartDate() - 1] = (
+          <ContentBlock
+            key={item.date}
+            isToday={true}
+            curMonth={curMonth}
+            startDate={getStartDate()}
+            index={parseInt(item.date.split("-")[2]) + getStartDate() - 1}
+            item={item}
+          />
+        );
+
+        return;
+      }
+
       arr[parseInt(item.date.split("-")[2]) + getStartDate() - 1] = (
         <ContentBlock
           key={item.date}
