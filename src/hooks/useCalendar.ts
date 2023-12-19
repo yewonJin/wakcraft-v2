@@ -23,7 +23,7 @@ export const useCalendar = (schedules: Schedule[]) => {
     });
 
     if (
-      curMonth != kr_curr.getMonth() + 1 ||
+      curMonth !== kr_curr.getMonth() + 1 ||
       curYear !== kr_curr.getFullYear()
     ) {
       return;
