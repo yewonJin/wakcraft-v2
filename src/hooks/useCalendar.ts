@@ -33,7 +33,7 @@ export const useCalendar = (schedules: Schedule[]) => {
       "style",
       "border: 1px solid",
     );
-  }, [curMonth]);
+  }, [curMonth, curYear]);
 
   const curMonthContent =
     schedules
