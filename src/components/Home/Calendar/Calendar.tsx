@@ -9,6 +9,7 @@ import InvisibleBlock from "./InvisibleBlock";
 import Block from "./Block";
 import ContentBlock from "./ContentBlock";
 import { Schedule } from "@/domains/schedule";
+import { kr_curr } from "@/store/calendar";
 
 export default function Calendar({ schedules }: { schedules: Schedule[] }) {
   const {
@@ -32,9 +33,9 @@ export default function Calendar({ schedules }: { schedules: Schedule[] }) {
       }
 
       if (
-        curMonth === new Date().getMonth() + 1 &&
-        curYear === new Date().getFullYear() &&
-        index === new Date().getDate() + getStartDate() - 1
+        curMonth === kr_curr.getMonth() + 1 &&
+        curYear === kr_curr.getFullYear() &&
+        index === kr_curr.getDate() + getStartDate() - 1
       ) {
         return (
           <Block
@@ -58,9 +59,9 @@ export default function Calendar({ schedules }: { schedules: Schedule[] }) {
 
     curMonthContent.forEach((item) => {
       if (
-        curMonth === new Date().getMonth() + 1 &&
-        curYear === new Date().getFullYear() &&
-        parseInt(item.date.split("-")[2]) === new Date().getDate()
+        curMonth === kr_curr.getMonth() + 1 &&
+        curYear === kr_curr.getFullYear() &&
+        parseInt(item.date.split("-")[2]) === kr_curr.getDate()
       ) {
         arr[parseInt(item.date.split("-")[2]) + getStartDate() - 1] = (
           <ContentBlock
