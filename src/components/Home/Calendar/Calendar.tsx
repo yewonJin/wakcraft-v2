@@ -1,7 +1,5 @@
 "use client";
 
-import { useRef } from "react";
-
 import { medium } from "@/app/layout";
 import { useCalendar } from "@/hooks/useCalendar";
 import ArrowBack from "../../../../public/icons/arrow_back.svg";
@@ -9,10 +7,10 @@ import InvisibleBlock from "./InvisibleBlock";
 import Block from "./Block";
 import ContentBlock from "./ContentBlock";
 import { Schedule } from "@/domains/schedule";
-import { kr_curr } from "@/store/calendar";
 
 export default function Calendar({ schedules }: { schedules: Schedule[] }) {
   const {
+    ref,
     curMonth,
     curYear,
     setToday,
@@ -24,59 +22,23 @@ export default function Calendar({ schedules }: { schedules: Schedule[] }) {
     curMonthContent,
   } = useCalendar(schedules);
 
-  const ref = useRef<HTMLDivElement>(null);
-
   const renderCalendar = () => {
     const arr = new Array(7 * 6).fill(0).map((_, index) => {
       if (index < getStartDate() || index >= getEndDate()) {
         return <InvisibleBlock key={index} />;
       }
 
-      if (
-        curMonth === kr_curr.getMonth() + 1 &&
-        curYear === kr_curr.getFullYear() &&
-        index === kr_curr.getDate() + getStartDate() - 1
-      ) {
-        return (
-          <Block
-            key={index}
-            isToday={true}
-            index={index}
-            startDate={getStartDate()}
-          />
-        );
-      } else {
-        return (
-          <Block
-            key={index}
-            isToday={false}
-            index={index}
-            startDate={getStartDate()}
-          />
-        );
-      }
+      return (
+        <Block
+          key={index}
+          isToday={false}
+          index={index}
+          startDate={getStartDate()}
+        />
+      );
     });
 
     curMonthContent.forEach((item) => {
-      if (
-        curMonth === kr_curr.getMonth() + 1 &&
-        curYear === kr_curr.getFullYear() &&
-        parseInt(item.date.split("-")[2]) === kr_curr.getDate()
-      ) {
-        arr[parseInt(item.date.split("-")[2]) + getStartDate() - 1] = (
-          <ContentBlock
-            key={item.date}
-            isToday={true}
-            curMonth={curMonth}
-            startDate={getStartDate()}
-            index={parseInt(item.date.split("-")[2]) + getStartDate() - 1}
-            item={item}
-          />
-        );
-
-        return;
-      }
-
       arr[parseInt(item.date.split("-")[2]) + getStartDate() - 1] = (
         <ContentBlock
           key={item.date}

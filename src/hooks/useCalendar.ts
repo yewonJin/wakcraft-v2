@@ -1,7 +1,8 @@
 import { useRecoilState } from "recoil";
+import { useEffect, useRef } from "react";
 
 import { Schedule } from "@/domains/schedule";
-import { curMonthState, curYearState } from "@/store/calendar";
+import { curMonthState, curYearState, kr_curr } from "@/store/calendar";
 
 const BASE_YEAR = 2020;
 const BASE_MONTH = 1;
@@ -11,6 +12,28 @@ const DAYS_PER_MONTH = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 export const useCalendar = (schedules: Schedule[]) => {
   const [curMonth, setCurMonth] = useRecoilState(curMonthState);
   const [curYear, setCurYear] = useRecoilState(curYearState);
+  const ref = useRef<HTMLDivElement>(null);
+
+  // "오늘" 표시하기
+  useEffect(() => {
+    if (!ref.current) return;
+
+    Array.from(ref.current.children).map((item) => {
+      item.removeAttribute("style");
+    });
+
+    if (
+      curMonth != kr_curr.getMonth() + 1 ||
+      curYear !== kr_curr.getFullYear()
+    ) {
+      return;
+    }
+
+    ref.current.children[kr_curr.getDate() + getStartDate() - 1].setAttribute(
+      "style",
+      "border: 1px solid",
+    );
+  }, [curMonth]);
 
   const curMonthContent =
     schedules
@@ -20,17 +43,6 @@ export const useCalendar = (schedules: Schedule[]) => {
   const setDateToStart = () => {
     setCurYear(2020);
     setCurMonth(8);
-  };
-
-  const getTodayIndex = () => {
-    if (
-      curMonth === new Date().getMonth() + 1 ||
-      curYear === new Date().getFullYear()
-    ) {
-      return null;
-    }
-
-    return new Date().getDate() + getStartDate() - 1;
   };
 
   const incMonth = () => {
@@ -86,9 +98,9 @@ export const useCalendar = (schedules: Schedule[]) => {
   };
 
   return {
+    ref,
     curMonth,
     curYear,
-    getTodayIndex,
     setToday,
     incMonth,
     decMonth,
