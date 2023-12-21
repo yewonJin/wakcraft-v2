@@ -8,6 +8,7 @@ export default function Page() {
 
   return (
     <div className="mx-auto flex max-w-[1200px] justify-center pt-40">
+      <title>왁크래프트 | 로그인</title>
       <div className="flex-col items-center sm:bg-background-secondary sm:p-20">
         <h2 className={`text-3xl text-text-primary ${medium.className}`}>
           로그인

@@ -10,7 +10,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   return (
     <div className="mx-auto max-w-[1200px]">
-      <title>{`배치고사 - 시즌 ${placementTest.season}`}</title>
+      <title>{`왁크래프트 | 배치고사 시즌${placementTest.season}`}</title>
 
       <div className="mt-4 flex items-end gap-6">
         <h1
