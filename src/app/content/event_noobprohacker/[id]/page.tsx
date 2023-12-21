@@ -11,6 +11,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   return (
     <Fragment>
+      <title>{`이벤트 눕프핵 - ${eventNoobProHacker.contentInfo.contentName}`}</title>
       <div className="mx-auto max-w-[1200px]">
         <div className="mt-4 flex items-end gap-6">
           <h1

@@ -13,6 +13,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   return (
     <Fragment>
+      <title>{`건축 눕프로해커 - ${architectureNoobProHacker.contentInfo.episode}회`}</title>
       <div className="mx-auto max-w-[1200px]">
         <div className="mt-4 flex items-end gap-6">
           <h1

@@ -10,6 +10,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   return (
     <Fragment>
+      <title>{"건축가 - " + architect.wakzoo_id}</title>
       <div
         key={architect.minecraft_id}
         className="flex w-full flex-wrap items-center justify-between rounded-lg md:gap-8 xl:flex-nowrap"

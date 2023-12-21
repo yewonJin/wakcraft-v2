@@ -10,6 +10,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   return (
     <div className="mx-auto max-w-[1200px]">
+      <title>{`티어 맞추기`}</title>
       <div className="mt-4 flex items-end gap-6">
         <h1
           className={`text-3xl text-text-primary md:text-4xl ${medium.className}`}

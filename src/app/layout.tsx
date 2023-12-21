@@ -33,6 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <head>
+        <title>왁크래프트</title>
         <meta
           title="wakcraft"
           name="description"
