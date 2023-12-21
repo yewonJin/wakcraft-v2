@@ -11,7 +11,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   return (
     <Fragment>
-      <title>{`눕프로해커 - ${noobprohacker.contentInfo.episode}회`}</title>
+      <title>{`왁크래프트 | 눕프로해커 ${noobprohacker.contentInfo.episode}회`}</title>
       <div className="mx-auto max-w-[1200px]">
         <h2 className="text-xl text-text-secondary md:text-2xl">
           제 {noobprohacker.contentInfo.episode}회

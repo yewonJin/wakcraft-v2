@@ -7,7 +7,7 @@ export default async function Page() {
 
   return (
     <div className="px-4 pb-8 pt-24 xl:px-0 xl:pt-32">
-      <title>작품 맞추기</title>
+      <title>왁크래프트 | 건축가 맞추기</title>
       <WhoseWork architects={JSON.parse(JSON.stringify(architects))} />
     </div>
   );

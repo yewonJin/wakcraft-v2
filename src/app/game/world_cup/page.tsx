@@ -4,7 +4,7 @@ import { Fragment } from "react";
 export default function Page() {
   return (
     <Fragment>
-      <title>해커 월드컵</title>
+      <title>왁크래프트 | 월드컵</title>
       <WorldCup />
     </Fragment>
   );

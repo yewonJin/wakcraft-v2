@@ -11,7 +11,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   return (
     <Fragment>
-      <title>{`건축 콘테스트 - ${architectureContest.contentInfo.subject}`}</title>
+      <title>{`왁크래프트 | 건축 콘테스트 - ${architectureContest.contentInfo.subject}`}</title>
       <div className="mx-auto max-w-[1200px]">
         <div className="mt-4 flex items-end gap-6">
           <h1
