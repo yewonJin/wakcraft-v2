@@ -3,6 +3,7 @@ import Link from "next/link";
 import TierBox from "../common/TierBox";
 import Statistics from "./Statistics";
 import { Architect } from "@/domains/architect";
+import { useDebounce } from "@/hooks/useDebounce";
 
 type Props = {
   architects: ExtendedArchitect[];
@@ -11,6 +12,8 @@ type Props = {
 
 export default function ArchitectList(props: Props) {
   const { architects, input } = props;
+
+  const debouncedSearchText = useDebounce(input, 60);
 
   return (
     <div className="mt-4 flex select-none flex-col gap-4">
@@ -69,7 +72,9 @@ export default function ArchitectList(props: Props) {
                   </p>
                 </div>
               </div>
-              <Statistics noobProHackerInfo={architect.noobprohackerInfo} />
+              {input === debouncedSearchText && (
+                <Statistics noobProHackerInfo={architect.noobprohackerInfo} />
+              )}
             </div>
           </Link>
         );
