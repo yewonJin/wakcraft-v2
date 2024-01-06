@@ -2,8 +2,9 @@ import { useRecoilState } from "recoil";
 import { produce } from "immer";
 
 import { medium } from "@/app/layout";
-import Input from "@/components/common/Input/Input";
 import { lineInfoState } from "@/store/noobprohacker";
+import FormField from "@/components/common/Form/FormField";
+import Input from "@/components/common/Input/Input";
 
 type Props = {
   index: number;
@@ -18,12 +19,12 @@ export default function Line(props: Props) {
       <h3 className={`${medium.className} text-2xl text-text-primary`}>
         {index + 1}라인
       </h3>
-      <p className="text-lg text-text-secondary">주제</p>
-      <div className="[&>input]:h-full [&>input]:w-[120px]">
+      <FormField label="주제">
         <Input
-          type="text"
           name="subject"
+          type="text"
           value={lineInfo[index].subject}
+          width="120px"
           handleInputChange={(e) => {
             setLineInfo(
               produce((draft) => {
@@ -32,13 +33,13 @@ export default function Line(props: Props) {
             );
           }}
         />
-      </div>
-      <p className="text-lg text-text-secondary">라인 순위</p>
-      <div className="[&>input]:h-full [&>input]:w-[40px]">
+      </FormField>
+      <FormField label="라인 순위">
         <Input
-          type="number"
           name="line_ranking"
+          type="number"
           value={lineInfo[index].line_ranking}
+          width="40px"
           handleInputChange={(e) =>
             setLineInfo(
               produce((draft) => {
@@ -47,7 +48,7 @@ export default function Line(props: Props) {
             )
           }
         />
-      </div>
+      </FormField>
     </div>
   );
 }

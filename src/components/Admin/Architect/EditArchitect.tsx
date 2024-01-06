@@ -1,7 +1,12 @@
 "use client";
 
+import { KeyboardEvent } from "react";
+
 import { medium } from "@/app/layout";
 import SearchResult from "@/components/Game/WhoseWork/SearchResult";
+import Input from "@/components/common/Input/Input";
+import Select from "@/components/common/Select/Select";
+import FormField from "@/components/common/Form/FormField";
 import { tierArray } from "@/domains/architect";
 import { useEditArchitect } from "@/hooks/Admin/Architect/useEditArchitect";
 
@@ -26,12 +31,13 @@ export default function EditArchitect() {
       </h2>
       <div className="flex flex-col gap-8 pt-8 md:flex-row">
         <div className="">
-          <p className="mb-2 text-text-primary">아이디 검색</p>
-          <input
-            className="h-[40px] w-[250px] rounded-md border-2 border-background-tertiary bg-background-primary pl-3 text-text-secondary outline-none"
+          <p className="mb-2 text-text-secondary">아이디 검색</p>
+          <Input
+            name="searchArchitect"
+            type="text"
+            handleInputChange={(e) => setSearchInput(e.target.value)}
             value={searchInput}
-            onChange={(e) => setSearchInput(e.target.value)}
-            onKeyDown={(e) => {
+            onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => {
               if (e.key === "Tab") {
                 setSearchInput(highlightedArchitects[0].wakzoo_id);
               }
@@ -54,42 +60,30 @@ export default function EditArchitect() {
               </p>
             </div>
             <div className="mt-8 flex flex-col gap-4">
-              <div className="flex flex-col gap-2 text-text-secondary">
-                <p>바꿀 마인크래프트 아이디</p>
-                <input
-                  className="h-[40px] w-[200px] rounded-md border-2 border-background-tertiary bg-background-primary pl-3"
+              <FormField label="바꿀 마인크래프트 아이디">
+                <Input
                   name="minecraft_id"
-                  onChange={handleInputChange}
                   value={input.minecraft_id}
+                  type="text"
+                  handleInputChange={handleInputChange}
                 />
-              </div>
-              <div className="flex flex-col gap-2 text-text-secondary">
-                <p>왁물원 아이디</p>
-                <input
+              </FormField>
+              <FormField label="바꿀 왁물원 아이디">
+                <Input
                   name="wakzoo_id"
-                  onChange={handleInputChange}
-                  className="h-[40px] w-[200px] rounded-md border-2 border-background-tertiary bg-background-primary pl-3"
                   value={input.wakzoo_id}
+                  type="text"
+                  handleInputChange={handleInputChange}
                 />
-              </div>
-              <div className="flex flex-col gap-2 text-text-secondary">
-                <p>티어</p>
-                <select
+              </FormField>
+              <FormField label="티어">
+                <Select
                   value={input.tier}
-                  onChange={handleSelectChange}
-                  className="h-[40px] w-[200px] rounded-md border-2 border-background-tertiary bg-background-primary pl-2 text-text-secondary outline-none"
-                >
-                  {tierArray.map((tier) => (
-                    <option
-                      className="bg-background-primary hover:cursor-pointer"
-                      value={tier}
-                      key={tier}
-                    >
-                      {tier}
-                    </option>
-                  ))}
-                </select>
-              </div>
+                  options={tierArray}
+                  handleSelectChange={handleSelectChange}
+                  height="40px"
+                />
+              </FormField>
             </div>
             <button
               onClick={() => {

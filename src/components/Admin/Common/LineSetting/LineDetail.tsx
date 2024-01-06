@@ -3,8 +3,9 @@ import { useRecoilState } from "recoil";
 import { produce } from "immer";
 
 import { renameToWebp } from "@/domains/noobprohacker";
-import Input from "@/components/common/Input/Input";
 import { lineInfoState } from "@/store/noobprohacker";
+import FormField from "@/components/common/Form/FormField";
+import Input from "@/components/common/Input/Input";
 
 type Props = {
   index: number;
@@ -28,8 +29,7 @@ export default function LineDetail(props: Props) {
         </p>
       </div>
       <div className="mt-4 flex gap-4">
-        <div className="flex flex-col gap-2 [&>input]:h-[36px] [&>input]:w-[40px]">
-          <p className="text-lg text-text-secondary">순위</p>
+        <FormField label="순위">
           <Input
             name="ranking"
             type="number"
@@ -43,10 +43,11 @@ export default function LineDetail(props: Props) {
                 }),
               )
             }
+            width="40px"
+            height="36px"
           />
-        </div>
-        <div className="flex flex-col gap-2 [&>input]:h-[36px] [&>input]:w-full">
-          <p className="text-lg text-text-secondary">개인 유튜브 링크</p>
+        </FormField>
+        <FormField label="개인 유튜브 링크">
           <Input
             name="youtube_url"
             type="text"
@@ -58,8 +59,9 @@ export default function LineDetail(props: Props) {
                 }),
               )
             }
+            height="36px"
           />
-        </div>
+        </FormField>
       </div>
     </div>
   );

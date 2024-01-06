@@ -2,7 +2,9 @@
 
 import { medium } from "@/app/layout";
 import SearchResult from "@/components/Game/WhoseWork/SearchResult";
+import FormField from "@/components/common/Form/FormField";
 import Input from "@/components/common/Input/Input";
+import Select from "@/components/common/Select/Select";
 import { content } from "@/domains/schedule";
 import { useSchedule } from "@/hooks/Admin/Schedule/useSchedule";
 
@@ -41,97 +43,80 @@ export default function Page() {
             </button>
           </div>
           <div className="mt-8 flex gap-4 text-text-secondary">
-            <div className="flex flex-col gap-2">
-              <p>상태</p>
-              <select
-                value={scheduleForm.status}
-                name="status"
-                className="h-[40px] w-[100px] rounded-md border-2 border-background-tertiary bg-background-primary pl-2 text-text-secondary outline-none"
-                onChange={handleSelectChange}
-              >
+            <FormField label="상태">
+              <select className="h-[40px] w-[100px] rounded-md border-2 border-background-tertiary bg-background-primary pl-2 text-text-secondary outline-none">
                 <option value="before_announcement">공지 전</option>
                 <option value="after_announcement">공지 후</option>
                 <option value="after_content">컨텐츠 후</option>
               </select>
-            </div>
-            <div className="flex flex-col gap-2">
-              <p>날짜</p>
+            </FormField>
+            <FormField label="날짜">
               <Input
                 type="date"
                 value={scheduleForm.date}
                 name="date"
                 handleInputChange={handleInputChange}
               />
-            </div>
-            <div className="flex flex-col gap-2 ">
-              <p>컨텐츠</p>
-              <select
+            </FormField>
+            <FormField label="날짜">
+              <Select
+                width="160px"
+                height="40px"
                 value={scheduleForm.content}
                 name="content"
-                className="h-[40px] w-[160px] rounded-md border-2 border-background-tertiary bg-background-primary pl-2 text-text-secondary outline-none"
-                onChange={handleSelectChange}
-              >
-                {content.map((item) => (
-                  <option key={item} value={item}>
-                    {item}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="flex flex-col gap-2 [&>input]:w-[50px]">
-              <p>회차</p>
+                handleSelectChange={handleSelectChange}
+                options={content}
+              />
+            </FormField>
+            <FormField label="회차">
               <Input
                 name="episode"
                 value={scheduleForm.episode}
                 type="number"
+                width="50px"
                 handleInputChange={handleInputChange}
               />
-            </div>
-            <div className="flex flex-col gap-2 [&>input]:w-[50px]">
-              <p>조공 컨텐츠?</p>
+            </FormField>
+            <FormField label="조공 컨텐츠?">
               <select
                 value={scheduleForm.isTributeContent ? "true" : "false"}
                 name="isTributeContent"
-                className="h-[40px] w-[100px] rounded-md border-2 border-background-tertiary bg-background-primary pl-2 text-text-secondary outline-none"
+                className="h-[40px] w-[80px] rounded-md border-2 border-background-tertiary bg-background-primary pl-2 text-text-secondary outline-none"
                 onChange={handleSelectChange}
               >
                 <option value={"true"}>예</option>
                 <option value={"false"}>아니오</option>
               </select>
-            </div>
+            </FormField>
           </div>
           <div className="mt-4 flex gap-4 text-text-secondary">
-            <div className="flex flex-col gap-2">
-              <p>컨텐츠 제목</p>
+            <FormField label="컨텐츠 제목">
               <Input
                 type="text"
                 name="title"
                 value={scheduleForm.title}
                 handleInputChange={handleInputChange}
-              />
-            </div>
-            <div className="flex flex-col gap-2">
-              <p>공지 링크</p>
+              ></Input>
+            </FormField>
+            <FormField label="공지 링크">
               <Input
                 type="text"
                 name="announcement_link"
                 value={scheduleForm.announcement_link}
                 handleInputChange={handleInputChange}
               />
-            </div>
-            <div className="flex flex-col gap-2">
-              <p>유튜브 링크</p>
+            </FormField>
+            <FormField label="유튜브 링크">
               <Input
                 type="text"
                 name="youtube_link"
                 value={scheduleForm.youtube_link}
                 handleInputChange={handleInputChange}
               />
-            </div>
+            </FormField>
           </div>
           <div className="mt-4 flex gap-4">
-            <div className="flex flex-col gap-2 text-text-secondary">
-              <p>참가자</p>
+            <FormField label="참가자">
               <div className="relative">
                 <Input
                   name="participant"
@@ -146,7 +131,7 @@ export default function Page() {
                   highlightedArchitects={highlightedArchitects}
                 />
               </div>
-            </div>
+            </FormField>
             <div className="flex flex-col gap-2 text-text-secondary">
               <p>참가자 명단</p>
               <div className="h-[300px] w-[200px] bg-background-secondary">

@@ -3,9 +3,11 @@
 import Image from "next/image";
 
 import { useParticipants } from "@/hooks/Admin/PlacementTest/useParticipants";
-import Input from "@/components/common/Input/Input";
 import { tierArray } from "@/domains/architect";
 import { renameToWebp } from "@/domains/noobprohacker";
+import Select from "@/components/common/Select/Select";
+import FormField from "@/components/common/Form/FormField";
+import Input from "@/components/common/Input/Input";
 
 type Props = {
   imagesName: string[];
@@ -31,33 +33,23 @@ export default function Participants(props: Props) {
             </span>
           </div>
           <div className="mt-4 flex gap-8">
-            <div className="flex flex-col gap-2 [&>input]:h-[40px] [&>input]:w-[48px]">
-              <p className="text-text-secondary">순서</p>
+            <FormField label="순서">
               <Input
                 name="order"
                 type="number"
                 value={participant.order}
                 handleInputChange={(e) => handleInputChange(e, index)}
               />
-            </div>
-            <div className="flex flex-col gap-2">
-              <p className="text-text-secondary">배치 티어</p>
-              <select
+            </FormField>
+            <FormField label="배치 티어">
+              <Select
                 value={participant.placement_result}
-                onChange={(e) => handleSelectChange(e, index)}
-                className="h-[40px] w-[150px] rounded-md border-2 border-background-tertiary bg-background-primary pl-2 text-text-secondary outline-none"
-              >
-                {tierArray.map((tier) => (
-                  <option
-                    className="bg-background-primary hover:cursor-pointer"
-                    value={tier}
-                    key={tier}
-                  >
-                    {tier}
-                  </option>
-                ))}
-              </select>
-            </div>
+                handleSelectChange={(e) => handleSelectChange(e, index)}
+                options={tierArray}
+                width="150px"
+                height="40px"
+              />
+            </FormField>
           </div>
         </div>
       ))}
