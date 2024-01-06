@@ -8,6 +8,8 @@ import { Question } from "@/hooks/Game/WhoseWork/useSetting";
 import { renameTo1080Webp } from "@/domains/noobprohacker";
 import useInGame from "@/hooks/Game/WhoseWork/useInGame";
 import ArrowDropUp from "../../../../public/icons/arrow_back.svg";
+import Input from "@/components/common/Input/Input";
+import InputWithRef from "@/components/common/Input/InputWithRef";
 
 type Props = {
   architects: Architect[];
@@ -93,12 +95,15 @@ export default function InGame(props: Props) {
       ) : (
         <div className="mx-auto mt-8 flex max-w-[900px] justify-center gap-4">
           <div className="relative">
-            <input
+            <InputWithRef
+              name="search"
+              type="text"
               ref={inputRef}
               onKeyDown={handleKeyDown}
-              onChange={handleInputChange}
+              handleInputChange={handleInputChange}
               value={input}
-              className="h-[48px] w-[280px] border-2 border-background-tertiary bg-background-secondary pl-3 text-text-secondary outline-none sm:w-[300px]"
+              width="280px"
+              height="48px"
             />
             <SearchResult
               input={input}

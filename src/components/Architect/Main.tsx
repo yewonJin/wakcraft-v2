@@ -4,9 +4,9 @@ import { Fragment } from "react";
 
 import Search from "./Search";
 import Sort from "./Sort";
-import TierCategory from "./TierCategory";
+import FilteringByTier from "./FilteringByTier";
 import ArchitectList from "./ArchitectList";
-import useTierCategory from "@/hooks/useTierCategory";
+import useFilteringByTier from "@/hooks/useFilteringByTier";
 import useSortArchitect from "@/hooks/useSortArchitect";
 import useSearch from "@/hooks/useSearch";
 import ScrollToTop from "../common/ScrollToTop";
@@ -19,12 +19,12 @@ type Props = {
 export default function Main(props: Props) {
   const { architects } = props;
 
-  const { curCategory, handleCategoryClick, filterByCategory } =
-    useTierCategory();
+  const { curCategory, handleCategoryClick, filteredArchitectsByTier } =
+    useFilteringByTier();
   const { sortBy, isDescending, handleSortClick, sortedArchitects } =
     useSortArchitect(architects);
   const { input, handleInputChange, highlightedArchitects } = useSearch(
-    filterByCategory(sortedArchitects),
+    filteredArchitectsByTier(sortedArchitects),
   );
 
   return (
@@ -37,7 +37,7 @@ export default function Main(props: Props) {
           handleSortClick={handleSortClick}
         />
       </div>
-      <TierCategory
+      <FilteringByTier
         curCategory={curCategory}
         handleCategoryClick={handleCategoryClick}
       />

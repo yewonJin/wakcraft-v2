@@ -17,7 +17,7 @@ export default function InputField(props: Props) {
   const { label, ...rest } = props;
 
   return (
-    <div className="flex flex-col gap-2 [&>input]:h-[40px] [&>input]:w-[48px]">
+    <div className="flex flex-col gap-2">
       <label className="text-lg text-text-secondary">{label}</label>
       <Input {...rest} />
     </div>

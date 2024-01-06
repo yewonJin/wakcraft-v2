@@ -2,7 +2,7 @@
 
 import { medium } from "@/app/layout";
 import SearchResult from "@/components/Game/WhoseWork/SearchResult";
-import Input from "@/components/common/Input";
+import Input from "@/components/common/Input/Input";
 import { content } from "@/domains/schedule";
 import { useSchedule } from "@/hooks/Admin/Schedule/useSchedule";
 
@@ -41,12 +41,12 @@ export default function Page() {
             </button>
           </div>
           <div className="mt-8 flex gap-4 text-text-secondary">
-            <div className="flex flex-col gap-2 [&>input]:h-[45px]">
+            <div className="flex flex-col gap-2">
               <p>상태</p>
               <select
                 value={scheduleForm.status}
                 name="status"
-                className="h-[45px] w-[100px] rounded-md border-2 border-background-tertiary bg-background-primary pl-2 text-text-secondary outline-none"
+                className="h-[40px] w-[100px] rounded-md border-2 border-background-tertiary bg-background-primary pl-2 text-text-secondary outline-none"
                 onChange={handleSelectChange}
               >
                 <option value="before_announcement">공지 전</option>
@@ -54,7 +54,7 @@ export default function Page() {
                 <option value="after_content">컨텐츠 후</option>
               </select>
             </div>
-            <div className="flex flex-col gap-2 [&>input]:h-[45px]">
+            <div className="flex flex-col gap-2">
               <p>날짜</p>
               <Input
                 type="date"
@@ -68,7 +68,7 @@ export default function Page() {
               <select
                 value={scheduleForm.content}
                 name="content"
-                className="h-[45px] w-[160px] rounded-md border-2 border-background-tertiary bg-background-primary pl-2 text-text-secondary outline-none"
+                className="h-[40px] w-[160px] rounded-md border-2 border-background-tertiary bg-background-primary pl-2 text-text-secondary outline-none"
                 onChange={handleSelectChange}
               >
                 {content.map((item) => (
@@ -78,7 +78,7 @@ export default function Page() {
                 ))}
               </select>
             </div>
-            <div className="flex flex-col gap-2 [&>input]:h-[45px] [&>input]:w-[50px]">
+            <div className="flex flex-col gap-2 [&>input]:w-[50px]">
               <p>회차</p>
               <Input
                 name="episode"
@@ -87,12 +87,12 @@ export default function Page() {
                 handleInputChange={handleInputChange}
               />
             </div>
-            <div className="flex flex-col gap-2 [&>input]:h-[45px] [&>input]:w-[50px]">
+            <div className="flex flex-col gap-2 [&>input]:w-[50px]">
               <p>조공 컨텐츠?</p>
               <select
                 value={scheduleForm.isTributeContent ? "true" : "false"}
                 name="isTributeContent"
-                className="h-[45px] w-[100px] rounded-md border-2 border-background-tertiary bg-background-primary pl-2 text-text-secondary outline-none"
+                className="h-[40px] w-[100px] rounded-md border-2 border-background-tertiary bg-background-primary pl-2 text-text-secondary outline-none"
                 onChange={handleSelectChange}
               >
                 <option value={"true"}>예</option>
@@ -101,7 +101,7 @@ export default function Page() {
             </div>
           </div>
           <div className="mt-4 flex gap-4 text-text-secondary">
-            <div className="flex flex-col gap-2 [&>input]:h-[45px]">
+            <div className="flex flex-col gap-2">
               <p>컨텐츠 제목</p>
               <Input
                 type="text"
@@ -110,7 +110,7 @@ export default function Page() {
                 handleInputChange={handleInputChange}
               />
             </div>
-            <div className="flex flex-col gap-2 [&>input]:h-[45px]">
+            <div className="flex flex-col gap-2">
               <p>공지 링크</p>
               <Input
                 type="text"
@@ -119,7 +119,7 @@ export default function Page() {
                 handleInputChange={handleInputChange}
               />
             </div>
-            <div className="flex flex-col gap-2 [&>input]:h-[45px]">
+            <div className="flex flex-col gap-2">
               <p>유튜브 링크</p>
               <Input
                 type="text"
@@ -132,7 +132,7 @@ export default function Page() {
           <div className="mt-4 flex gap-4">
             <div className="flex flex-col gap-2 text-text-secondary">
               <p>참가자</p>
-              <div className="relative  [&>input]:h-[45px]">
+              <div className="relative">
                 <Input
                   name="participant"
                   value={searchInput}
