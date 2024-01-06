@@ -4,7 +4,7 @@ import { medium } from "@/app/layout";
 import SearchResult from "@/components/Game/WhoseWork/SearchResult";
 import FormField from "@/components/common/Form/FormField";
 import Input from "@/components/common/Input/Input";
-import Select from "@/components/common/Select/Select";
+import SelectBox from "@/components/common/SelectBox/SelectBox";
 import { content } from "@/domains/schedule";
 import { useSchedule } from "@/hooks/Admin/Schedule/useSchedule";
 
@@ -59,7 +59,7 @@ export default function Page() {
               />
             </FormField>
             <FormField label="날짜">
-              <Select
+              <SelectBox
                 width="160px"
                 height="40px"
                 value={scheduleForm.content}

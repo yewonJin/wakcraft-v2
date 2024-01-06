@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useParticipants } from "@/hooks/Admin/PlacementTest/useParticipants";
 import { tierArray } from "@/domains/architect";
 import { renameToWebp } from "@/domains/noobprohacker";
-import Select from "@/components/common/Select/Select";
+import SelectBox from "@/components/common/SelectBox/SelectBox";
 import FormField from "@/components/common/Form/FormField";
 import Input from "@/components/common/Input/Input";
 
@@ -42,7 +42,7 @@ export default function Participants(props: Props) {
               />
             </FormField>
             <FormField label="배치 티어">
-              <Select
+              <SelectBox
                 value={participant.placement_result}
                 handleSelectChange={(e) => handleSelectChange(e, index)}
                 options={tierArray}

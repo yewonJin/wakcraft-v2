@@ -5,7 +5,7 @@ import { KeyboardEvent } from "react";
 import { medium } from "@/app/layout";
 import SearchResult from "@/components/Game/WhoseWork/SearchResult";
 import Input from "@/components/common/Input/Input";
-import Select from "@/components/common/Select/Select";
+import SelectBox from "@/components/common/SelectBox/SelectBox";
 import FormField from "@/components/common/Form/FormField";
 import { tierArray } from "@/domains/architect";
 import { useEditArchitect } from "@/hooks/Admin/Architect/useEditArchitect";
@@ -77,7 +77,7 @@ export default function EditArchitect() {
                 />
               </FormField>
               <FormField label="티어">
-                <Select
+                <SelectBox
                   value={input.tier}
                   options={tierArray}
                   handleSelectChange={handleSelectChange}

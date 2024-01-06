@@ -9,7 +9,7 @@ type Props = {
   height?: string;
 };
 
-export default function Select(props: Props) {
+export default function SelectBox(props: Props) {
   const { value, options, handleSelectChange, width, height } = props;
 
   return (
