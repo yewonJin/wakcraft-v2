@@ -1,6 +1,6 @@
 "use client";
 
-import LinkIcon from "../../../public/icons/link.svg";
+import LinkIcon from "../../../../public/icons/link.svg";
 
 export default function CardYoutubeLink({
   youtubeUrl,

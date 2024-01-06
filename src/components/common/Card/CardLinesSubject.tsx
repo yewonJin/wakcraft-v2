@@ -3,13 +3,12 @@
 import { useRouter } from "next/navigation";
 
 type Props = {
-  episode: number;
   linesSubject: string[];
   link: string;
 };
 
-export default function LinesSubject(props: Props) {
-  const { episode, linesSubject, link } = props;
+export default function CardLinesSubject(props: Props) {
+  const { linesSubject, link } = props;
   const router = useRouter();
 
   return (

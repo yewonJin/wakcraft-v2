@@ -1,26 +1,30 @@
-import { medium } from "../layout";
-import Card from "@/components/common/Card";
+import Link from "next/link";
 
+import Card from "@/components/common/Card/Card";
+import PageTitle from "@/components/common/PageTitle";
 import { getAllEventNoobProHacker } from "@/api/server/eventNoobProHacker";
 import { getAllMatchYourTier } from "@/api/server/matchYourTier";
 import { getAllArchitectureContest } from "@/api/server/architectureContest";
 import { getAllPlacementTest } from "@/api/server/placementTest";
 import { getAllGuessTimes } from "@/api/server/guessTime";
 import { getAllArchitectureNoobProHackers } from "@/api/server/architectureNoobProHacker";
+import { getContentLinkUrl } from "@/domains/content";
 
 export default async function Page() {
   const cards = await generateCards();
 
   return (
     <div className="mx-auto max-w-[1200px]">
-      <h1 className={`text-3xl text-text-primary ${medium.className}`}>
-        컨텐츠
-      </h1>
-      <p className="mt-4 text-base text-text-secondary">
-        눕프로해커 이외의 마인크래프트 컨텐츠를 볼 수 있다.
-      </p>
+      <PageTitle
+        title="컨텐츠"
+        content="눕프로해커 이외의 마인크래프트 컨텐츠를 볼 수 있다."
+      />
       <div className="grid-col-1 mt-8 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-        {cards.sort((a, b) => b.props.date - a.props.date).map((card) => card)}
+        {cards
+          .sort(
+            (a, b) => b.props.children.props.date - a.props.children.props.date,
+          )
+          .map((card) => card)}
       </div>
     </div>
   );
@@ -47,111 +51,152 @@ const generateCards = async () => {
 
   architectureNoobProHackers.forEach((architectureNoobProHacker) =>
     cards.push(
-      <Card
+      <Link
         key={"건축 눕프핵 - " + architectureNoobProHacker.contentInfo.episode}
-        contentType="건축 눕프핵"
-        episode={architectureNoobProHacker.contentInfo.episode}
-        subject={architectureNoobProHacker.contentInfo.main_subject}
-        date={new Date(architectureNoobProHacker.contentInfo.date)}
-        youtubeUrl={
-          architectureNoobProHacker.contentInfo.youtube_url !== "null"
-            ? architectureNoobProHacker.contentInfo.youtube_url.split("/")[3]
-            : "null"
-        }
-        linesSubject={architectureNoobProHacker.lineInfo.map(
-          (item) => item.subject,
+        href={getContentLinkUrl(
+          "건축 눕프핵",
+          architectureNoobProHacker.contentInfo.episode,
         )}
-      />,
+      >
+        <Card
+          contentType="건축 눕프핵"
+          episode={architectureNoobProHacker.contentInfo.episode}
+          subject={architectureNoobProHacker.contentInfo.main_subject}
+          date={new Date(architectureNoobProHacker.contentInfo.date)}
+          youtubeUrl={
+            architectureNoobProHacker.contentInfo.youtube_url !== "null"
+              ? architectureNoobProHacker.contentInfo.youtube_url.split("/")[3]
+              : "null"
+          }
+          linesSubject={architectureNoobProHacker.lineInfo.map(
+            (item) => item.subject,
+          )}
+        />
+      </Link>,
     ),
   );
 
   eventNoobProHackers.forEach((eventNoobProHacker) =>
     cards.push(
-      <Card
-        key={eventNoobProHacker.contentInfo.contentName}
-        contentType="이벤트 눕프핵"
-        episode={eventNoobProHacker.contentInfo.episode}
-        subject={eventNoobProHacker.contentInfo.contentName}
-        date={new Date(eventNoobProHacker.contentInfo.date)}
-        youtubeUrl={
-          eventNoobProHacker.contentInfo.youtube_url !== "null"
-            ? eventNoobProHacker.contentInfo.youtube_url.split("/")[3]
-            : "null"
-        }
-        linesSubject={eventNoobProHacker.lineInfo.map((item) => item.subject)}
-      />,
+      <Link
+        key={"이벤트 눕프핵 - " + eventNoobProHacker.contentInfo.episode}
+        href={getContentLinkUrl(
+          "이벤트 눕프핵",
+          eventNoobProHacker.contentInfo.episode,
+        )}
+      >
+        <Card
+          key={eventNoobProHacker.contentInfo.contentName}
+          contentType="이벤트 눕프핵"
+          episode={eventNoobProHacker.contentInfo.episode}
+          subject={eventNoobProHacker.contentInfo.contentName}
+          date={new Date(eventNoobProHacker.contentInfo.date)}
+          youtubeUrl={
+            eventNoobProHacker.contentInfo.youtube_url !== "null"
+              ? eventNoobProHacker.contentInfo.youtube_url.split("/")[3]
+              : "null"
+          }
+          linesSubject={eventNoobProHacker.lineInfo.map((item) => item.subject)}
+        />
+      </Link>,
     ),
   );
 
   matchYourTiers.forEach((matchYourTier) =>
     cards.push(
-      <Card
-        key={matchYourTier.contentInfo.contentName}
-        contentType="티어 맞추기"
-        episode={matchYourTier.contentInfo.episode}
-        subject={"티어 맞추기"}
-        date={new Date(matchYourTier.contentInfo.date)}
-        youtubeUrl={
-          matchYourTier.contentInfo.youtube_url !== "null"
-            ? matchYourTier.contentInfo.youtube_url.split("/")[3]
-            : "null"
-        }
-        linesSubject={[]}
-      />,
+      <Link
+        key={"티어 맞추기 - " + matchYourTier.contentInfo.episode}
+        href={getContentLinkUrl(
+          "티어 맞추기",
+          matchYourTier.contentInfo.episode,
+        )}
+      >
+        <Card
+          key={matchYourTier.contentInfo.contentName}
+          contentType="티어 맞추기"
+          episode={matchYourTier.contentInfo.episode}
+          subject={"티어 맞추기"}
+          date={new Date(matchYourTier.contentInfo.date)}
+          youtubeUrl={
+            matchYourTier.contentInfo.youtube_url !== "null"
+              ? matchYourTier.contentInfo.youtube_url.split("/")[3]
+              : "null"
+          }
+          linesSubject={[]}
+        />
+      </Link>,
     ),
   );
 
   architectureContests.forEach((architectureContest) =>
     cards.push(
-      <Card
-        key={"건축 컨테스트 " + architectureContest.contentInfo.episode}
-        contentType="건축 콘테스트"
-        episode={architectureContest.contentInfo.episode}
-        subject={architectureContest.contentInfo.subject}
-        date={new Date(architectureContest.contentInfo.date)}
-        youtubeUrl={
-          architectureContest.contentInfo.youtube_url !== "null"
-            ? architectureContest.contentInfo.youtube_url.split("/")[3]
-            : "null"
-        }
-        linesSubject={[]}
-      />,
+      <Link
+        key={"건축 컨테스트 - " + architectureContest.contentInfo.episode}
+        href={getContentLinkUrl(
+          "건축 콘테스트",
+          architectureContest.contentInfo.episode,
+        )}
+      >
+        <Card
+          key={"건축 컨테스트 " + architectureContest.contentInfo.episode}
+          contentType="건축 콘테스트"
+          episode={architectureContest.contentInfo.episode}
+          subject={architectureContest.contentInfo.subject}
+          date={new Date(architectureContest.contentInfo.date)}
+          youtubeUrl={
+            architectureContest.contentInfo.youtube_url !== "null"
+              ? architectureContest.contentInfo.youtube_url.split("/")[3]
+              : "null"
+          }
+          linesSubject={[]}
+        />
+      </Link>,
     ),
   );
 
   placementTests.forEach((placementTest) =>
     cards.push(
-      <Card
-        key={"배치고사 시즌 " + placementTest.season}
-        contentType="배치고사"
-        episode={placementTest.season}
-        subject="배치고사"
-        date={new Date(placementTest.date)}
-        youtubeUrl={
-          placementTest.youtube_url !== "null"
-            ? placementTest.youtube_url.split("/")[3]
-            : "null"
-        }
-        linesSubject={[]}
-      />,
+      <Link
+        key={"배치고사 - " + placementTest.season}
+        href={getContentLinkUrl("배치고사", placementTest.season)}
+      >
+        <Card
+          key={"배치고사 시즌 " + placementTest.season}
+          contentType="배치고사"
+          episode={placementTest.season}
+          subject="배치고사"
+          date={new Date(placementTest.date)}
+          youtubeUrl={
+            placementTest.youtube_url !== "null"
+              ? placementTest.youtube_url.split("/")[3]
+              : "null"
+          }
+          linesSubject={[]}
+        />
+      </Link>,
     ),
   );
 
   guessTimes.forEach((guessTime) =>
     cards.push(
-      <Card
-        key={"시간 맞추기"}
-        contentType="시간 맞추기"
-        episode={guessTime.contentInfo.episode}
-        subject="시간 맞추기"
-        date={new Date(guessTime.contentInfo.date)}
-        youtubeUrl={
-          guessTime.contentInfo.youtube_url !== "null"
-            ? guessTime.contentInfo.youtube_url.split("/")[3]
-            : "null"
-        }
-        linesSubject={[]}
-      />,
+      <Link
+        key={"시간 맞추기 - " + guessTime.contentInfo.episode}
+        href={getContentLinkUrl("시간 맞추기", guessTime.contentInfo.episode)}
+      >
+        <Card
+          key={"시간 맞추기"}
+          contentType="시간 맞추기"
+          episode={guessTime.contentInfo.episode}
+          subject="시간 맞추기"
+          date={new Date(guessTime.contentInfo.date)}
+          youtubeUrl={
+            guessTime.contentInfo.youtube_url !== "null"
+              ? guessTime.contentInfo.youtube_url.split("/")[3]
+              : "null"
+          }
+          linesSubject={[]}
+        />
+      </Link>,
     ),
   );
 
