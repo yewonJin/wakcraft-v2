@@ -3,7 +3,7 @@ import { useRecoilState } from "recoil";
 import { Architect } from "@/domains/architect";
 import { curCategoryState } from "@/store/sort";
 
-const useTierCategory = () => {
+const useFilteringByTier = () => {
   const [curCategory, setCurCategory] = useRecoilState(curCategoryState);
 
   const handleCategoryClick = (tier: string) => {
@@ -15,7 +15,7 @@ const useTierCategory = () => {
     setCurCategory(tier);
   };
 
-  const filterByCategory = (arr: Architect[]) => {
+  const filteredArchitectsByTier = (arr: Architect[]) => {
     return arr.filter((architect) => {
       if (curCategory === "") {
         return true;
@@ -31,7 +31,7 @@ const useTierCategory = () => {
     });
   };
 
-  return { curCategory, handleCategoryClick, filterByCategory };
+  return { curCategory, handleCategoryClick, filteredArchitectsByTier };
 };
 
-export default useTierCategory;
+export default useFilteringByTier;

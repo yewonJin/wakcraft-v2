@@ -5,7 +5,7 @@ type Props = {
   handleCategoryClick: (tier: string) => void;
 };
 
-export default function TierCategory(props: Props) {
+export default function FilteringByTier(props: Props) {
   const { curCategory, handleCategoryClick } = props;
 
   return (
