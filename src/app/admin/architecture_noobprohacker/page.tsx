@@ -3,10 +3,12 @@
 import { useState } from "react";
 
 import { medium } from "@/app/layout";
-import ContentSetting from "@/components/Admin/ArchitectureNoobProHacker/ContentSetting";
-import ArchitectSetting from "@/components/Admin/NoobProHackrer/ArchitectSetting/ArchitectSetting";
-import LineSetting from "@/components/Admin/ArchitectureNoobProHacker/LineSetting";
+import ArchitectSetting from "@/components/Admin/Common/ArchitectSetting";
+import LineSetting from "@/components/Admin/Common/LineSetting";
 import EditArchitectureNoobProHacker from "@/components/Admin/ArchitectureNoobProHacker/EditArchitectureNoobProHacker";
+import ContentSetting from "@/components/Admin/Common/ContentSetting";
+import { useContentSetting } from "@/hooks/Admin/ArchitectureNoobProHacker/useContentSetting";
+import { useLineSetting } from "@/hooks/Admin/ArchitectureNoobProHacker/useLineSetting";
 import ImageSetting from "@/components/Admin/ArchitectureNoobProHacker/ImageSetting";
 
 export default function Page() {
@@ -17,19 +19,36 @@ export default function Page() {
     setPage((prev) => prev + 1);
   };
 
+  const { contentInfo, handleInputChange } = useContentSetting();
+  const { lineInfo, handleSubmit } = useLineSetting({ isEdit });
+
   const addProgression = () => {
     switch (page) {
       case 0:
-        return <ContentSetting moveToNextPage={moveToNextPage} />;
+        return (
+          <ContentSetting
+            moveToNextPage={moveToNextPage}
+            contentInfo={contentInfo}
+            handleInputChange={handleInputChange}
+          />
+        );
 
       case 1:
         return <ArchitectSetting moveToNextPage={moveToNextPage} />;
 
       case 2:
-        return <ImageSetting moveToNextPage={moveToNextPage} />;
+        return (
+          <ImageSetting moveToNextPage={moveToNextPage} lineInfo={lineInfo} />
+        );
 
       case 3:
-        return <LineSetting />;
+        return (
+          <LineSetting
+            lineInfo={lineInfo}
+            isEdit={isEdit}
+            handleSubmit={handleSubmit}
+          />
+        );
     }
   };
 

@@ -32,7 +32,7 @@ export const useImageSetting = (props: Props) => {
 
   const BaseURL = `https://wakcraft.s3.ap-northeast-2.amazonaws.com/noobProHacker/episode ${contentInfo.episode}/`;
 
-  const handleSubmit = () => {
+  const submitImage = () => {
     if (!validateImage(lineInfo)) {
       toast.error("이미지를 모두 채워주세요");
       return;
@@ -67,7 +67,7 @@ export const useImageSetting = (props: Props) => {
     );
   };
 
-  return { lineInfo, subjects, handleSelectClick, handleSubmit };
+  return { lineInfo, subjects, handleSelectClick, submitImage };
 };
 
 const validateImage = (lineInfo: NoobProHacker["lineInfo"]) => {

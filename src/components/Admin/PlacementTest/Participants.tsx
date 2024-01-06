@@ -3,7 +3,7 @@
 import Image from "next/image";
 
 import { useParticipants } from "@/hooks/Admin/PlacementTest/useParticipants";
-import Input from "@/components/common/Input";
+import Input from "@/components/common/Input/Input";
 import { tierArray } from "@/domains/architect";
 import { renameToWebp } from "@/domains/noobprohacker";
 

@@ -1,17 +1,18 @@
-import { Fragment } from "react";
+import { ChangeEvent, Fragment } from "react";
 import Image from "next/image";
 
 import { medium } from "@/app/layout";
-import { renameToWebp } from "@/domains/noobprohacker";
+import { NoobProHacker, renameToWebp } from "@/domains/noobprohacker";
 import { useImageSetting } from "@/hooks/Admin/NoobProHacker/useImageSetting";
 
 type Props = {
   moveToNextPage: () => void;
+  lineInfo: NoobProHacker["lineInfo"];
 };
 
 export default function ImageSetting(props: Props) {
-  const { lineInfo, subjects, handleSelectClick, handleSubmit } =
-    useImageSetting(props);
+  const { lineInfo } = props;
+  const { subjects, handleSelectClick, submitImage } = useImageSetting(props);
 
   return (
     <Fragment>
@@ -21,7 +22,7 @@ export default function ImageSetting(props: Props) {
         </h2>
         <button
           className="border-2 border-background-tertiary px-3 py-2 text-text-secondary"
-          onClick={handleSubmit}
+          onClick={submitImage}
         >
           제출
         </button>

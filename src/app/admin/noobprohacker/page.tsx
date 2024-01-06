@@ -3,11 +3,14 @@
 import { useState } from "react";
 
 import { medium } from "@/app/layout";
-import ContentSetting from "@/components/Admin/NoobProHackrer/ContentSetting/ContentSetting";
-import ArchitectSetting from "@/components/Admin/NoobProHackrer/ArchitectSetting/ArchitectSetting";
-import ImageSetting from "@/components/Admin/NoobProHackrer/ImageSetting/ImageSetting";
-import LineSetting from "@/components/Admin/NoobProHackrer/LineSetting/LineSetting";
+import ArchitectSetting from "@/components/Admin/Common/ArchitectSetting";
 import EditNoobProHacker from "@/components/Admin/NoobProHackrer/EditNoobProHacker";
+import ContentSetting from "@/components/Admin/Common/ContentSetting";
+import { useContentSetting } from "@/hooks/Admin/NoobProHacker/useContentSetting";
+import { useImageSetting } from "@/hooks/Admin/NoobProHacker/useImageSetting";
+import LineSetting from "@/components/Admin/Common/LineSetting";
+import { useLineSetting } from "@/hooks/Admin/NoobProHacker/useLineSetting";
+import ImageSetting from "@/components/Admin/NoobProHackrer/ImageSetting";
 
 export default function Page() {
   const [page, setPage] = useState(0);
@@ -17,19 +20,39 @@ export default function Page() {
     setPage((prev) => prev + 1);
   };
 
+  const { contentInfo, handleInputChange } = useContentSetting();
+  const { subjects, handleSelectClick, submitImage } = useImageSetting({
+    moveToNextPage,
+  });
+  const { lineInfo, handleSubmit } = useLineSetting({ isEdit });
+
   const addProgression = () => {
     switch (page) {
       case 0:
-        return <ContentSetting moveToNextPage={moveToNextPage} />;
+        return (
+          <ContentSetting
+            moveToNextPage={moveToNextPage}
+            contentInfo={contentInfo}
+            handleInputChange={handleInputChange}
+          />
+        );
 
       case 1:
         return <ArchitectSetting moveToNextPage={moveToNextPage} />;
 
       case 2:
-        return <ImageSetting moveToNextPage={moveToNextPage} />;
+        return (
+          <ImageSetting moveToNextPage={moveToNextPage} lineInfo={lineInfo} />
+        );
 
       case 3:
-        return <LineSetting />;
+        return (
+          <LineSetting
+            isEdit={isEdit}
+            lineInfo={lineInfo}
+            handleSubmit={handleSubmit}
+          />
+        );
     }
   };
 

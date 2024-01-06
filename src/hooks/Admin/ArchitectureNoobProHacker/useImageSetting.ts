@@ -2,10 +2,10 @@ import { ChangeEvent, useMemo } from "react";
 import { useQuery } from "react-query";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { produce } from "immer";
+import toast from "react-hot-toast";
 
 import { getImagesName } from "@/api/client/aws";
 import { contentInfoState, lineInfoState } from "@/store/noobprohacker";
-import toast from "react-hot-toast";
 import { NoobProHacker } from "@/domains/noobprohacker";
 
 type Props = {
@@ -16,8 +16,9 @@ export const useImageSetting = (props: Props) => {
   const contentInfo = useRecoilValue(contentInfoState);
   const [lineInfo, setLineInfo] = useRecoilState(lineInfoState);
 
-  const { data: imagesName } = useQuery(["getImagesName"], () =>
-    getImagesName("architectureNoobProHacker", contentInfo.episode),
+  const { data: imagesName } = useQuery(
+    ["getImagesNameWithArchitectureNoobProHacker"],
+    () => getImagesName("architectureNoobProHacker", contentInfo.episode),
   );
 
   const subjects: string[] = useMemo(
@@ -32,7 +33,7 @@ export const useImageSetting = (props: Props) => {
 
   const BaseURL = `https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureNoobProHacker/episode ${contentInfo.episode}/`;
 
-  const handleSubmit = () => {
+  const submitImage = () => {
     if (!validateImage(lineInfo)) {
       toast.error("이미지를 모두 채워주세요");
       return;
@@ -67,7 +68,7 @@ export const useImageSetting = (props: Props) => {
     );
   };
 
-  return { lineInfo, subjects, handleSelectClick, handleSubmit };
+  return { lineInfo, subjects, handleSelectClick, submitImage };
 };
 
 const validateImage = (lineInfo: NoobProHacker["lineInfo"]) => {

@@ -2,7 +2,7 @@ import { useRecoilState } from "recoil";
 import { produce } from "immer";
 
 import { medium } from "@/app/layout";
-import Input from "@/components/common/Input";
+import Input from "@/components/common/Input/Input";
 import { lineInfoState } from "@/store/noobprohacker";
 
 type Props = {

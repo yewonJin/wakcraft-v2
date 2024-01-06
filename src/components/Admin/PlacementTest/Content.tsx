@@ -1,7 +1,7 @@
 "use client";
 
 import { useContent } from "@/hooks/Admin/PlacementTest/useContent";
-import Input from "@/components/common/Input";
+import Input from "@/components/common/Input/Input";
 
 type Props = {
   curSeason: number;

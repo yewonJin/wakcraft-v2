@@ -4,9 +4,10 @@ import { useRecoilState, useSetRecoilState } from "recoil";
 
 import { NoobProHacker } from "@/domains/noobprohacker";
 import { contentInfoState, lineInfoState } from "@/store/noobprohacker";
-import Input from "@/components/common/Input";
+import Input from "@/components/common/Input/Input";
 import { getArchitectureNoobProHackersWithoutURL } from "@/api/client/architectureNoobProHacker";
-import LineSetting from "./LineSetting";
+import LineSetting from "../Common/LineSetting";
+import { useLineSetting } from "@/hooks/Admin/ArchitectureNoobProHacker/useLineSetting";
 
 type Props = {
   isEdit: boolean;
@@ -15,7 +16,9 @@ type Props = {
 
 export default function EditArchitectureNoobProHacker(props: Props) {
   const [contentInfo, setContetInfo] = useRecoilState(contentInfoState);
-  const setLineInfo = useSetRecoilState(lineInfoState);
+  const [lineInfo, setLineInfo] = useRecoilState(lineInfoState);
+
+  const { handleSubmit } = useLineSetting(props);
 
   const { data: architectureNoobProHackersWithoutURL } = useQuery<
     NoobProHacker[]
@@ -61,20 +64,18 @@ export default function EditArchitectureNoobProHacker(props: Props) {
       {props.isEdit && (
         <div className="mt-8">
           <p className="mb-2 text-lg text-text-primary">유튜브 링크</p>
-          <div className="[&>input]:h-[40px]">
-            <Input
-              name="youtube_url"
-              type="text"
-              value={contentInfo.youtube_url}
-              handleInputChange={(e) =>
-                setContetInfo((prev) => ({
-                  ...prev,
-                  youtube_url: e.target.value,
-                }))
-              }
-            />
-          </div>
-          <LineSetting isEdit />
+          <Input
+            name="youtube_url"
+            type="text"
+            value={contentInfo.youtube_url}
+            handleInputChange={(e) =>
+              setContetInfo((prev) => ({
+                ...prev,
+                youtube_url: e.target.value,
+              }))
+            }
+          />
+          <LineSetting isEdit lineInfo={lineInfo} handleSubmit={handleSubmit} />
         </div>
       )}
     </Fragment>

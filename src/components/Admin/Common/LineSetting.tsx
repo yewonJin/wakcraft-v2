@@ -1,15 +1,17 @@
 import { Fragment } from "react";
 
-import Line from "./Line";
-import LineDetail from "./LineDetail";
-import { useLineSetting } from "@/hooks/Admin/NoobProHacker/useLineSetting";
+import Line from "./LineSetting/Line";
+import LineDetail from "./LineSetting/LineDetail";
+import { NoobProHacker } from "@/domains/noobprohacker";
 
 type Props = {
   isEdit?: boolean;
+  lineInfo: NoobProHacker["lineInfo"];
+  handleSubmit: () => void;
 };
 
 export default function LineSetting(props: Props) {
-  const { lineInfo, handleSubmit } = useLineSetting(props);
+  const { isEdit, lineInfo, handleSubmit } = props;
 
   return (
     <Fragment>
@@ -29,7 +31,7 @@ export default function LineSetting(props: Props) {
         className="mt-8 rounded-md border-2 border-background-tertiary px-4 py-2 text-text-tertiary"
         onClick={handleSubmit}
       >
-        {props.isEdit ? "수정" : "추가"}
+        {isEdit ? "수정" : "추가"}
       </button>
     </Fragment>
   );

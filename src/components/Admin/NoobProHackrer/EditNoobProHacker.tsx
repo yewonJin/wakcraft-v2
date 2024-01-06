@@ -1,12 +1,13 @@
 import { Dispatch, Fragment, SetStateAction } from "react";
 import { useQuery } from "react-query";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 
 import { getNoobProHackersWithoutURL } from "@/api/client/noobprohacker";
 import { NoobProHacker } from "@/domains/noobprohacker";
 import { contentInfoState, lineInfoState } from "@/store/noobprohacker";
-import LineSetting from "./LineSetting/LineSetting";
-import Input from "@/components/common/Input";
+import Input from "@/components/common/Input/Input";
+import LineSetting from "../Common/LineSetting";
+import { useLineSetting } from "@/hooks/Admin/NoobProHacker/useLineSetting";
 
 type Props = {
   isEdit: boolean;
@@ -15,7 +16,9 @@ type Props = {
 
 export default function EditNoobProHacker(props: Props) {
   const [contentInfo, setContetInfo] = useRecoilState(contentInfoState);
-  const setLineInfo = useSetRecoilState(lineInfoState);
+  const [lineInfo, setLineInfo] = useRecoilState(lineInfoState);
+
+  const { handleSubmit } = useLineSetting(props);
 
   const { data: noobprohackersWithoutURL } = useQuery<NoobProHacker[]>(
     ["getNoobProHackersWithoutURL"],
@@ -72,7 +75,7 @@ export default function EditNoobProHacker(props: Props) {
               }
             />
           </div>
-          <LineSetting isEdit />
+          <LineSetting isEdit lineInfo={lineInfo} handleSubmit={handleSubmit} />
         </div>
       )}
     </Fragment>
