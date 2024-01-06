@@ -8,11 +8,22 @@ type Props = {
   type: HTMLInputTypeAttribute;
   placeholder?: string;
   handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  width?: string;
+  height?: string;
   [key: string]: any;
 };
 
 export default function Input(props: Props) {
-  const { name, value, placeholder, type, handleInputChange, ...rest } = props;
+  const {
+    name,
+    value,
+    placeholder,
+    type,
+    handleInputChange,
+    width,
+    height,
+    ...rest
+  } = props;
 
   return (
     <input
@@ -22,7 +33,8 @@ export default function Input(props: Props) {
       placeholder={placeholder}
       onChange={handleInputChange}
       {...rest}
-      className="rounded-md border-2 border-background-tertiary bg-background-primary pl-3 text-text-secondary outline-none"
+      className={`h-[40px] w-full rounded-md border-2 border-background-tertiary bg-background-primary pl-3 text-text-secondary outline-none`}
+      style={{ width: width || "", height: height || "" }}
     />
   );
 }
