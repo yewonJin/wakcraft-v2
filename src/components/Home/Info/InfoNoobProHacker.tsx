@@ -1,18 +1,10 @@
+import { Fragment } from "react";
+
 import { medium } from "@/app/layout";
 
-import DescriptionTier from "./DescriptionTier";
-
-type Props = {
-  numberOfArchitectsByTier: {
-    [key: string]: number;
-  };
-};
-
-export default function MainInfo(props: Props) {
-  const { numberOfArchitectsByTier } = props;
-
+export default function InfoNoobProHacker() {
   return (
-    <div className="mx-auto max-w-[1200px] px-4 pt-32 xl:px-0">
+    <Fragment>
       <h2
         className={`text-3xl text-text-primary sm:text-4xl ${medium.className}`}
       >
@@ -25,7 +17,6 @@ export default function MainInfo(props: Props) {
         눕, 프로, 해커가 한 라인이 되어 주제를 선정해 작품을 건축하면 우왁굳이
         감상하고 평가한다.
       </p>
-      <DescriptionTier numberOfArchitectsByTier={numberOfArchitectsByTier} />
-    </div>
+    </Fragment>
   );
 }

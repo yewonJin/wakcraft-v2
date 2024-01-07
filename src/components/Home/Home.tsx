@@ -2,7 +2,8 @@ import { Fragment } from "react";
 
 import BackgroundImage from "./BackgroundImage";
 import Main from "./Main/Main";
-import MainInfo from "./NoobProHackerInfo";
+import Info from "./Info/Info";
+import Calendar from "./Calendar/Calendar";
 import RecentWinner from "./RecentWinner";
 import {
   getAllNoobProHackers,
@@ -16,7 +17,6 @@ import {
   getHackerWinnerLine,
   renameTo1080Webp,
 } from "@/domains/noobprohacker";
-import Calendar from "./Calendar/Calendar";
 import { getAllSchedules } from "@/api/server/schedule";
 
 export default async function Home() {
@@ -46,7 +46,7 @@ export default async function Home() {
         )}
       />
       <Calendar schedules={JSON.parse(JSON.stringify(schedules))} />
-      <MainInfo
+      <Info
         numberOfArchitectsByTier={JSON.parse(
           JSON.stringify(getNumberOfArchitectsByTier(architects)),
         )}

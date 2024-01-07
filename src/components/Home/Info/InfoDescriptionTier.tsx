@@ -3,7 +3,7 @@ import {
   convertLineTierToTier,
   descriptionTier,
 } from "@/domains/architect";
-import TierBox from "../common/TierBox";
+import TierBox from "../../common/TierBox";
 import { medium } from "@/app/layout";
 
 type Props = {
@@ -12,7 +12,9 @@ type Props = {
   };
 };
 
-export default function DescriptionTier(props: Props) {
+const arr = ["해커"];
+
+export default function InfoDescriptionTier(props: Props) {
   const { numberOfArchitectsByTier } = props;
 
   return (
