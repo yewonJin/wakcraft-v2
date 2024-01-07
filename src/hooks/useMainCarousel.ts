@@ -2,12 +2,12 @@ import { useEffect, useRef, useState } from "react";
 
 import { NoobProHacker, getLineWinner } from "@/domains/noobprohacker";
 
-const useLineScroll = (lines: NoobProHacker["lineInfo"]) => {
-  const [curLine, setCurLine] = useState(getLineWinner(lines));
+const useMainCarousel = (lines: NoobProHacker["lineInfo"]) => {
+  const [curCategory, setCurCategory] = useState(getLineWinner(lines));
   const intervalRef = useRef<any>(null);
 
   const autoScroll = () => {
-    setCurLine((prev) => {
+    setCurCategory((prev) => {
       if (prev === 4) {
         return 0;
       }
@@ -32,13 +32,13 @@ const useLineScroll = (lines: NoobProHacker["lineInfo"]) => {
     startInterval();
   }, []);
 
-  const handleLineClick = (index: number) => {
-    setCurLine(index);
+  const handleCategoryClick = (index: number) => {
+    setCurCategory(index);
     initInterval();
     startInterval();
   };
 
-  return { curLine, handleLineClick, initInterval, startInterval };
+  return { curCategory, handleCategoryClick, initInterval, startInterval };
 };
 
-export default useLineScroll;
+export default useMainCarousel;

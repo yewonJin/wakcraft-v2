@@ -1,8 +1,8 @@
 import { Fragment } from "react";
 
 import BackgroundImage from "./BackgroundImage";
-import RecentNoobProHacker from "./RecentNoobProHacker";
-import MainInfo from "./MainInfo";
+import Main from "./Main/Main";
+import MainInfo from "./NoobProHackerInfo";
 import RecentWinner from "./RecentWinner";
 import {
   getAllNoobProHackers,
@@ -36,7 +36,7 @@ export default async function Home() {
           getHackerWinnerLine(noobprohackers[0]).line_details.hacker.image_url,
         )}
       />
-      <RecentNoobProHacker
+      <Main
         noobprohacker={JSON.parse(
           JSON.stringify(
             noobprohackers.sort(

@@ -3,7 +3,7 @@ type Props = {
   subject: string;
 };
 
-export default function Title(props: Props) {
+export default function MainTitle(props: Props) {
   const { episode, subject } = props;
 
   return (
