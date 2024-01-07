@@ -9,8 +9,8 @@ import {
   isEventNoobProHacker,
   isPostedContent,
 } from "@/domains/schedule";
-import Add from "../../../../public/icons/add.svg";
-import LinkIcon from "../../../../public/icons/link.svg";
+import Add from "../../../../../public/icons/add.svg";
+import LinkIcon from "../../../../../public/icons/link.svg";
 
 type Props = {
   curMonth: number;
@@ -27,21 +27,23 @@ export default function ContentBlock(props: Props) {
     <div
       className={`${
         getBackgroundColor[item.content]
-      } relative flex h-[110px] flex-col border-text-secondary p-2 text-[#eee] duration-300 xl:h-[130px] xl:p-3 [&>li:marker]:mr-0 `}
+      } group relative flex h-[70px] flex-col items-center border-text-secondary p-2 text-[#eee] duration-300 md:h-[110px] md:items-start xl:h-[130px] xl:p-3 [&>div]:hidden md:[&>div]:flex [&>li:marker]:mr-0`}
       key={curMonth + index}
       style={{ border: isToday ? "1px solid" : "" }}
     >
-      <p className="text-base xl:text-lg">{index + 1 - startDate}</p>
+      <p className="text-center text-base md:text-start xl:text-lg">
+        {index + 1 - startDate}
+      </p>
       {isPostedContent(item) && (
         <Link href={getURL(item)}>
-          <span className="absolute bottom-2 right-2 z-10 rounded-full bg-background-primary p-1 hover:cursor-pointer [&>svg]:rotate-90 [&>svg]:fill-text-tertiary hover:[&>svg]:fill-text-secondary">
+          <span className="absolute bottom-2 right-2 z-10 hidden rounded-full bg-background-primary p-1 hover:cursor-pointer md:inline-block [&>svg]:rotate-90 [&>svg]:fill-text-tertiary hover:[&>svg]:fill-text-secondary">
             <Add />
           </span>
         </Link>
       )}
       {!isPostedContent(item) && item.youtube_link && (
         <Link href={item.youtube_link}>
-          <span className="absolute bottom-2 right-2 z-10 rounded-full bg-background-primary p-1 hover:cursor-pointer [&>svg]:h-6 [&>svg]:w-6 [&>svg]:fill-text-tertiary hover:[&>svg]:fill-text-secondary">
+          <span className="absolute bottom-2 right-2 z-10 hidden rounded-full bg-background-primary p-1 hover:cursor-pointer md:inline-block [&>svg]:h-6 [&>svg]:w-6 [&>svg]:fill-text-tertiary hover:[&>svg]:fill-text-secondary">
             <LinkIcon />
           </span>
         </Link>
