@@ -11,7 +11,7 @@ import {
 } from "@/api/server/noobprohacker";
 import { getAllArchitects } from "@/api/server/architect";
 import { getNumberOfArchitectsByTier } from "@/domains/architect";
-import SweepLine from "./SweepLine";
+import SweepLine from "./SweepLine/SweepLine";
 import {
   convertToSweepLine,
   getHackerWinnerLine,
