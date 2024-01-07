@@ -29,7 +29,6 @@ export default function Card(props: Props) {
           youtubeUrl={youtubeUrl}
         />
         <CardLinesSubject
-          episode={episode}
           linesSubject={linesSubject}
           link={getContentLinkUrl(contentType, episode)}
         />
