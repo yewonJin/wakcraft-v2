@@ -4,7 +4,7 @@ import BackgroundImage from "./BackgroundImage";
 import Main from "./Main/Main";
 import Info from "./Info/Info";
 import Calendar from "./Calendar/Calendar";
-import RecentWinner from "./RecentWinner";
+import RecentWinner from "./RecentWinner/RecentWinner";
 import {
   getAllNoobProHackers,
   getAllNoobprohackersWithSweepLine,
