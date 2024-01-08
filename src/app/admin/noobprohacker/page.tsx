@@ -7,7 +7,6 @@ import ArchitectSetting from "@/components/Admin/Common/ArchitectSetting";
 import EditNoobProHacker from "@/components/Admin/NoobProHackrer/EditNoobProHacker";
 import ContentSetting from "@/components/Admin/Common/ContentSetting";
 import { useContentSetting } from "@/hooks/Admin/NoobProHacker/useContentSetting";
-import { useImageSetting } from "@/hooks/Admin/NoobProHacker/useImageSetting";
 import LineSetting from "@/components/Admin/Common/LineSetting";
 import { useLineSetting } from "@/hooks/Admin/NoobProHacker/useLineSetting";
 import ImageSetting from "@/components/Admin/NoobProHackrer/ImageSetting";
@@ -21,9 +20,6 @@ export default function Page() {
   };
 
   const { contentInfo, handleInputChange } = useContentSetting();
-  const { subjects, handleSelectClick, submitImage } = useImageSetting({
-    moveToNextPage,
-  });
   const { lineInfo, handleSubmit } = useLineSetting({ isEdit });
 
   const addProgression = () => {
