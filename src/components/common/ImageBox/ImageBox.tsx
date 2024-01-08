@@ -4,16 +4,20 @@ import Image from "next/image";
 
 import YoutubeLink from "./YoutubeLink";
 import { renameTo1080Webp, renameToWebp } from "@/domains/noobprohacker";
+import LeftBottom from "./LeftBottom";
+import LeftTop from "./LeftTop";
 
 type Props = {
   imageUrl: string;
   youtubeUrl?: string;
   architectNumber?: number;
   isUnlimited?: boolean;
+  minecraft_id?: string;
 };
 
 export default function ImageBox(props: Props) {
-  const { imageUrl, youtubeUrl, architectNumber, isUnlimited } = props;
+  const { imageUrl, youtubeUrl, architectNumber, isUnlimited, minecraft_id } =
+    props;
 
   return (
     <div
@@ -28,19 +32,11 @@ export default function ImageBox(props: Props) {
         sizes="400px"
       />
       <YoutubeLink youtubeUrl={youtubeUrl} />
+      <LeftTop isUnlimited={isUnlimited} architectNumber={architectNumber} />
+      <LeftBottom minecraft_id={minecraft_id} />
       <div className="invisible absolute bottom-2 right-2 bg-[#121212] px-[10px] py-1 text-sm text-[white] group-hover/image:visible peer-hover:invisible">
         클릭하여 원본 이미지 보기
       </div>
-      {isUnlimited && (
-        <div className="absolute left-[6px] top-[6px] rounded-lg bg-[#121212] px-[10px] py-1 text-sm text-[white] group-hover/image:visible peer-hover:invisible">
-          무제한급
-        </div>
-      )}
-      {architectNumber && architectNumber > 1 && (
-        <div className="absolute left-[6px] top-[6px] rounded-lg bg-[#121212] px-[10px] py-1 text-sm text-[white] group-hover/image:visible peer-hover:invisible">
-          {architectNumber + "명 작품"}
-        </div>
-      )}
     </div>
   );
 }

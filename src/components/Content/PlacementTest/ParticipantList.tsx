@@ -1,6 +1,6 @@
 import { PlacementTest } from "@/domains/placementTest";
 import ArchitectureInfo from "./ArchitectureInfo";
-import ImageBox from "@/components/common/ImageBox";
+import ImageBox from "@/components/common/ImageBox/ImageBox";
 
 type Props = {
   participants: PlacementTest["participants"];
@@ -13,11 +13,11 @@ export default function ParticipantList(props: Props) {
     <div className="mt-16 grid grid-cols-1 gap-6 gap-y-12 md:grid-cols-2 2xl:w-[1400px] 2xl:grid-cols-3">
       {participants.map((participant) => (
         <div key={participant.minecraft_id} className="relative">
-          <ImageBox imageUrl={participant.image_url} />
-          <ArchitectureInfo
+          <ImageBox
+            imageUrl={participant.image_url}
             minecraft_id={participant.minecraft_id}
-            placementResult={participant.placement_result}
           />
+          <ArchitectureInfo placementResult={participant.placement_result} />
         </div>
       ))}
     </div>

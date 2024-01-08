@@ -1,5 +1,5 @@
 import ArchitectureInfo from "@/components/common/ArchitectureInfo";
-import ImageBox from "@/components/common/ImageBox";
+import ImageBox from "@/components/common/ImageBox/ImageBox";
 import { Architect } from "@/domains/architect";
 import {
   getNumberOfPeople,

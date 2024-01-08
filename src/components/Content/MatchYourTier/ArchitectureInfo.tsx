@@ -1,14 +1,14 @@
-import { Tier } from "@/domains/architect";
 import { Fragment } from "react";
+
+import { Tier } from "@/domains/architect";
 
 type Props = {
   expectedTier: Tier;
   currentTier: Tier;
-  minecraft_id: string;
 };
 
 export default function ArchitectureInfo(props: Props) {
-  const { expectedTier, currentTier, minecraft_id } = props;
+  const { expectedTier, currentTier } = props;
 
   return (
     <Fragment>
@@ -26,9 +26,6 @@ export default function ArchitectureInfo(props: Props) {
           <span className="text-[#aaa]">정답 : </span> {currentTier}
         </p>
       </div>
-      <p className="absolute bottom-4 left-0 bg-[rgba(0,0,0,0.6)] py-1 pl-3 pr-2 text-base text-[white]">
-        {minecraft_id}
-      </p>
     </Fragment>
   );
 }

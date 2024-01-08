@@ -1,4 +1,4 @@
-import ImageBox from "@/components/common/ImageBox";
+import ImageBox from "@/components/common/ImageBox/ImageBox";
 import ArchitectureInfo from "./ArchitectureInfo";
 import { GuessTime } from "@/domains/guessTime";
 
@@ -18,9 +18,9 @@ export default function ParticipantList(props: Props) {
             <ImageBox
               imageUrl={participant.image_url}
               youtubeUrl={participant.youtube_url}
+              minecraft_id={participant.minecraft_id}
             />
             <ArchitectureInfo
-              minecraft_id={participant.minecraft_id}
               expectedTime={participant.expectedTime}
               time={participant.time}
             />
