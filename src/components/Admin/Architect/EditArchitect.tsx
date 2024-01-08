@@ -9,6 +9,7 @@ import SelectBox from "@/components/common/SelectBox/SelectBox";
 import FormField from "@/components/common/Form/FormField";
 import { tierArray } from "@/domains/architect";
 import { useEditArchitect } from "@/hooks/Admin/Architect/useEditArchitect";
+import Button from "@/components/common/Button/Button";
 
 export default function EditArchitect() {
   const {
@@ -59,7 +60,7 @@ export default function EditArchitect() {
                 {architect?.minecraft_id}
               </p>
             </div>
-            <div className="mt-8 flex flex-col gap-4">
+            <div className="mb-4 mt-8 flex flex-col gap-4">
               <FormField label="바꿀 마인크래프트 아이디">
                 <Input
                   name="minecraft_id"
@@ -85,16 +86,15 @@ export default function EditArchitect() {
                 />
               </FormField>
             </div>
-            <button
-              onClick={() => {
+            <Button
+              handleButtonClick={() => {
                 if (!architect) return;
 
                 mutation.mutate();
               }}
-              className="mt-6 w-full rounded-md bg-background-tertiary px-3 py-2 text-text-primary hover:bg-text-tertiary"
-            >
-              변경
-            </button>
+              value="변경"
+              width="100%"
+            />
           </div>
         )}
       </div>

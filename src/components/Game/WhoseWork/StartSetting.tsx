@@ -2,9 +2,9 @@
 
 import { useRecoilState } from "recoil";
 
-import { medium } from "@/app/layout";
 import ArrowDropUp from "../../../../public/icons/arrow_drop_up.svg";
 import { difficultyState, numberOfArchitectureState } from "@/store/whoseWork";
+import PageTitle from "@/components/common/PageTitle";
 
 type Props = {
   startGame: () => void;
@@ -20,12 +20,10 @@ export default function StartSetting(props: Props) {
 
   return (
     <div className="mx-auto flex flex-col xl:max-w-[1200px]">
-      <h1 className={`text-3xl text-text-primary ${medium.className}`}>
-        건축가 맞추기
-      </h1>
-      <p className="mt-4 text-base text-text-secondary">
-        작품 이미지를 보고 누가 건축했는지 맞추는 게임
-      </p>
+      <PageTitle
+        title="건축가 맞추기"
+        content="작품 이미지를 보고 누가 건축했는지 맞추는 게임"
+      />
       <div className="mt-12 flex flex-wrap gap-6  sm:gap-16">
         <div className="flex flex-col gap-4">
           <h2 className="text-xl text-text-primary">난이도</h2>

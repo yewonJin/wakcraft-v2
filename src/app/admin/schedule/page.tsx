@@ -2,6 +2,7 @@
 
 import { medium } from "@/app/layout";
 import SearchResult from "@/components/Game/WhoseWork/SearchResult";
+import Button from "@/components/common/Button/Button";
 import FormField from "@/components/common/Form/FormField";
 import Input from "@/components/common/Input/Input";
 import SelectBox from "@/components/common/SelectBox/SelectBox";
@@ -35,12 +36,10 @@ export default function Page() {
             <h3 className={`${medium.className} text-2xl text-text-primary`}>
               {`스케쥴 ${isEdit ? "수정" : "추가"}`}
             </h3>
-            <button
-              className=" bg-background-tertiary p-2 px-4 text-text-primary"
-              onClick={handleSubmit}
-            >
-              {isEdit ? "수정" : "추가"}
-            </button>
+            <Button
+              handleButtonClick={handleSubmit}
+              value={isEdit ? "수정" : "추가"}
+            />
           </div>
           <div className="mt-8 flex gap-4 text-text-secondary">
             <FormField label="상태">
@@ -162,12 +161,10 @@ export default function Page() {
                 <p>{schedule.date}</p>
                 <p>{schedule.content}</p>
                 <p>{schedule.episode}</p>
-                <button
-                  className=" bg-background-tertiary p-2"
-                  onClick={() => handleEditClick(index)}
-                >
-                  수정
-                </button>
+                <Button
+                  handleButtonClick={() => handleEditClick(index)}
+                  value="수정"
+                />
               </li>
             ))}
           </ul>

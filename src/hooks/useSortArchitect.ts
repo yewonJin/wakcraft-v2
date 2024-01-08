@@ -8,7 +8,7 @@ const useSortArchitect = (architects: Architect[]) => {
   const [sortBy, setSortBy] = useRecoilState(sortByState);
   const [isDescending, setIsDescending] = useState(true);
 
-  const handleSortClick = (e: MouseEvent<HTMLLIElement>) => {
+  const handleSortClick = (e: MouseEvent<HTMLButtonElement>) => {
     const value = e.currentTarget.dataset["value"] as SortBy;
 
     if (sortBy === value) {

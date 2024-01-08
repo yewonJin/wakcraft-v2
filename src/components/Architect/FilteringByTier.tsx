@@ -1,5 +1,7 @@
 "use client";
 
+import ColoredButton from "../common/Button/ColoredButton";
+
 type Props = {
   curCategory: string;
   handleCategoryClick: (tier: string) => void;
@@ -16,25 +18,21 @@ export default function FilteringByTier(props: Props) {
           "category-scrollbar"
         }
       >
-        <ul className="flex items-center gap-3 px-2 py-3 text-sm text-text-primary md:flex-wrap md:gap-4 md:overflow-x-hidden  md:text-base">
+        <div className="flex items-center gap-3 px-2 py-3 text-sm text-text-primary md:flex-wrap md:gap-4 md:overflow-x-hidden md:text-base">
           {Object.keys(backgroundColorVariants).map((tier) => (
-            <li
+            <ColoredButton
               key={tier}
-              className={`w-max rounded-lg bg-background-primary p-2 px-3 ${backgroundColorVariants[tier]} duration-300 hover:cursor-pointer hover:text-[white]`}
               data-value={tier}
-              onClick={() => handleCategoryClick(tier)}
-              style={{
-                color: curCategory === tier ? "white" : "",
-                backgroundColor:
-                  curCategory === tier
-                    ? getHexColor(backgroundColorVariants[tier])
-                    : "",
-              }}
-            >
-              {tier}
-            </li>
+              handleButtonClick={() => handleCategoryClick(tier)}
+              value={tier}
+              isClicked={curCategory === tier}
+              hoverBackgroundColor={backgroundColorVariants[tier]}
+              clickedBackgroundColor={getHexColor(
+                backgroundColorVariants[tier],
+              )}
+            />
           ))}
-        </ul>
+        </div>
       </div>
     </div>
   );

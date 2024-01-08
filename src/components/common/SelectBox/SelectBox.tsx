@@ -1,16 +1,18 @@
 import { ChangeEvent } from "react";
 
 type Props = {
-  value: string;
+  value: string | number;
   name?: string;
-  options: string[];
+  options: string[] | number[];
+  optionSuffix?: string;
   handleSelectChange: (e: ChangeEvent<HTMLSelectElement>) => void;
   width?: string;
   height?: string;
 };
 
 export default function SelectBox(props: Props) {
-  const { value, options, handleSelectChange, width, height } = props;
+  const { value, options, optionSuffix, handleSelectChange, width, height } =
+    props;
 
   return (
     <select
@@ -26,7 +28,7 @@ export default function SelectBox(props: Props) {
           value={option}
           key={option}
         >
-          {option}
+          {`${option}${optionSuffix ? optionSuffix : ""}`}
         </option>
       ))}
     </select>

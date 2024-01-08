@@ -3,6 +3,7 @@ import { useRecoilValue } from "recoil";
 import { WhoseWork, getTopPercentage } from "@/domains/whoseWork";
 import { correctCountState } from "@/store/whoseWork";
 import Chart from "./Chart";
+import Button from "@/components/common/Button/Button";
 
 type Props = {
   whoseWork: WhoseWork;
@@ -27,13 +28,8 @@ export default function Score(props: Props) {
         </div>
       </div>
       <Chart whoseWork={whoseWork} />
-      <div className="flex justify-center">
-        <button
-          className="mt-8 bg-background-secondary px-4 py-2 text-text-secondary md:mt-12"
-          onClick={restartGame}
-        >
-          다시하기
-        </button>
+      <div className="mt-14 flex justify-center">
+        <Button handleButtonClick={restartGame} value="다시하기" />
       </div>
     </div>
   );
