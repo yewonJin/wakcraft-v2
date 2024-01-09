@@ -1,7 +1,7 @@
 import { MouseEvent } from "react";
 
 import { SortBy } from "@/store/sort";
-import SortButton from "../common/Button/SortButton";
+import SortButton from "../../common/Button/SortButton";
 
 type Props = {
   sortBy: SortBy;

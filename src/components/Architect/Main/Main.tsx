@@ -2,14 +2,16 @@
 
 import { Fragment } from "react";
 
-import Search from "./Search";
-import Sort from "./Sort";
-import FilteringByTier from "./FilteringByTier";
-import ArchitectList from "./ArchitectList";
 import useFilteringByTier from "@/hooks/useFilteringByTier";
 import useSortArchitect from "@/hooks/useSortArchitect";
 import useSearch from "@/hooks/useSearch";
-import ScrollToTop from "../common/ScrollToTop";
+
+import Search from "../../common/Input/SearchInput";
+import Sort from "./Sort";
+import FilteringByTier from "./FilteringByTier";
+import ArchitectList from "./ArchitectList";
+import ScrollToTop from "../../common/ScrollToTop";
+
 import { Architect } from "@/domains/architect";
 
 type Props = {

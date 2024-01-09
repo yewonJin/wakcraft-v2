@@ -34,7 +34,7 @@ export default function InfoDescriptionTier(props: Props) {
               key={tier}
               className="group relative hidden sm:block [&>span]:h-[78px] [&>span]:w-[70px]  [&>span]:select-none [&>span]:duration-100 [&>span]:hover:scale-105 md:[&>span]:h-[94px] md:[&>span]:w-[85px]"
             >
-              <TierBox tier={tier} />
+              <TierBox type="detail" tier={tier} />
               <div className="-bottom-18 absolute z-10 hidden w-[300px] animate-fadeIn rounded-lg bg-background-secondary px-4 py-3 text-text-secondary duration-300 md:group-hover:block">
                 {descriptionTier[tier as Tier]}
               </div>
@@ -55,7 +55,7 @@ export default function InfoDescriptionTier(props: Props) {
               key={tier}
               className="group relative hidden sm:block [&>span]:h-[78px] [&>span]:w-[70px]  [&>span]:select-none [&>span]:duration-100 [&>span]:hover:scale-105 md:[&>span]:h-[94px] md:[&>span]:w-[85px]"
             >
-              <TierBox tier={tier} />
+              <TierBox type="detail" tier={tier} />
               <div className="-bottom-18 absolute z-10 hidden w-[300px] animate-fadeIn rounded-lg bg-background-secondary px-4 py-3 text-text-secondary duration-300 md:group-hover:block">
                 {descriptionTier[tier as Tier]}
               </div>
@@ -76,7 +76,7 @@ export default function InfoDescriptionTier(props: Props) {
               key={tier}
               className="group relative hidden sm:block [&>span]:h-[78px] [&>span]:w-[70px]  [&>span]:select-none [&>span]:duration-100 [&>span]:hover:scale-105 md:[&>span]:h-[94px] md:[&>span]:w-[85px]"
             >
-              <TierBox tier={tier} />
+              <TierBox type="detail" tier={tier} />
               <div className="-bottom-18 absolute z-10 hidden w-max animate-fadeIn rounded-lg bg-background-secondary px-4 py-3 text-text-secondary duration-300 md:group-hover:block">
                 {descriptionTier[tier as Tier]}
               </div>
@@ -97,7 +97,7 @@ export default function InfoDescriptionTier(props: Props) {
               key={tier}
               className="group relative hidden sm:block [&>span]:h-[78px] [&>span]:w-[70px]  [&>span]:select-none [&>span]:duration-100 [&>span]:hover:scale-105 md:[&>span]:h-[94px] md:[&>span]:w-[85px]"
             >
-              <TierBox tier={tier} />
+              <TierBox type="detail" tier={tier} />
               <div className="-bottom-18 absolute z-10 hidden w-[300px] animate-fadeIn rounded-lg bg-background-secondary px-4 py-3 text-text-secondary duration-300 md:group-hover:block">
                 {descriptionTier[tier as Tier]}
               </div>
@@ -118,7 +118,7 @@ export default function InfoDescriptionTier(props: Props) {
               key={tier}
               className="group relative hidden sm:block [&>span]:h-[78px] [&>span]:w-[70px]  [&>span]:select-none [&>span]:duration-100 [&>span]:hover:scale-105 md:[&>span]:h-[94px] md:[&>span]:w-[85px]"
             >
-              <TierBox tier={tier} />
+              <TierBox type="detail" tier={tier} />
               <div className="-bottom-18 absolute z-10 hidden w-max animate-fadeIn rounded-lg bg-background-secondary px-4 py-3 text-text-secondary duration-300 md:group-hover:block">
                 {descriptionTier[tier as Tier]}
               </div>
@@ -135,7 +135,7 @@ export default function InfoDescriptionTier(props: Props) {
             </span>
           </div>
           <div className="group relative hidden sm:block [&>span]:h-[78px] [&>span]:w-[70px]  [&>span]:select-none [&>span]:duration-100 [&>span]:hover:scale-105 md:[&>span]:h-[94px] md:[&>span]:w-[85px]">
-            <TierBox tier="언랭" />
+            <TierBox type="detail" tier="언랭" />
             <div className="-bottom-18 absolute z-10 hidden w-max  animate-fadeIn rounded-lg bg-background-secondary px-4 py-3 text-text-secondary duration-300 md:group-hover:block">
               {descriptionTier["언랭"]}
             </div>

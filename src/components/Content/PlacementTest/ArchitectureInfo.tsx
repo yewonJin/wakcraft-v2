@@ -13,7 +13,12 @@ export default function ArchitectureInfo(props: Props) {
   return (
     <Fragment>
       <div className="absolute left-2 top-2 flex flex-col gap-16 md:left-3 md:top-3 [&>span]:text-base">
-        <TierBox tier={placementResult} width="68px" height="75px" />
+        <TierBox
+          type="detail"
+          tier={placementResult}
+          width="68px"
+          height="75px"
+        />
       </div>
     </Fragment>
   );

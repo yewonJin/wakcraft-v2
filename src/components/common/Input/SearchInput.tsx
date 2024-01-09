@@ -1,7 +1,7 @@
 import { ChangeEvent } from "react";
 
-import SearchIcon from "../../../public/icons/search.svg";
-import Input from "../common/Input/Input";
+import Input from "./Input";
+import SearchIcon from "../../../../public/icons/search.svg";
 
 type Props = {
   input: string;

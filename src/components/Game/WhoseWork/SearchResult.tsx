@@ -1,6 +1,6 @@
 import { Dispatch, Fragment, SetStateAction } from "react";
 
-import { ExtendedArchitect } from "../../Architect/ArchitectList";
+import { ExtendedArchitect } from "../../Architect/Main/ArchitectList";
 
 type Props = {
   input: string;

@@ -1,6 +1,6 @@
 "use client";
 
-import ColoredButton from "../common/Button/ColoredButton";
+import ColoredButton from "../../common/Button/ColoredButton";
 
 type Props = {
   curCategory: string;

@@ -1,8 +1,9 @@
 import { Fragment } from "react";
 
 import { getAllArchitects } from "@/api/server/architect";
-import Main from "@/components/Architect/Main";
+
 import PageTitle from "@/components/common/PageTitle";
+import Main from "@/components/Architect/Main/Main";
 
 export default async function Page() {
   const architects = await getAllArchitects();

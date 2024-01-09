@@ -2,16 +2,18 @@
 
 import { Fragment } from "react";
 
-import Category from "@/components/Architect/DetailPage/Category";
-import Portfolio from "@/components/Architect/DetailPage/Portfolio";
 import usePortfolioCategory from "@/hooks/usePortfolioCategory";
+
+import Category from "@/components/Architect/Detail/Category";
+import Portfolio from "@/components/Architect/Detail/Portfolio";
+
 import { Architect } from "@/domains/architect";
 
 type Props = {
   architect: Architect;
 };
 
-export default function Main(props: Props) {
+export default function ArchitectInfo(props: Props) {
   const { curCategory, handleCategoryClick } = usePortfolioCategory();
 
   const { architect } = props;
