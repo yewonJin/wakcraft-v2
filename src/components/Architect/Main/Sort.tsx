@@ -29,4 +29,4 @@ export default function Sort(props: Props) {
 }
 
 const SORT_ENG = ["tier", "participation", "win", "hackerWin", "proWin"];
-const SORT_KOR = ["티어", "참여 횟수", "총 우승", "해커 우승", "프로 우승"];
+const SORT_KOR = ["티어", "참여 횟수", "우승 횟수", "해커 우승", "프로 우승"];
