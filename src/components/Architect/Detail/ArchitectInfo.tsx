@@ -8,6 +8,7 @@ import Category from "@/components/Architect/Detail/Category";
 import Portfolio from "@/components/Architect/Detail/Portfolio";
 
 import { Architect } from "@/domains/architect";
+import ScrollToTop from "@/components/common/ScrollToTop";
 
 type Props = {
   architect: Architect;
@@ -25,6 +26,7 @@ export default function ArchitectInfo(props: Props) {
         handleCategoryClick={handleCategoryClick}
       />
       <Portfolio curCategory={curCategory} architect={architect} />
+      <ScrollToTop />
     </Fragment>
   );
 }
