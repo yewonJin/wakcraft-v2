@@ -57,7 +57,7 @@ export default function Page() {
                 handleInputChange={handleInputChange}
               />
             </FormField>
-            <FormField label="날짜">
+            <FormField label="컨텐츠">
               <SelectBox
                 width="160px"
                 height="40px"

@@ -11,14 +11,21 @@ type Props = {
 };
 
 export default function SelectBox(props: Props) {
-  const { value, options, optionSuffix, handleSelectChange, width, height } =
-    props;
+  const {
+    value,
+    name,
+    options,
+    optionSuffix,
+    handleSelectChange,
+    width,
+    height,
+  } = props;
 
   return (
     <select
       value={value}
       onChange={handleSelectChange}
-      name="status"
+      name={name}
       className="rounded-md border-2 border-background-tertiary bg-background-primary pl-2 text-text-secondary outline-none"
       style={{ width: width, height: height }}
     >
