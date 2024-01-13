@@ -11,6 +11,7 @@ import {
 } from "@/domains/schedule";
 import Add from "../../../../../public/icons/add.svg";
 import LinkIcon from "../../../../../public/icons/link.svg";
+import Participants from "./Participants";
 
 type Props = {
   curMonth: number;
@@ -48,6 +49,11 @@ export default function ContentBlock(props: Props) {
           </span>
         </Link>
       )}
+      {!isPostedContent(item) &&
+        !item.youtube_link &&
+        item.participants.length > 0 && (
+          <Participants participants={item.participants} />
+        )}
       {item.isTributeContent && (
         <span className="absolute right-3 top-4 hidden text-sm xl:inline-block">
           조공 컨텐츠
