@@ -6,10 +6,19 @@ type Props = {
   value: string;
   width?: string;
   height?: string;
+  padding?: string;
 };
 
 export default function Button(props: Props) {
-  const { handleButtonClick, isClicked, value, width, height, ...rest } = props;
+  const {
+    handleButtonClick,
+    isClicked,
+    value,
+    width,
+    height,
+    padding,
+    ...rest
+  } = props;
 
   return (
     <button
@@ -20,7 +29,7 @@ export default function Button(props: Props) {
           : "bg-background-secondary text-text-secondary  hover:bg-background-tertiary"
       }  p-2 px-4 hover:cursor-pointer`}
       {...rest}
-      style={{ width: width, height: height }}
+      style={{ width: width, height: height, padding: padding }}
     >
       {value}
     </button>
