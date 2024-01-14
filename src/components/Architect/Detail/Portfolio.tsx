@@ -104,24 +104,24 @@ const generatePlacementTestArr = (architect: Architect) => {
 
 const generateEventNoobProHackerArr = (architect: Architect) => {
   const architectureContestArr = architect.portfolio.architectureContest.map(
-    (eventNoobProHacker) => (
+    (architectureContest) => (
       <div
-        key={eventNoobProHacker.episode + eventNoobProHacker.subject}
-        data-date={eventNoobProHacker.date}
+        key={architectureContest.episode + architectureContest.subject}
+        data-date={architectureContest.date}
         data-content={"이벤트 눕프핵"}
       >
         <ImageBox
-          imageUrl={renameToWebp(eventNoobProHacker.image_url)}
-          youtubeUrl={eventNoobProHacker.youtube_url}
-          isUnlimited={eventNoobProHacker.episode === 2 ? true : false}
+          imageUrl={renameToWebp(architectureContest.image_url)}
+          youtubeUrl={architectureContest.youtube_url}
+          isUnlimited={architectureContest.episode === 2 ? true : false}
         />
         <ArchitectureInfo
-          contentName={eventNoobProHacker.contentName}
-          subject={eventNoobProHacker.subject}
-          tier={eventNoobProHacker.line}
+          contentName={architectureContest.contentName}
+          subject={architectureContest.subject}
+          tier={architectureContest.line}
           ranking={
-            eventNoobProHacker.ranking !== undefined
-              ? eventNoobProHacker.ranking
+            architectureContest.episode === 1
+              ? architectureContest.ranking
               : undefined
           }
         />
