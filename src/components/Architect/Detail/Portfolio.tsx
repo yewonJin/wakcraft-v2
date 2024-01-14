@@ -70,7 +70,7 @@ const generateArchitectureNoobProHackerArr = (architect: Architect) => {
     <div
       key={noobprohacker.episode + noobprohacker.subject}
       data-date={noobprohacker.date}
-      data-content={"이벤트 눕프핵"}
+      data-content={"눕프로해커"}
     >
       <ImageBox
         imageUrl={renameToWebp(noobprohacker.image_url)}

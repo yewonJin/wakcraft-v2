@@ -239,6 +239,7 @@ architectSchema.statics.pushArchitectureNoobProHackerToPortfolio = function (
         $push: { "portfolio.architectureNoobProHacker": payload },
         $inc: {
           "noobprohackerInfo.win": 1,
+          "noobprohackerInfo.hackerWin": 1,
           "noobprohackerInfo.participation": 1,
         },
       },
@@ -252,6 +253,7 @@ architectSchema.statics.pushArchitectureNoobProHackerToPortfolio = function (
         $push: { "portfolio.architectureNoobProHacker": payload },
         $inc: {
           "noobprohackerInfo.win": 1,
+          "noobprohackerInfo.proWin": 1,
           "noobprohackerInfo.participation": 1,
         },
       },
