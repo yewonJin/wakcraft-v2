@@ -15,7 +15,7 @@ type Props = {
 export default function SweepLine(props: Props) {
   const { sweepLines } = props;
 
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(sweepLines.length - 1);
 
   return (
     <div className="mx-auto mt-20 max-w-[1200px] px-4 pb-10 xl:mt-48 xl:px-0 ">

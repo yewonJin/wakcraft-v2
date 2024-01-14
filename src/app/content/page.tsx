@@ -7,7 +7,6 @@ import { getAllMatchYourTier } from "@/api/server/matchYourTier";
 import { getAllArchitectureContest } from "@/api/server/architectureContest";
 import { getAllPlacementTest } from "@/api/server/placementTest";
 import { getAllGuessTimes } from "@/api/server/guessTime";
-import { getAllArchitectureNoobProHackers } from "@/api/server/architectureNoobProHacker";
 import { getContentLinkUrl } from "@/domains/content";
 
 export default async function Page() {
@@ -32,14 +31,12 @@ export default async function Page() {
 
 const generateCards = async () => {
   const [
-    architectureNoobProHackers,
     eventNoobProHackers,
     matchYourTiers,
     architectureContests,
     placementTests,
     guessTimes,
   ] = await Promise.all([
-    getAllArchitectureNoobProHackers(),
     getAllEventNoobProHacker(),
     getAllMatchYourTier(),
     getAllArchitectureContest(),
@@ -48,33 +45,6 @@ const generateCards = async () => {
   ]);
 
   const cards: JSX.Element[] = [];
-
-  architectureNoobProHackers.forEach((architectureNoobProHacker) =>
-    cards.push(
-      <Link
-        key={"건축 눕프핵 - " + architectureNoobProHacker.contentInfo.episode}
-        href={getContentLinkUrl(
-          "건축 눕프핵",
-          architectureNoobProHacker.contentInfo.episode,
-        )}
-      >
-        <Card
-          contentType="건축 눕프핵"
-          episode={architectureNoobProHacker.contentInfo.episode}
-          subject={architectureNoobProHacker.contentInfo.main_subject}
-          date={new Date(architectureNoobProHacker.contentInfo.date)}
-          youtubeUrl={
-            architectureNoobProHacker.contentInfo.youtube_url !== "null"
-              ? architectureNoobProHacker.contentInfo.youtube_url.split("/")[3]
-              : "null"
-          }
-          linesSubject={architectureNoobProHacker.lineInfo.map(
-            (item) => item.subject,
-          )}
-        />
-      </Link>,
-    ),
-  );
 
   eventNoobProHackers.forEach((eventNoobProHacker) =>
     cards.push(

@@ -1,9 +1,11 @@
 import Main from "@/components/NoobProHacker/Main";
 import { medium } from "../layout";
 import { getAllNoobProHackers } from "@/api/server/noobprohacker";
+import { getAllArchitectureNoobProHackers } from "@/api/server/architectureNoobProHacker";
 
 export default async function Page() {
   const noobprohackers = await getAllNoobProHackers();
+  const architectureNoobProHackers = await getAllArchitectureNoobProHackers();
 
   return (
     <div className="mx-auto max-w-[1200px]">
@@ -13,7 +15,10 @@ export default async function Page() {
       <p className="mt-4 text-base text-text-secondary">
         마인크래프트 눕프로해커 컨텐츠를 볼 수 있다.
       </p>
-      <Main noobprohackers={noobprohackers} />
+      <Main
+        noobprohackers={noobprohackers}
+        architectureNoobProHacker={architectureNoobProHackers}
+      />
     </div>
   );
 }
