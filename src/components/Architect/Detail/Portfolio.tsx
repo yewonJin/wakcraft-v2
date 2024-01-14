@@ -120,7 +120,9 @@ const generateEventNoobProHackerArr = (architect: Architect) => {
           subject={eventNoobProHacker.subject}
           tier={eventNoobProHacker.line}
           ranking={
-            eventNoobProHacker.ranking ? eventNoobProHacker.ranking : undefined
+            eventNoobProHacker.ranking !== undefined
+              ? eventNoobProHacker.ranking
+              : undefined
           }
         />
       </div>
