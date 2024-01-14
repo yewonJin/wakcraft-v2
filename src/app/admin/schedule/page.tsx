@@ -43,7 +43,12 @@ export default function Page() {
           </div>
           <div className="mt-8 flex gap-4 text-text-secondary">
             <FormField label="상태">
-              <select className="h-[40px] w-[100px] rounded-md border-2 border-background-tertiary bg-background-primary pl-2 text-text-secondary outline-none">
+              <select
+                name="status"
+                value={scheduleForm.status}
+                className="h-[40px] w-[100px] rounded-md border-2 border-background-tertiary bg-background-primary pl-2 text-text-secondary outline-none"
+                onChange={handleSelectChange}
+              >
                 <option value="before_announcement">공지 전</option>
                 <option value="after_announcement">공지 후</option>
                 <option value="after_content">컨텐츠 후</option>
