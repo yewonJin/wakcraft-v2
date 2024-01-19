@@ -127,6 +127,7 @@ export default function Page() {
       >
         <div className="relative aspect-video min-w-[100%] bg-[#333]">
           <Image
+            alt="눕 이미지"
             src={
               "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureNoobProHacker/episode%202/Petra-noob.1080p.webp"
             }
@@ -135,6 +136,7 @@ export default function Page() {
         </div>
         <div className="relative aspect-video min-w-[100%] bg-[#666]">
           <Image
+            alt="프로 이미지"
             src={
               "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureNoobProHacker/episode%202/Petra-pro.1080p.webp"
             }
@@ -143,6 +145,7 @@ export default function Page() {
         </div>
         <div className="relative aspect-video min-w-[100%] bg-[#999]">
           <Image
+            alt="프로 이미지"
             src={
               "https://wakcraft.s3.ap-northeast-2.amazonaws.com/architectureNoobProHacker/episode%202/Petra-hacker.1080p.webp"
             }
