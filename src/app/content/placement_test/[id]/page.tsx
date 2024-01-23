@@ -9,7 +9,7 @@ export default async function Page({ params }: { params: { id: string } }) {
   const placementTest = await getPlacementTest(parseInt(params.id));
 
   return (
-    <div className="mx-auto max-w-[1200px]">
+    <div className="mx-auto max-w-[1200px] px-4 xl:px-0">
       <title>{`왁크래프트 | 배치고사 시즌${placementTest.season}`}</title>
 
       <div className="mt-4 flex items-end gap-6">

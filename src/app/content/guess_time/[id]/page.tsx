@@ -9,7 +9,7 @@ export default async function Page({ params }: { params: { id: string } }) {
   const guessTime = await getGuessTime(parseInt(params.id));
 
   return (
-    <div className="mx-auto max-w-[1200px]">
+    <div className="mx-auto max-w-[1200px] px-4 xl:px-0">
       <title>{`왁크래프트 | 시간 맞추기`}</title>
 
       <div className="mt-4 flex items-end gap-6">

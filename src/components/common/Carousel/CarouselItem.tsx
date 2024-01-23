@@ -63,7 +63,7 @@ export default function CarouselItem(props: Props) {
         fill
         src={renameTo1080Webp(image_url)}
       />
-      <div className="peer absolute left-0 top-3 flex flex-col gap-1 rounded-2xl hover:cursor-auto md:left-10 md:top-10 md:gap-3">
+      <div className="peer absolute left-1 top-3 flex flex-col gap-1 rounded-2xl hover:cursor-auto md:left-10 md:top-10 md:gap-3">
         <div className="flex items-end pl-3">
           <p
             className="text-xl text-[white] lg:text-2xl"
@@ -73,7 +73,7 @@ export default function CarouselItem(props: Props) {
               ? translateLine(props.line as Line)
               : type === "이벤트 눕프핵"
               ? props.line
-              : props.topText}
+              : props.bottomText}
           </p>
           {type === "이벤트 눕프핵" && minecraft_id.length > 1 && (
             <PopOverButton
@@ -84,14 +84,6 @@ export default function CarouselItem(props: Props) {
             />
           )}
           <div className="flex items-center gap-2 md:items-end">
-            {type === "건축 콘테스트" && (
-              <p
-                className=" text-lg text-[white] lg:text-2xl"
-                style={{ textShadow: "1px 1px 1px #222" }}
-              >
-                {props.bottomText}
-              </p>
-            )}
             <p
               className="ml-3 text-base text-[white] lg:ml-6 xl:text-lg"
               style={{ textShadow: "1px 1px 1px #222" }}
@@ -112,7 +104,9 @@ export default function CarouselItem(props: Props) {
             <p
               className="ml-3 text-[#ccc] hover:cursor-pointer hover:text-[white]"
               style={{ textShadow: "1px 1px 1px #222" }}
-              onClick={(e) => e.stopPropagation()}
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
             >
               {minecraft_id}
             </p>

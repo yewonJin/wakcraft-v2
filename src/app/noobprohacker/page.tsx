@@ -8,7 +8,7 @@ export default async function Page() {
   const architectureNoobProHackers = await getAllArchitectureNoobProHackers();
 
   return (
-    <div className="mx-auto max-w-[1200px]">
+    <div className="mx-auto max-w-[1200px] px-4 xl:px-0">
       <h1 className={`text-3xl text-text-primary ${medium.className}`}>
         눕프로해커
       </h1>

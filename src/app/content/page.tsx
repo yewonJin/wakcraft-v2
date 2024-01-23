@@ -13,7 +13,7 @@ export default async function Page() {
   const cards = await generateCards();
 
   return (
-    <div className="mx-auto max-w-[1200px]">
+    <div className="mx-auto max-w-[1200px] px-4 xl:px-0">
       <PageTitle
         title="컨텐츠"
         content="눕프로해커 이외의 마인크래프트 컨텐츠를 볼 수 있다."
