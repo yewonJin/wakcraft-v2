@@ -50,6 +50,14 @@ export default function Participants(props: Props) {
                 height="40px"
               />
             </FormField>
+            <FormField label="랭킹">
+              <Input
+                name="ranking"
+                type="number"
+                value={participant.ranking}
+                handleInputChange={(e) => handleInputChange(e, index)}
+              />
+            </FormField>
           </div>
         </div>
       ))}
