@@ -97,6 +97,9 @@ const generatePlacementTestArr = (architect: Architect) => {
       <ArchitectureInfo
         contentName={`${placementTest.season}회 배치고사`}
         subject={placementTest.placement_result}
+        ranking={
+          placementTest.ranking === 0 ? undefined : placementTest.ranking
+        }
       />
     </div>
   ));
