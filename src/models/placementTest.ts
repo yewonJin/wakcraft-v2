@@ -23,6 +23,7 @@ const placementTestSchema = new Schema({
       order: Number,
       image_url: String,
       placement_result: String,
+      ranking: Number,
     },
   ],
 });

@@ -14,6 +14,7 @@ export const useParticipants = (imagesName: string[]) => {
       image_url: BASE_IMAGE_URL + imageName,
       placement_result: "언랭",
       order: 0,
+      ranking: 0,
     }),
   );
 

@@ -43,6 +43,7 @@ const architectSchema = new Schema<Architect>({
     ],
     placementTest: [
       {
+        ranking: { type: Number },
         season: { type: Number },
         image_url: { type: String },
         placement_result: { type: String },
@@ -273,6 +274,19 @@ architectSchema.statics.pushPlacementTestToPortfolio = function (
   minecraft_id: string,
   payload: Architect["portfolio"]["placementTest"][0],
 ) {
+  if (payload.ranking == 1) {
+    return this.findOneAndUpdate(
+      { minecraft_id },
+      {
+        $push: { "portfolio.placementTest": payload },
+        $inc: {
+          "noobprohackerInfo.win": 1,
+          "noobprohackerInfo.participation": 1,
+        },
+      },
+    );
+  }
+
   return this.findOneAndUpdate(
     { minecraft_id },
     {

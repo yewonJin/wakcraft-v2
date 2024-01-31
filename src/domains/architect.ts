@@ -55,6 +55,7 @@ export type Architect = {
       image_url: string;
       placement_result: Tier;
       date: Date;
+      ranking: number;
     }[];
     eventNoobProHacker: {
       contentName: string;
@@ -226,6 +227,7 @@ export const convertToPlacementTestPortfolio = (
     architectsInfo.push({
       minecraft_id: participant.minecraft_id,
       portfolio: {
+        ranking: participant.ranking,
         season: placementTest.season,
         image_url: participant.image_url,
         placement_result: participant.placement_result,

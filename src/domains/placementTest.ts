@@ -9,5 +9,6 @@ export type PlacementTest = {
     image_url: string;
     order: number;
     placement_result: Tier;
+    ranking: number;
   }[];
 };
