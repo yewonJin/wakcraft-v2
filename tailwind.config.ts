@@ -10,14 +10,6 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        noob: "url('/images/tier/noob.webp')",
-        noob2: "url('/images/tier/noob2.webp')",
-        gyeruik: "url('/images/tier/gyeruik.webp')",
-        pro: "url('/images/tier/pro.webp')",
-        gukbap: "url('/images/tier/gukbap.webp')",
-        gukbap2: "url('/images/tier/gukbap2.webp')",
-        hacker: "url('/images/tier/hacker.webp')",
-        hacker2: "url('/images/tier/hacker2.webp')",
         navercafe: "url('/images/naver_cafe.png')",
       },
       keyframes: {
