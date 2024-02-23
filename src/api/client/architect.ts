@@ -1,4 +1,5 @@
 import { Tier } from "@/domains/architect";
+import { CafeInfo } from "@/hooks/Admin/CafeLink/useCafeLink";
 
 export const getAllArchitects = async () => {
   const result = await (await fetch(`/api/architect`)).json();
@@ -43,6 +44,26 @@ export const updateArchitect = async (body: UpdateArchitectBody) => {
 
   const response = await fetch(`/api/architect`, {
     method: "PATCH",
+    body: JSON.stringify(body),
+    credentials: "include",
+    headers: myHeaders,
+  });
+
+  if (!response.ok) {
+    const { serviceCode } = await response.json();
+
+    throw serviceCode;
+  }
+
+  return await response.json();
+};
+
+export const updateCafeLink = async (body: CafeInfo[]) => {
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  const response = await fetch(`/api/architect/cafe_link`, {
+    method: "PUT",
     body: JSON.stringify(body),
     credentials: "include",
     headers: myHeaders,

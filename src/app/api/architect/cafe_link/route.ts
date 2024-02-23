@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
 
-import { PlacementCafeInfo } from "@/app/admin/placement_test_link/page";
 import connectMongo from "@/utils/connectMongo";
 import Architect from "@/models/architect";
+import { CafeInfo } from "@/hooks/Admin/CafeLink/useCafeLink";
 
 export async function PUT(req: NextRequest) {
   const token = req.cookies.get("jwt")?.value;
@@ -18,7 +18,7 @@ export async function PUT(req: NextRequest) {
     return NextResponse.json("토큰이 유효하지 않습니다.", { status: 400 });
   }
 
-  const body: PlacementCafeInfo[] = await req.json();
+  const body: CafeInfo[] = await req.json();
 
   try {
     connectMongo();

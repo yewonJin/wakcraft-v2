@@ -24,8 +24,8 @@ export default function Page() {
         <Link href={"/admin/placement_test"}>
           <Button value="배치고사" />
         </Link>
-        <Link href={"/admin/placement_test_link"}>
-          <Button value="배치고사 신청글" />
+        <Link href={"/admin/cafe_link"}>
+          <Button value="카페 링크" />
         </Link>
         <Link href={"/admin/schedule"}>
           <Button value="스케쥴" />
