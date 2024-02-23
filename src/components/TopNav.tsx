@@ -18,7 +18,7 @@ export default function TopNav() {
 
   return (
     <nav
-      className={`fixed z-10 h-20 w-full ${
+      className={`fixed z-20 h-20 w-full ${
         !isScrolled && scrollY >= 100 ? "invisible" : "visible"
       } ${scrollY <= 100 ? "bg-none" : "bg-background-primary"} px-4 xl:px-0`}
     >

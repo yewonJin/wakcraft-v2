@@ -21,12 +21,6 @@ const useFilteringByTier = () => {
         return true;
       }
 
-      if (curCategory === "눕") {
-        return (
-          architect.curTier === "그냥 눕" || architect.curTier === "진짜 눕"
-        );
-      }
-
       return architect.curTier === curCategory;
     });
   };
