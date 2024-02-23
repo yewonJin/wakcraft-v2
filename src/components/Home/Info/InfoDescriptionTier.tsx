@@ -12,8 +12,6 @@ type Props = {
   };
 };
 
-const arr = ["해커"];
-
 export default function InfoDescriptionTier(props: Props) {
   const { numberOfArchitectsByTier } = props;
 
