@@ -12,6 +12,7 @@ const architectSchema = new Schema<Architect>({
   wakzoo_id: { type: String, unique: true },
   tier: { type: [String] },
   curTier: { type: String },
+  placementTest_link: { type: String },
   noobprohackerInfo: {
     win: { type: Number, default: 0 },
     hackerWin: { type: Number, default: 0 },
@@ -116,6 +117,10 @@ interface ArchitectModel extends Model<Architect> {
     minecraft_id: string,
     curSeason: number,
     tier: Tier,
+  ) => Promise<void>;
+  updatePlacementTestLink: (
+    minecraft_id: string,
+    placementTest_link: string,
   ) => Promise<void>;
 }
 
@@ -294,6 +299,18 @@ architectSchema.statics.pushPlacementTestToPortfolio = function (
       $inc: {
         "noobprohackerInfo.participation": 1,
       },
+    },
+  );
+};
+
+architectSchema.statics.updatePlacementTestLink = function (
+  minecraft_id: string,
+  placementTest_link: string,
+) {
+  return this.findOneAndUpdate(
+    { minecraft_id },
+    {
+      $set: { placementTest_link: placementTest_link },
     },
   );
 };

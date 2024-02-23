@@ -18,6 +18,7 @@ const config: Config = {
         gukbap2: "url('/images/tier/gukbap2.webp')",
         hacker: "url('/images/tier/hacker.webp')",
         hacker2: "url('/images/tier/hacker2.webp')",
+        navercafe: "url('/images/naver_cafe.png')",
       },
       keyframes: {
         fadeIn: {

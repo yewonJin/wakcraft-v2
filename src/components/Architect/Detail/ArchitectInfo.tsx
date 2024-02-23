@@ -24,6 +24,7 @@ export default function ArchitectInfo(props: Props) {
       <Category
         curCategory={curCategory}
         handleCategoryClick={handleCategoryClick}
+        placementTest_link={architect.placementTest_link}
       />
       <Portfolio curCategory={curCategory} architect={architect} />
       <ScrollToTop />

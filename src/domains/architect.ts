@@ -25,6 +25,7 @@ export type Architect = {
   wakzoo_id: string;
   tier: Tier[];
   curTier: Tier;
+  placementTest_link: string;
   noobprohackerInfo: {
     win: number;
     hackerWin: number;
