@@ -1,3 +1,4 @@
+import { medium } from "@/app/layout";
 import ArchitectureInfo from "@/components/common/ArchitectureInfo";
 import ImageBox from "@/components/common/ImageBox/ImageBox";
 import { Architect } from "@/domains/architect";
@@ -26,19 +27,57 @@ export default function Portfolio(props: Props) {
     ...generateEventNoobProHackerArr(architect),
   ];
 
-  return (
-    <div className="mt-4 grid grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-3 ">
-      {[...portfolio]
-        .sort((a, b) => {
-          return (
-            new Date(b.props["data-date"]).getTime() -
-            new Date(a.props["data-date"]).getTime()
-          );
-        })
-        .filter((portfolio) => {
-          if (curCategory === "전체보기") return true;
+  type Dict = {
+    [key: string]: JSX.Element[];
+  };
 
-          return portfolio.props["data-content"] === curCategory;
+  const dict: Dict = { "2021": [], "2022": [], "2023": [], "2024": [] };
+
+  portfolio.forEach((item) => {
+    const year = item.props["data-date"].split("-")[0] as
+      | "2021"
+      | "2022"
+      | "2023"
+      | "2024";
+
+    dict[year].push(item);
+  });
+
+  return (
+    <div className="mt-3">
+      {Object.keys(dict)
+        .reverse()
+        .map((key) => {
+          if (dict[key].length === 0) return;
+
+          return (
+            <div className="mb-14" key={key}>
+              <div className="flex items-center gap-4">
+                <h2
+                  className={
+                    medium.className + " min-w-max text-2xl text-text-primary"
+                  }
+                >
+                  {key + "년"}
+                </h2>
+                <div className="h-[1px] w-full bg-text-tertiary"></div>
+              </div>
+              <div className="mt-6 grid grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-3">
+                {dict[key]
+                  .sort((a, b) => {
+                    return (
+                      new Date(b.props["data-date"]).getTime() -
+                      new Date(a.props["data-date"]).getTime()
+                    );
+                  })
+                  .filter((portfolio) => {
+                    if (curCategory === "전체보기") return true;
+
+                    return portfolio.props["data-content"] === curCategory;
+                  })}
+              </div>
+            </div>
+          );
         })}
     </div>
   );
