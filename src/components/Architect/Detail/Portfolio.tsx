@@ -43,12 +43,21 @@ export default function Portfolio(props: Props) {
     dict[year].push(item);
   });
 
+  console.log(dict);
+
   return (
     <div className="mt-3">
       {Object.keys(dict)
         .reverse()
         .map((key) => {
-          if (dict[key].length === 0) return;
+          if (
+            dict[key].length === 0 ||
+            (curCategory !== "전체보기" &&
+              dict[key].every(
+                (item) => item.props["data-content"] !== curCategory,
+              ))
+          )
+            return;
 
           return (
             <div className="mb-14" key={key}>
