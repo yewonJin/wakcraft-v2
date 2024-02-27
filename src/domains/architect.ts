@@ -238,13 +238,13 @@ export const backgroundColorVariants: TierKey = {
   마카게: "hover:bg-[#ec4899]",
   오마카세: "hover:bg-[#ec4899]",
   해커: "hover:bg-[#8b5cf6]",
-  해장국: "hover:bg-[#8b5cf6]",
+  해장국: "hover:bg-[#06b6d4]",
   국밥: "hover:bg-[#06b6d4]",
   "미지근한 국밥": "hover:bg-[#06b6d4]",
   프로: "hover:bg-[#f59e0b]",
-  계추: "hover:bg-[#f59e0b]",
+  계추: "hover:bg-[#94a3b8]",
   계륵: "hover:bg-[#94a3b8]",
-  "가짜 눕": "hover:bg-[#94a3b8]",
+  "가짜 눕": "hover:bg-[#a16207]",
   "퓨어 눕": "hover:bg-[#a16207]",
   언랭: "hover:bg-[#a16207]",
 };
@@ -252,17 +252,17 @@ export const backgroundColorVariants: TierKey = {
 export const getTierImage = (tier: string) => {
   if (tierArray.slice(0, 2).includes(tier as Tier))
     return "url('/images/tier/hacker2.webp')";
-  else if (tierArray.slice(2, 4).includes(tier as Tier))
+  else if (tierArray.slice(2, 3).includes(tier as Tier))
     return "url('/images/tier/hacker.webp')";
-  else if (tierArray.slice(4, 5).includes(tier as Tier))
+  else if (tierArray.slice(3, 5).includes(tier as Tier))
     return "url('/images/tier/gukbap2.webp')";
   else if (tierArray.slice(5, 6).includes(tier as Tier))
     return "url('/images/tier/gukbap.webp')";
-  else if (tierArray.slice(6, 8).includes(tier as Tier))
+  else if (tierArray.slice(6, 7).includes(tier as Tier))
     return "url('/images/tier/pro.webp')";
-  else if (tierArray.slice(8, 10).includes(tier as Tier))
+  else if (tierArray.slice(7, 8).includes(tier as Tier))
+    return "url('/images/tier/gyeruik2.webp')";
+  else if (tierArray.slice(8, 9).includes(tier as Tier))
     return "url('/images/tier/gyeruik.webp')";
-  else if (tierArray.slice(10, 10).includes(tier as Tier))
-    return "url('/images/tier/noob2.webp')";
   else return "url('/images/tier/noob.webp')";
 };
