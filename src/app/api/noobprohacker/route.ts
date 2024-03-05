@@ -6,6 +6,7 @@ import connectMongo from "@/utils/connectMongo";
 import { convertToNoobProHackerPortfolio } from "@/domains/architect";
 import Architect from "@/models/architect";
 import Worldcup from "@/models/worldCup";
+import { createWorldcup } from "@/domains/worldCup";
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
@@ -68,6 +69,10 @@ export async function POST(req: NextRequest) {
         architect.minecraft_id,
         architect.portfolio,
       );
+
+      if (architect.portfolio.line === "hacker") {
+        await Worldcup.create(createWorldcup(architect));
+      }
     });
 
     return NextResponse.json("성공", { status: 200 });
