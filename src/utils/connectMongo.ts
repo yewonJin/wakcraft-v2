@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 
 const connectMongo = async () =>
-  mongoose.connect(process.env.MONGO_URI as string);
+  mongoose.connect(process.env.EC2_MONGO_URI as string, {
+    dbName: "wakcraft",
+  });
 
 export default connectMongo;
