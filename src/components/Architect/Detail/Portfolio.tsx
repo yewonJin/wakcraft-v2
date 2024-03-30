@@ -164,7 +164,7 @@ const generateEventNoobProHackerArr = (architect: Architect) => {
         <ImageBox
           imageUrl={renameToWebp(architectureContest.image_url)}
           youtubeUrl={architectureContest.youtube_url}
-          isUnlimited={architectureContest.episode === 2 ? true : false}
+          isUnlimited={architectureContest.episode === 1 ? false : true}
         />
         <ArchitectureInfo
           contentName={architectureContest.contentName}
