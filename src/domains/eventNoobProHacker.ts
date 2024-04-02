@@ -23,7 +23,7 @@ export type EventNoobProHacker = {
 };
 
 export const isInfiniteTimeContent = (episode: number) => {
-  const arr = [1, 4, 6];
+  const arr = [1, 4, 6, 9];
 
   if (arr.includes(episode)) return true;
 
