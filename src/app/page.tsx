@@ -72,7 +72,9 @@ export default async function Page() {
             convertToSweepLine([
               ...noobprohackersWithSweepLine,
               ...architectureNoobProHackersWithSweepLine,
-            ]),
+            ]).sort(
+              (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
+            ),
           ),
         )}
       />

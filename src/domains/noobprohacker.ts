@@ -79,6 +79,7 @@ export type SweepLine = {
   line_ranking: number;
   subject: string;
   youtube_url: string;
+  date: string;
 };
 
 /** 눕프핵 정보를 싹슬이 라인 정보로 변환하는 함수 */
@@ -96,6 +97,7 @@ export const convertToSweepLine = (arr: NoobProHacker[]): SweepLine[] => {
       line_ranking: winnerLine.line_ranking,
       subject: winnerLine.subject,
       youtube_url: winnerLine.youtube_url,
+      date: item.contentInfo.date,
     });
   });
 
